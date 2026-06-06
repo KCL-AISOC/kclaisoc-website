@@ -115,59 +115,144 @@
             </div>
 
             <!--
-              FORMSPREE SETUP:
-              1. Go to https://formspree.io and create a free account.
-              2. Create a new form — name it "KCL AISOC Member Sign-Up".
-              3. Copy the form endpoint URL (looks like: https://formspree.io/f/XXXXXXXX).
-              4. Replace the action attribute value below with that URL.
-              5. Formspree will email all submissions to your registered address.
-                 You can also view responses in your Formspree dashboard.
+              GOOGLE SHEETS SETUP:
+              Submissions are appended straight to a Google Sheet via a Google
+              Apps Script web app. Full step-by-step in apps-script/SETUP.md.
+              Paste the web app URL into JOIN_ENDPOINT in the script at the
+              bottom of this file.
             -->
             <form
               id="join-form"
-              action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_FORM_ID"
               method="POST"
               novalidate
               class="reveal"
               style="background: var(--white); border: 1px solid var(--border-light); padding: 2.5rem;"
             >
-              <input type="hidden" name="_subject" value="KCL AISOC — New Member Sign-Up">
-
               <div class="form-grid" style="--form-label-color: var(--text-secondary);">
 
                 <div class="form-group form-group--full">
-                  <label for="join-name" style="color: var(--text-secondary);">Full Name <span aria-hidden="true">*</span></label>
-                  <input type="text" id="join-name" name="name" autocomplete="name" required placeholder="Your full name"
+                  <label for="join-first-name" style="color: var(--text-secondary);">First Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-first-name" name="first_name" autocomplete="given-name" required placeholder="Your first name"
                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-email" style="color: var(--text-secondary);">KCL Email Address <span aria-hidden="true">*</span></label>
-                  <input type="email" id="join-email" name="email" autocomplete="email" required placeholder="k-number@kcl.ac.uk"
+                  <label for="join-last-name" style="color: var(--text-secondary);">Last Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-last-name" name="last_name" autocomplete="family-name" required placeholder="Your last name"
                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-degree" style="color: var(--text-secondary);">Degree Programme <span aria-hidden="true">*</span></label>
-                  <input type="text" id="join-degree" name="degree" required placeholder="e.g. BSc Economics"
+                  <label for="join-email" style="color: var(--text-secondary);">Email Address <span aria-hidden="true">*</span></label>
+                  <input type="email" id="join-email" name="email_address" autocomplete="email" required placeholder="Preferred contact email"
                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-year" style="color: var(--text-secondary);">Year of Study <span aria-hidden="true">*</span></label>
-                  <select id="join-year" name="year_of_study" required
+                  <label for="join-kcl-email" style="color: var(--text-secondary);">KCL Email Address <span aria-hidden="true">*</span></label>
+                  <input type="email" id="join-kcl-email" name="kcl_email" required placeholder="k-number@kcl.ac.uk"
+                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-student-id" style="color: var(--text-secondary);">Student ID <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-student-id" name="student_id" required inputmode="numeric" placeholder="e.g. 23012345"
+                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-university" style="color: var(--text-secondary);">University <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-university" name="university" required value="King's College London" placeholder="Your university"
+                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-level" style="color: var(--text-secondary);">Level of Study <span aria-hidden="true">*</span></label>
+                  <select id="join-level" name="level_of_study" required
                           style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
-                    <option value="" disabled selected>Select your year&hellip;</option>
-                    <option value="Year 1">Year 1</option>
-                    <option value="Year 2">Year 2</option>
-                    <option value="Year 3">Year 3</option>
-                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="" disabled selected>Select&hellip;</option>
+                    <option value="Undergraduate">Undergraduate</option>
+                    <option value="Postgraduate (Taught)">Postgraduate (Taught)</option>
+                    <option value="Postgraduate (Research)">Postgraduate (Research)</option>
+                    <option value="Foundation">Foundation</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label style="color: var(--text-secondary);">Areas of Interest <span>(select all that apply)</span></label>
+                  <label for="join-degree" style="color: var(--text-secondary);">Degree Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-degree" name="degree_name" required placeholder="e.g. BSc Economics"
+                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-grad-year" style="color: var(--text-secondary);">Year of Graduation <span aria-hidden="true">*</span></label>
+                  <select id="join-grad-year" name="year_of_graduation" required
+                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                    <option value="" disabled selected>Select&hellip;</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-international" style="color: var(--text-secondary);">Are you an International Student? <span aria-hidden="true">*</span></label>
+                  <select id="join-international" name="international_student" required
+                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                    <option value="" disabled selected>Select&hellip;</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-gender" style="color: var(--text-secondary);">Gender <span aria-hidden="true">*</span></label>
+                  <select id="join-gender" name="gender" required
+                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                    <option value="" disabled selected>Select&hellip;</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-binary">Non-binary</option>
+                    <option value="Prefer to self-describe">Prefer to self-describe</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-ethnicity" style="color: var(--text-secondary);">How do you identify your ethnicity? <span aria-hidden="true">*</span></label>
+                  <select id="join-ethnicity" name="ethnicity" required
+                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                    <option value="" disabled selected>Select&hellip;</option>
+                    <option value="Asian or Asian British">Asian or Asian British</option>
+                    <option value="Black, Black British, Caribbean or African">Black, Black British, Caribbean or African</option>
+                    <option value="Mixed or multiple ethnic groups">Mixed or multiple ethnic groups</option>
+                    <option value="White">White</option>
+                    <option value="Other ethnic group">Other ethnic group</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                  </select>
+                  <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.4rem;">
+                    For details, see the
+                    <a href="https://www.ethnicity-facts-figures.service.gov.uk/style-guide/ethnic-groups/" target="_blank" rel="noopener noreferrer" style="color: var(--navy); text-decoration: underline;">gov.uk ethnic groups guide</a>.
+                  </p>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-committee" style="color: var(--text-secondary);">Are you interested in joining the committee? <span aria-hidden="true">*</span></label>
+                  <select id="join-committee" name="join_committee" required
+                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                    <option value="" disabled selected>Select&hellip;</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Maybe">Maybe</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label style="color: var(--text-secondary);">Area of interest within alternatives <span>(select all that apply)</span></label>
                   <div class="multi-select-grid"
                        style="background: var(--cream); border-color: var(--border-light);"
                        role="group"
@@ -200,8 +285,8 @@
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-heard" style="color: var(--text-secondary);">How did you hear about us?</label>
-                  <select id="join-heard" name="heard_via"
+                  <label for="join-heard" style="color: var(--text-secondary);">How did you hear about us? <span aria-hidden="true">*</span></label>
+                  <select id="join-heard" name="heard_via" required
                           style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
                     <option value="" disabled selected>Select&hellip;</option>
                     <option value="Instagram">Instagram</option>
@@ -214,12 +299,9 @@
                 </div>
 
                 <div class="form-group form-group--full">
-                  <div class="checkbox-group">
-                    <input type="checkbox" id="join-newsletter" name="newsletter" value="yes" checked>
-                    <label for="join-newsletter" style="color: var(--text-secondary); text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 0.875rem;">
-                      Subscribe to the KCL AISOC newsletter for events, insights, and society updates.
-                    </label>
-                  </div>
+                  <label for="join-linkedin" style="color: var(--text-secondary);">LinkedIn Profile URL <span>(optional)</span></label>
+                  <input type="url" id="join-linkedin" name="linkedin_url" placeholder="https://www.linkedin.com/in/your-profile"
+                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
                 </div>
 
               </div>
@@ -316,7 +398,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="js/main.js" defer></script>
   <script>
-    // Formspree AJAX submission — shows success message without page reload
+    // Google Apps Script web app URL. See apps-script/SETUP.md.
+    var JOIN_ENDPOINT = 'https://script.google.com/macros/s/AKfycbznQa2U_lVsgjHGOueWHb_Hnq-XDDtBOr_QbTwU4dXMEVhEpfnXVc4kNnailExpWO78/exec';
+
+    // AJAX submission — appends to the Google Sheet, shows success without reload.
     (function () {
       var form = document.getElementById('join-form');
       var success = document.getElementById('join-form-success');
@@ -324,22 +409,36 @@
 
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        var data = new FormData(form);
+
+        // Form has novalidate, so trigger the browser's required-field checks here.
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        if (JOIN_ENDPOINT.indexOf('PASTE_') === 0) {
+          alert('The sign-up form is not connected yet. (Set JOIN_ENDPOINT in join.html.)');
+          return;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var label = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Joining…'; }
+
         try {
-          var res = await fetch(form.action, {
+          // Apps Script doesn't send CORS headers, so we use no-cors: the row is
+          // still appended, but the response is opaque. No thrown error = success.
+          await fetch(JOIN_ENDPOINT, {
             method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
+            body: new FormData(form),
+            mode: 'no-cors'
           });
-          if (res.ok) {
-            form.style.display = 'none';
-            success.classList.add('visible');
-            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          } else {
-            form.submit();
-          }
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (_) {
-          form.submit();
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+          alert('Something went wrong — please try again in a moment.');
         }
       });
     })();

@@ -30,6 +30,16 @@ var MEMBERS_SHEET_URL = ''; // <-- PASTE YOUR PUBLISHED GOOGLE SHEET CSV URL HER
     }
   }
 
+  // Feed the real number into the GSAP count-up animation in main.js, which
+  // reads data-count as its target. Without this the animation overwrites the
+  // fetched count with the hardcoded default when the stats bar scrolls in.
+  function setCountTarget(n) {
+    var el = document.getElementById('member-count');
+    if (el) {
+      el.setAttribute('data-count', n);
+    }
+  }
+
   async function fetchMemberCount() {
     if (!MEMBERS_SHEET_URL || MEMBERS_SHEET_URL.trim() === '') {
       updateMemberCount(FALLBACK_COUNT);
@@ -50,7 +60,12 @@ var MEMBERS_SHEET_URL = ''; // <-- PASTE YOUR PUBLISHED GOOGLE SHEET CSV URL HER
       var memberCount = Math.max(0, lines.length - 1);
 
       // Display as "N+" for a sense of live, growing membership
-      updateMemberCount(memberCount > 0 ? memberCount + '+' : FALLBACK_COUNT);
+      if (memberCount > 0) {
+        setCountTarget(memberCount);
+        updateMemberCount(memberCount + '+');
+      } else {
+        updateMemberCount(FALLBACK_COUNT);
+      }
     } catch (err) {
       // Network error, CORS issue, or sheet not published — use fallback
       updateMemberCount(FALLBACK_COUNT);
