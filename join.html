@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join KCL AISOC — become part of King's College London's alternative investment community. Open to all KCL students.">
+  <title>Join | KCL AISOC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <!-- ============================================================
+       TOP NAVIGATION
+       ============================================================ -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
+        <img src="assets/images/logo.svg" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+         ============================================================ -->
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Membership</span>
+          <h1>Join KCL AISOC</h1>
+          <p>Become part of King's College London's alternative investment community.</p>
+        </div>
+        <span class="page-header-numeral" aria-hidden="true">08</span>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         JOIN LAYOUT: BENEFITS + FORM
+         ============================================================ -->
+    <section class="form-section--light" style="padding-block: var(--section-gap);" aria-labelledby="join-heading">
+      <div class="container">
+        <div class="join-layout">
+
+          <!-- Left: benefits -->
+          <div>
+            <span class="eyebrow">What You Get</span>
+            <h2 id="join-heading" class="reveal" style="margin-bottom: 2rem;">
+              Membership<br>Benefits
+            </h2>
+            <div class="gold-rule reveal reveal-delay-1" aria-hidden="true"></div>
+
+            <ul class="join-benefits-list" style="margin-top: 2rem;">
+
+              <li class="join-benefit reveal reveal-delay-1">
+                <span class="join-benefit-marker" aria-hidden="true"></span>
+                <p>Access to all KCL AISOC events — speaker evenings, workshops, case competitions, and networking.</p>
+              </li>
+
+              <li class="join-benefit reveal reveal-delay-2">
+                <span class="join-benefit-marker" aria-hidden="true"></span>
+                <p>Career resources and guides: CV templates, interview prep materials, and industry reading.</p>
+              </li>
+
+              <li class="join-benefit reveal reveal-delay-3">
+                <span class="join-benefit-marker" aria-hidden="true"></span>
+                <p>The KCL AISOC newsletter — market commentary, event previews, and society updates.</p>
+              </li>
+
+              <li class="join-benefit reveal reveal-delay-4">
+                <span class="join-benefit-marker" aria-hidden="true"></span>
+                <p>Networking with industry professionals from private equity, hedge funds, infrastructure, and beyond.</p>
+              </li>
+
+              <li class="join-benefit reveal reveal-delay-5">
+                <span class="join-benefit-marker" aria-hidden="true"></span>
+                <p>Committee application opportunity in October 2026 — shape the society from within.</p>
+              </li>
+
+            </ul>
+          </div>
+
+          <!-- Right: sign-up form -->
+          <div>
+            <!-- Success message — shown after submission -->
+            <div class="form-success" id="join-form-success" role="alert" aria-live="polite" style="background: var(--white); border: 1px solid var(--border-light); padding: 3rem;">
+              <div class="form-success-icon" style="border-color: var(--navy);" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A1F44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <p style="color: var(--text-primary);">
+                You are officially a member of KCL Alternative Investment Society.
+                Welcome — we will be in touch soon.
+              </p>
+            </div>
+
+            <!--
+              FORMSPREE SETUP:
+              1. Go to https://formspree.io and create a free account.
+              2. Create a new form — name it "KCL AISOC Member Sign-Up".
+              3. Copy the form endpoint URL (looks like: https://formspree.io/f/XXXXXXXX).
+              4. Replace the action attribute value below with that URL.
+              5. Formspree will email all submissions to your registered address.
+                 You can also view responses in your Formspree dashboard.
+            -->
+            <form
+              id="join-form"
+              action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_FORM_ID"
+              method="POST"
+              novalidate
+              class="reveal"
+              style="background: var(--white); border: 1px solid var(--border-light); padding: 2.5rem;"
+            >
+              <input type="hidden" name="_subject" value="KCL AISOC — New Member Sign-Up">
+
+              <div class="form-grid" style="--form-label-color: var(--text-secondary);">
+
+                <div class="form-group form-group--full">
+                  <label for="join-name" style="color: var(--text-secondary);">Full Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-name" name="name" autocomplete="name" required placeholder="Your full name"
+                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-email" style="color: var(--text-secondary);">KCL Email Address <span aria-hidden="true">*</span></label>
+                  <input type="email" id="join-email" name="email" autocomplete="email" required placeholder="k-number@kcl.ac.uk"
+                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-degree" style="color: var(--text-secondary);">Degree Programme <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-degree" name="degree" required placeholder="e.g. BSc Economics"
+                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-year" style="color: var(--text-secondary);">Year of Study <span aria-hidden="true">*</span></label>
+                  <select id="join-year" name="year_of_study" required
+                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                    <option value="" disabled selected>Select your year&hellip;</option>
+                    <option value="Year 1">Year 1</option>
+                    <option value="Year 2">Year 2</option>
+                    <option value="Year 3">Year 3</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label style="color: var(--text-secondary);">Areas of Interest <span>(select all that apply)</span></label>
+                  <div class="multi-select-grid"
+                       style="background: var(--cream); border-color: var(--border-light);"
+                       role="group"
+                       aria-label="Areas of interest">
+                    <div class="multi-select-item">
+                      <input type="checkbox" id="interest-pe" name="interest[]" value="Private Equity">
+                      <label for="interest-pe" style="color: var(--text-secondary);">Private Equity</label>
+                    </div>
+                    <div class="multi-select-item">
+                      <input type="checkbox" id="interest-infra" name="interest[]" value="Infrastructure">
+                      <label for="interest-infra" style="color: var(--text-secondary);">Infrastructure</label>
+                    </div>
+                    <div class="multi-select-item">
+                      <input type="checkbox" id="interest-hf" name="interest[]" value="Hedge Funds">
+                      <label for="interest-hf" style="color: var(--text-secondary);">Hedge Funds</label>
+                    </div>
+                    <div class="multi-select-item">
+                      <input type="checkbox" id="interest-ra" name="interest[]" value="Real Assets">
+                      <label for="interest-ra" style="color: var(--text-secondary);">Real Assets</label>
+                    </div>
+                    <div class="multi-select-item">
+                      <input type="checkbox" id="interest-pc" name="interest[]" value="Private Credit">
+                      <label for="interest-pc" style="color: var(--text-secondary);">Private Credit</label>
+                    </div>
+                    <div class="multi-select-item">
+                      <input type="checkbox" id="interest-vc" name="interest[]" value="Venture Capital">
+                      <label for="interest-vc" style="color: var(--text-secondary);">Venture Capital</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label for="join-heard" style="color: var(--text-secondary);">How did you hear about us?</label>
+                  <select id="join-heard" name="heard_via"
+                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                    <option value="" disabled selected>Select&hellip;</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Friend or classmate">Friend or classmate</option>
+                    <option value="King's Freshers Fair">King's Freshers Fair</option>
+                    <option value="KCLSU website">KCLSU website</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <div class="checkbox-group">
+                    <input type="checkbox" id="join-newsletter" name="newsletter" value="yes" checked>
+                    <label for="join-newsletter" style="color: var(--text-secondary); text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 0.875rem;">
+                      Subscribe to the KCL AISOC newsletter for events, insights, and society updates.
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+
+              <div style="margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding-block: 1rem;">
+                  Join KCL AISOC
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ALREADY A MEMBER — INSTAGRAM PROMPT
+         ============================================================ -->
+    <section style="background: var(--navy); padding-block: 3rem; border-top: 1px solid rgba(201, 169, 97, 0.1);" aria-label="Follow on Instagram">
+      <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+        <div>
+          <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.5rem;">Already a member?</p>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; max-width: 52ch;">
+            Follow <strong style="color: var(--gold);">@kclaisoc</strong> on Instagram for the latest
+            event announcements, market commentary, and society updates.
+          </p>
+        </div>
+        <a href="https://www.instagram.com/kclaisoc"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn btn-secondary"
+           style="white-space: nowrap; flex-shrink: 0;">
+          Follow @kclaisoc
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
+          <img src="assets/images/logo.svg" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>Investing Beyond the Ordinary</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-strip">
+      &copy; 2026 KCL Alternative Investment Society. King's College London.
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script>
+    // Formspree AJAX submission — shows success message without page reload
+    (function () {
+      var form = document.getElementById('join-form');
+      var success = document.getElementById('join-form-success');
+      if (!form || !success) return;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        try {
+          var res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            success.classList.add('visible');
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            form.submit();
+          }
+        } catch (_) {
+          form.submit();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

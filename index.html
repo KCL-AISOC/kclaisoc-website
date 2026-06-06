@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KCL AISOC — King's College London's society for alternative asset management. Private equity, hedge funds, real assets, private credit, venture capital and beyond.">
+  <meta property="og:title" content="KCL AISOC — Investing Beyond the Ordinary">
+  <meta property="og:description" content="King's College London's society for alternative asset management.">
+  <meta property="og:type" content="website">
+  <title>KCL AISOC — Investing Beyond the Ordinary</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <!-- ============================================================
+       TOP NAVIGATION
+       ============================================================ -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
+        <img src="assets/images/logo.svg" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" aria-label="Introduction">
+      <!-- Parallax background layer -->
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <!-- Lion watermark — centred, zooms gently on scroll -->
+      <div class="hero-lion" aria-hidden="true">
+        <img src="assets/images/logo.svg" alt="">
+      </div>
+
+      <div class="hero-inner container">
+        <h1 class="hero-headline">
+          Investing Beyond<br>the Ordinary
+        </h1>
+
+        <div class="hero-actions">
+          <a href="join.html" class="btn btn-primary">Join the Society</a>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="hero-scroll-line"></span>
+        <span class="hero-scroll-label">Scroll</span>
+      </div>
+
+      <!-- Marquee ticker -->
+      <div class="hero-ticker" aria-hidden="true">
+        <div class="hero-ticker-track">
+          <span class="hero-ticker-item">Private Equity</span>
+          <span class="hero-ticker-item">Hedge Funds</span>
+          <span class="hero-ticker-item">Infrastructure</span>
+          <span class="hero-ticker-item">Real Assets</span>
+          <span class="hero-ticker-item">Private Credit</span>
+          <span class="hero-ticker-item">Venture Capital</span>
+          <span class="hero-ticker-item">King's College London</span>
+          <span class="hero-ticker-item">Founded 2026</span>
+          <!-- duplicate for seamless loop -->
+          <span class="hero-ticker-item">Private Equity</span>
+          <span class="hero-ticker-item">Hedge Funds</span>
+          <span class="hero-ticker-item">Infrastructure</span>
+          <span class="hero-ticker-item">Real Assets</span>
+          <span class="hero-ticker-item">Private Credit</span>
+          <span class="hero-ticker-item">Venture Capital</span>
+          <span class="hero-ticker-item">King's College London</span>
+          <span class="hero-ticker-item">Founded 2026</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         STATS BAR
+         ============================================================ -->
+    <section class="stats-bar" aria-label="Society statistics">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <!-- Member count is populated by js/home.js from Google Sheets; data-count used by GSAP counter -->
+          <span class="stat-number" id="member-count" data-count="60">60+</span>
+          <span class="stat-label">Members</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item reveal reveal-delay-2">
+          <span class="stat-number" data-count="370">370+</span>
+          <span class="stat-label">Instagram Followers</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item reveal reveal-delay-4">
+          <span class="stat-number">April 2026</span>
+          <span class="stat-label">Founded</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT PREVIEW
+         ============================================================ -->
+    <section class="about-preview" aria-labelledby="about-preview-heading">
+      <div class="container">
+        <div class="about-preview-inner">
+
+          <div class="about-preview-text">
+            <span class="eyebrow">Who We Are</span>
+            <h2 id="about-preview-heading" class="reveal">
+              Beyond Stocks<br>and Bonds
+            </h2>
+            <div class="gold-rule reveal reveal-delay-1" aria-hidden="true"></div>
+            <p class="reveal reveal-delay-2">
+              KCL AISOC is King's College London's only society dedicated
+              exclusively to alternative asset management. We cover the private
+              markets that move the world: private equity, infrastructure, hedge
+              funds, real assets, private credit, and venture capital. Founded in
+              April 2026, we exist to bridge the gap between academic study and
+              the alternative investment industry.
+            </p>
+            <a href="about.html" class="btn btn-ghost reveal reveal-delay-3">Our Story</a>
+          </div>
+
+          <!-- Decorative geometric composition — CSS only, no images -->
+          <div class="about-preview-visual" aria-hidden="true">
+            <span class="about-preview-numeral">AI</span>
+            <div class="about-preview-icon"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EVENTS PREVIEW
+         ============================================================ -->
+    <section class="events-preview" aria-labelledby="events-preview-heading">
+      <div class="container">
+        <div class="events-preview-header">
+          <div>
+            <span class="eyebrow">What's On</span>
+            <h2 id="events-preview-heading" class="reveal">Upcoming Events</h2>
+          </div>
+          <a href="events.html" class="btn btn-ghost reveal">View All Events</a>
+        </div>
+
+        <div class="events-preview-grid">
+
+          <!-- Placeholder event 1 -->
+          <article class="event-card reveal">
+            <span class="event-card-badge">Coming Soon</span>
+            <h3>Speaker Event — Industry Professional TBC</h3>
+            <p class="event-card-date">Date TBC &middot; Location TBC</p>
+            <p>An evening with an industry professional from the alternative investment space. Details to be announced.</p>
+            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
+          </article>
+
+          <!-- Placeholder event 2 -->
+          <article class="event-card reveal reveal-delay-2">
+            <span class="event-card-badge">Coming Soon</span>
+            <h3>Investment Case Competition — Autumn 2026</h3>
+            <p class="event-card-date">Date TBC &middot; King's College London</p>
+            <p>A hands-on case study challenge covering private equity and credit. Form a team and pitch your investment thesis.</p>
+            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
+          </article>
+
+          <!-- Placeholder event 3 -->
+          <article class="event-card reveal reveal-delay-4">
+            <span class="event-card-badge">Coming Soon</span>
+            <h3>Networking Evening — Launch Term</h3>
+            <p class="event-card-date">Date TBC &middot; Central London</p>
+            <p>Meet fellow members, the KCL AISOC committee, and professionals from the alternative investment industry.</p>
+            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         JOIN CTA STRIP
+         ============================================================ -->
+    <section class="page-cta" aria-labelledby="home-cta-heading">
+      <div class="container container--narrow">
+        <span class="eyebrow">Get Involved</span>
+        <h2 id="home-cta-heading" class="reveal">Ready to go beyond the ordinary?</h2>
+        <p class="reveal reveal-delay-1">
+          Join KCL's only society dedicated to alternative investments.
+          No prior finance experience required.
+        </p>
+        <div class="reveal reveal-delay-2">
+          <a href="join.html" class="btn btn-primary">Join the Society</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
+          <img src="assets/images/logo.svg" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>Investing Beyond the Ordinary</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <!-- LinkedIn — replace href="#" with actual LinkedIn URL when available -->
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-strip">
+      &copy; 2026 KCL Alternative Investment Society. King's College London.
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/home.js" defer></script>
+</body>
+</html>

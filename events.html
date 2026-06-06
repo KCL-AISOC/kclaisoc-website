@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KCL AISOC Events — speaker series, case competitions, workshops and networking evenings for King's College London students.">
+  <title>Events | KCL AISOC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <!-- ============================================================
+       TOP NAVIGATION
+       ============================================================ -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
+        <img src="assets/images/logo.svg" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+         ============================================================ -->
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">What's On</span>
+          <h1>Events</h1>
+          <p>From speaker series to case competitions, KCL AISOC brings the alternative investment industry to King's.</p>
+        </div>
+        <span class="page-header-numeral" aria-hidden="true">04</span>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         EVENTS SECTION
+         ============================================================ -->
+    <section aria-labelledby="events-heading">
+      <div class="container">
+
+        <h2 id="events-heading" class="reveal" style="margin-bottom: 2rem;">Upcoming Events</h2>
+
+        <!-- Filter bar -->
+        <!--
+          FILTER CATEGORIES:
+          Each filter button's data-filter must match one of:
+            all | workshops | speakers | competitions | networking
+          Each event card's data-category must match one of:
+            workshops | speakers | competitions | networking
+        -->
+        <div class="filter-bar" role="group" aria-label="Filter events by type">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" data-filter="workshops" aria-pressed="false">Workshops</button>
+          <button class="filter-btn" data-filter="speakers" aria-pressed="false">Speaker Events</button>
+          <button class="filter-btn" data-filter="competitions" aria-pressed="false">Competitions</button>
+          <button class="filter-btn" data-filter="networking" aria-pressed="false">Networking</button>
+        </div>
+
+        <!--
+          ============================================================
+          HOW TO ADD A REAL EVENT
+          ============================================================
+          1. Copy one of the <article> blocks below.
+          2. Set data-category to one of:
+               workshops | speakers | competitions | networking
+          3. Update:
+             - The .event-card-tag text (e.g. "Speaker Event")
+             - The <h3> title
+             - The .event-card-date (e.g. "14 November 2026 · Bush House, KCL")
+             - The <p> description
+             - The sign-up button: remove disabled and aria-disabled="true",
+               then set href on an <a> tag, or point a form action to your
+               sign-up sheet / Eventbrite / Lu.ma link.
+          4. The filter JS (js/events.js) will handle show/hide automatically.
+          ============================================================
+        -->
+
+        <div class="events-grid" id="events-grid">
+
+          <!-- Placeholder event 1 — Speaker -->
+          <article class="event-card" data-category="speakers">
+            <span class="event-card-tag">Speaker Event</span>
+            <h3>Industry Professional Talk — Title TBC</h3>
+            <p class="event-card-date">Date TBC &middot; Location TBC</p>
+            <p>
+              An evening with a senior professional from the alternative
+              investment space. Details and speaker biography to be announced
+              ahead of launch in October 2026.
+            </p>
+            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
+          </article>
+
+          <!-- Placeholder event 2 — Workshop -->
+          <article class="event-card" data-category="workshops">
+            <span class="event-card-tag">Workshop</span>
+            <h3>Private Equity Fundamentals Workshop</h3>
+            <p class="event-card-date">Date TBC &middot; King's College London</p>
+            <p>
+              An interactive session covering LBO mechanics, deal structuring,
+              and valuation frameworks for private equity. Suitable for all
+              levels — no prior experience required.
+            </p>
+            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
+          </article>
+
+          <!-- Placeholder event 3 — Competition -->
+          <article class="event-card" data-category="competitions">
+            <span class="event-card-tag">Competition</span>
+            <h3>Investment Case Competition — Autumn 2026</h3>
+            <p class="event-card-date">Date TBC &middot; King's College London</p>
+            <p>
+              Form a team of up to four and pitch an investment thesis across
+              a chosen asset class. Judged by a panel including industry
+              professionals. Full brief released at launch.
+            </p>
+            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
+          </article>
+
+          <!-- Placeholder event 4 — Networking -->
+          <article class="event-card" data-category="networking">
+            <span class="event-card-tag">Networking</span>
+            <h3>Launch Networking Evening</h3>
+            <p class="event-card-date">October 2026 &middot; Central London</p>
+            <p>
+              Meet fellow KCL AISOC members, the founding committee, and
+              professionals from across the alternative investment industry
+              at our inaugural networking evening.
+            </p>
+            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STAY UPDATED
+         ============================================================ -->
+    <section class="page-cta" aria-labelledby="events-cta-heading">
+      <div class="container container--narrow">
+        <span class="eyebrow">Stay Updated</span>
+        <h2 id="events-cta-heading" class="reveal">Never miss an event.</h2>
+        <p class="reveal reveal-delay-1">
+          Join KCL AISOC to receive event announcements, programme updates,
+          and invitations directly.
+        </p>
+        <div class="reveal reveal-delay-2" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="join.html" class="btn btn-primary">Join the Society</a>
+          <a href="https://www.instagram.com/kclaisoc"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-secondary">Follow @kclaisoc</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
+          <img src="assets/images/logo.svg" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>Investing Beyond the Ordinary</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-strip">
+      &copy; 2026 KCL Alternative Investment Society. King's College London.
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/events.js" defer></script>
+</body>
+</html>

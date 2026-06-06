@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KCL AISOC Resources — open access career and investment resources for King's College London students. No login required.">
+  <title>Resources | KCL AISOC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <!-- ============================================================
+       TOP NAVIGATION
+       ============================================================ -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
+        <img src="assets/images/logo.svg" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+         ============================================================ -->
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Open Access</span>
+          <h1>Resources</h1>
+          <p>Open access career and investment resources for KCL students. No login required.</p>
+        </div>
+        <span class="page-header-numeral" aria-hidden="true">06</span>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         RESOURCES
+         ============================================================ -->
+    <section aria-labelledby="resources-heading">
+      <div class="container">
+
+        <h2 id="resources-heading" class="reveal" style="margin-bottom: 3rem;">Career &amp; Investment Library</h2>
+
+        <!--
+          ============================================================
+          HOW TO ADD RESOURCES
+          ============================================================
+
+          FOR A PDF DOWNLOAD:
+          1. Upload the PDF to a folder (e.g. assets/pdfs/guide-name.pdf)
+          2. Replace the disabled <button> with:
+             <a href="assets/pdfs/guide-name.pdf"
+                download="KCL-AISOC-Guide-Name.pdf"
+                class="btn btn-outline">
+               Download PDF
+             </a>
+          3. Change the .resource-type class to resource-type--pdf
+          4. Update the label text to "PDF Guide"
+
+          FOR AN EXTERNAL LINK:
+          1. Replace the disabled <button> with:
+             <a href="https://external-url.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline">
+               Visit Resource
+             </a>
+          2. Change the .resource-type class to resource-type--link
+          3. Update the label text to "External Link"
+
+          FOR A TEMPLATE:
+          1. Host the template (Google Doc, Notion, or downloadable file)
+          2. Replace the disabled <button> with a link as above
+          3. Use resource-type--template class and "Template" label
+
+          Update the h4 title and description <p> for each real resource.
+          ============================================================
+        -->
+
+        <div class="resources-sections">
+
+          <!-- ── Category 1: CV & Application Resources ─────────── -->
+          <div>
+            <h3 class="resource-section-title reveal">CV &amp; Application Resources</h3>
+            <div class="resource-grid">
+
+              <div class="resource-card reveal">
+                <span class="resource-type resource-type--pdf">PDF Guide</span>
+                <div class="resource-content">
+                  <h4>Alternative Investment CV Guide</h4>
+                  <p>How to structure and position your CV for PE, VC, and credit roles.</p>
+                  <button class="btn btn-outline" disabled aria-disabled="true">Download</button>
+                </div>
+              </div>
+
+              <div class="resource-card reveal reveal-delay-1">
+                <span class="resource-type resource-type--template">Template</span>
+                <div class="resource-content">
+                  <h4>Cover Letter Template — Buy-Side</h4>
+                  <p>A structured template for applications to private equity and credit firms.</p>
+                  <button class="btn btn-outline" disabled aria-disabled="true">Use Template</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Category 2: Interview Preparation ──────────────── -->
+          <div>
+            <h3 class="resource-section-title reveal">Interview Preparation</h3>
+            <div class="resource-grid">
+
+              <div class="resource-card reveal">
+                <span class="resource-type resource-type--pdf">PDF Guide</span>
+                <div class="resource-content">
+                  <h4>LBO Modelling Primer</h4>
+                  <p>A concise walkthrough of leveraged buyout mechanics for interview preparation.</p>
+                  <button class="btn btn-outline" disabled aria-disabled="true">Download</button>
+                </div>
+              </div>
+
+              <div class="resource-card reveal reveal-delay-1">
+                <span class="resource-type resource-type--pdf">PDF Guide</span>
+                <div class="resource-content">
+                  <h4>100 Alternative Investment Interview Questions</h4>
+                  <p>Technical and behavioural questions for PE, HF, infrastructure, and VC interviews.</p>
+                  <button class="btn btn-outline" disabled aria-disabled="true">Download</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Category 3: Industry Reading & Research ─────────── -->
+          <div>
+            <h3 class="resource-section-title reveal">Industry Reading &amp; Research</h3>
+            <div class="resource-grid">
+
+              <div class="resource-card reveal">
+                <span class="resource-type resource-type--link">External Link</span>
+                <div class="resource-content">
+                  <h4>Preqin — Private Markets Data</h4>
+                  <p>Industry-standard data and research on private equity, real assets, and credit markets.</p>
+                  <button class="btn btn-outline" disabled aria-disabled="true">Visit</button>
+                </div>
+              </div>
+
+              <div class="resource-card reveal reveal-delay-1">
+                <span class="resource-type resource-type--link">External Link</span>
+                <div class="resource-content">
+                  <h4>Pitchbook — Deals &amp; Fund Intelligence</h4>
+                  <p>Comprehensive deal, fund, and company data across the private markets ecosystem.</p>
+                  <button class="btn btn-outline" disabled aria-disabled="true">Visit</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Category 4: Investment Fundamentals ────────────── -->
+          <div>
+            <h3 class="resource-section-title reveal">Investment Fundamentals</h3>
+            <div class="resource-grid">
+
+              <div class="resource-card reveal">
+                <span class="resource-type resource-type--pdf">PDF Guide</span>
+                <div class="resource-content">
+                  <h4>Introduction to Private Markets</h4>
+                  <p>An accessible overview of alternative asset classes, fund structures, and return profiles.</p>
+                  <button class="btn btn-outline" disabled aria-disabled="true">Download</button>
+                </div>
+              </div>
+
+              <div class="resource-card reveal reveal-delay-1">
+                <span class="resource-type resource-type--pdf">PDF Guide</span>
+                <div class="resource-content">
+                  <h4>Glossary of Alternative Investment Terms</h4>
+                  <p>Key terminology across PE, infrastructure, hedge funds, private credit, and VC.</p>
+                  <button class="btn btn-outline" disabled aria-disabled="true">Download</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         JOIN CTA
+         ============================================================ -->
+    <section class="page-cta" aria-labelledby="resources-cta-heading">
+      <div class="container container--narrow">
+        <span class="eyebrow">Members</span>
+        <h2 id="resources-cta-heading" class="reveal">Members get early access to new resources.</h2>
+        <p class="reveal reveal-delay-1">
+          Join KCL AISOC to receive new guides, templates, and industry
+          reports directly to your inbox.
+        </p>
+        <div class="reveal reveal-delay-2">
+          <a href="join.html" class="btn btn-primary">Join the Society</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
+          <img src="assets/images/logo.svg" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>Investing Beyond the Ordinary</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-strip">
+      &copy; 2026 KCL Alternative Investment Society. King's College London.
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

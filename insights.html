@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KCL AISOC Insights — market commentary and investment analysis from the KCL AISOC committee.">
+  <title>Insights | KCL AISOC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <!-- ============================================================
+       TOP NAVIGATION
+       ============================================================ -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
+        <img src="assets/images/logo.svg" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+         ============================================================ -->
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Analysis &amp; Commentary</span>
+          <h1>Insights</h1>
+          <p>Market commentary and investment analysis from the KCL AISOC committee.</p>
+        </div>
+        <span class="page-header-numeral" aria-hidden="true">05</span>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         INSIGHTS GRID
+         ============================================================ -->
+    <section aria-labelledby="insights-heading">
+      <div class="container">
+
+        <h2 id="insights-heading" class="reveal" style="margin-bottom: 2.5rem;">Latest Pieces</h2>
+
+        <!--
+          HOW TO ADD A REAL INSIGHT ARTICLE
+          1. Copy one of the .insight-card article blocks below.
+          2. Update:
+             - .insight-category: the asset class or topic (e.g. "Private Equity")
+             - <h3>: the article title
+             - .insight-date: publication date (e.g. "12 November 2026")
+             - .insight-excerpt: a 1–2 sentence summary
+             - The "Read More" <a> href: link to a full article page or
+               an external URL (e.g. a Medium post or PDF).
+             - Remove disabled and aria-disabled="true" from the link.
+          3. To add a category colour, add a class to .insight-category:
+             .insight-category--pe | .insight-category--macro | etc.
+             and define the colour in styles.css if needed.
+        -->
+
+        <div class="insights-grid">
+
+          <!-- Placeholder insight 1 -->
+          <article class="insight-card reveal">
+            <div class="insight-card-body">
+              <p class="insight-category">Private Equity</p>
+              <p class="insight-date">Article Date TBC</p>
+              <h3>Article Title Placeholder — Private Equity Theme</h3>
+              <p class="insight-excerpt">
+                Short excerpt or summary of the article. Replace with 1–2
+                sentences that give the reader a reason to read on.
+              </p>
+            </div>
+            <div class="insight-card-footer">
+              <a href="#" class="btn btn-ghost" aria-disabled="true" style="pointer-events: none; opacity: 0.4;">Read More</a>
+            </div>
+          </article>
+
+          <!-- Placeholder insight 2 -->
+          <article class="insight-card reveal reveal-delay-1">
+            <div class="insight-card-body">
+              <p class="insight-category">Macro</p>
+              <p class="insight-date">Article Date TBC</p>
+              <h3>Article Title Placeholder — Macro / Global Markets Theme</h3>
+              <p class="insight-excerpt">
+                Short excerpt or summary of the article. Replace with 1–2
+                sentences that give the reader a reason to read on.
+              </p>
+            </div>
+            <div class="insight-card-footer">
+              <a href="#" class="btn btn-ghost" aria-disabled="true" style="pointer-events: none; opacity: 0.4;">Read More</a>
+            </div>
+          </article>
+
+          <!-- Placeholder insight 3 -->
+          <article class="insight-card reveal reveal-delay-2">
+            <div class="insight-card-body">
+              <p class="insight-category">Infrastructure</p>
+              <p class="insight-date">Article Date TBC</p>
+              <h3>Article Title Placeholder — Infrastructure / Real Assets Theme</h3>
+              <p class="insight-excerpt">
+                Short excerpt or summary of the article. Replace with 1–2
+                sentences that give the reader a reason to read on.
+              </p>
+            </div>
+            <div class="insight-card-footer">
+              <a href="#" class="btn btn-ghost" aria-disabled="true" style="pointer-events: none; opacity: 0.4;">Read More</a>
+            </div>
+          </article>
+
+          <!-- Placeholder insight 4 -->
+          <article class="insight-card reveal reveal-delay-1">
+            <div class="insight-card-body">
+              <p class="insight-category">Venture Capital</p>
+              <p class="insight-date">Article Date TBC</p>
+              <h3>Article Title Placeholder — Venture Capital Theme</h3>
+              <p class="insight-excerpt">
+                Short excerpt or summary of the article. Replace with 1–2
+                sentences that give the reader a reason to read on.
+              </p>
+            </div>
+            <div class="insight-card-footer">
+              <a href="#" class="btn btn-ghost" aria-disabled="true" style="pointer-events: none; opacity: 0.4;">Read More</a>
+            </div>
+          </article>
+
+          <!-- Placeholder insight 5 -->
+          <article class="insight-card reveal reveal-delay-2">
+            <div class="insight-card-body">
+              <p class="insight-category">Private Credit</p>
+              <p class="insight-date">Article Date TBC</p>
+              <h3>Article Title Placeholder — Private Credit Theme</h3>
+              <p class="insight-excerpt">
+                Short excerpt or summary of the article. Replace with 1–2
+                sentences that give the reader a reason to read on.
+              </p>
+            </div>
+            <div class="insight-card-footer">
+              <a href="#" class="btn btn-ghost" aria-disabled="true" style="pointer-events: none; opacity: 0.4;">Read More</a>
+            </div>
+          </article>
+
+          <!-- Placeholder insight 6 -->
+          <article class="insight-card reveal reveal-delay-3">
+            <div class="insight-card-body">
+              <p class="insight-category">Hedge Funds</p>
+              <p class="insight-date">Article Date TBC</p>
+              <h3>Article Title Placeholder — Hedge Fund Strategy Theme</h3>
+              <p class="insight-excerpt">
+                Short excerpt or summary of the article. Replace with 1–2
+                sentences that give the reader a reason to read on.
+              </p>
+            </div>
+            <div class="insight-card-footer">
+              <a href="#" class="btn btn-ghost" aria-disabled="true" style="pointer-events: none; opacity: 0.4;">Read More</a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Instagram contextual prompt — editorial, not an afterthought -->
+        <div class="insights-cta-block reveal">
+          <div>
+            <p class="eyebrow" style="color: var(--gold); margin-bottom: 0.75rem;">Between publications</p>
+            <p style="max-width: 52ch;">
+              Follow us on Instagram <strong>@kclaisoc</strong> for regular
+              market commentary, investment breakdowns, and industry news
+              between long-form publications.
+            </p>
+          </div>
+          <a href="https://www.instagram.com/kclaisoc"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary"
+             style="white-space: nowrap; flex-shrink: 0;">
+            Follow @kclaisoc
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
+          <img src="assets/images/logo.svg" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>Investing Beyond the Ordinary</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-strip">
+      &copy; 2026 KCL Alternative Investment Society. King's College London.
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
