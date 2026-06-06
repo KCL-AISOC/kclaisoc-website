@@ -16,7 +16,7 @@
       and display the result. If the fetch fails, "60+" is shown as fallback.
    -------------------------------------------------------------------------- */
 
-var MEMBERS_SHEET_URL = ''; // <-- PASTE YOUR PUBLISHED GOOGLE SHEET CSV URL HERE
+var MEMBERS_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7vrVQ1DIpFtBXDiYbL07P01n8BnrSaLp2khQplePJfkq_Y4Odw-AX7FDN45IkzTu-O_tmjg0c4h6X/pub?output=csv';
 
 (function () {
   'use strict';

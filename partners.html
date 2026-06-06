@@ -463,53 +463,59 @@
         </div>
 
         <!--
-          FORMSPREE SETUP:
-          1. Go to https://formspree.io and create a free account.
-          2. Create a new form — name it "KCL AISOC Partnership Enquiry".
-          3. Copy the form endpoint URL (looks like: https://formspree.io/f/XXXXXXXX).
-          4. Replace the action attribute value below with that URL.
+          GOOGLE SHEETS SETUP:
+          Submissions are appended to the PARTNERSHIPS Google Sheet via a Google
+          Apps Script web app (see apps-script/Partners.gs). Paste the deployed
+          web app URL into PARTNER_ENDPOINT in the script at the bottom of this file.
         -->
         <form
           id="partner-form"
-          action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_FORM_ID"
           method="POST"
           novalidate
           class="reveal"
         >
-          <input type="hidden" name="_subject" value="KCL AISOC — Partnership Enquiry">
 
           <div class="form-grid">
 
             <div class="form-group">
-              <label for="partner-name">Full Name <span aria-hidden="true">*</span></label>
-              <input type="text" id="partner-name" name="name" autocomplete="name" required placeholder="Your full name">
+              <label for="partner-first-name">First Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-first-name" name="first_name" autocomplete="given-name" required placeholder="Your first name">
             </div>
 
             <div class="form-group">
-              <label for="partner-org">Organisation <span aria-hidden="true">*</span></label>
-              <input type="text" id="partner-org" name="organisation" required placeholder="Your organisation">
+              <label for="partner-last-name">Last Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-last-name" name="last_name" autocomplete="family-name" required placeholder="Your last name">
             </div>
 
-            <div class="form-group form-group--full">
+            <div class="form-group">
+              <label for="partner-job">Job Title / Team <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-job" name="job_title" autocomplete="organization-title" required placeholder="e.g. Associate, Investor Relations">
+            </div>
+
+            <div class="form-group">
+              <label for="partner-company">Company Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-company" name="company_name" autocomplete="organization" required placeholder="Your company">
+            </div>
+
+            <div class="form-group">
               <label for="partner-email">Work Email <span aria-hidden="true">*</span></label>
-              <input type="email" id="partner-email" name="email" autocomplete="email" required placeholder="you@organisation.com">
+              <input type="email" id="partner-email" name="work_email" autocomplete="email" required placeholder="you@company.com">
+            </div>
+
+            <div class="form-group">
+              <label for="partner-phone">Phone Number <span>(optional)</span></label>
+              <input type="tel" id="partner-phone" name="phone" autocomplete="tel" placeholder="Lets us follow up fast">
             </div>
 
             <div class="form-group form-group--full">
-              <label for="partner-tier">Partnership Tier of Interest</label>
-              <select id="partner-tier" name="partnership_tier">
-                <option value="" disabled selected>Select a tier&hellip;</option>
-                <option value="Programme Partner (£500)">Programme Partner &mdash; £500</option>
-                <option value="Strategic Partner (£1,500)">Strategic Partner &mdash; £1,500</option>
-                <option value="Founding Partner (£2,500)">Founding Partner &mdash; £2,500</option>
-                <option value="Custom / Not sure yet">Custom / Not sure yet</option>
-              </select>
+              <label for="partner-interest">What's your interest in KCL AISOC? <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-interest" name="interest" required placeholder="e.g. Sponsorship, speaker event, case competition, recruiting">
             </div>
 
             <div class="form-group form-group--full">
-              <label for="partner-message">Message <span aria-hidden="true">*</span></label>
-              <textarea id="partner-message" name="message" rows="5" required
-                        placeholder="Tell us about your organisation and what you have in mind — speaker events, case competitions, sponsored content, or something else."></textarea>
+              <label for="partner-message">Anything you'd like us to know? <span>(optional)</span></label>
+              <textarea id="partner-message" name="message" rows="5"
+                        placeholder="Share any extra context — timelines, goals, or questions."></textarea>
             </div>
 
           </div>
@@ -587,7 +593,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="js/main.js" defer></script>
   <script>
-    // Formspree AJAX submission
+    // Google Apps Script web app URL for the PARTNERSHIPS sheet.
+    // Deploy apps-script/Partners.gs and paste its /exec URL here.
+    var PARTNER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzINvEGLhmBfjRrbryDEkJRNZSszM1KPhe1JYur2Zd-gfwDPTcplkuHvX5l41AO0zXY/exec';
+
+    // AJAX submission — appends to the Google Sheet, shows success without reload.
     (function () {
       var form = document.getElementById('partner-form');
       var success = document.getElementById('partner-form-success');
@@ -595,22 +605,36 @@
 
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        var data = new FormData(form);
+
+        // Form has novalidate, so trigger the browser's required-field checks here.
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        if (PARTNER_ENDPOINT.indexOf('PASTE_') === 0) {
+          alert('The enquiry form is not connected yet. (Set PARTNER_ENDPOINT in partners.html.)');
+          return;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var label = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
         try {
-          var res = await fetch(form.action, {
+          // Apps Script doesn't send CORS headers, so we use no-cors: the row is
+          // still appended, but the response is opaque. No thrown error = success.
+          await fetch(PARTNER_ENDPOINT, {
             method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
+            body: new FormData(form),
+            mode: 'no-cors'
           });
-          if (res.ok) {
-            form.style.display = 'none';
-            success.classList.add('visible');
-            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          } else {
-            form.submit();
-          }
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (_) {
-          form.submit();
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+          alert('Something went wrong — please try again in a moment.');
         }
       });
     })();
