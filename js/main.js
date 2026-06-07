@@ -479,6 +479,45 @@
   }
 
   /* ------------------------------------------------------------------
+     10b. Scroll-driven video — about-preview section (index.html only)
+     Scrubs video.currentTime directly from scroll position so the video
+     is static until the user scrolls. Works best with a high-keyframe
+     density MP4; ordinary MP4s may stutter slightly on fast seeks.
+     ------------------------------------------------------------------ */
+  function initScrollVideo() {
+    var section = document.querySelector('.about-preview');
+    var video   = section && section.querySelector('video');
+    if (!section || !video) return;
+
+    var proxy = { t: 0 };
+
+    function setTime() {
+      if (video.duration) video.currentTime = proxy.t * video.duration;
+    }
+
+    /* Wait until metadata is loaded so duration is known */
+    function setup() {
+      gsap.to(proxy, {
+        t: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+        onUpdate: setTime,
+      });
+    }
+
+    if (video.readyState >= 1) {
+      setup();
+    } else {
+      video.addEventListener('loadedmetadata', setup, { once: true });
+    }
+  }
+
+  /* ------------------------------------------------------------------
      11. Mobile-safe matchMedia wrapper
      ------------------------------------------------------------------ */
   function initAnimations() {
@@ -494,6 +533,7 @@
       initCommitteeCardHovers();
       initStickyHeadings();
       initScrollProgress();
+      initScrollVideo();
     });
 
     /* Mobile: simplified motion */
@@ -510,101 +550,15 @@
       initScrollReveals();
       initStatCounters();
       initScrollProgress();
+      initScrollVideo();
       /* Skip parallax, word-by-word, and hover effects on mobile */
     });
   }
 
   /* ------------------------------------------------------------------
-     12. Custom crosshair cursor
-     Reads the luminance of the element under the cursor and toggles
-     .cursor-light-bg to swap between gold (dark sections) and navy
-     (cream/white sections) — premium and always legible.
-     ------------------------------------------------------------------ */
-  function initCursor() {
-    /* Skip on touch/pointer-coarse devices */
-    if (window.matchMedia('(hover: none)').matches) return;
-
-    var cursor = document.createElement('div');
-    cursor.className = 'cursor-crosshair';
-    cursor.innerHTML = '<span class="cursor-h"></span><span class="cursor-v"></span>';
-    document.body.appendChild(cursor);
-
-    var tx = -200, ty = -200;
-    var cx = -200, cy = -200;
-    var targetScale = 1, currentScale = 1;
-    var moved = false;
-
-    /* Parse rgba() string → luminance 0–1 */
-    function luminance(rgba) {
-      var m = rgba.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-      if (!m) return 0;
-      return (0.299 * +m[1] + 0.587 * +m[2] + 0.114 * +m[3]) / 255;
-    }
-
-    /* Walk up DOM from element to find the first opaque background */
-    function bgLuminance(el) {
-      while (el && el !== document.body) {
-        var bg = getComputedStyle(el).backgroundColor;
-        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
-          return luminance(bg);
-        }
-        el = el.parentElement;
-      }
-      /* Fall back to body background */
-      return luminance(getComputedStyle(document.body).backgroundColor);
-    }
-
-    var bgCheckTimer = 0;
-
-    document.addEventListener('mousemove', function (e) {
-      tx = e.clientX;
-      ty = e.clientY;
-
-      if (!moved) {
-        cx = tx; cy = ty;
-        cursor.style.opacity = '1';
-        moved = true;
-      }
-
-      /* Throttle background check to every 60ms */
-      var now = Date.now();
-      if (now - bgCheckTimer > 60) {
-        bgCheckTimer = now;
-        /* Temporarily hide cursor so elementFromPoint isn't blocked by it */
-        cursor.style.visibility = 'hidden';
-        var el = document.elementFromPoint(tx, ty);
-        cursor.style.visibility = '';
-        if (el) {
-          var lum = bgLuminance(el);
-          cursor.classList.toggle('cursor-light-bg', lum > 0.45);
-        }
-      }
-    });
-
-    document.addEventListener('mouseleave', function () { cursor.style.opacity = '0'; });
-    document.addEventListener('mouseenter', function () { if (moved) cursor.style.opacity = '1'; });
-
-    /* Scale up slightly over interactive elements */
-    document.addEventListener('mouseover', function (e) {
-      targetScale = e.target.closest('a, button, [role="button"]') ? 1.65 : 1;
-    });
-
-    /* Smooth RAF loop */
-    (function tick() {
-      cx += (tx - cx) * 0.15;
-      cy += (ty - cy) * 0.15;
-      currentScale += (targetScale - currentScale) * 0.13;
-      cursor.style.transform =
-        'translate3d(' + cx + 'px,' + cy + 'px,0) scale(' + currentScale.toFixed(3) + ')';
-      requestAnimationFrame(tick);
-    }());
-  }
-
-  /* ------------------------------------------------------------------
-     13. Init
+     12. Init
      ------------------------------------------------------------------ */
   function init() {
-    initCursor();
     initNav();
     initPageTransitions();
     initAnimations();

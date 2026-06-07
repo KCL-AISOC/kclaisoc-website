@@ -8,6 +8,9 @@
   <meta property="og:description" content="King's College London's society for alternative asset management.">
   <meta property="og:type" content="website">
   <title>KCL AISOC — Investing Beyond the Ordinary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -20,7 +23,7 @@
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
-        <img src="assets/images/logo.svg" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -52,7 +55,7 @@
 
       <!-- Lion watermark — centred, zooms gently on scroll -->
       <div class="hero-lion" aria-hidden="true">
-        <img src="assets/images/logo.svg" alt="">
+        <img src="assets/images/logo10.png" alt="">
       </div>
 
       <div class="hero-inner container">
@@ -63,12 +66,6 @@
         <div class="hero-actions">
           <a href="join.html" class="btn btn-primary">Join the Society</a>
         </div>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="hero-scroll" aria-hidden="true">
-        <span class="hero-scroll-line"></span>
-        <span class="hero-scroll-label">Scroll</span>
       </div>
 
       <!-- Marquee ticker -->
@@ -123,6 +120,11 @@
          ABOUT PREVIEW
          ============================================================ -->
     <section class="about-preview" aria-labelledby="about-preview-heading">
+      <div class="about-preview-video" aria-hidden="true">
+        <video muted playsinline preload="auto">
+          <source src="assets/images/vid1-scrub.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="container">
         <div class="about-preview-inner">
 
@@ -222,15 +224,22 @@
        FOOTER
        ============================================================ -->
   <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+    </div>
+
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
-          <img src="assets/images/logo.svg" alt="" class="footer-logo-mark"
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
                onerror="this.style.display='none'">
           <span class="footer-logo">KCL AISOC</span>
         </a>
-        <p>Investing Beyond the Ordinary</p>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
       </div>
 
       <nav class="footer-nav" aria-label="Footer navigation">
@@ -262,7 +271,6 @@
               <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
             </svg>
           </a>
-          <!-- LinkedIn — replace href="#" with actual LinkedIn URL when available -->
           <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -271,11 +279,16 @@
             </svg>
           </a>
         </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
       </div>
 
     </div>
+
     <div class="footer-strip">
-      &copy; 2026 KCL Alternative Investment Society. King's College London.
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
     </div>
   </footer>
 
