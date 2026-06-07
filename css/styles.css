@@ -2747,6 +2747,228 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
+   23h. Cover Letter Guide Page
+   -------------------------------------------------------------------------- */
+
+/* Principle summary box */
+.cl-principle {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--gold);
+  padding: 1.75rem 2rem;
+  margin-bottom: 3.5rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: none;
+}
+
+.cl-principle strong { color: var(--text-primary); }
+
+/* 8-part accordion-style stacked list */
+.cl-parts {
+  border: 1px solid var(--border-light);
+}
+
+.cl-part {
+  padding: 2.5rem;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--white);
+  transition: background var(--t-fast);
+}
+
+.cl-part:last-child { border-bottom: none; }
+.cl-part:hover { background: #FDFCF9; }
+
+.cl-part-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.cl-part-num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  opacity: 0.55;
+  flex-shrink: 0;
+  min-width: 1.75rem;
+}
+
+.cl-part-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* Quoted example block */
+.cl-quote {
+  background: var(--navy);
+  border-left: 3px solid var(--gold);
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 1.25rem;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 0.875rem;
+  color: rgba(201, 169, 97, 0.82);
+  line-height: 1.75;
+}
+
+.cl-quote strong {
+  font-style: normal;
+  color: var(--gold);
+}
+
+/* TIPS label */
+.cl-tips-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.65rem;
+}
+
+/* TIPS bullet list */
+.cl-tips {
+  list-style: disc;
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cl-tips li {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Redacted bar — visually obscures sensitive text */
+.cl-redacted {
+  display: inline-block;
+  background: rgba(10, 31, 68, 0.65);
+  color: transparent;
+  border-radius: 2px;
+  user-select: none;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  vertical-align: baseline;
+  font-size: 0.65em;
+}
+
+/* Bracketed redaction — for body text within guide quotes */
+.cl-redacted-text {
+  color: var(--text-muted);
+  font-style: normal;
+  font-size: inherit;
+}
+
+/* Cover letter document */
+.cl-document {
+  max-width: 720px;
+  margin-inline: auto;
+  background: #fff;
+  border: 1px solid rgba(10, 31, 68, 0.1);
+  box-shadow: 0 8px 48px rgba(7, 22, 48, 0.1);
+  padding: 3.5rem 4rem;
+  font-family: 'Times New Roman', Times, serif;
+  color: #000;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.cl-doc-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.cl-doc-name {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #000;
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.cl-doc-contact {
+  font-size: 0.75rem;
+  color: #333;
+  max-width: none;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cl-doc-firm {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: #000;
+  line-height: 1.8;
+}
+
+.cl-doc-salutation {
+  font-size: 0.875rem;
+  color: #000;
+  margin-bottom: 1rem;
+  max-width: none;
+}
+
+.cl-doc-body p {
+  font-size: 0.875rem;
+  color: #111;
+  line-height: 1.7;
+  margin-bottom: 0.85rem;
+  max-width: none;
+}
+
+.cl-doc-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cl-doc-bullets li {
+  font-size: 0.875rem;
+  color: #111;
+  line-height: 1.65;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.cl-doc-bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.cl-doc-bullet-lead {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.cl-doc-signoff {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #000;
+  line-height: 2;
+}
+
+.cl-doc-signoff p { max-width: none; margin: 0; }
+
+/* --------------------------------------------------------------------------
    24. Responsive — Tablet (≤ 1024px)
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
@@ -2919,6 +3141,10 @@ textarea {
   .cv-structure-grid { grid-template-columns: 1fr; }
   .cv-document { padding: 2rem 1.5rem; }
   .cv-doc-entry-header { flex-direction: column; gap: 0; }
+
+  /* Cover letter guide */
+  .cl-part { padding: 2rem 1.25rem; }
+  .cl-document { padding: 2rem 1.5rem; }
 
   /* Benefits */
   .benefits-grid { grid-template-columns: 1fr; }
