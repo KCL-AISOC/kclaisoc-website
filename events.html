@@ -180,6 +180,106 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         GET IN TOUCH — CONTACT FORM (writes to the partnerships sheet)
+         ============================================================ -->
+    <section id="partner-contact" class="form-section" aria-labelledby="events-contact-heading">
+      <div class="container container--narrow">
+
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <span class="eyebrow">Get In Touch</span>
+          <h2 id="events-contact-heading" class="reveal">Start the Conversation</h2>
+          <div class="gold-rule gold-rule--center reveal reveal-delay-1" aria-hidden="true"></div>
+          <p class="reveal reveal-delay-2" style="color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 55ch; margin: 0 auto;">
+            Tell us about your organisation and the type of engagement you have
+            in mind. We'll respond within three working days.
+          </p>
+        </div>
+
+        <!-- Success state -->
+        <div class="form-success" id="partner-form-success" role="alert" aria-live="polite">
+          <div class="form-success-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <p>Thank you. Your enquiry has been received. A member of the KCL AISOC committee will be in touch shortly.</p>
+        </div>
+
+        <!--
+          GOOGLE SHEETS SETUP:
+          Submissions are appended to the PARTNERSHIPS Google Sheet via a Google
+          Apps Script web app (see apps-script/Partners.gs) — the same sheet and
+          endpoint as the Partners page. The URL is in PARTNER_ENDPOINT below.
+        -->
+        <form
+          id="partner-form"
+          method="POST"
+          novalidate
+          class="reveal"
+        >
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="partner-first-name">First Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-first-name" name="first_name" autocomplete="given-name" required placeholder="Your first name">
+            </div>
+
+            <div class="form-group">
+              <label for="partner-last-name">Last Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-last-name" name="last_name" autocomplete="family-name" required placeholder="Your last name">
+            </div>
+
+            <div class="form-group">
+              <label for="partner-job">Job Title / Team <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-job" name="job_title" autocomplete="organization-title" required placeholder="e.g. Associate, Investor Relations">
+            </div>
+
+            <div class="form-group">
+              <label for="partner-company">Company Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-company" name="company_name" autocomplete="organization" required placeholder="Your company">
+            </div>
+
+            <div class="form-group">
+              <label for="partner-email">Work Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="partner-email" name="work_email" autocomplete="email" required placeholder="you@company.com">
+            </div>
+
+            <div class="form-group">
+              <label for="partner-phone">Phone Number <span>(optional)</span></label>
+              <input type="tel" id="partner-phone" name="phone" autocomplete="tel" placeholder="Lets us follow up fast">
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="partner-interest">What's your interest in KCL AISOC? <span aria-hidden="true">*</span></label>
+              <input type="text" id="partner-interest" name="interest" required placeholder="e.g. Sponsorship, speaker event, case competition, recruiting">
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="partner-message">Anything you'd like us to know? <span>(optional)</span></label>
+              <textarea id="partner-message" name="message" rows="5"
+                        placeholder="Share any extra context — timelines, goals, or questions."></textarea>
+            </div>
+
+          </div>
+
+          <div style="margin-top: 2rem; text-align: center;">
+            <button type="submit" class="btn btn-primary" style="min-width: 220px; justify-content: center; padding-block: 1rem;">
+              Send Enquiry
+            </button>
+          </div>
+
+        </form>
+
+        <p class="reveal" style="text-align: center; margin-top: 2rem; color: rgba(255,255,255,0.4); font-size: 0.8rem;">
+          You can also reach us directly at
+          <a href="mailto:kclaisoc@gmail.com" style="color: var(--gold); text-decoration: none;">kclaisoc@gmail.com</a>
+        </p>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- ============================================================
@@ -258,5 +358,52 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/events.js" defer></script>
+  <script>
+    // Google Apps Script web app URL for the PARTNERSHIPS sheet — same endpoint
+    // as the Partners page (apps-script/Partners.gs).
+    var PARTNER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzINvEGLhmBfjRrbryDEkJRNZSszM1KPhe1JYur2Zd-gfwDPTcplkuHvX5l41AO0zXY/exec';
+
+    // AJAX submission — appends to the Google Sheet, shows success without reload.
+    (function () {
+      var form = document.getElementById('partner-form');
+      var success = document.getElementById('partner-form-success');
+      if (!form || !success) return;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Form has novalidate, so trigger the browser's required-field checks here.
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        if (PARTNER_ENDPOINT.indexOf('PASTE_') === 0) {
+          alert('The enquiry form is not connected yet. (Set PARTNER_ENDPOINT in events.html.)');
+          return;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var label = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+        try {
+          // Apps Script doesn't send CORS headers, so we use no-cors: the row is
+          // still appended, but the response is opaque. No thrown error = success.
+          await fetch(PARTNER_ENDPOINT, {
+            method: 'POST',
+            body: new FormData(form),
+            mode: 'no-cors'
+          });
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (_) {
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+          alert('Something went wrong — please try again in a moment.');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
