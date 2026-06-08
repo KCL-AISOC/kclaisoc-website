@@ -82,7 +82,6 @@
       toggle.classList.add('active');
       navLinks.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
       if (typeof gsap !== 'undefined') {
         gsap.fromTo(navLinks.querySelectorAll('li'),
           { opacity: 0, y: 20 },
@@ -94,8 +93,6 @@
       toggle.classList.remove('active');
       navLinks.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      window.scrollTo(0, lockedScrollY);
     }
 
     toggle.addEventListener('click', function () {
