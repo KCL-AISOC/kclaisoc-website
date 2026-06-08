@@ -3,17 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="KCL AISOC — Organisations to Join: access programmes like SEO London, upReach, and Bright Network, and how to get in.">
+  <meta name="description" content="KCL AISOC Opportunities: networks, charities and programmes that open doors into finance and the professions. Bright Network, SEO London, upReach, Investment20/20, 10000 Black Interns and The Brokerage.">
   <title>Organisations to Join | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── Organisations to Join — page styles ────────────────────── */
+
+    .otj-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    /* Intro block */
+    .otj-intro-block {
+      margin-bottom: 3rem;
+    }
+
+    .otj-rule {
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.65rem 0 0.9rem;
+    }
+
+    .otj-intro-text {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(7, 22, 48, 0.6);
+      max-width: 62ch;
+    }
+
+    /* ── Card grid ──────────────────────────────────────────────── */
+    .otj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    /* ── Card ───────────────────────────────────────────────────── */
+    .otj-card {
+      background: #fff;
+      border: 1px solid rgba(7, 22, 48, 0.1);
+      border-radius: 2px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .otj-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 6px 28px rgba(7, 22, 48, 0.06);
+    }
+
+    .otj-card-name {
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 0.7rem;
+      line-height: 1.3;
+    }
+
+    /* ── Tag pills ──────────────────────────────────────────────── */
+    .otj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .otj-tag {
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 169, 97, 0.45);
+      padding: 0.18rem 0.52rem;
+      border-radius: 2px;
+      line-height: 1.5;
+    }
+
+    /* ── Descriptor ─────────────────────────────────────────────── */
+    .otj-descriptor {
+      font-family: var(--font-sans);
+      font-size: 0.86rem;
+      line-height: 1.62;
+      color: rgba(7, 22, 48, 0.65);
+      margin-bottom: 1.15rem;
+    }
+
+    /* ── List sections ──────────────────────────────────────────── */
+    .otj-list-head {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--deep-navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .otj-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.05rem;
+    }
+
+    .otj-list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: rgba(7, 22, 48, 0.7);
+      padding-bottom: 0.3rem;
+    }
+
+    .otj-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.44rem;
+    }
+
+    /* ── Card footer ────────────────────────────────────────────── */
+    .otj-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: auto;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(7, 22, 48, 0.07);
+    }
+
+    .otj-visit {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(7, 22, 48, 0.36);
+      text-decoration: none;
+      transition: color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .otj-visit:hover {
+      color: var(--deep-navy);
+    }
+
+    /* Back link */
+    .otj-back {
+      padding: 3rem 0 1rem;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
+  <!-- Navigation -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
@@ -40,32 +203,222 @@
 
   <main>
 
+    <!-- Page header -->
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
           <span class="eyebrow">Opportunities</span>
           <h1>Organisations to Join</h1>
-          <p>Access programmes like SEO London, upReach, and Bright Network, and how to get in.</p>
+          <p>Networks, charities and programmes that open doors into finance and the professions.</p>
         </div>
         <span class="page-header-numeral" aria-hidden="true">02</span>
       </div>
     </header>
 
-    <section>
-      <div class="container container--narrow">
-        <div style="padding: 4rem 0; text-align: center;">
-          <span class="eyebrow reveal">Coming Soon</span>
-          <h2 class="reveal" style="margin-top: 1rem;">Guide in progress</h2>
-          <p class="reveal reveal-delay-1" style="max-width: 40ch; margin: 1.5rem auto 2.5rem;">
-            This guide will cover eligibility requirements and the benefits of each programme. It will be live shortly.
-          </p>
-          <a href="resources.html" class="btn btn-outline reveal reveal-delay-2">Back to Resources</a>
+    <section class="otj-body">
+      <div class="container">
+
+        <!-- Section intro -->
+        <div class="otj-intro-block reveal">
+          <span class="eyebrow">Opportunities</span>
+          <div class="otj-rule"></div>
+          <p class="otj-intro-text">Networks, charities and programmes that open doors into finance and the professions. Most are free, and several are built specifically for students from underrepresented backgrounds.</p>
         </div>
+
+        <!-- Card grid -->
+        <div class="otj-grid">
+
+          <!-- ── Bright Network ──────────────────────────────────── -->
+          <div class="otj-card reveal">
+            <h2 class="otj-card-name">Bright Network</h2>
+            <div class="otj-tags">
+              <span class="otj-tag">Free</span>
+              <span class="otj-tag">All students</span>
+            </div>
+            <p class="otj-descriptor">A free early careers platform linking students to 300+ employers, events and advice.</p>
+            <p class="otj-list-head">What you get</p>
+            <ul class="otj-list">
+              <li>Access to internships and graduate roles with firms like Goldman Sachs and McKinsey</li>
+              <li>Application advice, a career path test and a deadline tracker</li>
+              <li>Employer networking events through the year</li>
+            </ul>
+            <p class="otj-list-head">Who it is for</p>
+            <ul class="otj-list">
+              <li>All UK university undergraduates and recent graduates, plus international students seeking UK roles</li>
+              <li>No background criteria, completely free</li>
+            </ul>
+            <div class="otj-card-footer">
+              <a href="https://www.brightnetwork.co.uk"
+                 class="otj-visit"
+                 target="_blank" rel="noopener noreferrer">Visit site</a>
+              <a href="https://www.brightnetwork.co.uk"
+                 class="btn btn-primary"
+                 target="_blank" rel="noopener noreferrer">Join</a>
+            </div>
+          </div>
+
+          <!-- ── SEO London ──────────────────────────────────────── -->
+          <div class="otj-card reveal reveal-delay-1">
+            <h2 class="otj-card-name">SEO London</h2>
+            <div class="otj-tags">
+              <span class="otj-tag">Free</span>
+              <span class="otj-tag">Underrepresented backgrounds</span>
+              <span class="otj-tag">Finance focus</span>
+            </div>
+            <p class="otj-descriptor">A social mobility charity preparing students for competitive careers, with a strong investment banking and asset management track.</p>
+            <p class="otj-list-head">What you get</p>
+            <ul class="otj-list">
+              <li>Academies, insight programmes and sponsor firm opportunities across the year</li>
+              <li>Buyside and alternative investment content aligned with KCL AISOC</li>
+              <li>CV, interview and networking support</li>
+            </ul>
+            <p class="otj-list-head">Who it is for</p>
+            <ul class="otj-list">
+              <li>Students from low socio-economic backgrounds, some streams also targeting ethnic minority backgrounds</li>
+              <li>International students in the UK on a long term student visa from a low socio-economic background may be eligible</li>
+            </ul>
+            <div class="otj-card-footer">
+              <a href="https://www.seo-london.org"
+                 class="otj-visit"
+                 target="_blank" rel="noopener noreferrer">Visit site</a>
+              <a href="https://www.seo-london.org/register"
+                 class="btn btn-primary"
+                 target="_blank" rel="noopener noreferrer">Register</a>
+            </div>
+          </div>
+
+          <!-- ── upReach ─────────────────────────────────────────── -->
+          <div class="otj-card reveal reveal-delay-2">
+            <h2 class="otj-card-name">upReach</h2>
+            <div class="otj-tags">
+              <span class="otj-tag">Free</span>
+              <span class="otj-tag">Lower socio-economic backgrounds</span>
+            </div>
+            <p class="otj-descriptor">A charity giving undergraduates personalised one to one career support and access to 45+ partner employers.</p>
+            <p class="otj-list-head">What you get</p>
+            <ul class="otj-list">
+              <li>A dedicated coordinator and exclusive insight days</li>
+              <li>Skills sessions and recommendations to partner firms</li>
+              <li>Support throughout university and for a year after you graduate</li>
+            </ul>
+            <p class="otj-list-head">Who it is for</p>
+            <ul class="otj-list">
+              <li>Full time undergraduates at a UK university from a lower socio-economic background</li>
+              <li>Typically around BBB at A level, with contextual factors considered through their REALrating form</li>
+            </ul>
+            <div class="otj-card-footer">
+              <a href="https://upreach.org.uk"
+                 class="otj-visit"
+                 target="_blank" rel="noopener noreferrer">Visit site</a>
+              <a href="https://upreach.org.uk"
+                 class="btn btn-primary"
+                 target="_blank" rel="noopener noreferrer">Join</a>
+            </div>
+          </div>
+
+          <!-- ── Investment20/20 ────────────────────────────────── -->
+          <div class="otj-card reveal">
+            <h2 class="otj-card-name">Investment20/20</h2>
+            <div class="otj-tags">
+              <span class="otj-tag">Paid</span>
+              <span class="otj-tag">Asset management</span>
+              <span class="otj-tag">Degree optional</span>
+            </div>
+            <p class="otj-descriptor">A network of 60+ investment firms offering paid 12 month trainee roles. The most on-brand entry point for an alternatives focused society.</p>
+            <p class="otj-list-head">What you get</p>
+            <ul class="otj-list">
+              <li>A paid 12 month trainee job in asset management, client services or operations</li>
+              <li>Training, networking and a community that continues after the year</li>
+              <li>Over 200 roles released a year, most leading to a permanent offer</li>
+            </ul>
+            <p class="otj-list-head">Who it is for</p>
+            <ul class="otj-list">
+              <li>Open to those with and without a degree, including students, school leavers and graduates</li>
+              <li>No prior internship required. You apply directly to each firm</li>
+            </ul>
+            <div class="otj-card-footer">
+              <a href="https://www.investment2020.org.uk"
+                 class="otj-visit"
+                 target="_blank" rel="noopener noreferrer">Visit site</a>
+              <a href="https://www.investment2020.org.uk/trainee-programme/how-to-apply/"
+                 class="btn btn-primary"
+                 target="_blank" rel="noopener noreferrer">Apply</a>
+            </div>
+          </div>
+
+          <!-- ── 10,000 Black Interns ───────────────────────────── -->
+          <div class="otj-card reveal reveal-delay-1">
+            <h2 class="otj-card-name">10,000 Black Interns</h2>
+            <div class="otj-tags">
+              <span class="otj-tag">Paid</span>
+              <span class="otj-tag">Black heritage</span>
+              <span class="otj-tag">Summer internship</span>
+            </div>
+            <p class="otj-descriptor">A foundation providing paid six week summer internships across 40+ sectors for Black students and graduates.</p>
+            <p class="otj-list-head">What you get</p>
+            <ul class="otj-list">
+              <li>A paid summer internship, at least London Living Wage, June to August</li>
+              <li>Choice of up to three workstreams matched to hosting firms</li>
+              <li>Training alongside the placement</li>
+            </ul>
+            <p class="otj-list-head">Who it is for</p>
+            <ul class="otj-list">
+              <li>Candidates of Black African, Black Caribbean, Black British or mixed Black heritage, aged 18+</li>
+              <li>Studying at or recently graduated from a UK university (2022 onwards), with the right to work in the UK over summer. Applications open in autumn</li>
+            </ul>
+            <div class="otj-card-footer">
+              <a href="https://www.10000internsfoundation.com"
+                 class="otj-visit"
+                 target="_blank" rel="noopener noreferrer">Visit site</a>
+              <a href="https://10000internsfoundation.com/application-form/"
+                 class="btn btn-primary"
+                 target="_blank" rel="noopener noreferrer">Apply</a>
+            </div>
+          </div>
+
+          <!-- ── The Brokerage ──────────────────────────────────── -->
+          <div class="otj-card reveal reveal-delay-2">
+            <h2 class="otj-card-name">The Brokerage</h2>
+            <div class="otj-tags">
+              <span class="otj-tag">Free</span>
+              <span class="otj-tag">London</span>
+              <span class="otj-tag">Ages 16 to 25</span>
+            </div>
+            <p class="otj-descriptor">A London social mobility charity helping young people access City careers in finance, insurance and technology.</p>
+            <p class="otj-list-head">What you get</p>
+            <ul class="otj-list">
+              <li>Workshops, mentoring and the Next Gen Talent career programme</li>
+              <li>Paid internship and placement opportunities with City firms</li>
+              <li>Strongest if you are London based</li>
+            </ul>
+            <p class="otj-list-head">Who it is for</p>
+            <ul class="otj-list">
+              <li>Disadvantaged young people aged 16 to 25, primarily London state school students and graduates</li>
+              <li>Some programmes add geographic or academic criteria, free to join</li>
+            </ul>
+            <div class="otj-card-footer">
+              <a href="https://www.thebrokerage.org.uk"
+                 class="otj-visit"
+                 target="_blank" rel="noopener noreferrer">Visit site</a>
+              <a href="https://www.thebrokerage.org.uk/how-to-sign-up/"
+                 class="btn btn-primary"
+                 target="_blank" rel="noopener noreferrer">Join</a>
+            </div>
+          </div>
+
+        </div><!-- end .otj-grid -->
+
+        <!-- Back link -->
+        <div class="otj-back">
+          <a href="resources.html" class="btn btn-outline">Back to Resources</a>
+        </div>
+
       </div>
     </section>
 
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-watermark" aria-hidden="true">AISOC</div>
     </div>
