@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KCL AISOC — Where to Look: application trackers, social feeds, and university portals for finding finance opportunities before everyone else.">
+  <title>Where to Look | KCL AISOC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── Where to Look — page styles ─────────────────────────────── */
+
+    .wtl-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    /* Intro */
+    .wtl-intro {
+      max-width: 58ch;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+
+    .wtl-intro p {
+      font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+      line-height: 1.75;
+      color: rgba(7, 22, 48, 0.65);
+    }
+
+    /* Sections */
+    .wtl-section {
+      padding: 3.5rem 0;
+      border-top: 1px solid rgba(201, 169, 97, 0.18);
+    }
+
+    .wtl-section-head {
+      margin-bottom: 2rem;
+    }
+
+    .wtl-section-head .eyebrow {
+      margin-bottom: 0.5rem;
+    }
+
+    .wtl-section-lead {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(7, 22, 48, 0.6);
+      max-width: 60ch;
+      margin-top: 0.6rem;
+    }
+
+    .wtl-rule {
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.65rem 0 0.85rem;
+    }
+
+    /* ── Tracker cards ──────────────────────────────────────────── */
+    .wtl-tracker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .wtl-tracker-card {
+      background: #fff;
+      border: 1px solid rgba(7, 22, 48, 0.1);
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .wtl-tracker-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 6px 28px rgba(7, 22, 48, 0.07);
+    }
+
+    .wtl-tracker-badge {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 169, 97, 0.45);
+      padding: 0.18rem 0.55rem;
+      display: inline-block;
+      margin-bottom: 0.9rem;
+    }
+
+    .wtl-tracker-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .wtl-tracker-card p {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: rgba(7, 22, 48, 0.6);
+      margin-bottom: 1.35rem;
+    }
+
+    .wtl-tracker-cta {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .wtl-tracker-cta::after {
+      content: '→';
+      font-style: normal;
+    }
+
+    /* ── Social accounts ────────────────────────────────────────── */
+    .wtl-accounts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .wtl-account {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fff;
+      border: 1px solid rgba(7, 22, 48, 0.1);
+      padding: 0.95rem 1.25rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .wtl-account:hover {
+      border-color: rgba(201, 169, 97, 0.5);
+    }
+
+    .wtl-platform {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      flex-shrink: 0;
+      border-radius: 2px;
+    }
+
+    .wtl-platform--tiktok  { background: rgba(7, 22, 48, 0.07);  color: var(--deep-navy); }
+    .wtl-platform--instagram { background: rgba(201, 169, 97, 0.14); color: var(--deep-navy); }
+    .wtl-platform--linkedin  { background: rgba(10, 102, 194, 0.1);  color: var(--deep-navy); }
+
+    .wtl-account-handle {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--deep-navy);
+      flex: 1;
+    }
+
+    .wtl-account-follow {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 169, 97, 0.5);
+      padding: 0.4rem 0.9rem;
+      text-decoration: none;
+      transition: background 0.18s ease, color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .wtl-account-follow:hover {
+      background: var(--gold);
+      color: var(--deep-navy);
+    }
+
+    .wtl-account-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .wtl-account-website {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(7, 22, 48, 0.5);
+      border: 1px solid rgba(7, 22, 48, 0.18);
+      padding: 0.4rem 0.9rem;
+      text-decoration: none;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .wtl-account-website:hover {
+      background: var(--deep-navy);
+      color: #fff;
+      border-color: var(--deep-navy);
+    }
+
+    .wtl-more-note {
+      margin-top: 0.75rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: rgba(7, 22, 48, 0.35);
+      font-style: italic;
+      border: 1px dashed rgba(7, 22, 48, 0.15);
+      padding: 0.7rem 1rem;
+      text-align: center;
+    }
+
+    /* ── University portals ─────────────────────────────────────── */
+    .wtl-portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .wtl-portal {
+      background: #fff;
+      border: 1px solid rgba(7, 22, 48, 0.1);
+      padding: 1.6rem;
+    }
+
+    .wtl-portal h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .wtl-portal p {
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: rgba(7, 22, 48, 0.6);
+      margin-bottom: 1.1rem;
+    }
+
+    /* ── Checklist ──────────────────────────────────────────────── */
+    .wtl-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .wtl-checklist li {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: rgba(7, 22, 48, 0.75);
+      background: #fff;
+      border: 1px solid rgba(7, 22, 48, 0.08);
+      padding: 0.95rem 1.1rem;
+    }
+
+    .wtl-check-dot {
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wtl-check-dot::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ── Timeline ───────────────────────────────────────────────── */
+    .wtl-timeline-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 1.75rem;
+    }
+
+    .wtl-timeline {
+      min-width: 560px;
+    }
+
+    /* Shared 2-col layout: label | bars */
+    .wtl-tl-header,
+    .wtl-tl-row {
+      display: grid;
+      grid-template-columns: 155px 1fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .wtl-tl-header {
+      margin-bottom: 0.3rem;
+    }
+
+    .wtl-tl-months {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+    }
+
+    .wtl-tl-month {
+      font-family: var(--font-sans);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(7, 22, 48, 0.35);
+      text-align: center;
+    }
+
+    .wtl-tl-row {
+      padding: 0.55rem 0;
+      border-top: 1px solid rgba(7, 22, 48, 0.06);
+    }
+
+    .wtl-tl-label {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      line-height: 1.35;
+    }
+
+    .wtl-tl-sub {
+      display: block;
+      font-weight: 400;
+      font-size: 0.61rem;
+      color: rgba(7, 22, 48, 0.42);
+      margin-top: 0.15rem;
+    }
+
+    .wtl-tl-bars {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+      align-items: center;
+    }
+
+    .wtl-bar {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+
+    .wtl-bar--apply   { background: var(--gold);                    color: var(--deep-navy); }
+    .wtl-bar--runs    { background: var(--deep-navy);               color: #fff; }
+    .wtl-bar--peak    { background: var(--gold);                    color: var(--deep-navy); }
+    .wtl-bar--rolling { background: rgba(201, 169, 97, 0.42);       color: var(--deep-navy); }
+    .wtl-bar--yearnd  { background: rgba(201, 169, 97, 0.42);       color: var(--deep-navy); }
+    .wtl-bar--varies  {
+      background: transparent;
+      border: 1.5px dashed rgba(201, 169, 97, 0.55);
+      color: rgba(7, 22, 48, 0.42);
+      font-size: 0.48rem;
+    }
+
+    /* Legend */
+    .wtl-tl-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(7, 22, 48, 0.06);
+    }
+
+    .wtl-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      color: rgba(7, 22, 48, 0.5);
+    }
+
+    .wtl-legend-swatch {
+      width: 22px;
+      height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .wtl-legend-swatch--apply   { background: var(--gold); }
+    .wtl-legend-swatch--runs    { background: var(--deep-navy); }
+    .wtl-legend-swatch--rolling { background: rgba(201, 169, 97, 0.42); }
+    .wtl-legend-swatch--varies  {
+      background: transparent;
+      border: 1.5px dashed rgba(201, 169, 97, 0.55);
+      height: 10px;
+    }
+
+    .wtl-tl-disclaimer {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      color: rgba(7, 22, 48, 0.38);
+      font-style: italic;
+      margin-top: 0.85rem;
+    }
+
+    /* ── Application Tracker embed ──────────────────────────── */
+    .wtl-embed-sub {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: rgba(7, 22, 48, 0.48);
+      margin-top: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .wtl-embed-wrap {
+      width: 100%;
+      border: 1px solid rgba(7, 22, 48, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .wtl-embed-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+
+    @media (max-width: 600px) {
+      .wtl-embed-wrap iframe {
+        height: 360px;
+      }
+    }
+
+    .wtl-embed-footer {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .wtl-embed-helper {
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: rgba(7, 22, 48, 0.55);
+      max-width: 58ch;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html" class="active">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Page header -->
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Opportunities</span>
+          <h1>Where to Look</h1>
+          <p>Application trackers, social media accounts, and university portals. All in one place.</p>
+        </div>
+        <span class="page-header-numeral" aria-hidden="true">01</span>
+      </div>
+    </header>
+
+    <section class="wtl-body">
+      <div class="container">
+
+        <!-- Intro -->
+        <div class="wtl-intro reveal">
+          <p>Finding opportunities in UK finance is mostly a sourcing problem. The roles exist, firms recruit early, and the windows are predictable. But you have to be in the right places to see them. This page pulls together the trackers that list what is open, the accounts that surface new listings in your regular feed, and the university portals you already have access to. Start here.</p>
+        </div>
+
+        <!-- ── Section 1: Application Trackers ──────────────────── -->
+        <div class="wtl-section">
+          <div class="wtl-section-head reveal">
+            <span class="eyebrow">Section 1</span>
+            <h2>Application Trackers</h2>
+            <div class="wtl-rule"></div>
+            <p class="wtl-section-lead">These two trackers update regularly with live openings. Check them at the start of each term and whenever you have five minutes. Deadlines move fast in UK finance.</p>
+          </div>
+
+          <div class="wtl-tracker-grid">
+
+            <a href="https://app.the-trackr.com/uk-finance/summer-internships"
+               class="wtl-tracker-card reveal"
+               target="_blank" rel="noopener noreferrer">
+              <span class="wtl-tracker-badge">Community Tracker</span>
+              <h3>The Bristol Tracker</h3>
+              <p>The go-to community-maintained tracker for UK finance. Covers spring weeks, insight days, summer internships, and graduate roles, with deadlines included. Updated by students, so it moves faster than most official sources. Check it at the start of every term.</p>
+              <span class="wtl-tracker-cta">Open Tracker</span>
+            </a>
+
+            <a href="https://career26.com/jobs"
+               class="wtl-tracker-card reveal reveal-delay-1"
+               target="_blank" rel="noopener noreferrer">
+              <span class="wtl-tracker-badge">Aggregator</span>
+              <h3>Career26 Jobs</h3>
+              <p>Aggregates early careers opportunities across finance and professional services. Worth bookmarking alongside the Bristol Tracker. They each pick up listings the other sometimes misses.</p>
+              <span class="wtl-tracker-cta">Open Tracker</span>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- ── Section 2: Accounts to Follow ────────────────────── -->
+        <div class="wtl-section">
+          <div class="wtl-section-head reveal">
+            <span class="eyebrow">Section 2</span>
+            <h2>Accounts to Follow</h2>
+            <div class="wtl-rule"></div>
+            <p class="wtl-section-lead">You are already spending hours on TikTok, Instagram, and LinkedIn every day. If you follow the right accounts, opportunities show up in your regular scroll without you having to go looking for them. Turn on post notifications for the accounts below and you will catch new listings the moment they go up.</p>
+          </div>
+
+          <div class="wtl-accounts-list reveal reveal-delay-1">
+
+            <div class="wtl-account">
+              <span class="wtl-platform wtl-platform--tiktok">TikTok</span>
+              <span class="wtl-account-handle">@starlightlogic</span>
+              <div class="wtl-account-actions">
+                <a href="https://www.tiktok.com/@starlightlogic"
+                   class="wtl-account-follow"
+                   target="_blank" rel="noopener noreferrer">Follow</a>
+              </div>
+            </div>
+
+            <div class="wtl-account">
+              <span class="wtl-platform wtl-platform--linkedin">LinkedIn</span>
+              <span class="wtl-account-handle">THΞ ЯΞCЯUIT (The R3cruit)</span>
+              <div class="wtl-account-actions">
+                <a href="https://www.linkedin.com/in/the-r3cruit-0aa4b318a/"
+                   class="wtl-account-follow"
+                   target="_blank" rel="noopener noreferrer">Profile</a>
+                <a href="https://ther3cruit.co.uk/"
+                   class="wtl-account-website"
+                   target="_blank" rel="noopener noreferrer">Website</a>
+              </div>
+            </div>
+
+          </div>
+          <p class="wtl-more-note reveal reveal-delay-2">More accounts coming soon.</p>
+        </div>
+
+        <!-- ── Section 3: University Careers Portals ─────────────── -->
+        <div class="wtl-section">
+          <div class="wtl-section-head reveal">
+            <span class="eyebrow">Section 3</span>
+            <h2>University Careers Portals</h2>
+            <div class="wtl-rule"></div>
+            <p class="wtl-section-lead">Before you go anywhere else, set up your profile on the platforms KCL already pays for. Both have exclusive listings that never hit the public trackers, and a lot of first years simply don't know they exist.</p>
+          </div>
+
+          <div class="wtl-portal-grid">
+
+            <div class="wtl-portal reveal">
+              <h3>King's CareerConnect</h3>
+              <p>KCL's own jobs and placements portal. Employers post listings here that are exclusive to KCL students, and some early access schemes never get advertised publicly. Set up your profile in the first few weeks of first year.</p>
+              <a href="https://careerconnect.kcl.ac.uk"
+                 class="btn btn-outline"
+                 target="_blank" rel="noopener noreferrer">Open Portal</a>
+            </div>
+
+            <div class="wtl-portal reveal reveal-delay-1">
+              <h3>Handshake</h3>
+              <p>A graduate jobs platform used by hundreds of UK universities, including KCL. Employers post roles here, often before they go anywhere else. Activate your account with your KCL email address.</p>
+              <a href="https://joinhandshake.co.uk"
+                 class="btn btn-outline"
+                 target="_blank" rel="noopener noreferrer">Open Portal</a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Section 4: Set Up Your Alerts ─────────────────────── -->
+        <div class="wtl-section">
+          <div class="wtl-section-head reveal">
+            <span class="eyebrow">Section 4</span>
+            <h2>Set Up Your Alerts</h2>
+            <div class="wtl-rule"></div>
+            <p class="wtl-section-lead">This takes about ten minutes and makes discovery automatic. Once it's done, deadlines come to you. You don't have to remember to check anything.</p>
+          </div>
+
+          <ul class="wtl-checklist reveal reveal-delay-1">
+            <li>
+              <span class="wtl-check-dot" aria-hidden="true"></span>
+              <span>Follow the graduate recruitment pages of firms you're interested in on LinkedIn, and turn on post notifications. You'll see new openings in your feed the moment they go live.</span>
+            </li>
+            <li>
+              <span class="wtl-check-dot" aria-hidden="true"></span>
+              <span>Enable email alerts and deadline reminders on the Bristol Tracker and Career26 so you get notified when new roles are added, before the deadline has passed.</span>
+            </li>
+            <li>
+              <span class="wtl-check-dot" aria-hidden="true"></span>
+              <span>Turn on post notifications for the TikTok and Instagram accounts listed above. It only takes a second and you'll catch postings as soon as they go up.</span>
+            </li>
+            <li>
+              <span class="wtl-check-dot" aria-hidden="true"></span>
+              <span>Set up email alerts on Bright Network, TargetJobs, and Handshake, filtered to finance and investment roles. Opportunities land in your inbox automatically rather than you having to visit each site.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ── Section 5: Seasonal Timeline ──────────────────────── -->
+        <div class="wtl-section">
+          <div class="wtl-section-head reveal">
+            <span class="eyebrow">Section 5</span>
+            <h2>When to Apply: Seasonal Timeline</h2>
+            <div class="wtl-rule"></div>
+            <p class="wtl-section-lead">Most opportunities follow predictable windows across the academic year. Here is roughly when each one opens, so you know what is coming and can start preparing rather than reacting.</p>
+          </div>
+
+          <div class="wtl-timeline-scroll reveal reveal-delay-1">
+            <div class="wtl-timeline">
+
+              <!-- Month labels -->
+              <div class="wtl-tl-header">
+                <div></div>
+                <div class="wtl-tl-months">
+                  <span class="wtl-tl-month">Sep</span>
+                  <span class="wtl-tl-month">Oct</span>
+                  <span class="wtl-tl-month">Nov</span>
+                  <span class="wtl-tl-month">Dec</span>
+                  <span class="wtl-tl-month">Jan</span>
+                  <span class="wtl-tl-month">Feb</span>
+                  <span class="wtl-tl-month">Mar</span>
+                  <span class="wtl-tl-month">Apr</span>
+                  <span class="wtl-tl-month">May</span>
+                  <span class="wtl-tl-month">Jun</span>
+                  <span class="wtl-tl-month">Jul</span>
+                  <span class="wtl-tl-month">Aug</span>
+                </div>
+              </div>
+
+              <!-- Spring Weeks: apply Sep–Nov (cols 1–3), runs Mar–May (cols 7–9) -->
+              <div class="wtl-tl-row">
+                <div class="wtl-tl-label">
+                  Spring Weeks
+                  <span class="wtl-tl-sub">Apply Sep to Nov. Programmes run Mar to May.</span>
+                </div>
+                <div class="wtl-tl-bars">
+                  <div class="wtl-bar wtl-bar--apply"  style="grid-column: 1 / 4">Apply</div>
+                  <div class="wtl-bar wtl-bar--runs"   style="grid-column: 7 / 10">Runs</div>
+                </div>
+              </div>
+
+              <!-- Insight Days: peak Sep–Jan (cols 1–5), rolling Feb–Aug (cols 6–12) -->
+              <div class="wtl-tl-row">
+                <div class="wtl-tl-label">
+                  Insight Days
+                  <span class="wtl-tl-sub">Peak Sep to Jan but available year-round.</span>
+                </div>
+                <div class="wtl-tl-bars">
+                  <div class="wtl-bar wtl-bar--peak"    style="grid-column: 1 / 6">Peak</div>
+                  <div class="wtl-bar wtl-bar--rolling" style="grid-column: 6 / 13">Rolling</div>
+                </div>
+              </div>
+
+              <!-- Summer Internships: apply Sep–Dec (cols 1–4), runs Jun–Aug (cols 10–12) -->
+              <div class="wtl-tl-row">
+                <div class="wtl-tl-label">
+                  Summer Internships
+                  <span class="wtl-tl-sub">Apply Sep to Dec. Programmes run Jun to Aug.</span>
+                </div>
+                <div class="wtl-tl-bars">
+                  <div class="wtl-bar wtl-bar--apply" style="grid-column: 1 / 5">Apply</div>
+                  <div class="wtl-bar wtl-bar--runs"  style="grid-column: 10 / 13">Runs</div>
+                </div>
+              </div>
+
+              <!-- Graduate Roles: peak Sep–Nov (cols 1–3), year-round Dec–Aug (cols 4–12) -->
+              <div class="wtl-tl-row">
+                <div class="wtl-tl-label">
+                  Graduate Roles
+                  <span class="wtl-tl-sub">Peak Sep to Nov. Many firms recruit rolling.</span>
+                </div>
+                <div class="wtl-tl-bars">
+                  <div class="wtl-bar wtl-bar--peak"   style="grid-column: 1 / 4">Peak</div>
+                  <div class="wtl-bar wtl-bar--yearnd" style="grid-column: 4 / 13">Year-round</div>
+                </div>
+              </div>
+
+              <!-- Off-cycle / Boutiques: no fixed window -->
+              <div class="wtl-tl-row">
+                <div class="wtl-tl-label">
+                  Off-cycle / Boutiques
+                  <span class="wtl-tl-sub">No fixed window. Check individual firms and boutique recruiters.</span>
+                </div>
+                <div class="wtl-tl-bars">
+                  <div class="wtl-bar wtl-bar--varies" style="grid-column: 1 / 13">Varies by firm</div>
+                </div>
+              </div>
+
+              <!-- Legend -->
+              <div class="wtl-tl-legend">
+                <div class="wtl-legend-item">
+                  <span class="wtl-legend-swatch wtl-legend-swatch--apply"></span>
+                  Application window
+                </div>
+                <div class="wtl-legend-item">
+                  <span class="wtl-legend-swatch wtl-legend-swatch--runs"></span>
+                  Programme runs
+                </div>
+                <div class="wtl-legend-item">
+                  <span class="wtl-legend-swatch wtl-legend-swatch--rolling"></span>
+                  Rolling / Year-round
+                </div>
+                <div class="wtl-legend-item">
+                  <span class="wtl-legend-swatch wtl-legend-swatch--varies"></span>
+                  Varies by firm
+                </div>
+              </div>
+
+              <p class="wtl-tl-disclaimer">Timings are approximate and vary by firm. Always check individual deadlines.</p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section 6: Application Tracker ───────────────────── -->
+        <div class="wtl-section">
+          <div class="wtl-section-head reveal">
+            <span class="eyebrow">Section 6</span>
+            <h2>Application Tracker</h2>
+            <div class="wtl-rule"></div>
+            <p class="wtl-embed-sub">A live view of current opportunities. Make your own copy to track applications privately.</p>
+          </div>
+
+          <div class="wtl-embed-wrap reveal reveal-delay-1">
+            <iframe
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9tcVDUsTwl352vlNQ03cqE0aDcmG-yNaFJgtoogry1iW_2cMC-EXrKbyNP_pdUGGUC4s3OXxAfPlX/pubhtml?widget=true&amp;headers=false"
+              loading="lazy"
+              title="KCL AISOC application tracker"></iframe>
+          </div>
+
+          <div class="wtl-embed-footer reveal reveal-delay-2">
+            <p class="wtl-embed-helper">Want your own copy? Make a duplicate you can edit and track your applications privately. This creates your own private copy, separate from everyone else's.</p>
+            <a href="https://docs.google.com/spreadsheets/d/1LSnz6HfaMdII4XbDxQyvRxTTAx1lbSor5lzFSWBNIqI/copy"
+               class="btn btn-primary"
+               target="_blank"
+               rel="noopener noreferrer">Make a copy</a>
+          </div>
+        </div>
+
+        <!-- Back link -->
+        <div style="padding: 2rem 0; text-align: center;">
+          <a href="resources.html" class="btn btn-outline">← Back to Resources</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+    </div>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

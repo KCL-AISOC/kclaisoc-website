@@ -338,16 +338,38 @@ section { padding-block: var(--section-gap); }
   right: 0;
   z-index: var(--z-nav);
   height: var(--nav-height);
-  /* Always dark — no transparent-to-dark transition */
   background: rgba(6, 14, 32, 0.97);
   border-bottom: 1px solid rgba(201, 169, 97, 0.1);
-  transition: backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+  transition: box-shadow 0.4s ease;
+}
+
+/*
+ * backdrop-filter lives on a pseudo-element, not on #main-nav itself.
+ * If #main-nav had backdrop-filter directly, WebKit would make it a new
+ * containing block for position:fixed children, anchoring the mobile
+ * overlay to the nav bar instead of the viewport when scrolled.
+ */
+#main-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  pointer-events: none;
 }
 
 #main-nav.scrolled {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 0 rgba(201, 169, 97, 0.08), 0 8px 32px rgba(4, 10, 24, 0.55);
+}
+
+#main-nav.scrolled::before {
+  opacity: 1;
 }
 
 .nav-container {
@@ -3023,7 +3045,10 @@ textarea {
 
   .nav-links {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(6, 14, 32, 0.98);
     flex-direction: column;
     align-items: center;
@@ -3032,10 +3057,8 @@ textarea {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    /* No transform — iOS Safari breaks position:fixed when transform is applied */
-    transition: opacity 0.35s ease, visibility 0.35s ease;
-    z-index: calc(var(--z-nav) - 1);
-    overflow: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
   }
 
   .nav-links::before {
@@ -3050,7 +3073,7 @@ textarea {
   .nav-links.open {
     opacity: 1;
     visibility: visible;
-    pointer-events: all;
+    pointer-events: auto;
   }
 
   .nav-links li {
