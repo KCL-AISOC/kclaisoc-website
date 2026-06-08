@@ -82,10 +82,7 @@
       toggle.classList.add('active');
       navLinks.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
-      /* iOS-safe scroll lock: position:fixed preserves viewport position */
-      document.body.style.position = 'fixed';
-      document.body.style.top      = '-' + lockedScrollY + 'px';
-      document.body.style.width    = '100%';
+      document.body.style.overflow = 'hidden';
       if (typeof gsap !== 'undefined') {
         gsap.fromTo(navLinks.querySelectorAll('li'),
           { opacity: 0, y: 20 },
@@ -97,10 +94,7 @@
       toggle.classList.remove('active');
       navLinks.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
-      /* Restore scroll position before removing fixed positioning */
-      document.body.style.position = '';
-      document.body.style.top      = '';
-      document.body.style.width    = '';
+      document.body.style.overflow = '';
       window.scrollTo(0, lockedScrollY);
     }
 
@@ -189,27 +183,26 @@
     ];
 
     staggerParents.forEach(function (selector) {
-      var parent = document.querySelector(selector);
-      if (!parent) return;
+      document.querySelectorAll(selector).forEach(function (parent) {
+        var children = parent.querySelectorAll(
+          '.event-card, .asset-tile, .committee-card, .insight-card, ' +
+          '.resource-card, .pricing-card, .benefit-pillar, .join-benefit, ' +
+          '.calendar-term, .partner-stat-item'
+        );
+        if (!children.length) return;
 
-      var children = parent.querySelectorAll(
-        '.event-card, .asset-tile, .committee-card, .insight-card, ' +
-        '.resource-card, .pricing-card, .benefit-pillar, .join-benefit, ' +
-        '.calendar-term, .partner-stat-item'
-      );
-      if (!children.length) return;
-
-      gsap.to(children, {
-        opacity: 1,
-        y: 0,
-        duration: 0.75,
-        ease: 'power3.out',
-        stagger: 0.09,
-        scrollTrigger: {
-          trigger: parent,
-          start: 'top 85%',
-          once: true,
-        },
+        gsap.to(children, {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power3.out',
+          stagger: 0.09,
+          scrollTrigger: {
+            trigger: parent,
+            start: 'top 85%',
+            once: true,
+          },
+        });
       });
     });
 
