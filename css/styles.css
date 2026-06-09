@@ -69,6 +69,9 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* Match the footer so no white strip shows below it when the page is
+     scrolled to the bottom or overscrolled (rubber banding) on mobile. */
+  background-color: var(--deep-navy);
 }
 
 body {
@@ -79,6 +82,18 @@ body {
   background-color: var(--cream);
   min-height: 100vh;
   overflow-x: hidden;
+  /* Sticky footer: main grows to fill the viewport so the footer always sits
+     at the bottom with no cream gap beneath it on short pages. */
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1 0 auto;
+}
+
+body > footer {
+  flex-shrink: 0;
 }
 
 /* Grain overlay — subtle film texture on all sections */
@@ -207,32 +222,42 @@ section { padding-block: var(--section-gap); }
 .gold-rule--center { margin-inline: auto; }
 
 /* --------------------------------------------------------------------------
-   5. Scroll Animations (initial state set here; GSAP drives to final state)
+   5. Scroll Animations
+   Reveal elements are VISIBLE by default so that if scripts never run the
+   content is never lost. An inline head script adds .reveals-on to <html>
+   only when JavaScript is active, which arms the hidden start state below;
+   GSAP then animates each element to its visible state.
    -------------------------------------------------------------------------- */
-.reveal {
+.reveal,
+.reveal-left,
+.reveal-right {
+  opacity: 1;
+  transform: none;
+}
+
+.reveals-on .reveal {
   opacity: 0;
   transform: translateY(40px);
   will-change: transform, opacity;
 }
 
-/* Horizontal reveal variants */
-.reveal-left {
+.reveals-on .reveal-left {
   opacity: 0;
   transform: translateX(-48px);
   will-change: transform, opacity;
 }
 
-.reveal-right {
+.reveals-on .reveal-right {
   opacity: 0;
   transform: translateX(48px);
   will-change: transform, opacity;
 }
 
-/* Fallback: no-JS or reduced-motion environments */
+/* Fallback: reduced-motion environments always show content immediately */
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal-left,
-  .reveal-right { opacity: 1 !important; transform: none !important; }
+  .reveals-on .reveal,
+  .reveals-on .reveal-left,
+  .reveals-on .reveal-right { opacity: 1 !important; transform: none !important; }
 }
 
 /* --------------------------------------------------------------------------
@@ -486,6 +511,10 @@ section { padding-block: var(--section-gap); }
 .nav-toggle.active .hamburger-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .nav-toggle.active .hamburger-line:nth-child(2) { opacity: 0; width: 0; }
 .nav-toggle.active .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Visible X close button inside the mobile overlay menu (injected by JS).
+   Hidden on desktop where the menu is a normal inline row. */
+.nav-close { display: none; }
 
 /* --------------------------------------------------------------------------
    7b. Mobile full-screen overlay menu
@@ -938,19 +967,7 @@ footer {
   align-items: center;
   gap: 0;
   white-space: nowrap;
-  animation: tickerScroll 32s linear infinite;
   will-change: transform;
-}
-
-/* Only pause on real hover devices; on touch screens a tap would
-   otherwise apply a sticky :hover and freeze the ticker. */
-@media (hover: hover) {
-  .hero-ticker-track:hover { animation-play-state: paused; }
-}
-
-@keyframes tickerScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 .hero-ticker-item {
@@ -1060,9 +1077,13 @@ footer {
 
 .about-preview-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   align-items: center;
+}
+
+.about-preview-text {
+  max-width: 60ch;
 }
 
 .about-preview-text h2 {
@@ -1075,63 +1096,6 @@ footer {
   margin-bottom: 2.5rem;
   font-size: 1.025rem;
   line-height: 1.75;
-}
-
-/* Decorative geometric element for about preview */
-.about-preview-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 320px;
-}
-
-.about-preview-visual::before {
-  content: '';
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  border: 1px solid rgba(201, 169, 97, 0.2);
-  transform: rotate(15deg);
-}
-
-.about-preview-visual::after {
-  content: '';
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 1px solid rgba(201, 169, 97, 0.12);
-  transform: rotate(30deg);
-}
-
-.about-preview-numeral {
-  font-family: var(--font-serif);
-  font-size: clamp(80px, 12vw, 140px);
-  color: var(--gold);
-  opacity: 0.08;
-  position: absolute;
-  user-select: none;
-  pointer-events: none;
-}
-
-.about-preview-icon {
-  width: 80px;
-  height: 80px;
-  border: 2px solid var(--gold);
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.about-preview-icon::before {
-  content: '';
-  width: 36px;
-  height: 36px;
-  background: var(--gold);
-  opacity: 0.15;
-  position: absolute;
 }
 
 /* --------------------------------------------------------------------------
@@ -1505,11 +1469,10 @@ footer {
   gap: 1.5rem;
 }
 
-/* Card transition for filtering */
+/* Card filtering: hidden cards are removed from the layout so the grid
+   reflows to show only the matching events with no empty gaps. */
 .event-card.hidden {
-  opacity: 0;
-  transform: translateY(8px);
-  pointer-events: none;
+  display: none;
 }
 
 .event-card.visible {
@@ -2637,22 +2600,24 @@ textarea {
 }
 
 .cv-checklist li {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  position: relative;
+  padding-left: 1.85rem;
   font-size: 0.875rem;
   color: var(--text-secondary);
   line-height: 1.55;
+  /* Long bullets must wrap and stay inside the box on every viewport */
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .cv-checklist li::before {
   content: '';
-  display: block;
+  position: absolute;
+  left: 0;
+  top: 0.3em;
   width: 14px;
   height: 14px;
   border: 1.5px solid rgba(201, 169, 97, 0.5);
-  flex-shrink: 0;
-  margin-top: 0.15em;
 }
 
 /* CV structure grid */
@@ -3139,17 +3104,6 @@ textarea {
     --section-gap: clamp(3rem, 8vw, 5rem);
   }
 
-  /* Reveal animations: show immediately on mobile.
-     GSAP scroll-triggered reveals are unreliable on iOS Safari due to
-     dynamic viewport height changes caused by the browser URL bar. */
-  .reveal,
-  .reveal-left,
-  .reveal-right {
-    opacity: 1;
-    transform: none;
-    will-change: auto;
-  }
-
   /* Nav: ensure logo and hamburger are always aligned correctly */
   .nav-container {
     justify-content: space-between;
@@ -3198,6 +3152,27 @@ textarea {
     visibility: visible;
     pointer-events: auto;
   }
+
+  /* Visible X close button, top right of the overlay menu */
+  .nav-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 2.4rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .nav-close span { display: block; margin-top: -0.18em; }
 
   .nav-links li {
     width: 100%;
@@ -3264,8 +3239,7 @@ textarea {
   .stat-divider { display: none; }
 
   /* About preview */
-  .about-preview-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .about-preview-visual { min-height: 160px; }
+  .about-preview-inner { gap: 2rem; }
 
   /* Events preview grid */
   .events-preview-grid { grid-template-columns: 1fr; }

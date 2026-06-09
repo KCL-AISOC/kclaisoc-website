@@ -7,10 +7,12 @@
 (function () {
   'use strict';
 
-  /* ------------------------------------------------------------------
-     Guard: if GSAP hasn't loaded, fall back to showing all content
-     ------------------------------------------------------------------ */
-  if (typeof gsap === 'undefined') {
+  var docEl = document.documentElement;
+
+  /* Show every reveal element and clear the armed hidden state. Used as a
+     hard fallback and on back/forward cache restores so nothing stays hidden. */
+  function showAllContent() {
+    docEl.classList.remove('reveals-on');
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
@@ -19,16 +21,37 @@
       var el = document.querySelector(sel);
       if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
     });
+  }
+
+  /* ------------------------------------------------------------------
+     Guard: if GSAP hasn't loaded, fall back to showing all content
+     ------------------------------------------------------------------ */
+  if (typeof gsap === 'undefined') {
+    showAllContent();
     initNav();
     return;
   }
 
   gsap.registerPlugin(ScrollTrigger);
 
+  /* Mark that the animation system is live so the inline failsafe does not
+     unhide elements that GSAP is about to reveal on scroll. */
+  docEl.classList.add('reveals-done');
+
   /* On load, refresh ScrollTrigger to fix iOS Safari viewport calculations
      that shift when the browser URL bar shows or hides. */
   window.addEventListener('load', function () {
     ScrollTrigger.refresh();
+  });
+
+  /* Back/forward cache: when a page is restored from history (browser Back),
+     scripts do not re-run, so reveal elements can be left hidden and the page
+     looks blank. Force everything visible and recompute triggers. */
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      showAllContent();
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(true);
+    }
   });
 
   /* ------------------------------------------------------------------
@@ -84,6 +107,23 @@
 
     if (!toggle || !menu) return;
 
+    /* Inject a visible X close button into the overlay menu. The full screen
+       overlay covers the hamburger toggle, so this gives the user a clear,
+       always reachable way to dismiss the menu. */
+    var closeBtn = menu.querySelector('.nav-close');
+    if (!closeBtn) {
+      closeBtn = document.createElement('button');
+      closeBtn.className = 'nav-close';
+      closeBtn.type = 'button';
+      closeBtn.setAttribute('aria-label', 'Close menu');
+      closeBtn.innerHTML = '<span aria-hidden="true">&times;</span>';
+      menu.appendChild(closeBtn);
+    }
+    closeBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeMenu();
+    });
+
     function openMenu() {
       toggle.classList.add('active');
       menu.classList.add('open');
@@ -109,6 +149,12 @@
       a.addEventListener('click', closeMenu);
     });
 
+    /* Tapping the overlay anywhere that is not a navigation link closes the
+       menu, so the user can dismiss it by tapping the page area beside it. */
+    menu.addEventListener('click', function (e) {
+      if (!e.target.closest('a')) closeMenu();
+    });
+
     document.addEventListener('click', function (e) {
       if (menu.classList.contains('open') &&
           !menu.contains(e.target) &&
@@ -129,7 +175,7 @@
      3. Page Transitions (fade out on leave, fade in on load)
      ------------------------------------------------------------------ */
   function initPageTransitions() {
-    /* Fade in on load — desktop only; on mobile skipping this prevents
+    /* Fade in on load, desktop only. On mobile skipping this prevents
        GSAP from setting main to opacity:0 and leaving hero content invisible */
     if (window.innerWidth > 768) {
       gsap.from('main, footer', {
@@ -172,7 +218,18 @@
 
   /* ------------------------------------------------------------------
      4. Scroll-Triggered Section Reveals (vertical + horizontal)
+     Elements already in the viewport on load animate in immediately so the
+     page is never blank; elements below the fold animate as they scroll in.
+     Cards reveal one after another (subtle stagger) on every page.
      ------------------------------------------------------------------ */
+  function inViewOnLoad(el) {
+    var r = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    /* Treat anything whose top sits within the viewport (plus a small margin)
+       as on-screen at load so it reveals straight away. */
+    return r.top < vh * 0.92 && r.bottom > 0;
+  }
+
   function initScrollReveals() {
     /* Batch staggered grids */
     var staggerParents = [
@@ -198,64 +255,46 @@
         );
         if (!children.length) return;
 
-        gsap.to(children, {
+        var vars = {
           opacity: 1,
           y: 0,
           duration: 0.75,
           ease: 'power3.out',
           stagger: 0.09,
-          scrollTrigger: {
-            trigger: parent,
-            start: 'top 85%',
-            once: true,
-          },
-        });
+        };
+
+        if (inViewOnLoad(parent)) {
+          /* Already on screen: stagger them in now, no scroll wait */
+          gsap.to(children, vars);
+        } else {
+          vars.scrollTrigger = { trigger: parent, start: 'top 85%', once: true };
+          gsap.to(children, vars);
+        }
       });
     });
 
-    /* Individual .reveal — vertical */
+    /* Individual .reveal, vertical */
     gsap.utils.toArray('.reveal').forEach(function (el) {
       if (el.closest(staggerParents.join(','))) return;
-      gsap.to(el, {
-        opacity: 1,
-        y: 0,
-        duration: 0.75,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 87%',
-          once: true,
-        },
-      });
+      var vars = { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' };
+      if (inViewOnLoad(el)) {
+        gsap.to(el, vars);
+      } else {
+        vars.scrollTrigger = { trigger: el, start: 'top 87%', once: true };
+        gsap.to(el, vars);
+      }
     });
 
-    /* Horizontal reveals — left */
-    gsap.utils.toArray('.reveal-left').forEach(function (el) {
-      gsap.to(el, {
-        opacity: 1,
-        x: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          once: true,
-        },
-      });
-    });
-
-    /* Horizontal reveals — right */
-    gsap.utils.toArray('.reveal-right').forEach(function (el) {
-      gsap.to(el, {
-        opacity: 1,
-        x: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          once: true,
-        },
+    /* Horizontal reveals, left and right */
+    ['.reveal-left', '.reveal-right'].forEach(function (sel) {
+      gsap.utils.toArray(sel).forEach(function (el) {
+        var vars = { opacity: 1, x: 0, duration: 0.85, ease: 'power3.out' };
+        if (inViewOnLoad(el)) {
+          gsap.to(el, vars);
+        } else {
+          vars.scrollTrigger = { trigger: el, start: 'top 85%', once: true };
+          gsap.to(el, vars);
+        }
       });
     });
 
@@ -372,6 +411,24 @@
   }
 
   /* ------------------------------------------------------------------
+     6b. Hero asset class ticker, GSAP driven so it loops reliably on
+     every device (a CSS marquee can be frozen by reduced motion settings
+     or a sticky tap state on touch screens). The track content is
+     duplicated in the markup, so sliding it to minus 50 percent and
+     repeating gives a seamless continuous loop.
+     ------------------------------------------------------------------ */
+  function initTicker() {
+    var track = document.querySelector('.hero-ticker-track');
+    if (!track) return;
+    gsap.to(track, {
+      xPercent: -50,
+      ease: 'none',
+      duration: 32,
+      repeat: -1,
+    });
+  }
+
+  /* ------------------------------------------------------------------
      7. Stat Counter — IntersectionObserver, fires once at 40% threshold
      ------------------------------------------------------------------ */
   function initStatCounters() {
@@ -398,6 +455,7 @@
           onUpdate: function () {
             memberEl.textContent = Math.round(obj.n) + '+';
           },
+          onComplete: function () { memberEl.textContent = target + '+'; },
         });
       }
 
@@ -413,20 +471,13 @@
           onUpdate: function () {
             igEl.textContent = Math.round(igObj.n) + '+';
           },
+          onComplete: function () { igEl.textContent = '370+'; },
         });
       }
 
-      /* "April 2026" — fades in as a whole rather than counting */
-      var foundedEl = statsBar.querySelector('.stat-number:not([data-count])');
-      if (foundedEl) {
-        gsap.from(foundedEl, {
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          delay: 0.2,
-        });
-      }
-    }, { threshold: 0.4 });
+      /* The founded year ("April 2026") is plain text revealed with its stat
+         item, so it is always visible and needs no separate animation here. */
+    }, { threshold: 0.25 });
 
     observer.observe(statsBar);
   }
@@ -564,12 +615,13 @@
   function initAnimations() {
     var mm = gsap.matchMedia();
 
-    /* Full motion on every screen size — mobile gets the same hero word
+    /* Full motion on every screen size. Mobile gets the same hero word
        reveal, lion zoom, scroll-scrubbed video, counters and reveals as
        desktop. A safety net in init() force-shows anything that stalls. */
     mm.add('all', function () {
       initHero();
       initParallax();
+      initTicker();
       initScrollReveals();
       initStatCounters();
       initStickyHeadings();
