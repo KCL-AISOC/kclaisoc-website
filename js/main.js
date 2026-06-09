@@ -129,13 +129,16 @@
      3. Page Transitions (fade out on leave, fade in on load)
      ------------------------------------------------------------------ */
   function initPageTransitions() {
-    /* Fade in on load */
-    gsap.from('main, footer', {
-      opacity: 0,
-      duration: 0.35,
-      ease: 'power1.out',
-      clearProps: 'opacity',
-    });
+    /* Fade in on load — desktop only; on mobile skipping this prevents
+       GSAP from setting main to opacity:0 and leaving hero content invisible */
+    if (window.innerWidth > 768) {
+      gsap.from('main, footer', {
+        opacity: 0,
+        duration: 0.35,
+        ease: 'power1.out',
+        clearProps: 'opacity',
+      });
+    }
 
     /* Fade out on internal link click */
     document.addEventListener('click', function (e) {
@@ -552,45 +555,13 @@
       initScrollVideo();
     });
 
-    /* Mobile: simplified motion */
+    /* Mobile: no opacity animations — hero and all content are visible immediately.
+       Scroll reveals are handled by CSS (opacity:1 override in mobile media query). */
     mm.add('(max-width: 768px)', function () {
-      /* Single block fade-in for the whole hero area */
-      var heroInner = document.querySelector('.hero-inner');
-      if (heroInner) {
-        gsap.from(heroInner, { opacity: 0, y: 20, duration: 0.6, delay: 0.15, ease: 'power2.out',
-          onComplete: function () {
-            heroInner.style.opacity = '';
-            heroInner.style.transform = '';
-          }
-        });
-      }
-      if (document.querySelector('.hero-bg')) {
-        gsap.from('.hero-bg', { opacity: 0, duration: 0.6, ease: 'power1.out',
-          onComplete: function () {
-            var hb = document.querySelector('.hero-bg');
-            if (hb) hb.style.opacity = '';
-          }
-        });
-      }
-
-      /* Safety net: if the hero animation stalls (slow CDN, browser paint issue),
-         force the hero content visible after 1.5 s */
-      setTimeout(function () {
-        if (heroInner && parseFloat(getComputedStyle(heroInner).opacity) < 0.5) {
-          heroInner.style.opacity = '1';
-          heroInner.style.transform = 'none';
-        }
-        var hb = document.querySelector('.hero-bg');
-        if (hb && parseFloat(getComputedStyle(hb).opacity) < 0.5) {
-          hb.style.opacity = '1';
-        }
-      }, 1500);
-
       initScrollReveals();
       initStatCounters();
       initScrollProgress();
       initScrollVideo();
-      /* Skip parallax, word-by-word, and hover effects on mobile */
     });
   }
 
