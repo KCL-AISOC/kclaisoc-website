@@ -537,6 +537,41 @@
   }
 
   /* ------------------------------------------------------------------
+     10c. Mobile video — autoplay loop instead of scroll scrubbing.
+     iOS Safari will not paint a video's first frame when currentTime is
+     set without the video ever playing, so the about-preview section shows
+     black. On mobile we just play the muted video as an ambient loop.
+     ------------------------------------------------------------------ */
+  function initMobileVideo() {
+    var section = document.querySelector('.about-preview');
+    var video   = section && section.querySelector('video');
+    if (!section || !video) return;
+
+    video.muted = true;
+    video.loop = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('muted', '');
+
+    function tryPlay() {
+      var p = video.play();
+      if (p && typeof p.catch === 'function') {
+        /* Autoplay can be blocked (e.g. iOS Low Power Mode); fall back to
+           showing the first frame so the section is not blank. */
+        p.catch(function () {
+          if (video.duration) video.currentTime = 0.1;
+        });
+      }
+    }
+
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('loadeddata', tryPlay, { once: true });
+      video.load();
+    }
+  }
+
+  /* ------------------------------------------------------------------
      11. Mobile-safe matchMedia wrapper
      ------------------------------------------------------------------ */
   function initAnimations() {
@@ -561,7 +596,7 @@
       initScrollReveals();
       initStatCounters();
       initScrollProgress();
-      initScrollVideo();
+      initMobileVideo();
     });
   }
 

@@ -3239,9 +3239,13 @@ textarea {
   /* Hero */
   .hero-inner { padding-block: 3rem; }
   .hero-scroll { display: none; }
+  .hero-headline { font-size: clamp(2.8rem, 13vw, 4.5rem); }
   .hero-lion {
     width: clamp(300px, 88vw, 480px);
     height: clamp(300px, 88vw, 480px);
+    /* GSAP centres the lion on desktop via xPercent/yPercent, but that JS
+       does not run on mobile, so centre it with a CSS transform here. */
+    transform: translate(-50%, -50%);
   }
 
   /* Stats */
