@@ -1850,9 +1850,9 @@ footer {
   color: var(--deep-navy);
   border-color: var(--gold);
 }
-/* Strategic Partner: elevated featured layout with navy background */
-.pricing-card--featured.pricing-card--premium {
-  background: var(--deep-navy);
+/* Lighter navy for the middle tier card */
+.pricing-card--mid {
+  background: var(--navy);
 }
 /* Founding Partner lion watermark */
 .pricing-card--founding {
