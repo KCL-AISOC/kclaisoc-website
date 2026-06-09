@@ -942,7 +942,11 @@ footer {
   will-change: transform;
 }
 
-.hero-ticker-track:hover { animation-play-state: paused; }
+/* Only pause on real hover devices; on touch screens a tap would
+   otherwise apply a sticky :hover and freeze the ticker. */
+@media (hover: hover) {
+  .hero-ticker-track:hover { animation-play-state: paused; }
+}
 
 @keyframes tickerScroll {
   0%   { transform: translateX(0); }

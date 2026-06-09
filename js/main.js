@@ -508,6 +508,26 @@
     var video   = section && section.querySelector('video');
     if (!section || !video) return;
 
+    /* iOS will not decode/paint frames while seeking unless the video has
+       played at least once. Prime it: muted play, then immediately pause,
+       so the first frame renders and scroll scrubbing shows real frames. */
+    video.muted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+
+    var primed = false;
+    function prime() {
+      if (primed) return;
+      primed = true;
+      var p = video.play();
+      if (p && typeof p.then === 'function') {
+        p.then(function () { video.pause(); video.currentTime = 0; })
+         .catch(function () { /* blocked; scrubbing may show first frame only */ });
+      } else {
+        try { video.pause(); } catch (e) {}
+      }
+    }
+
     var proxy = { t: 0 };
 
     function setTime() {
@@ -516,6 +536,7 @@
 
     /* Wait until metadata is loaded so duration is known */
     function setup() {
+      prime();
       gsap.to(proxy, {
         t: 1,
         ease: 'none',
@@ -533,40 +554,6 @@
       setup();
     } else {
       video.addEventListener('loadedmetadata', setup, { once: true });
-    }
-  }
-
-  /* ------------------------------------------------------------------
-     10c. Mobile video — autoplay loop instead of scroll scrubbing.
-     iOS Safari will not paint a video's first frame when currentTime is
-     set without the video ever playing, so the about-preview section shows
-     black. On mobile we just play the muted video as an ambient loop.
-     ------------------------------------------------------------------ */
-  function initMobileVideo() {
-    var section = document.querySelector('.about-preview');
-    var video   = section && section.querySelector('video');
-    if (!section || !video) return;
-
-    video.muted = true;
-    video.loop = true;
-    video.setAttribute('playsinline', '');
-    video.setAttribute('muted', '');
-
-    function tryPlay() {
-      var p = video.play();
-      if (p && typeof p.catch === 'function') {
-        /* Autoplay can be blocked (e.g. iOS Low Power Mode); fall back to
-           showing the first frame so the section is not blank. */
-        p.catch(function () {
-          if (video.duration) video.currentTime = 0.1;
-        });
-      }
-    }
-
-    if (video.readyState >= 2) {
-      tryPlay();
-    } else {
-      video.addEventListener('loadeddata', tryPlay, { once: true });
       video.load();
     }
   }
@@ -577,26 +564,23 @@
   function initAnimations() {
     var mm = gsap.matchMedia();
 
-    /* Desktop: full motion */
-    mm.add('(min-width: 769px)', function () {
+    /* Full motion on every screen size — mobile gets the same hero word
+       reveal, lion zoom, scroll-scrubbed video, counters and reveals as
+       desktop. A safety net in init() force-shows anything that stalls. */
+    mm.add('all', function () {
       initHero();
       initParallax();
       initScrollReveals();
       initStatCounters();
-      initAssetTileHovers();
-      initCommitteeCardHovers();
       initStickyHeadings();
       initScrollProgress();
       initScrollVideo();
     });
 
-    /* Mobile: no opacity animations — hero and all content are visible immediately.
-       Scroll reveals are handled by CSS (opacity:1 override in mobile media query). */
-    mm.add('(max-width: 768px)', function () {
-      initScrollReveals();
-      initStatCounters();
-      initScrollProgress();
-      initMobileVideo();
+    /* Hover effects only make sense on real hover (pointer) devices */
+    mm.add('(hover: hover) and (min-width: 769px)', function () {
+      initAssetTileHovers();
+      initCommitteeCardHovers();
     });
   }
 
@@ -608,20 +592,27 @@
     initPageTransitions();
     initAnimations();
 
-    /* Global safety net: after 2.5 s, force-show any reveals that
-       ScrollTrigger has not yet animated (catches iOS scroll-position bugs
-       and intermittent CDN failures). */
+    /* Global safety net: after 2.5 s, force-show anything a GSAP tween may
+       have left at opacity 0 (hero words, CTAs, the founded date, reveals).
+       Catches iOS scroll-position bugs and intermittent CDN failures so
+       content is never left invisible. */
     setTimeout(function () {
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+      var selectors = '.reveal, .reveal-left, .reveal-right, .hero-word, ' +
+        '.hero-actions .btn, .hero-scroll, .stat-number, .page-header-numeral, ' +
+        '.page-header-text .eyebrow, .page-header-text h1, .page-header-text p';
+      document.querySelectorAll(selectors).forEach(function (el) {
         if (parseFloat(getComputedStyle(el).opacity) < 0.5) {
           el.style.opacity = '1';
           el.style.transform = 'none';
         }
       });
-      var mainEl = document.querySelector('main');
-      if (mainEl && parseFloat(getComputedStyle(mainEl).opacity) < 0.5) {
-        mainEl.style.opacity = '1';
-      }
+      ['main', 'footer', '.hero-inner'].forEach(function (sel) {
+        var el = document.querySelector(sel);
+        if (el && parseFloat(getComputedStyle(el).opacity) < 0.5) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
     }, 2500);
   }
 
