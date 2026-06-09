@@ -67,33 +67,32 @@
           <div>
             <span class="eyebrow">Why KCL AISOC</span>
             <h2 id="why-partner-heading" class="reveal">
-              Reach the Students Who<br>Choose Alternative Assets
+              Reach the Students Who Choose Alternative Assets
             </h2>
             <div class="gold-rule reveal reveal-delay-1" aria-hidden="true"></div>
             <p class="reveal reveal-delay-2" style="color: var(--text-secondary); font-size: 1.025rem; line-height: 1.8; margin-bottom: 1.5rem;">
               KCL AISOC exists at the intersection of academic rigour and
-              industry ambition. Our members are not passively studying finance
-              — they are actively seeking careers in private equity, hedge funds,
+              industry ambition. Our members are not passively studying finance.
+              They are actively seeking careers in private equity, hedge funds,
               infrastructure, real assets, private credit, and venture capital.
             </p>
             <p class="reveal reveal-delay-3" style="color: var(--text-secondary); font-size: 1.025rem; line-height: 1.8; margin-bottom: 1.5rem;">
               King's College London ranks among the UK's top universities for
               graduate employability, with 42,000 students across six faculties.
               Our members are drawn from finance, economics, mathematics,
-              computer science, and law — the academic backgrounds that feed
+              computer science, and law, the academic backgrounds that feed
               directly into alternative investment careers.
             </p>
             <p class="reveal reveal-delay-3" style="color: var(--text-secondary); font-size: 1.025rem; line-height: 1.8;">
               A corporate partnership with KCL AISOC gives your organisation
-              direct, high-signal access to this audience — through events,
+              direct, high-signal access to this audience through events,
               content, and branded engagement channels that cut through the
               noise of campus recruitment.
             </p>
           </div>
 
-          <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; gap: 2px;">
-            <!-- KCL Institution Stats -->
-            <div style="background: var(--navy); padding: 2.5rem; flex: 1;">
+          <div class="partner-kpi-col reveal reveal-delay-2">
+            <div class="partner-kpi-box">
               <p style="font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(201,169,97,0.7); margin-bottom: 1.5rem;">King's College London</p>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem;">
                 <div>
@@ -114,7 +113,7 @@
                 </div>
               </div>
             </div>
-            <div style="background: var(--gold); padding: 1.25rem 2.5rem;">
+            <div class="partner-kpi-source">
               <p style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--deep-navy);">
                 Source: QS World University Rankings 2024
               </p>
@@ -136,7 +135,7 @@
           <div class="gold-rule gold-rule--center reveal reveal-delay-1" aria-hidden="true"></div>
           <p class="reveal reveal-delay-2" style="color: var(--text-secondary); line-height: 1.8;">
             We produce consistent, high-quality content across multiple channels.
-            Our audience engages with substantive investment analysis — not generic
+            Our audience engages with substantive investment analysis, not generic
             student society posts.
           </p>
         </div>
@@ -355,12 +354,12 @@
           <div class="calendar-term reveal">
             <div class="calendar-term-header">
               <span class="calendar-term-period">Autumn Term</span>
-              <span class="calendar-term-dates">October &mdash; December</span>
+              <span class="calendar-term-dates">October to December</span>
             </div>
             <ul class="calendar-activities" role="list">
               <li>Society launch and member induction</li>
               <li>Freshers Fair recruitment campaign</li>
-              <li>Inaugural speaker event — industry professional</li>
+              <li>Inaugural speaker event, featuring an industry professional</li>
               <li>Introduction to alternative investments workshop</li>
               <li>First partner campus engagement opportunity</li>
               <li>Autumn investment report published</li>
@@ -370,12 +369,12 @@
           <div class="calendar-term reveal reveal-delay-1">
             <div class="calendar-term-header">
               <span class="calendar-term-period">Spring Term</span>
-              <span class="calendar-term-dates">January &mdash; March</span>
+              <span class="calendar-term-dates">January to March</span>
             </div>
             <ul class="calendar-activities" role="list">
               <li>Annual Investment Summit (Founding Partner naming rights)</li>
-              <li>Industry Speaker Series — multi-session programme</li>
-              <li>Investment case competition — deal structuring challenge</li>
+              <li>Industry Speaker Series, a multi-session programme</li>
+              <li>Investment case competition, a deal structuring challenge</li>
               <li>Spring newsletter campaign with partner profiles</li>
               <li>CV drop and application support for partner firms</li>
               <li>Spring investment report published</li>
@@ -385,14 +384,14 @@
           <div class="calendar-term reveal reveal-delay-2">
             <div class="calendar-term-header">
               <span class="calendar-term-period">Summer Term</span>
-              <span class="calendar-term-dates">April &mdash; June</span>
+              <span class="calendar-term-dates">April to June</span>
             </div>
             <ul class="calendar-activities" role="list">
               <li>End-of-year networking evening</li>
               <li>Internship and summer programme promotion to members</li>
               <li>Annual partner review and next-year strategy meetings</li>
               <li>Summer investment report and year-in-review publication</li>
-              <li>Next committee recruitment — institutional knowledge handover</li>
+              <li>Next committee recruitment and institutional knowledge handover</li>
               <li>Renewal and new partnership enquiries open</li>
             </ul>
           </div>
@@ -480,7 +479,7 @@
             <div class="form-group form-group--full">
               <label for="partner-message">Anything you'd like us to know? <span>(optional)</span></label>
               <textarea id="partner-message" name="message" rows="5"
-                        placeholder="Share any extra context — timelines, goals, or questions."></textarea>
+                        placeholder="Share any extra context: timelines, goals, or questions."></textarea>
             </div>
 
           </div>
@@ -583,7 +582,7 @@
     // Deploy apps-script/Partners.gs and paste its /exec URL here.
     var PARTNER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzINvEGLhmBfjRrbryDEkJRNZSszM1KPhe1JYur2Zd-gfwDPTcplkuHvX5l41AO0zXY/exec';
 
-    // AJAX submission — appends to the Google Sheet, shows success without reload.
+    // AJAX submission: appends to the Google Sheet, shows success without reload.
     (function () {
       var form = document.getElementById('partner-form');
       var success = document.getElementById('partner-form-success');
@@ -620,7 +619,7 @@
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (_) {
           if (btn) { btn.disabled = false; btn.textContent = label; }
-          alert('Something went wrong — please try again in a moment.');
+          alert('Something went wrong. Please try again in a moment.');
         }
       });
     })();

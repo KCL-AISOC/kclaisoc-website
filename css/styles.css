@@ -1830,6 +1830,32 @@ footer {
 
 .pricing-card--premium .pricing-benefits { color: rgba(255, 255, 255, 0.55); }
 
+/* Why-partner heading balanced wrapping */
+#why-partner-heading {
+  text-wrap: balance;
+}
+
+/* KCL stats box in the why-partner section */
+.partner-kpi-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.partner-kpi-box {
+  background: var(--navy);
+  padding: 2.5rem;
+}
+
+.partner-kpi-source {
+  background: var(--gold);
+  padding: 1.25rem 2.5rem;
+}
+
 /* Light-on-dark text for .pricing-features items inside dark pricing cards */
 .pricing-card--premium .pricing-feature {
   color: rgba(248, 245, 238, 0.72);
@@ -2823,6 +2849,18 @@ textarea {
   gap: 1.5rem;
   align-items: center;
   justify-content: center;
+}
+
+.cv-redacted {
+  display: inline-block;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  user-select: none;
+  -webkit-user-select: none;
+  border-radius: 3px;
+  background: rgba(7, 22, 48, 0.06);
+  padding: 0 3px;
+  cursor: default;
 }
 
 /* --------------------------------------------------------------------------
