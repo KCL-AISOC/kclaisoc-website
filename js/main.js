@@ -8,18 +8,28 @@
   'use strict';
 
   /* ------------------------------------------------------------------
-     Guard: if GSAP hasn't loaded, fall back to CSS-only reveals
+     Guard: if GSAP hasn't loaded, fall back to showing all content
      ------------------------------------------------------------------ */
   if (typeof gsap === 'undefined') {
-    document.querySelectorAll('.reveal').forEach(function (el) {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
+    });
+    ['main', 'footer', '.hero-inner', '.hero-bg'].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
     });
     initNav();
     return;
   }
 
   gsap.registerPlugin(ScrollTrigger);
+
+  /* On load, refresh ScrollTrigger to fix iOS Safari viewport calculations
+     that shift when the browser URL bar shows or hides. */
+  window.addEventListener('load', function () {
+    ScrollTrigger.refresh();
+  });
 
   /* ------------------------------------------------------------------
      1. Scroll Progress Indicator
@@ -547,11 +557,34 @@
       /* Single block fade-in for the whole hero area */
       var heroInner = document.querySelector('.hero-inner');
       if (heroInner) {
-        gsap.from(heroInner, { opacity: 0, y: 20, duration: 0.6, delay: 0.15, ease: 'power2.out' });
+        gsap.from(heroInner, { opacity: 0, y: 20, duration: 0.6, delay: 0.15, ease: 'power2.out',
+          onComplete: function () {
+            heroInner.style.opacity = '';
+            heroInner.style.transform = '';
+          }
+        });
       }
       if (document.querySelector('.hero-bg')) {
-        gsap.from('.hero-bg', { opacity: 0, duration: 0.6, ease: 'power1.out' });
+        gsap.from('.hero-bg', { opacity: 0, duration: 0.6, ease: 'power1.out',
+          onComplete: function () {
+            var hb = document.querySelector('.hero-bg');
+            if (hb) hb.style.opacity = '';
+          }
+        });
       }
+
+      /* Safety net: if the hero animation stalls (slow CDN, browser paint issue),
+         force the hero content visible after 1.5 s */
+      setTimeout(function () {
+        if (heroInner && parseFloat(getComputedStyle(heroInner).opacity) < 0.5) {
+          heroInner.style.opacity = '1';
+          heroInner.style.transform = 'none';
+        }
+        var hb = document.querySelector('.hero-bg');
+        if (hb && parseFloat(getComputedStyle(hb).opacity) < 0.5) {
+          hb.style.opacity = '1';
+        }
+      }, 1500);
 
       initScrollReveals();
       initStatCounters();
@@ -568,6 +601,22 @@
     initNav();
     initPageTransitions();
     initAnimations();
+
+    /* Global safety net: after 2.5 s, force-show any reveals that
+       ScrollTrigger has not yet animated (catches iOS scroll-position bugs
+       and intermittent CDN failures). */
+    setTimeout(function () {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+        if (parseFloat(getComputedStyle(el).opacity) < 0.5) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+      var mainEl = document.querySelector('main');
+      if (mainEl && parseFloat(getComputedStyle(mainEl).opacity) < 0.5) {
+        mainEl.style.opacity = '1';
+      }
+    }, 2500);
   }
 
   if (document.readyState === 'loading') {

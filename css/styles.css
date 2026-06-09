@@ -3135,8 +3135,32 @@ textarea {
     --section-gap: clamp(3rem, 8vw, 5rem);
   }
 
-  /* Nav: hamburger shown, full-screen overlay */
-  .nav-toggle { display: flex; }
+  /* Reveal animations: show immediately on mobile.
+     GSAP scroll-triggered reveals are unreliable on iOS Safari due to
+     dynamic viewport height changes caused by the browser URL bar. */
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  /* Nav: ensure logo and hamburger are always aligned correctly */
+  .nav-container {
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    flex: 0 0 auto;
+    max-width: calc(100% - 56px);
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex: 0 0 auto;
+    margin-left: 0;
+  }
 
   .nav-links {
     position: fixed;
