@@ -21,6 +21,12 @@
       var el = document.querySelector(sel);
       if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
     });
+    /* The lion's design opacity is 0.09, so clear the inline value and let the
+       stylesheet win rather than forcing it to 1. */
+    ['.hero-lion', '.hero-lion img'].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) { el.style.opacity = ''; }
+    });
   }
 
   /* ------------------------------------------------------------------
@@ -339,7 +345,10 @@
 
     /* i) Background + lion fade in together */
     tl.from('.hero-bg', { opacity: 0, duration: 1, ease: 'power1.out' });
-    tl.from('.hero-lion', { opacity: 0, scale: 0.94, duration: 1.6, ease: 'power2.out' }, 0);
+    /* Entrance animates the img so it never fights the wrapper's
+       scroll-scrub scale tween in initParallax (two tweens writing the same
+       property on the same element is timing-dependent on iOS). */
+    tl.from('.hero-lion img', { opacity: 0, scale: 0.94, duration: 1.6, ease: 'power2.out' }, 0);
 
     /* ii) Headline: word-by-word reveal */
     var headline = document.querySelector('.hero-headline');
@@ -663,6 +672,14 @@
         if (el && parseFloat(getComputedStyle(el).opacity) < 0.5) {
           el.style.opacity = '1';
           el.style.transform = 'none';
+        }
+      });
+      /* Hero lion: its design opacity is 0.09, so don't force it to 1 — just
+         clear a stuck inline 0 so the stylesheet value applies again. */
+      ['.hero-lion', '.hero-lion img'].forEach(function (sel) {
+        var el = document.querySelector(sel);
+        if (el && parseFloat(getComputedStyle(el).opacity) < 0.05) {
+          el.style.opacity = '';
         }
       });
     }, 2500);

@@ -235,22 +235,24 @@ section { padding-block: var(--section-gap); }
   transform: none;
 }
 
+/* No will-change here: reveals-on stays on <html> for the life of the page,
+   so a will-change hint would pin a GPU layer per element permanently. On
+   high-resolution iPhones that exhausts Safari's tile memory and it silently
+   stops painting layers (invisible images, white strips). GSAP promotes
+   layers itself while tweening. */
 .reveals-on .reveal {
   opacity: 0;
   transform: translateY(40px);
-  will-change: transform, opacity;
 }
 
 .reveals-on .reveal-left {
   opacity: 0;
   transform: translateX(-48px);
-  will-change: transform, opacity;
 }
 
 .reveals-on .reveal-right {
   opacity: 0;
   transform: translateX(48px);
-  will-change: transform, opacity;
 }
 
 /* Fallback: reduced-motion environments always show content immediately */
@@ -815,7 +817,6 @@ footer {
     url('assets/images/hero-bg.png');
   background-size: cover;
   background-position: center top;
-  will-change: transform;
   z-index: 0;
 }
 
@@ -830,7 +831,6 @@ footer {
   z-index: 1;
   pointer-events: none;
   opacity: 0.09;
-  will-change: transform, opacity;
 }
 
 .hero-lion img {
