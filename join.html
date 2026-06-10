@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Join KCL AISOC — become part of King's College London's alternative investment community. Open to all KCL students.">
+  <meta name="description" content="Join KCL AISOC: become part of King's College London's alternative investment community. Open to all KCL students.">
   <title>Join | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,7 @@
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
@@ -89,7 +89,7 @@
 
               <li class="join-benefit reveal reveal-delay-1">
                 <span class="join-benefit-marker" aria-hidden="true"></span>
-                <p>Access to all KCL AISOC events — speaker evenings, workshops, case competitions, and networking.</p>
+                <p>Access to all KCL AISOC events: speaker evenings, workshops, case competitions, and networking.</p>
               </li>
 
               <li class="join-benefit reveal reveal-delay-2">
@@ -99,7 +99,7 @@
 
               <li class="join-benefit reveal reveal-delay-3">
                 <span class="join-benefit-marker" aria-hidden="true"></span>
-                <p>The KCL AISOC newsletter — market commentary, event previews, and society updates.</p>
+                <p>The KCL AISOC newsletter: market commentary, event previews, and society updates.</p>
               </li>
 
               <li class="join-benefit reveal reveal-delay-4">
@@ -109,7 +109,7 @@
 
               <li class="join-benefit reveal reveal-delay-5">
                 <span class="join-benefit-marker" aria-hidden="true"></span>
-                <p>Committee application opportunity in October 2026 — shape the society from within.</p>
+                <p>Committee application opportunity in October 2026. Shape the society from within.</p>
               </li>
 
             </ul>
@@ -117,7 +117,7 @@
 
           <!-- Right: sign-up form -->
           <div>
-            <!-- Success message — shown after submission -->
+            <!-- Success message - shown after submission -->
             <div class="form-success" id="join-form-success" role="alert" aria-live="polite" style="background: var(--white); border: 1px solid var(--border-light); padding: 3rem;">
               <div class="form-success-icon" style="border-color: var(--navy);" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A1F44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -126,7 +126,7 @@
               </div>
               <p style="color: var(--text-primary);">
                 You are officially a member of KCL Alternative Investment Society.
-                Welcome — we will be in touch soon.
+                Welcome. We will be in touch soon.
               </p>
             </div>
 
@@ -336,7 +336,7 @@
     </section>
 
     <!-- ============================================================
-         ALREADY A MEMBER — INSTAGRAM PROMPT
+         ALREADY A MEMBER, INSTAGRAM PROMPT
          ============================================================ -->
     <section style="background: var(--navy); padding-block: 3rem; border-top: 1px solid rgba(201, 169, 97, 0.1);" aria-label="Follow on Instagram">
       <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
@@ -368,7 +368,7 @@
     <div class="footer-main">
 
       <div class="footer-brand">
-        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
           <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
                onerror="this.style.display='none'">
           <span class="footer-logo">KCL AISOC</span>
@@ -437,7 +437,7 @@
     // Google Apps Script web app URL. See apps-script/SETUP.md.
     var JOIN_ENDPOINT = 'https://script.google.com/macros/s/AKfycbznQa2U_lVsgjHGOueWHb_Hnq-XDDtBOr_QbTwU4dXMEVhEpfnXVc4kNnailExpWO78/exec';
 
-    // AJAX submission — appends to the Google Sheet, shows success without reload.
+    // AJAX submission - appends to the Google Sheet, shows success without reload.
     (function () {
       var form = document.getElementById('join-form');
       var success = document.getElementById('join-form-success');
@@ -474,7 +474,7 @@
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (_) {
           if (btn) { btn.disabled = false; btn.textContent = label; }
-          alert('Something went wrong — please try again in a moment.');
+          alert('Something went wrong. Please try again in a moment.');
         }
       });
     })();

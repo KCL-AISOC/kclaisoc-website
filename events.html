@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="KCL AISOC Events — speaker series, case competitions, workshops and networking evenings for King's College London students.">
+  <meta name="description" content="KCL AISOC Events: speaker series, case competitions, workshops and networking evenings for King's College London students.">
   <title>Events | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,7 @@
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="index.html" class="nav-logo" aria-label="KCL AISOC — Home">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
@@ -115,10 +115,10 @@
 
         <div class="events-grid" id="events-grid">
 
-          <!-- Placeholder event 1 — Speaker -->
+          <!-- Placeholder event 1 - Speaker -->
           <article class="event-card" data-category="speakers">
             <span class="event-card-tag">Speaker Event</span>
-            <h3>Industry Professional Talk — Title TBC</h3>
+            <h3>Industry Professional Talk: Title TBC</h3>
             <p class="event-card-date">Date TBC &middot; Location TBC</p>
             <p>
               An evening with a senior professional from the alternative
@@ -128,7 +128,7 @@
             <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
           </article>
 
-          <!-- Placeholder event 2 — Workshop -->
+          <!-- Placeholder event 2 - Workshop -->
           <article class="event-card" data-category="workshops">
             <span class="event-card-tag">Workshop</span>
             <h3>Private Equity Fundamentals Workshop</h3>
@@ -136,15 +136,15 @@
             <p>
               An interactive session covering LBO mechanics, deal structuring,
               and valuation frameworks for private equity. Suitable for all
-              levels — no prior experience required.
+              levels. No prior experience required.
             </p>
             <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
           </article>
 
-          <!-- Placeholder event 3 — Competition -->
+          <!-- Placeholder event 3 - Competition -->
           <article class="event-card" data-category="competitions">
             <span class="event-card-tag">Competition</span>
-            <h3>Investment Case Competition — Autumn 2026</h3>
+            <h3>Investment Case Competition: Autumn 2026</h3>
             <p class="event-card-date">Date TBC &middot; King's College London</p>
             <p>
               Form a team of up to four and pitch an investment thesis across
@@ -154,7 +154,7 @@
             <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
           </article>
 
-          <!-- Placeholder event 4 — Networking -->
+          <!-- Placeholder event 4 - Networking -->
           <article class="event-card" data-category="networking">
             <span class="event-card-tag">Networking</span>
             <h3>Launch Networking Evening</h3>
@@ -194,7 +194,7 @@
     </section>
 
     <!-- ============================================================
-         GET IN TOUCH — CONTACT FORM (writes to the partnerships sheet)
+         GET IN TOUCH, CONTACT FORM (writes to the partnerships sheet)
          ============================================================ -->
     <section id="partner-contact" class="form-section" aria-labelledby="events-contact-heading">
       <div class="container container--narrow">
@@ -222,7 +222,7 @@
         <!--
           GOOGLE SHEETS SETUP:
           Submissions are appended to the PARTNERSHIPS Google Sheet via a Google
-          Apps Script web app (see apps-script/Partners.gs) — the same sheet and
+          Apps Script web app (see apps-script/Partners.gs), the same sheet and
           endpoint as the Partners page. The URL is in PARTNER_ENDPOINT below.
         -->
         <form
@@ -272,7 +272,7 @@
             <div class="form-group form-group--full">
               <label for="partner-message">Anything you'd like us to know? <span>(optional)</span></label>
               <textarea id="partner-message" name="message" rows="5"
-                        placeholder="Share any extra context — timelines, goals, or questions."></textarea>
+                        placeholder="Share any extra context: timelines, goals, or questions."></textarea>
             </div>
 
           </div>
@@ -304,7 +304,7 @@
     <div class="footer-main">
 
       <div class="footer-brand">
-        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC — Home">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
           <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
                onerror="this.style.display='none'">
           <span class="footer-logo">KCL AISOC</span>
@@ -371,11 +371,11 @@
   <script src="js/main.js" defer></script>
   <script src="js/events.js" defer></script>
   <script>
-    // Google Apps Script web app URL for the PARTNERSHIPS sheet — same endpoint
+    // Google Apps Script web app URL for the PARTNERSHIPS sheet - same endpoint
     // as the Partners page (apps-script/Partners.gs).
     var PARTNER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzINvEGLhmBfjRrbryDEkJRNZSszM1KPhe1JYur2Zd-gfwDPTcplkuHvX5l41AO0zXY/exec';
 
-    // AJAX submission — appends to the Google Sheet, shows success without reload.
+    // AJAX submission - appends to the Google Sheet, shows success without reload.
     (function () {
       var form = document.getElementById('partner-form');
       var success = document.getElementById('partner-form-success');
@@ -412,7 +412,7 @@
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (_) {
           if (btn) { btn.disabled = false; btn.textContent = label; }
-          alert('Something went wrong — please try again in a moment.');
+          alert('Something went wrong. Please try again in a moment.');
         }
       });
     })();

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KCL AISOC — main.js
+   KCL AISOC, main.js
    GSAP-powered animations + navigation + shared interactions
    GSAP & ScrollTrigger loaded via CDN before this file in each HTML page.
    ========================================================================== */
@@ -80,7 +80,7 @@
   }
 
   /* ------------------------------------------------------------------
-     2. Navigation — scroll state + active link + mobile overlay
+     2. Navigation, scroll state + active link + mobile overlay
      ------------------------------------------------------------------ */
   function initNav() {
     var nav    = document.getElementById('main-nav');
@@ -100,14 +100,26 @@
       updateNav();
     }
 
-    /* Active page link */
-    var page = window.location.pathname.split('/').pop() || 'index.html';
+    /* Active page link. Guide sub-pages highlight Resources, their parent
+       section; aria-current keeps the state accessible to screen readers. */
+    var page = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    var sectionMap = {
+      'cv-guide.html': 'resources.html',
+      'cover-letter-guide.html': 'resources.html',
+      'spring-weeks.html': 'resources.html',
+      'organisations-to-join.html': 'resources.html',
+      'where-to-look.html': 'resources.html',
+    };
+    var target = sectionMap[page] || page;
     document.querySelectorAll('.nav-links a').forEach(function (link) {
-      var href   = link.getAttribute('href');
-      var isHome = (page === '' || page === 'index.html') && (href === 'index.html' || href === './');
-      if (isHome || href === page) {
+      var href   = (link.getAttribute('href') || '').toLowerCase();
+      var isHome = target === 'index.html' && (href === 'index.html' || href === './');
+      if (isHome || href === target) {
         link.classList.add('active');
         link.setAttribute('aria-current', 'page');
+      } else {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
       }
     });
 
@@ -412,7 +424,7 @@
       });
     }
 
-    /* Hero content fades and rises — cinematic exit */
+    /* Hero content fades and rises - cinematic exit */
     gsap.to('.hero-inner', {
       opacity: 0, y: -50, ease: 'none',
       scrollTrigger: { trigger: '.hero', start: '8% top', end: '55% top', scrub: 1 },
@@ -438,7 +450,7 @@
   }
 
   /* ------------------------------------------------------------------
-     7. Stat Counter — IntersectionObserver, fires once at 40% threshold
+     7. Stat Counter, IntersectionObserver, fires once at 40% threshold
      ------------------------------------------------------------------ */
   function initStatCounters() {
     var statsBar = document.querySelector('.stats-bar');
@@ -558,7 +570,7 @@
   }
 
   /* ------------------------------------------------------------------
-     10b. Scroll-driven video — about-preview section (index.html only)
+     10b. Scroll-driven video, about-preview section (index.html only)
      Scrubs video.currentTime directly from scroll position so the video
      is static until the user scrolls. Works best with a high-keyframe
      density MP4; ordinary MP4s may stutter slightly on fast seeks.
@@ -674,7 +686,7 @@
           el.style.transform = 'none';
         }
       });
-      /* Hero lion: its design opacity is 0.09, so don't force it to 1 — just
+      /* Hero lion: its design opacity is 0.09, so don't force it to 1 - just
          clear a stuck inline 0 so the stylesheet value applies again. */
       ['.hero-lion', '.hero-lion img'].forEach(function (sel) {
         var el = document.querySelector(sel);

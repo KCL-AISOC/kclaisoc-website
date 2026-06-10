@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KCL AISOC — home.js
+   KCL AISOC, home.js
    Live member counter from Google Sheets
    ========================================================================== */
 
@@ -94,7 +94,7 @@ var MEMBERS_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7vrVQ
         updateMemberCount(FALLBACK_COUNT);
       }
     } catch (err) {
-      // Network error, CORS issue, or sheet not published — use fallback
+      // Network error, CORS issue, or sheet not published - use fallback
       updateMemberCount(FALLBACK_COUNT);
     }
   }
