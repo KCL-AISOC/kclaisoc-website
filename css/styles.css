@@ -291,9 +291,14 @@ section { padding-block: var(--section-gap); }
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast), transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
   border: 1px solid transparent;
   cursor: pointer;
+}
+
+/* Press feedback — pressable elements must acknowledge the press */
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn-primary {
@@ -3368,6 +3373,84 @@ textarea {
   .cl-detail:nth-child(odd) { border-right: none; }
   .cl-detail:nth-last-child(-n+2) { border-bottom: 1px solid var(--border-light); }
   .cl-detail:last-child { border-bottom: none; }
+}
+
+/* --------------------------------------------------------------------------
+   23i. Application Questions Guide Page
+   Reuses the guide primitives: .cv-guide-lead, .cv-example-pair before/after
+   blocks, .cl-details-grid reference tables, .cv-checklist.
+   -------------------------------------------------------------------------- */
+.aq-section { margin-bottom: 5rem; }
+.aq-section:last-of-type { margin-bottom: 4rem; }
+
+/* Gold index numeral above each section heading */
+.aq-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gold);
+  opacity: 0.6;
+  line-height: 1;
+  margin-bottom: 0.85rem;
+}
+
+.aq-section h2 { margin-bottom: 0; }
+
+/* Cream document container for worked examples */
+.aq-doc {
+  background: #FCFAF4;
+  border: 1px solid rgba(10, 31, 68, 0.1);
+  padding: 2rem 2.25rem;
+  margin-top: 2rem;
+}
+
+.aq-doc-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.aq-doc > p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: none;
+  margin-bottom: 1.5rem;
+}
+
+.aq-doc > p:last-child { margin-bottom: 0; }
+
+.aq-doc .cl-details-grid { max-width: none; }
+
+/* Labelled answers inside the before/after blocks */
+.aq-answer { margin-bottom: 1.1rem; }
+.aq-answer:last-child { margin-bottom: 0; }
+
+.aq-answer-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.aq-answer p {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  max-width: none;
+}
+
+@media (max-width: 768px) {
+  .aq-doc { padding: 1.5rem 1.25rem; }
 }
 
 /* --------------------------------------------------------------------------

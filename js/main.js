@@ -106,6 +106,7 @@
     var sectionMap = {
       'cv-guide.html': 'resources.html',
       'cover-letter-guide.html': 'resources.html',
+      'application-questions.html': 'resources.html',
       'spring-weeks.html': 'resources.html',
       'organisations-to-join.html': 'resources.html',
       'where-to-look.html': 'resources.html',
