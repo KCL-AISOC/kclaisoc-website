@@ -2900,89 +2900,137 @@ textarea {
 
 .cl-principle strong { color: var(--text-primary); }
 
-/* 8-part accordion-style stacked list */
-.cl-parts {
-  border: 1px solid var(--border-light);
+/* Annotated worked example — letter paper with margin notes.
+   Desktop: two grid columns; segments sit on a continuous "paper" drawn by
+   the ::before, notes occupy the right column (JS pins them to their
+   segment via .cl-anno-floating). Mobile (≤900px): single flow; the wrap
+   itself becomes the paper and notes collapse into <details>. */
+.cl-annotated {
+  position: relative;
+  max-width: 1080px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  column-gap: 3.25rem;
+  align-items: start;
 }
 
-.cl-part {
-  padding: 2.5rem;
-  border-bottom: 1px solid var(--border-light);
-  background: var(--white);
-  transition: background var(--t-fast);
+.cl-annotated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: calc(300px + 3.25rem);
+  background: #FCFAF4;
+  border: 1px solid rgba(10, 31, 68, 0.1);
+  box-shadow: 0 8px 48px rgba(7, 22, 48, 0.1);
 }
 
-.cl-part:last-child { border-bottom: none; }
-.cl-part:hover { background: #FDFCF9; }
+/* Letter segments (left column) */
+.cl-anno-seg {
+  grid-column: 1;
+  position: relative;
+  padding-inline: 4rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.9rem;
+  color: #000;
+  line-height: 1.5;
+}
 
-.cl-part-header {
+.cl-anno-seg:first-of-type { padding-top: 3.5rem; }
+.cl-anno-seg:last-of-type { padding-bottom: 3.5rem; }
+
+/* Numbered marker straddling the paper's right edge */
+.cl-anno-marker {
+  position: absolute;
+  top: 0.1rem;
+  right: -0.8rem;
+  z-index: 1;
+  width: 1.6rem;
+  height: 1.6rem;
   display: flex;
-  align-items: baseline;
-  gap: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-
-.cl-part-num {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--gold);
-  line-height: 1;
-  opacity: 0.55;
-  flex-shrink: 0;
-  min-width: 1.75rem;
-}
-
-.cl-part-title {
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.3;
-}
-
-/* Quoted example block */
-.cl-quote {
+  align-items: center;
+  justify-content: center;
   background: var(--navy);
-  border-left: 3px solid var(--gold);
-  padding: 1.25rem 1.5rem;
-  margin: 0 0 1.25rem;
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-size: 0.875rem;
-  color: rgba(201, 169, 97, 0.82);
-  line-height: 1.75;
-}
-
-.cl-quote strong {
-  font-style: normal;
   color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--white);
 }
 
-/* TIPS label */
-.cl-tips-label {
-  display: block;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 0.65rem;
+.cl-anno-seg:first-of-type .cl-anno-marker { top: 3.5rem; }
+.cl-anno-seg:last-of-type .cl-anno-marker { top: 1.6rem; }
+
+/* Margin notes (right column) */
+.cl-anno-note {
+  grid-column: 2;
+  position: relative;
+  font-family: var(--font-body);
 }
 
-/* TIPS bullet list */
-.cl-tips {
-  list-style: disc;
-  padding-left: 1.4rem;
+.cl-anno-floating .cl-anno-note {
+  position: absolute;
+  right: 0;
+  width: 300px;
+}
+
+/* Dashed connector reaching toward the marker */
+.cl-anno-note::before {
+  content: '';
+  position: absolute;
+  left: -2.45rem;
+  top: 0.8rem;
+  width: 2.45rem;
+  border-top: 1px dashed rgba(201, 169, 97, 0.55);
+}
+
+.cl-anno-note summary {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.6rem;
+  list-style: none;
+  cursor: pointer;
 }
 
-.cl-tips li {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+.cl-anno-note summary::-webkit-details-marker { display: none; }
+
+.cl-anno-floating .cl-anno-note summary {
+  pointer-events: none;
+  cursor: default;
+}
+
+.cl-anno-num {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 0.62rem;
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+.cl-anno-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.cl-anno-text {
+  margin: 0.5rem 0 0;
+  padding-left: 2.1rem;
+  font-size: 0.8rem;
   line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: none;
 }
 
 /* Redacted bar — visually obscures sensitive text */
@@ -3005,20 +3053,7 @@ textarea {
   font-size: inherit;
 }
 
-/* Cover letter document */
-.cl-document {
-  max-width: 720px;
-  margin-inline: auto;
-  background: #fff;
-  border: 1px solid rgba(10, 31, 68, 0.1);
-  box-shadow: 0 8px 48px rgba(7, 22, 48, 0.1);
-  padding: 3.5rem 4rem;
-  font-family: 'Times New Roman', Times, serif;
-  color: #000;
-  line-height: 1.5;
-  font-size: 0.9rem;
-}
-
+/* Letter typography — shared by the annotated layout's segments */
 .cl-doc-header {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -3103,6 +3138,110 @@ textarea {
 
 .cl-doc-signoff p { max-width: none; margin: 0; }
 
+/* "The Details That Get Checked" — compact two-column rules grid */
+.cl-details-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cl-details-header h2 { margin-bottom: 0; }
+
+.cl-details-grid {
+  max-width: 920px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border-light);
+  background: var(--white);
+}
+
+.cl-detail {
+  padding: 1.6rem 1.9rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.cl-detail:nth-child(odd) { border-right: 1px solid var(--border-light); }
+.cl-detail:nth-last-child(-n+2) { border-bottom: none; }
+
+.cl-detail h3 {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cl-detail h3::before {
+  content: '';
+  display: inline-block;
+  width: 0.55rem;
+  height: 2px;
+  background: var(--gold);
+  margin-right: 0.6rem;
+  vertical-align: middle;
+}
+
+.cl-detail p {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  max-width: none;
+}
+
+/* Annotated letter + details grid — compact single-column layout.
+   Breakpoint must match the matchMedia query in cover-letter-guide.html. */
+@media (max-width: 900px) {
+  .cl-annotated {
+    display: block;
+    background: #FCFAF4;
+    border: 1px solid rgba(10, 31, 68, 0.1);
+    box-shadow: 0 8px 48px rgba(7, 22, 48, 0.1);
+    padding: 2rem 1.5rem;
+  }
+
+  .cl-annotated::before { display: none; }
+
+  .cl-anno-seg { padding-inline: 0; }
+  .cl-anno-seg:first-of-type { padding-top: 0; }
+  .cl-anno-seg:last-of-type { padding-bottom: 0; }
+  .cl-anno-marker { display: none; }
+
+  .cl-anno-note {
+    margin: 0.9rem 0 1.25rem;
+    border: 1px solid rgba(201, 169, 97, 0.35);
+    border-left: 2px solid var(--gold);
+    background: rgba(201, 169, 97, 0.08);
+  }
+
+  .cl-anno-note::before { display: none; }
+
+  .cl-anno-note summary { padding: 0.7rem 0.9rem; }
+
+  .cl-anno-note summary::after {
+    content: '+';
+    margin-left: auto;
+    color: var(--gold);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .cl-anno-note[open] summary::after { content: '\2212'; }
+
+  .cl-anno-text {
+    margin: 0;
+    padding: 0 0.9rem 0.8rem 3rem;
+  }
+
+  .cl-details-grid { grid-template-columns: 1fr; }
+  .cl-detail:nth-child(odd) { border-right: none; }
+  .cl-detail:nth-last-child(-n+2) { border-bottom: 1px solid var(--border-light); }
+  .cl-detail:last-child { border-bottom: none; }
+}
+
 /* --------------------------------------------------------------------------
    24. Responsive — Tablet (≤ 1024px)
    -------------------------------------------------------------------------- */
@@ -3142,6 +3281,19 @@ textarea {
   .cv-xyz-grid { grid-template-columns: 1fr; }
   .cv-structure-grid { grid-template-columns: repeat(2, 1fr); }
   .cv-document { padding: 2.5rem 3rem; }
+
+  /* Cover letter guide — tighter margin-note column */
+  .cl-annotated {
+    grid-template-columns: minmax(0, 1fr) 250px;
+    column-gap: 2.5rem;
+  }
+  .cl-annotated::before { right: calc(250px + 2.5rem); }
+  .cl-anno-floating .cl-anno-note { width: 250px; }
+  .cl-anno-note::before { left: -1.7rem; width: 1.7rem; }
+  .cl-anno-seg { padding-inline: 2.5rem; }
+  .cl-anno-seg:first-of-type { padding-top: 2.75rem; }
+  .cl-anno-seg:last-of-type { padding-bottom: 2.75rem; }
+  .cl-anno-seg:first-of-type .cl-anno-marker { top: 2.75rem; }
 }
 
 /* --------------------------------------------------------------------------
@@ -3325,8 +3477,7 @@ textarea {
   .cv-doc-entry-header { flex-direction: column; gap: 0; }
 
   /* Cover letter guide */
-  .cl-part { padding: 2rem 1.25rem; }
-  .cl-document { padding: 2rem 1.5rem; }
+  .cl-annotated { padding: 2rem 1.25rem; }
 
   /* Benefits */
   .benefits-grid { grid-template-columns: 1fr; }
