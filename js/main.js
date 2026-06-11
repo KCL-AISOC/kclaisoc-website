@@ -10,12 +10,14 @@
   var docEl = document.documentElement;
 
   /* Show every reveal element and clear the armed hidden state. Used as a
-     hard fallback and on back/forward cache restores so nothing stays hidden. */
+     hard fallback and on back/forward cache restores so nothing stays hidden.
+     Class-based on purpose: inline opacity/transform here would permanently
+     override the elements' own hover transitions. */
   function showAllContent() {
     docEl.classList.remove('reveals-on');
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
+      el.classList.add('is-revealed');
+      el.style.animationDelay = '';
     });
     ['main', 'footer', '.hero-inner', '.hero-bg'].forEach(function (sel) {
       var el = document.querySelector(sel);
@@ -30,19 +32,19 @@
   }
 
   /* ------------------------------------------------------------------
-     Guard: if GSAP hasn't loaded, fall back to showing all content
+     Guard: if GSAP hasn't loaded, the shared reveal observer still runs
+     (it has no GSAP dependency); everything else degrades to static.
      ------------------------------------------------------------------ */
   if (typeof gsap === 'undefined') {
-    showAllContent();
     initNav();
+    initScrollReveals();
     return;
   }
 
   gsap.registerPlugin(ScrollTrigger);
 
-  /* Mark that the animation system is live so the inline failsafe does not
-     unhide elements that GSAP is about to reveal on scroll. */
-  docEl.classList.add('reveals-done');
+  /* reveals-done is added by initScrollReveals once its observer is live;
+     until then the inline head failsafe can still rescue a failed init. */
 
   /* On load, refresh ScrollTrigger to fix iOS Safari viewport calculations
      that shift when the browser URL bar shows or hides. */
@@ -250,96 +252,72 @@
   }
 
   function initScrollReveals() {
-    /* Batch staggered grids */
-    var staggerParents = [
-      '.events-preview-grid',
-      '.events-grid',
-      '.asset-grid',
-      '.committee-grid',
-      '.insights-grid',
-      '.resource-grid',
-      '.pricing-grid',
-      '.benefits-grid',
-      '.join-benefits-list',
-      '.calendar-grid',
-      '.partner-stats-grid',
-    ];
+    var els = Array.prototype.slice.call(
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+    );
+    if (!els.length) {
+      docEl.classList.add('reveals-done');
+      return;
+    }
 
-    staggerParents.forEach(function (selector) {
-      document.querySelectorAll(selector).forEach(function (parent) {
-        var children = parent.querySelectorAll(
-          '.event-card, .asset-tile, .committee-card, .insight-card, ' +
-          '.resource-card, .pricing-card, .benefit-pillar, .join-benefit, ' +
-          '.calendar-term, .partner-stat-item'
-        );
-        if (!children.length) return;
+    /* No IntersectionObserver: show everything statically. */
+    if (!('IntersectionObserver' in window)) {
+      showAllContent();
+      return;
+    }
 
-        var vars = {
-          opacity: 1,
-          y: 0,
-          duration: 0.75,
-          ease: 'power3.out',
-          stagger: 0.09,
-        };
-
-        if (inViewOnLoad(parent)) {
-          /* Already on screen: stagger them in now, no scroll wait */
-          gsap.to(children, vars);
-        } else {
-          vars.scrollTrigger = { trigger: parent, start: 'top 85%', once: true };
-          gsap.to(children, vars);
-        }
+    /* Each element reveals exactly once and is then unobserved, so nothing
+       can re-hide or re-animate on later scrolling in either direction.
+       Elements entering in the same observer tick (a grid scrolling into
+       view, or everything above the fold at load) cascade top-to-bottom
+       with a short stagger; animation-fill-mode in the CSS holds the
+       hidden state through each element's delay. */
+    var io = new IntersectionObserver(function (entries) {
+      var batch = entries.filter(function (e) { return e.isIntersecting; });
+      if (!batch.length) return;
+      batch.sort(function (a, b) {
+        return (a.boundingClientRect.top - b.boundingClientRect.top) ||
+               (a.boundingClientRect.left - b.boundingClientRect.left);
       });
-    });
-
-    /* Individual .reveal, vertical */
-    gsap.utils.toArray('.reveal').forEach(function (el) {
-      if (el.closest(staggerParents.join(','))) return;
-      var vars = { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' };
-      if (inViewOnLoad(el)) {
-        gsap.to(el, vars);
-      } else {
-        vars.scrollTrigger = { trigger: el, start: 'top 87%', once: true };
-        gsap.to(el, vars);
-      }
-    });
-
-    /* Horizontal reveals, left and right */
-    ['.reveal-left', '.reveal-right'].forEach(function (sel) {
-      gsap.utils.toArray(sel).forEach(function (el) {
-        var vars = { opacity: 1, x: 0, duration: 0.85, ease: 'power3.out' };
-        if (inViewOnLoad(el)) {
-          gsap.to(el, vars);
-        } else {
-          vars.scrollTrigger = { trigger: el, start: 'top 85%', once: true };
-          gsap.to(el, vars);
-        }
+      batch.forEach(function (entry, i) {
+        entry.target.style.animationDelay = (Math.min(i, 10) * 75) + 'ms';
+        entry.target.classList.add('is-revealed');
+        io.unobserve(entry.target);
       });
-    });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
 
-    /* Page header: eyebrow + h1 + p sequence */
+    els.forEach(function (el) { io.observe(el); });
+
+    /* Mark the reveal system live so the inline head failsafe leaves the
+       armed state in place. */
+    docEl.classList.add('reveals-done');
+  }
+
+  /* ------------------------------------------------------------------
+     4b. Page header entrance (eyebrow + h1 + p + numeral)
+     ------------------------------------------------------------------ */
+  function initPageHeader() {
     var pageHeader = document.querySelector('.page-header-text');
-    if (pageHeader) {
-      var phEls = pageHeader.querySelectorAll('.eyebrow, h1, p');
-      gsap.from(phEls, {
+    if (!pageHeader) return;
+    var phEls = pageHeader.querySelectorAll('.eyebrow, h1, p');
+    gsap.from(phEls, {
+      opacity: 0,
+      y: 28,
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.12,
+      delay: 0.2,
+    });
+    /* Numeral sweeps in from right */
+    var numeral = document.querySelector('.page-header-numeral');
+    if (numeral) {
+      gsap.from(numeral, {
         opacity: 0,
-        y: 28,
-        duration: 0.7,
+        x: 40,
+        duration: 1,
         ease: 'power3.out',
-        stagger: 0.12,
-        delay: 0.2,
+        delay: 0.1,
       });
-      /* Numeral sweeps in from right */
-      var numeral = document.querySelector('.page-header-numeral');
-      if (numeral) {
-        gsap.from(numeral, {
-          opacity: 0,
-          x: 40,
-          duration: 1,
-          ease: 'power3.out',
-          delay: 0.1,
-        });
-      }
     }
   }
 
@@ -689,14 +667,8 @@
 
     list.closest('.vault').classList.add('vault-armed');
 
-    gsap.from(lines, {
-      opacity: 0,
-      y: 36,
-      duration: 0.7,
-      ease: 'power3.out',
-      stagger: 0.08,
-      scrollTrigger: { trigger: list, start: 'top 85%', once: true },
-    });
+    /* Entrance is handled by the shared reveal system (the lines carry
+       .reveal classes); this function only drives the centre highlight. */
 
     if (!('IntersectionObserver' in window)) {
       lines[2].classList.add('vault-active');
@@ -761,6 +733,7 @@
       initTicker();
       initLineMasks();
       initScrollReveals();
+      initPageHeader();
       initStatCounters();
       initStatsRule();
       initStickyHeadings();
@@ -786,13 +759,13 @@
     initPageTransitions();
     initAnimations();
 
-    /* Global safety net: after 2.5 s, force-show anything a GSAP tween may
-       have left at opacity 0 (hero words, CTAs, the founded date, reveals).
-       Catches iOS scroll-position bugs and intermittent CDN failures so
-       content is never left invisible. */
+    /* Safety net: after 2.5 s, force-show anything a GSAP entrance tween may
+       have left at opacity 0 (hero lines, CTAs, page-header sequence).
+       Scroll reveals are NOT touched here — they are owned exclusively by
+       the IntersectionObserver in initScrollReveals; resetting them
+       mid-animation is what caused visible flicker. */
     setTimeout(function () {
-      var selectors = '.reveal, .reveal-left, .reveal-right, ' +
-        '.hero-actions .btn, .hero-scroll, .stat-number, .page-header-numeral, ' +
+      var selectors = '.hero-actions .btn, .hero-scroll, .stat-number, .page-header-numeral, ' +
         '.page-header-text .eyebrow, .page-header-text h1, .page-header-text p';
       document.querySelectorAll(selectors).forEach(function (el) {
         if (parseFloat(getComputedStyle(el).opacity) < 0.5) {
