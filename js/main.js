@@ -362,24 +362,11 @@
        property on the same element is timing-dependent on iOS). */
     tl.from('.hero-lion img', { opacity: 0, scale: 0.94, duration: 1.6, ease: 'power2.out' }, 0);
 
-    /* ii) Headline: word-by-word reveal */
-    var headline = document.querySelector('.hero-headline');
-    if (headline) {
-      var rawHtml = headline.innerHTML;
-      var lines = rawHtml.split(/<br\s*\/?>/i);
-      var wrappedHtml = lines
-        .map(function (line) {
-          return line.trim().split(/\s+/).filter(Boolean)
-            .map(function (word) {
-              return '<span class="hero-word" style="display:inline-block">' + word + '</span>';
-            })
-            .join('&nbsp;');
-        })
-        .join('<br>');
-      headline.innerHTML = wrappedHtml;
-
-      tl.from('.hero-word', {
-        opacity: 0, y: 28, duration: 0.6, stagger: 0.09, ease: 'power3.out',
+    /* ii) Headline: line-by-line unmask — each line rises out of its
+       clipped .hero-line row (spans are in the markup, not injected) */
+    if (document.querySelector('.hero-line-inner')) {
+      tl.from('.hero-line-inner', {
+        yPercent: 110, duration: 0.95, stagger: 0.14, ease: 'power4.out',
       }, '-=0.3');
     }
 
@@ -631,29 +618,162 @@
   }
 
   /* ------------------------------------------------------------------
+     10c. Line masks — headings whose lines rise out of clipped rows.
+     Splits .line-mask elements on <br> into .lm-line/.lm-inner pairs.
+     ------------------------------------------------------------------ */
+  function initLineMasks() {
+    gsap.utils.toArray('.line-mask').forEach(function (el) {
+      var lines = el.innerHTML.split(/<br\s*\/?>/i);
+      el.innerHTML = lines.map(function (line) {
+        return '<span class="lm-line"><span class="lm-inner">' + line.trim() + '</span></span>';
+      }).join('');
+
+      var inners = el.querySelectorAll('.lm-inner');
+      var vars = { yPercent: 110, duration: 0.85, stagger: 0.12, ease: 'power4.out' };
+      if (inViewOnLoad(el)) {
+        gsap.from(inners, vars);
+      } else {
+        vars.scrollTrigger = { trigger: el, start: 'top 85%', once: true };
+        gsap.from(inners, vars);
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     10d. Stats rule — a full-gold hairline ruled across the strip as it
+     enters view (index.html only)
+     ------------------------------------------------------------------ */
+  function initStatsRule() {
+    var rule = document.querySelector('.stats-rule');
+    if (!rule) return;
+    gsap.from(rule, {
+      scaleX: 0,
+      duration: 1.4,
+      ease: 'power2.inOut',
+      scrollTrigger: { trigger: '.stats-bar', start: 'top 80%', once: true },
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     10e. About-preview parallax — the video layer drifts against the
+     text so the section reads as two planes (index.html only). The
+     wrapper is overscanned by 50px in CSS to cover the travel.
+     ------------------------------------------------------------------ */
+  function initAboutParallax() {
+    var layer = document.querySelector('.about-preview-video');
+    if (!layer) return;
+    gsap.fromTo(layer, { y: -50 }, {
+      y: 50,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.about-preview',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     10f. The Vault — asset class index (index.html only).
+     Entrance stagger via GSAP; the gold centre highlight is driven by
+     IntersectionObserver with a narrow centre band rather than raw
+     scroll position, so iOS momentum scrolling cannot make it jitter.
+     ------------------------------------------------------------------ */
+  function initVault() {
+    var list = document.getElementById('vault-list');
+    if (!list) return;
+    var lines = gsap.utils.toArray(list.querySelectorAll('.vault-line'));
+    if (!lines.length) return;
+
+    list.closest('.vault').classList.add('vault-armed');
+
+    gsap.from(lines, {
+      opacity: 0,
+      y: 36,
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.08,
+      scrollTrigger: { trigger: list, start: 'top 85%', once: true },
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      lines[2].classList.add('vault-active');
+      return;
+    }
+
+    /* A line becomes active when it enters the middle ~12% of the
+       viewport; the last active line keeps its gold when none is in
+       the band, so one line is always lit once scrolling begins. */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        lines.forEach(function (l) { l.classList.remove('vault-active'); });
+        entry.target.classList.add('vault-active');
+      });
+    }, { rootMargin: '-44% 0px -44% 0px', threshold: 0 });
+
+    lines.forEach(function (l) { io.observe(l); });
+  }
+
+  /* ------------------------------------------------------------------
+     10g. Magnetic button — the join CTA leans toward the cursor.
+     Wired only on hover-capable pointer devices via matchMedia below.
+     ------------------------------------------------------------------ */
+  function initMagnetic() {
+    document.querySelectorAll('.btn-magnetic').forEach(function (btn) {
+      var strength = 16;
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        var y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        gsap.to(btn, { x: x * strength, y: y * strength * 0.6, duration: 0.4, ease: 'power3.out' });
+      });
+      btn.addEventListener('mouseleave', function () {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.45)' });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------
      11. Mobile-safe matchMedia wrapper
      ------------------------------------------------------------------ */
   function initAnimations() {
     var mm = gsap.matchMedia();
 
-    /* Full motion on every screen size. Mobile gets the same hero word
-       reveal, lion zoom, scroll-scrubbed video, counters and reveals as
-       desktop. A safety net in init() force-shows anything that stalls. */
-    mm.add('all', function () {
+    /* Reduced motion: a graceful static page. Everything visible, stat
+       numbers keep their markup values, and the vault rests with one
+       line lit instead of tracking the scroll. */
+    mm.add('(prefers-reduced-motion: reduce)', function () {
+      showAllContent();
+      var vaultLines = document.querySelectorAll('.vault-line');
+      if (vaultLines.length > 2) vaultLines[2].classList.add('vault-active');
+    });
+
+    /* Full motion on every screen size. Mobile gets the same hero line
+       unmask, lion zoom, scroll-scrubbed video, vault highlight, counters
+       and reveals as desktop. A safety net in init() force-shows anything
+       that stalls. */
+    mm.add('(prefers-reduced-motion: no-preference)', function () {
       initHero();
       initParallax();
       initTicker();
+      initLineMasks();
       initScrollReveals();
       initStatCounters();
+      initStatsRule();
       initStickyHeadings();
       initScrollProgress();
       initScrollVideo();
+      initAboutParallax();
+      initVault();
     });
 
     /* Hover effects only make sense on real hover (pointer) devices */
-    mm.add('(hover: hover) and (min-width: 769px)', function () {
+    mm.add('(hover: hover) and (min-width: 769px) and (prefers-reduced-motion: no-preference)', function () {
       initAssetTileHovers();
       initCommitteeCardHovers();
+      initMagnetic();
     });
   }
 
@@ -670,12 +790,24 @@
        Catches iOS scroll-position bugs and intermittent CDN failures so
        content is never left invisible. */
     setTimeout(function () {
-      var selectors = '.reveal, .reveal-left, .reveal-right, .hero-word, ' +
+      var selectors = '.reveal, .reveal-left, .reveal-right, ' +
         '.hero-actions .btn, .hero-scroll, .stat-number, .page-header-numeral, ' +
         '.page-header-text .eyebrow, .page-header-text h1, .page-header-text p';
       document.querySelectorAll(selectors).forEach(function (el) {
         if (parseFloat(getComputedStyle(el).opacity) < 0.5) {
           el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+      /* Masked lines hide via translateY inside a clipped row (opacity stays
+         1), so check the transform rather than opacity for these. */
+      document.querySelectorAll('.hero-line-inner, .lm-inner').forEach(function (el) {
+        try {
+          var t = getComputedStyle(el).transform;
+          if (t && t !== 'none' && Math.abs(new DOMMatrixReadOnly(t).m42) > 2) {
+            el.style.transform = 'none';
+          }
+        } catch (e) {
           el.style.transform = 'none';
         }
       });
