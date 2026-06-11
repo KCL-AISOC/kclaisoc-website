@@ -3020,10 +3020,12 @@ textarea {
 .cl-principle strong { color: var(--text-primary); }
 
 /* Annotated worked example — letter paper with margin notes.
-   Desktop: two grid columns; segments sit on a continuous "paper" drawn by
-   the ::before, notes occupy the right column (JS pins them to their
-   segment via .cl-anno-floating). Mobile (≤900px): single flow; the wrap
-   itself becomes the paper and notes collapse into <details>. */
+   Desktop: two grid columns; each segment shares a grid row with its note,
+   so the marker, numeral, heading and note text are always level. Rows
+   grow to fit whichever side is taller, and the continuous "paper" drawn
+   by the ::before absorbs any extra space inside the letter. Mobile
+   (≤900px): single flow; the wrap itself becomes the paper and notes
+   collapse into <details>. */
 .cl-annotated {
   position: relative;
   max-width: 1080px;
@@ -3082,22 +3084,21 @@ textarea {
 
 .cl-anno-seg:first-of-type .cl-anno-marker { top: 3.5rem; }
 
-/* Nudged variant for segments whose content starts below the segment top
-   (e.g. the letter sign-off block's own top margin) */
-.cl-anno-marker--low { top: 1.6rem; }
+/* The sign-off block's own top margin would drop its content below the
+   row top where the marker and note sit, so flatten it here */
+.cl-anno-seg .cl-doc-signoff { margin-top: 0; }
 
 /* Margin notes (right column) */
 .cl-anno-note {
   grid-column: 2;
   position: relative;
   font-family: var(--font-body);
+  padding-bottom: 1.25rem;
 }
 
-.cl-anno-floating .cl-anno-note {
-  position: absolute;
-  right: 0;
-  width: 300px;
-}
+/* The first segment carries the paper's top padding; a note sharing that
+   row needs the same offset to stay level with its marker */
+.cl-anno-seg:first-of-type + .cl-anno-note { padding-top: 3.5rem; }
 
 /* Dashed connector reaching toward the marker */
 .cl-anno-note::before {
@@ -3109,20 +3110,18 @@ textarea {
   border-top: 1px dashed rgba(201, 169, 97, 0.55);
 }
 
+/* Summaries are inert in the margin layout (notes always open); the
+   mobile block below re-enables them as tap-to-expand toggles */
 .cl-anno-note summary {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   list-style: none;
-  cursor: pointer;
-}
-
-.cl-anno-note summary::-webkit-details-marker { display: none; }
-
-.cl-anno-floating .cl-anno-note summary {
   pointer-events: none;
   cursor: default;
 }
+
+.cl-anno-note summary::-webkit-details-marker { display: none; }
 
 .cl-anno-num {
   flex-shrink: 0;
@@ -3333,14 +3332,21 @@ textarea {
 
   .cl-anno-note {
     margin: 0.9rem 0 1.25rem;
+    padding-bottom: 0;
     border: 1px solid rgba(201, 169, 97, 0.35);
     border-left: 2px solid var(--gold);
     background: rgba(201, 169, 97, 0.08);
   }
 
+  .cl-anno-seg:first-of-type + .cl-anno-note { padding-top: 0; }
+
   .cl-anno-note::before { display: none; }
 
-  .cl-anno-note summary { padding: 0.7rem 0.9rem; }
+  .cl-anno-note summary {
+    padding: 0.7rem 0.9rem;
+    pointer-events: auto;
+    cursor: pointer;
+  }
 
   .cl-anno-note summary::after {
     content: '+';
@@ -3409,12 +3415,12 @@ textarea {
     column-gap: 2.5rem;
   }
   .cl-annotated::before { right: calc(250px + 2.5rem); }
-  .cl-anno-floating .cl-anno-note { width: 250px; }
   .cl-anno-note::before { left: -1.7rem; width: 1.7rem; }
   .cl-anno-seg { padding-inline: 2.5rem; }
   .cl-anno-seg:first-of-type { padding-top: 2.75rem; }
   .cl-anno-seg:last-of-type { padding-bottom: 2.75rem; }
   .cl-anno-seg:first-of-type .cl-anno-marker { top: 2.75rem; }
+  .cl-anno-seg:first-of-type + .cl-anno-note { padding-top: 2.75rem; }
 }
 
 /* --------------------------------------------------------------------------

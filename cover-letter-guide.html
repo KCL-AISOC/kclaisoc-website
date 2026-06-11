@@ -212,7 +212,7 @@
 
           <!-- 8 · Sign-off -->
           <div class="cl-anno-seg">
-            <span class="cl-anno-marker cl-anno-marker--low" aria-hidden="true">8</span>
+            <span class="cl-anno-marker" aria-hidden="true">8</span>
             <div class="cl-doc-signoff">
               <p>Yours sincerely,</p>
               <p>Muntasir Ali</p>
@@ -369,9 +369,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="js/main.js" defer></script>
 
-  <!-- Margin notes: on wide screens each note is pinned beside its letter
-       segment (pushed down only to avoid overlapping the note above); on
-       small screens notes collapse into tap-to-expand markers in the flow. -->
+  <!-- Margin notes are aligned to their segments purely in CSS (shared
+       grid rows). This script only manages the <details> state: open in
+       the margin layout, collapsed tap-to-expand on small screens. -->
   <script>
     (function () {
       var wrap = document.getElementById('cl-annotated');
@@ -380,46 +380,27 @@
       var mq = window.matchMedia('(max-width: 900px)');
       var wasMobile = null;
 
-      function layout() {
-        if (mq.matches) {
-          /* Run the mobile reset once per breakpoint change so soft resizes
-             (e.g. the mobile URL bar) don't close notes the reader opened. */
-          if (wasMobile !== true) {
-            wrap.classList.remove('cl-anno-floating');
-            wrap.style.minHeight = '';
-            notes.forEach(function (n) {
-              n.style.top = '';
-              n.removeAttribute('open');
-            });
-            wasMobile = true;
-          }
-          return;
-        }
-        wasMobile = false;
-        wrap.classList.add('cl-anno-floating');
-        var prevBottom = 0;
+      /* Sync once per breakpoint change so soft resizes (e.g. the mobile
+         URL bar) don't close notes the reader opened. */
+      function sync() {
+        if (mq.matches === wasMobile) return;
+        wasMobile = mq.matches;
         notes.forEach(function (n) {
-          n.setAttribute('open', '');
-          var seg = n.previousElementSibling;
-          var marker = seg ? seg.querySelector('.cl-anno-marker') : null;
-          var top = (seg ? seg.offsetTop : 0) + (marker ? marker.offsetTop : 0);
-          if (top < prevBottom + 14) top = prevBottom + 14;
-          n.style.top = top + 'px';
-          prevBottom = top + n.offsetHeight;
+          if (mq.matches) n.removeAttribute('open');
+          else n.setAttribute('open', '');
         });
-        wrap.style.minHeight = prevBottom + 'px';
       }
 
-      /* Margin-note layout requires every note open, even if toggled by keyboard. */
+      /* Keep notes open in the margin layout even if toggled via keyboard. */
       notes.forEach(function (n) {
         n.addEventListener('toggle', function () {
           if (!mq.matches && !n.open) n.open = true;
         });
       });
 
-      layout();
-      window.addEventListener('load', layout);
-      window.addEventListener('resize', layout);
+      sync();
+      if (mq.addEventListener) mq.addEventListener('change', sync);
+      else window.addEventListener('resize', sync);
     })();
   </script>
 </body>
