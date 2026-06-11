@@ -2583,12 +2583,11 @@ textarea {
 .cv-example--after .cv-example-label { color: var(--gold); }
 
 .cv-example--before {
-  background: var(--white);
-  opacity: 0.7;
+  background: rgba(10, 31, 68, 0.04);
 }
 
 .cv-example--after {
-  background: var(--white);
+  background: var(--gold-faint);
   border-color: rgba(201, 169, 97, 0.35);
 }
 
@@ -2826,6 +2825,25 @@ textarea {
   max-width: none;
   margin-bottom: 0.18rem;
   line-height: 1.5;
+}
+
+/* Example CV document wrapper */
+.cv-document-wrap {
+  max-width: 860px;
+  margin-inline: auto;
+  background: var(--cream);
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  padding: 2rem 2rem 2.5rem;
+}
+
+.cv-document-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
 }
 
 /* Download CTA */
