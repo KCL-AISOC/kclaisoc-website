@@ -2727,19 +2727,7 @@ textarea {
   max-width: 50ch;
 }
 
-/* The CV document */
-.cv-document {
-  max-width: 800px;
-  margin-inline: auto;
-  background: #fff;
-  border: 1px solid rgba(10, 31, 68, 0.1);
-  box-shadow: 0 8px 48px rgba(7, 22, 48, 0.1);
-  padding: 3.5rem 4rem;
-  font-family: 'Times New Roman', Times, serif;
-  color: #000;
-  line-height: 1.45;
-}
-
+/* CV document typography — shared by the annotated layout's segments */
 .cv-doc-header {
   text-align: center;
   margin-bottom: 1.25rem;
@@ -2825,25 +2813,6 @@ textarea {
   max-width: none;
   margin-bottom: 0.18rem;
   line-height: 1.5;
-}
-
-/* Example CV document wrapper */
-.cv-document-wrap {
-  max-width: 860px;
-  margin-inline: auto;
-  background: var(--cream);
-  border: 1px solid var(--border-light);
-  border-radius: 2px;
-  padding: 2rem 2rem 2.5rem;
-}
-
-.cv-document-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
 }
 
 /* Download CTA */
@@ -2962,7 +2931,10 @@ textarea {
 }
 
 .cl-anno-seg:first-of-type .cl-anno-marker { top: 3.5rem; }
-.cl-anno-seg:last-of-type .cl-anno-marker { top: 1.6rem; }
+
+/* Nudged variant for segments whose content starts below the segment top
+   (e.g. the letter sign-off block's own top margin) */
+.cl-anno-marker--low { top: 1.6rem; }
 
 /* Margin notes (right column) */
 .cl-anno-note {
@@ -3280,9 +3252,8 @@ textarea {
   /* CV guide */
   .cv-xyz-grid { grid-template-columns: 1fr; }
   .cv-structure-grid { grid-template-columns: repeat(2, 1fr); }
-  .cv-document { padding: 2.5rem 3rem; }
 
-  /* Cover letter guide — tighter margin-note column */
+  /* Annotated documents (CV + cover letter guides) — tighter note column */
   .cl-annotated {
     grid-template-columns: minmax(0, 1fr) 250px;
     column-gap: 2.5rem;
@@ -3473,7 +3444,6 @@ textarea {
   .cv-example-pair { grid-template-columns: 1fr; }
   .cv-example-arrow { display: none; }
   .cv-structure-grid { grid-template-columns: 1fr; }
-  .cv-document { padding: 2rem 1.5rem; }
   .cv-doc-entry-header { flex-direction: column; gap: 0; }
 
   /* Cover letter guide */
