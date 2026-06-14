@@ -341,20 +341,35 @@
        property on the same element is timing-dependent on iOS). */
     tl.from('.hero-lion img', { opacity: 0, scale: 0.94, duration: 1.6, ease: 'power2.out' }, 0);
 
-    /* ii) Headline: line-by-line unmask — each line rises out of its
+    /* ii) Eyebrow rises in just before the headline */
+    if (document.querySelector('.hero-eyebrow')) {
+      tl.from('.hero-eyebrow', { opacity: 0, y: 18, duration: 0.7, ease: 'power3.out' }, 0.3);
+    }
+
+    /* iii) Headline: line-by-line unmask — each line rises out of its
        clipped .hero-line row (spans are in the markup, not injected) */
     if (document.querySelector('.hero-line-inner')) {
       tl.from('.hero-line-inner', {
         yPercent: 110, duration: 0.95, stagger: 0.14, ease: 'power4.out',
-      }, '-=0.3');
+      }, '-=0.35');
     }
 
-    /* iv) CTAs */
+    /* iv) Gold rule draws out from centre, then the sub-line fades up */
+    if (document.querySelector('.hero-rule')) {
+      tl.from('.hero-rule', {
+        scaleX: 0, transformOrigin: 'center', duration: 0.7, ease: 'power3.out',
+      }, '-=0.2');
+    }
+    if (document.querySelector('.hero-sub')) {
+      tl.from('.hero-sub', { opacity: 0, y: 16, duration: 0.7, ease: 'power3.out' }, '-=0.45');
+    }
+
+    /* v) CTAs */
     tl.from('.hero-actions .btn', {
       opacity: 0, y: 14, duration: 0.5, stagger: 0.12, ease: 'power2.out',
-    }, '-=0.15');
+    }, '-=0.4');
 
-    /* v) Scroll indicator */
+    /* vi) Scroll indicator */
     tl.from('.hero-scroll', { opacity: 0, duration: 0.45 }, '-=0.2');
   }
 
@@ -765,7 +780,8 @@
        the IntersectionObserver in initScrollReveals; resetting them
        mid-animation is what caused visible flicker. */
     setTimeout(function () {
-      var selectors = '.hero-actions .btn, .hero-scroll, .stat-number, .page-header-numeral, ' +
+      var selectors = '.hero-eyebrow, .hero-rule, .hero-sub, .hero-actions .btn, .hero-scroll, ' +
+        '.stat-number, .page-header-numeral, ' +
         '.page-header-text .eyebrow, .page-header-text h1, .page-header-text p';
       document.querySelectorAll(selectors).forEach(function (el) {
         if (parseFloat(getComputedStyle(el).opacity) < 0.5) {
