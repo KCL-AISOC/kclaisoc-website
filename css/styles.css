@@ -290,7 +290,7 @@ section { padding-block: var(--section-gap); }
   .reveals-on .reveal,
   .reveals-on .reveal-left,
   .reveals-on .reveal-right,
-  .reveals-on .hero-line-inner {
+  .reveals-on .hero-word {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -917,15 +917,12 @@ footer {
   text-align: center;
 }
 
-/* Hero headline entrance — each line fades and rises. No overflow clip,
-   so descenders (g, y, the deep italic "Ordinary" tail) are never cut.
-   The hidden start is armed in CSS (below) before first paint so there is
-   no flash of the visible text before GSAP takes over on refresh. */
-.hero-line {
-  display: block;
-}
-
-.hero-line-inner {
+/* Hero headline entrance — word-by-word fade-and-rise (as the original
+   homepage did). No overflow clip anywhere, so descenders (g, y, the deep
+   italic "Ordinary" tail) are never cut. The words are real elements in
+   the markup and the hidden start is armed in CSS before first paint, so
+   there is no flash of visible text before GSAP takes over on refresh. */
+.hero-word {
   display: inline-block;
   will-change: transform, opacity;
 }
@@ -933,9 +930,9 @@ footer {
 /* Armed hidden state while JS is active; GSAP animates these to visible.
    Fallbacks (no GSAP / stalled / reduced motion) restore them — see the
    guard and safety net in main.js and the reduced-motion rule below. */
-.reveals-on .hero-line-inner {
+.reveals-on .hero-word {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
 }
 
 /* Generic line mask (Beyond Stocks and Bonds, the join CTA) — markup is

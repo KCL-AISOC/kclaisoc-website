@@ -19,7 +19,7 @@
       el.classList.add('is-revealed');
       el.style.animationDelay = '';
     });
-    document.querySelectorAll('.hero-line-inner').forEach(function (el) {
+    document.querySelectorAll('.hero-word').forEach(function (el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
@@ -43,7 +43,7 @@
     initNav();
     initScrollReveals();
     /* No GSAP to run the hero entrance, so reveal the armed headline lines. */
-    document.querySelectorAll('.hero-line-inner').forEach(function (el) {
+    document.querySelectorAll('.hero-word').forEach(function (el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
@@ -367,14 +367,15 @@
       tl.from('.hero-eyebrow', { opacity: 0, y: 18, duration: 0.7, ease: 'power3.out' }, 0.3);
     }
 
-    /* iii) Headline: each line fades and rises. fromTo matches the CSS
-       armed state (.reveals-on .hero-line-inner) exactly, so there is no
-       flash on refresh; clearProps leaves the text with no inline transform. */
-    if (document.querySelector('.hero-line-inner')) {
-      tl.fromTo('.hero-line-inner',
-        { opacity: 0, y: 28 },
-        { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out', clearProps: 'transform' },
-        '-=0.35');
+    /* iii) Headline: word-by-word fade-and-rise (the original homepage's
+       feel). fromTo matches the CSS armed state (.reveals-on .hero-word)
+       exactly, so there is no flash on refresh; clearProps leaves the
+       words with no inline transform. */
+    if (document.querySelector('.hero-word')) {
+      tl.fromTo('.hero-word',
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out', clearProps: 'transform' },
+        '-=0.3');
     }
 
     /* iv) Gold rule draws out from centre */
@@ -726,7 +727,9 @@
 
   /* ------------------------------------------------------------------
      10g. Magnetic button — the join CTA leans toward the cursor.
-     Wired only on hover-capable pointer devices via matchMedia below.
+     Horizontal only: moving it vertically would knock it out of line with
+     the button beside it (Our Story). x always returns to 0 on leave, so
+     the resting position is fixed and aligned. Pointer devices only.
      ------------------------------------------------------------------ */
   function initMagnetic() {
     document.querySelectorAll('.btn-magnetic').forEach(function (btn) {
@@ -734,8 +737,7 @@
       btn.addEventListener('mousemove', function (e) {
         var r = btn.getBoundingClientRect();
         var x = ((e.clientX - r.left) / r.width - 0.5) * 2;
-        var y = ((e.clientY - r.top) / r.height - 0.5) * 2;
-        gsap.to(btn, { x: x * strength, y: y * strength * 0.6, duration: 0.4, ease: 'power3.out' });
+        gsap.to(btn, { x: x * strength, y: 0, duration: 0.4, ease: 'power3.out' });
       });
       btn.addEventListener('mouseleave', function () {
         gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.45)' });
@@ -800,7 +802,7 @@
        the IntersectionObserver in initScrollReveals; resetting them
        mid-animation is what caused visible flicker. */
     setTimeout(function () {
-      var selectors = '.hero-eyebrow, .hero-rule, .hero-line-inner, .hero-actions .btn, .hero-scroll, ' +
+      var selectors = '.hero-eyebrow, .hero-rule, .hero-word, .hero-actions .btn, .hero-scroll, ' +
         '.stat-number, .page-header-numeral, ' +
         '.page-header-text .eyebrow, .page-header-text h1, .page-header-text p';
       document.querySelectorAll(selectors).forEach(function (el) {
