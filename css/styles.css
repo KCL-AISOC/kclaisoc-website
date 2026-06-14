@@ -503,11 +503,11 @@ section { padding-block: var(--section-gap); }
   position: relative;
 }
 
-.nav-links li:not(:last-child) a.active {
+.nav-links a.active:not(.nav-cta) {
   color: var(--gold);
 }
 
-.nav-links li:not(:last-child) a.active::after {
+.nav-links a.active:not(.nav-cta)::after {
   content: '';
   position: absolute;
   left: 0.85rem;
@@ -519,7 +519,7 @@ section { padding-block: var(--section-gap); }
 }
 
 /* Join: filled gold CTA, the nav's one primary action */
-.nav-links li:last-child a {
+.nav-links a.nav-cta {
   color: var(--deep-navy);
   background: linear-gradient(160deg, #DCC288 0%, var(--gold) 55%, #B59452 100%);
   border: 1px solid rgba(201, 169, 97, 0.55);
@@ -532,7 +532,7 @@ section { padding-block: var(--section-gap); }
   transition: transform var(--t-fast), box-shadow var(--t-fast), filter var(--t-fast);
 }
 
-.nav-links li:last-child a:hover {
+.nav-links a.nav-cta:hover {
   color: var(--deep-navy);
   filter: brightness(1.08);
   transform: translateY(-1px);
@@ -540,12 +540,12 @@ section { padding-block: var(--section-gap); }
 }
 
 /* Gold outline is invisible on a gold fill, so use a white ring instead */
-.nav-links li:last-child a:focus-visible {
+.nav-links a.nav-cta:focus-visible {
   outline: 2px solid var(--white);
   outline-offset: 2px;
 }
 
-.nav-links li:last-child a.active {
+.nav-links a.nav-cta.active {
   filter: brightness(1.05);
   box-shadow: 0 0 0 1px var(--gold), 0 2px 12px rgba(201, 169, 97, 0.35);
 }
@@ -917,12 +917,14 @@ footer {
 }
 
 /* Hero headline line unmask — each line rises out of a clipped row.
-   The padding/negative-margin pair stops descenders being clipped. */
+   The padding/negative-margin pair gives descenders (g, y, and the deep
+   italic "Ordinary" tail) room inside the clip box; the matching negative
+   margin keeps line spacing identical, so only clipping changes. */
 .hero-line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.07em;
-  margin-bottom: -0.07em;
+  padding-bottom: 0.26em;
+  margin-bottom: -0.26em;
 }
 
 .hero-line-inner {
@@ -935,8 +937,8 @@ footer {
 .lm-line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.08em;
-  margin-bottom: -0.08em;
+  padding-bottom: 0.22em;
+  margin-bottom: -0.22em;
 }
 
 .lm-inner {
@@ -3776,7 +3778,7 @@ textarea {
   .nav-links li a:hover,
   .nav-links li a.active { color: var(--gold); }
 
-  .nav-links li:last-child a {
+  .nav-links a.nav-cta {
     font-family: var(--font-sans);
     font-size: 0.68rem;
     font-weight: 700;
@@ -3793,13 +3795,13 @@ textarea {
     box-shadow: 0 2px 12px rgba(201, 169, 97, 0.3);
   }
 
-  .nav-links li:last-child a:hover {
+  .nav-links a.nav-cta:hover {
     color: var(--deep-navy);
     filter: brightness(1.08);
   }
 
   /* Inset the active underline to match the overlay's wider link padding */
-  .nav-links li:not(:last-child) a.active::after {
+  .nav-links a.active:not(.nav-cta)::after {
     left: 2rem;
     right: 2rem;
     bottom: 0.4rem;

@@ -53,12 +53,24 @@
   });
 
   /* Back/forward cache: when a page is restored from history (browser Back),
-     scripts do not re-run, so reveal elements can be left hidden and the page
-     looks blank. Force everything visible and recompute triggers. */
+     scripts do not re-run. The page is frozen exactly as it was left — so if
+     you navigated away while scrolled past the hero, the scrub-driven exit
+     state (faded headline, zoomed lion) and the page-transition fade are
+     restored and look stuck. Clear those frozen inline transforms, show all
+     content, then force ScrollTrigger to re-sync to the restored scroll. */
   window.addEventListener('pageshow', function (e) {
-    if (e.persisted) {
-      showAllContent();
-      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(true);
+    if (!e.persisted) return;
+    showAllContent();
+    if (document.querySelector('.hero')) {
+      gsap.set('.hero-lion', { scale: 1, xPercent: -50, yPercent: -50 });
+      gsap.set('.hero-inner', { clearProps: 'opacity,transform' });
+      gsap.set('.hero-bg', { clearProps: 'transform' });
+      var tk = document.querySelector('.hero-ticker');
+      if (tk) gsap.set(tk, { clearProps: 'opacity' });
+    }
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh(true);
+      ScrollTrigger.update();
     }
   });
 
