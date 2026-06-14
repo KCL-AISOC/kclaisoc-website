@@ -923,8 +923,8 @@ footer {
 .hero-line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.26em;
-  margin-bottom: -0.26em;
+  padding-bottom: 0.42em;
+  margin-bottom: -0.42em;
 }
 
 .hero-line-inner {
