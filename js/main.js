@@ -19,6 +19,10 @@
       el.classList.add('is-revealed');
       el.style.animationDelay = '';
     });
+    document.querySelectorAll('.hero-line-inner').forEach(function (el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
     ['main', 'footer', '.hero-inner', '.hero-bg'].forEach(function (sel) {
       var el = document.querySelector(sel);
       if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
@@ -38,6 +42,11 @@
   if (typeof gsap === 'undefined') {
     initNav();
     initScrollReveals();
+    /* No GSAP to run the hero entrance, so reveal the armed headline lines. */
+    document.querySelectorAll('.hero-line-inner').forEach(function (el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
     return;
   }
 
@@ -358,22 +367,21 @@
       tl.from('.hero-eyebrow', { opacity: 0, y: 18, duration: 0.7, ease: 'power3.out' }, 0.3);
     }
 
-    /* iii) Headline: line-by-line unmask — each line rises out of its
-       clipped .hero-line row (spans are in the markup, not injected) */
+    /* iii) Headline: each line fades and rises. fromTo matches the CSS
+       armed state (.reveals-on .hero-line-inner) exactly, so there is no
+       flash on refresh; clearProps leaves the text with no inline transform. */
     if (document.querySelector('.hero-line-inner')) {
-      tl.from('.hero-line-inner', {
-        yPercent: 110, duration: 0.95, stagger: 0.14, ease: 'power4.out',
-      }, '-=0.35');
+      tl.fromTo('.hero-line-inner',
+        { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out', clearProps: 'transform' },
+        '-=0.35');
     }
 
-    /* iv) Gold rule draws out from centre, then the sub-line fades up */
+    /* iv) Gold rule draws out from centre */
     if (document.querySelector('.hero-rule')) {
       tl.from('.hero-rule', {
         scaleX: 0, transformOrigin: 'center', duration: 0.7, ease: 'power3.out',
       }, '-=0.2');
-    }
-    if (document.querySelector('.hero-sub')) {
-      tl.from('.hero-sub', { opacity: 0, y: 16, duration: 0.7, ease: 'power3.out' }, '-=0.45');
     }
 
     /* v) CTAs */
@@ -792,7 +800,7 @@
        the IntersectionObserver in initScrollReveals; resetting them
        mid-animation is what caused visible flicker. */
     setTimeout(function () {
-      var selectors = '.hero-eyebrow, .hero-rule, .hero-sub, .hero-actions .btn, .hero-scroll, ' +
+      var selectors = '.hero-eyebrow, .hero-rule, .hero-line-inner, .hero-actions .btn, .hero-scroll, ' +
         '.stat-number, .page-header-numeral, ' +
         '.page-header-text .eyebrow, .page-header-text h1, .page-header-text p';
       document.querySelectorAll(selectors).forEach(function (el) {
@@ -801,9 +809,9 @@
           el.style.transform = 'none';
         }
       });
-      /* Masked lines hide via translateY inside a clipped row (opacity stays
-         1), so check the transform rather than opacity for these. */
-      document.querySelectorAll('.hero-line-inner, .lm-inner').forEach(function (el) {
+      /* The .lm-inner masked lines hide via translateY inside a clipped row
+         (opacity stays 1), so check the transform rather than opacity. */
+      document.querySelectorAll('.lm-inner').forEach(function (el) {
         try {
           var t = getComputedStyle(el).transform;
           if (t && t !== 'none' && Math.abs(new DOMMatrixReadOnly(t).m42) > 2) {

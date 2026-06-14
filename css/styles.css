@@ -289,7 +289,8 @@ section { padding-block: var(--section-gap); }
 @media (prefers-reduced-motion: reduce) {
   .reveals-on .reveal,
   .reveals-on .reveal-left,
-  .reveals-on .reveal-right {
+  .reveals-on .reveal-right,
+  .reveals-on .hero-line-inner {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -916,20 +917,25 @@ footer {
   text-align: center;
 }
 
-/* Hero headline line unmask — each line rises out of a clipped row.
-   The padding/negative-margin pair gives descenders (g, y, and the deep
-   italic "Ordinary" tail) room inside the clip box; the matching negative
-   margin keeps line spacing identical, so only clipping changes. */
+/* Hero headline entrance — each line fades and rises. No overflow clip,
+   so descenders (g, y, the deep italic "Ordinary" tail) are never cut.
+   The hidden start is armed in CSS (below) before first paint so there is
+   no flash of the visible text before GSAP takes over on refresh. */
 .hero-line {
   display: block;
-  overflow: hidden;
-  padding-bottom: 0.42em;
-  margin-bottom: -0.42em;
 }
 
 .hero-line-inner {
   display: inline-block;
-  will-change: transform;
+  will-change: transform, opacity;
+}
+
+/* Armed hidden state while JS is active; GSAP animates these to visible.
+   Fallbacks (no GSAP / stalled / reduced motion) restore them — see the
+   guard and safety net in main.js and the reduced-motion rule below. */
+.reveals-on .hero-line-inner {
+  opacity: 0;
+  transform: translateY(28px);
 }
 
 /* Generic line mask (Beyond Stocks and Bonds, the join CTA) — markup is
