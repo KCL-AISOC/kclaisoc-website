@@ -176,11 +176,14 @@
       background: #fff;
       border: 1px solid rgba(7, 22, 48, 0.1);
       padding: 0.95rem 1.25rem;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
     }
 
+    /* Thin gold line and soft glow on hover, shared with the tracker and portal
+       boxes so every card on the page reacts the same way. */
     .wtl-account:hover {
-      border-color: rgba(201, 169, 97, 0.5);
+      border-color: var(--gold);
+      box-shadow: 0 6px 28px rgba(7, 22, 48, 0.07);
     }
 
     .wtl-platform {
@@ -274,6 +277,13 @@
       background: #fff;
       border: 1px solid rgba(7, 22, 48, 0.1);
       padding: 1.6rem;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    /* Same thin gold line and soft glow on hover as the account and tracker boxes. */
+    .wtl-portal:hover {
+      border-color: var(--gold);
+      box-shadow: 0 6px 28px rgba(7, 22, 48, 0.07);
     }
 
     .wtl-portal h3 {
@@ -650,7 +660,7 @@
             <div class="wtl-portal reveal">
               <h3>King's CareerConnect</h3>
               <p>KCL's own jobs and placements portal. Employers post listings here that are exclusive to KCL students, and some early access schemes never get advertised publicly. Set up your profile in the first few weeks of first year.</p>
-              <a href="https://careerconnect.kcl.ac.uk"
+              <a href="https://www.kcl.ac.uk/careerconnect"
                  class="btn btn-outline"
                  target="_blank" rel="noopener noreferrer">Open Portal</a>
             </div>
@@ -726,7 +736,7 @@
                 </div>
               </div>
 
-              <!-- Spring Weeks: apply Sep–Nov (cols 1–3), runs Mar–May (cols 7–9) -->
+              <!-- Spring Weeks: apply Sep to Nov (cols 1 to 4), runs Mar to May (cols 7 to 10) -->
               <div class="wtl-tl-row">
                 <div class="wtl-tl-label">
                   Spring Weeks
@@ -738,7 +748,7 @@
                 </div>
               </div>
 
-              <!-- Insight Days: peak Sep–Jan (cols 1–5), rolling Feb–Aug (cols 6–12) -->
+              <!-- Insight Days: peak Sep to Jan (cols 1 to 6), rolling Feb to Aug (cols 6 to 13) -->
               <div class="wtl-tl-row">
                 <div class="wtl-tl-label">
                   Insight Days
@@ -750,7 +760,7 @@
                 </div>
               </div>
 
-              <!-- Summer Internships: apply Sep–Dec (cols 1–4), runs Jun–Aug (cols 10–12) -->
+              <!-- Summer Internships: apply Sep to Dec (cols 1 to 5), runs Jun to Aug (cols 10 to 13) -->
               <div class="wtl-tl-row">
                 <div class="wtl-tl-label">
                   Summer Internships
@@ -762,7 +772,7 @@
                 </div>
               </div>
 
-              <!-- Graduate Roles: peak Sep–Nov (cols 1–3), year-round Dec–Aug (cols 4–12) -->
+              <!-- Graduate Roles: peak Sep to Nov (cols 1 to 4), then rolling Dec to Aug (cols 4 to 13) -->
               <div class="wtl-tl-row">
                 <div class="wtl-tl-label">
                   Graduate Roles
