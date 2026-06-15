@@ -73,9 +73,15 @@ var MEMBERS_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7vrVQ
     return Math.max(0, lines.length - 1);
   }
 
+  function signalReady() {
+    window.__memberCountReady = true;
+    document.dispatchEvent(new CustomEvent('memberCountReady'));
+  }
+
   async function fetchMemberCount() {
     if (!MEMBERS_SHEET_URL || MEMBERS_SHEET_URL.trim() === '') {
       updateMemberCount(FALLBACK_COUNT);
+      signalReady();
       return;
     }
 
@@ -97,6 +103,8 @@ var MEMBERS_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7vrVQ
       // Network error, CORS issue, or sheet not published - use fallback
       updateMemberCount(FALLBACK_COUNT);
     }
+
+    signalReady();
   }
 
   if (document.readyState === 'loading') {

@@ -403,12 +403,13 @@
     var statsBar = document.querySelector('.stats-bar');
     if (!statsBar) return;
 
-    var fired = false;
+    var intersected = false;
+    var countReady = window.__memberCountReady || false;
+    var animationRun = false;
 
-    var observer = new IntersectionObserver(function (entries) {
-      if (fired || !entries[0].isIntersecting) return;
-      fired = true;
-      observer.disconnect();
+    function runAnimations() {
+      if (animationRun || !intersected || !countReady) return;
+      animationRun = true;
 
       /* Member count (live from Google Sheets via home.js, fallback 60) */
       var memberEl = document.getElementById('member-count');
@@ -445,6 +446,27 @@
 
       /* The founded year ("April 2026") is plain text revealed with its stat
          item, so it is always visible and needs no separate animation here. */
+    }
+
+    /* Wait for home.js to resolve the live count before animating, so the
+       animation targets the real fetched value rather than the HTML fallback. */
+    document.addEventListener('memberCountReady', function () {
+      countReady = true;
+      runAnimations();
+    }, { once: true });
+
+    /* Fallback: if home.js never fires the event (e.g. page cached without it),
+       run with whatever data-count is set to after 3 s. */
+    setTimeout(function () {
+      countReady = true;
+      runAnimations();
+    }, 3000);
+
+    var observer = new IntersectionObserver(function (entries) {
+      if (intersected || !entries[0].isIntersecting) return;
+      intersected = true;
+      observer.disconnect();
+      runAnimations();
     }, { threshold: 0.25 });
 
     observer.observe(statsBar);
