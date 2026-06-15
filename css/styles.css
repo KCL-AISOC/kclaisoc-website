@@ -778,6 +778,16 @@ footer {
   letter-spacing: 0.08em;
 }
 
+.footer-privacy-link {
+  color: rgba(255, 255, 255, 0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-privacy-link:hover {
+  color: var(--gold);
+}
+
 /* --------------------------------------------------------------------------
    9. Page Header (inner pages)
    -------------------------------------------------------------------------- */
