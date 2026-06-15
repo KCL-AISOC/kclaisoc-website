@@ -18,16 +18,34 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm reveal animations only when JavaScript runs; a failsafe shows all
-       content if the animation library never initialises, so nothing stays hidden. -->
+  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
+       so content is hidden only while JavaScript is present to bring it back.
+       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
+       soon as the Fraunces display font is ready (so the large headline never
+       reflows when the font swaps in), capped so it never waits, and a load
+       failsafe guarantees nothing can stay hidden if scripts fail. -->
   <script>
     (function () {
       var d = document.documentElement;
       d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
       window.addEventListener('load', function () {
+        playHero();
         setTimeout(function () {
           if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 1200);
+        }, 600);
       });
     })();
   </script>
@@ -86,18 +104,11 @@
           <span class="hero-word">Investing</span> <span class="hero-word">Beyond</span><br>
           <span class="hero-word">the</span> <span class="hero-word hero-accent">Ordinary</span>
         </h1>
-        <div class="hero-rule" aria-hidden="true"></div>
 
         <div class="hero-actions">
-          <a href="join.html" class="btn btn-primary btn-magnetic">Join the Society</a>
+          <a href="join.html" class="btn btn-primary">Join the Society</a>
           <a href="about.html" class="btn btn-secondary">Our Story</a>
         </div>
-      </div>
-
-      <!-- Scroll cue -->
-      <div class="hero-scroll" aria-hidden="true">
-        <span class="hero-scroll-label">Scroll</span>
-        <span class="hero-scroll-line"></span>
       </div>
 
       <!-- Marquee ticker -->
@@ -166,7 +177,7 @@
 
           <div class="about-preview-text">
             <span class="eyebrow">Who We Are</span>
-            <h2 id="about-preview-heading" class="line-mask">
+            <h2 id="about-preview-heading" class="reveal">
               Beyond Stocks<br>and Bonds
             </h2>
             <div class="gold-rule reveal reveal-delay-1" aria-hidden="true"></div>
@@ -261,13 +272,13 @@
     <section class="page-cta" aria-labelledby="home-cta-heading">
       <div class="container container--narrow">
         <span class="eyebrow">Get Involved</span>
-        <h2 id="home-cta-heading" class="line-mask">Ready to go beyond the ordinary?</h2>
+        <h2 id="home-cta-heading" class="reveal">Ready to go beyond the ordinary?</h2>
         <p class="reveal reveal-delay-1">
           Join KCL's only society dedicated to alternative investments.
           No prior finance experience required.
         </p>
         <div class="reveal reveal-delay-2">
-          <a href="join.html" class="btn btn-primary btn-magnetic">Join the Society</a>
+          <a href="join.html" class="btn btn-primary btn-magnetic btn-magnetic-xy">Join the Society</a>
         </div>
       </div>
     </section>

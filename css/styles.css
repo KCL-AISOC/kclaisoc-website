@@ -289,8 +289,7 @@ section { padding-block: var(--section-gap); }
 @media (prefers-reduced-motion: reduce) {
   .reveals-on .reveal,
   .reveals-on .reveal-left,
-  .reveals-on .reveal-right,
-  .reveals-on .hero-word {
+  .reveals-on .reveal-right {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -917,36 +916,67 @@ footer {
   text-align: center;
 }
 
-/* Hero headline entrance — word-by-word fade-and-rise (as the original
-   homepage did). No overflow clip anywhere, so descenders (g, y, the deep
-   italic "Ordinary" tail) are never cut. The words are real elements in
-   the markup and the hidden start is armed in CSS before first paint, so
-   there is no flash of visible text before GSAP takes over on refresh. */
+/* Hero headline entrance, word by word fade and rise. No overflow clip
+   anywhere, so descenders (g, y, the deep italic "Ordinary" tail) are never
+   cut. The words are real elements in the markup. The entrance is driven by
+   pure CSS so it never waits on the deferred GSAP bundle: the head script
+   arms the hidden start state (.hero-armed) before first paint, then adds
+   .hero-in once the Fraunces font is ready so the big headline cannot reflow
+   mid animation. animation-fill-mode both holds the visible end state, so the
+   words stay shown for the life of the page even though .hero-armed remains. */
 .hero-word {
   display: inline-block;
   will-change: transform, opacity;
 }
 
-/* Armed hidden state while JS is active; GSAP animates these to visible.
-   Fallbacks (no GSAP / stalled / reduced motion) restore them — see the
-   guard and safety net in main.js and the reduced-motion rule below. */
-.reveals-on .hero-word {
+/* Armed hidden start state, only while JS is live. */
+.hero-armed .hero-eyebrow,
+.hero-armed .hero-word {
   opacity: 0;
   transform: translateY(24px);
 }
 
-/* Generic line mask (Beyond Stocks and Bonds, the join CTA) — markup is
-   transformed by initLineMasks() in main.js */
-.lm-line {
-  display: block;
-  overflow: hidden;
-  padding-bottom: 0.22em;
-  margin-bottom: -0.22em;
+/* Buttons fade only (no transform) so the press scale on .btn:active is never
+   locked by the entrance animation, and so they cannot rest out of place. */
+.hero-armed .hero-actions .btn {
+  opacity: 0;
 }
 
-.lm-inner {
-  display: inline-block;
-  will-change: transform;
+/* Play: eyebrow leads, the four words rise in sequence, the actions settle
+   last, as one continuous motion. */
+.hero-in .hero-eyebrow {
+  animation: heroRise 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.hero-in .hero-word {
+  animation: heroRise 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.08s both;
+}
+.hero-in .hero-word:nth-of-type(2) { animation-delay: 0.16s; }
+.hero-in .hero-word:nth-of-type(3) { animation-delay: 0.24s; }
+.hero-in .hero-word:nth-of-type(4) { animation-delay: 0.32s; }
+.hero-in .hero-actions .btn {
+  animation: heroFade 0.6s ease 0.44s both;
+}
+.hero-in .hero-actions .btn:nth-child(2) { animation-delay: 0.54s; }
+
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Reduced motion, or any fallback, shows the hero immediately and static. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-armed .hero-eyebrow,
+  .hero-armed .hero-word,
+  .hero-armed .hero-actions .btn {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
 }
 
 /* Screen-reader-only text */
@@ -963,7 +993,6 @@ footer {
 }
 
 .hero-eyebrow,
-.hero-rule,
 .hero-sub,
 .hero-actions {
   will-change: transform, opacity;
@@ -994,14 +1023,6 @@ footer {
   margin-bottom: 0;
 }
 
-.hero-rule {
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
-  margin-block: 2rem;
-  opacity: 0.8;
-}
-
 .hero-sub {
   font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   color: rgba(255, 255, 255, 0.55);
@@ -1019,45 +1040,9 @@ footer {
   margin-top: 2.75rem;
 }
 
-/* Scroll indicator */
-.hero-scroll {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  z-index: 2;
-}
-
-.hero-scroll-line {
-  width: 1px;
-  height: 44px;
-  background: linear-gradient(to bottom, transparent, rgba(201, 169, 97, 0.6));
-  animation: scrollPulse 2.4s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.35; }
-  50%       { opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-scroll-line { animation: none; }
-}
-
-/* Magnetic CTA button — translated toward the cursor by main.js on
-   pointer devices only */
+/* Magnetic CTA button, translated toward the cursor by main.js on pointer
+   devices only. The bottom CTA carries .btn-magnetic-xy for both axes. */
 .btn-magnetic { will-change: transform; }
-
-.hero-scroll-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(201, 169, 97, 0.5);
-}
 
 /* Ambient gold aurora behind the lion — pure CSS, transform/opacity only,
    so it stays on the GPU. Sits above the background, below the lion mark. */
@@ -3812,7 +3797,6 @@ textarea {
 
   /* Hero */
   .hero-inner { padding-block: 3rem; }
-  .hero-scroll { display: none; }
   .hero-headline { font-size: clamp(2.8rem, 13vw, 4.5rem); }
   .hero-lion {
     width: clamp(300px, 88vw, 480px);

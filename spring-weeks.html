@@ -15,16 +15,34 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm reveal animations only when JavaScript runs; a failsafe shows all
-       content if the animation library never initialises, so nothing stays hidden. -->
+  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
+       so content is hidden only while JavaScript is present to bring it back.
+       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
+       soon as the Fraunces display font is ready (so the large headline never
+       reflows when the font swaps in), capped so it never waits, and a load
+       failsafe guarantees nothing can stay hidden if scripts fail. -->
   <script>
     (function () {
       var d = document.documentElement;
       d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
       window.addEventListener('load', function () {
+        playHero();
         setTimeout(function () {
           if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 1200);
+        }, 600);
       });
     })();
   </script>

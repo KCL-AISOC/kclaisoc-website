@@ -70,6 +70,10 @@
   window.addEventListener('pageshow', function (e) {
     if (!e.persisted) return;
     showAllContent();
+    /* The hero entrance is CSS driven and has already finished; keep it shown
+       and clear the page transition fade that bfcache froze at opacity 0. */
+    docEl.classList.add('hero-in');
+    gsap.set(['main', 'footer'], { clearProps: 'opacity,transform' });
     if (document.querySelector('.hero')) {
       gsap.set('.hero-lion', { scale: 1, xPercent: -50, yPercent: -50 });
       gsap.set('.hero-inner', { clearProps: 'opacity,transform' });
@@ -217,16 +221,10 @@
      3. Page Transitions (fade out on leave, fade in on load)
      ------------------------------------------------------------------ */
   function initPageTransitions() {
-    /* Fade in on load, desktop only. On mobile skipping this prevents
-       GSAP from setting main to opacity:0 and leaving hero content invisible */
-    if (window.innerWidth > 768) {
-      gsap.from('main, footer', {
-        opacity: 0,
-        duration: 0.35,
-        ease: 'power1.out',
-        clearProps: 'opacity',
-      });
-    }
+    /* No fade in on load. The page paints immediately and section reveals plus
+       the CSS hero entrance handle the arrival, so nothing fades the whole
+       main region (which previously competed with the hero entrance and could
+       flash on a slow script load). Only the fade out on leaving remains. */
 
     /* Fade out on internal link click */
     document.addEventListener('click', function (e) {
@@ -264,14 +262,6 @@
      page is never blank; elements below the fold animate as they scroll in.
      Cards reveal one after another (subtle stagger) on every page.
      ------------------------------------------------------------------ */
-  function inViewOnLoad(el) {
-    var r = el.getBoundingClientRect();
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    /* Treat anything whose top sits within the viewport (plus a small margin)
-       as on-screen at load so it reveals straight away. */
-    return r.top < vh * 0.92 && r.bottom > 0;
-  }
-
   function initScrollReveals() {
     var els = Array.prototype.slice.call(
       document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
@@ -343,56 +333,11 @@
   }
 
   /* ------------------------------------------------------------------
-     5. Hero Entrance Sequence (index.html only)
+     5. Hero entrance is CSS driven (see styles.css and the head script).
+     It is decoupled from GSAP on purpose so the headline appears as soon as
+     the font is ready, without waiting on the deferred GSAP bundle. The lion
+     centring it used to do is handled in initParallax below.
      ------------------------------------------------------------------ */
-  function initHero() {
-    var hero = document.querySelector('.hero');
-    if (!hero) return;
-
-    /* Centre lion before timeline starts (prevents transform conflict with scroll scale) */
-    var lionEl = document.querySelector('.hero-lion');
-    if (lionEl) gsap.set(lionEl, { xPercent: -50, yPercent: -50 });
-
-    var tl = gsap.timeline({ delay: 0.05 });
-
-    /* i) Background + lion fade in together */
-    tl.from('.hero-bg', { opacity: 0, duration: 1, ease: 'power1.out' });
-    /* Entrance animates the img so it never fights the wrapper's
-       scroll-scrub scale tween in initParallax (two tweens writing the same
-       property on the same element is timing-dependent on iOS). */
-    tl.from('.hero-lion img', { opacity: 0, scale: 0.94, duration: 1.6, ease: 'power2.out' }, 0);
-
-    /* ii) Eyebrow rises in just before the headline */
-    if (document.querySelector('.hero-eyebrow')) {
-      tl.from('.hero-eyebrow', { opacity: 0, y: 18, duration: 0.7, ease: 'power3.out' }, 0.3);
-    }
-
-    /* iii) Headline: word-by-word fade-and-rise (the original homepage's
-       feel). fromTo matches the CSS armed state (.reveals-on .hero-word)
-       exactly, so there is no flash on refresh; clearProps leaves the
-       words with no inline transform. */
-    if (document.querySelector('.hero-word')) {
-      tl.fromTo('.hero-word',
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out', clearProps: 'transform' },
-        '-=0.3');
-    }
-
-    /* iv) Gold rule draws out from centre */
-    if (document.querySelector('.hero-rule')) {
-      tl.from('.hero-rule', {
-        scaleX: 0, transformOrigin: 'center', duration: 0.7, ease: 'power3.out',
-      }, '-=0.2');
-    }
-
-    /* v) CTAs */
-    tl.from('.hero-actions .btn', {
-      opacity: 0, y: 14, duration: 0.5, stagger: 0.12, ease: 'power2.out',
-    }, '-=0.4');
-
-    /* vi) Scroll indicator */
-    tl.from('.hero-scroll', { opacity: 0, duration: 0.45 }, '-=0.2');
-  }
 
   /* ------------------------------------------------------------------
      6. Hero Parallax (index.html only)
@@ -633,26 +578,10 @@
   }
 
   /* ------------------------------------------------------------------
-     10c. Line masks — headings whose lines rise out of clipped rows.
-     Splits .line-mask elements on <br> into .lm-line/.lm-inner pairs.
+     10c. Headings now use the shared .reveal fade up (see initScrollReveals),
+     so every page and section reveals with one uniform motion. The old line
+     mask split, which snapped its rows, has been removed.
      ------------------------------------------------------------------ */
-  function initLineMasks() {
-    gsap.utils.toArray('.line-mask').forEach(function (el) {
-      var lines = el.innerHTML.split(/<br\s*\/?>/i);
-      el.innerHTML = lines.map(function (line) {
-        return '<span class="lm-line"><span class="lm-inner">' + line.trim() + '</span></span>';
-      }).join('');
-
-      var inners = el.querySelectorAll('.lm-inner');
-      var vars = { yPercent: 110, duration: 0.85, stagger: 0.12, ease: 'power4.out' };
-      if (inViewOnLoad(el)) {
-        gsap.from(inners, vars);
-      } else {
-        vars.scrollTrigger = { trigger: el, start: 'top 85%', once: true };
-        gsap.from(inners, vars);
-      }
-    });
-  }
 
   /* ------------------------------------------------------------------
      10d. Stats rule — a full-gold hairline ruled across the strip as it
@@ -726,18 +655,23 @@
   }
 
   /* ------------------------------------------------------------------
-     10g. Magnetic button — the join CTA leans toward the cursor.
-     Horizontal only: moving it vertically would knock it out of line with
-     the button beside it (Our Story). x always returns to 0 on leave, so
-     the resting position is fixed and aligned. Pointer devices only.
+     10g. Magnetic button, leans toward the cursor on pointer devices only.
+     By default it moves on the horizontal axis only (the nav Join link), so a
+     button sitting in a row stays level with its neighbour. A button marked
+     .btn-magnetic-xy (the bottom CTA, which stands alone) also follows the
+     cursor vertically. Both axes always return to 0 on leave, so the resting
+     position is fixed. The top hero button is deliberately not magnetic, so it
+     stays baseline aligned with Our Story.
      ------------------------------------------------------------------ */
   function initMagnetic() {
     document.querySelectorAll('.btn-magnetic').forEach(function (btn) {
+      var bothAxes = btn.classList.contains('btn-magnetic-xy');
       var strength = 16;
       btn.addEventListener('mousemove', function (e) {
         var r = btn.getBoundingClientRect();
         var x = ((e.clientX - r.left) / r.width - 0.5) * 2;
-        gsap.to(btn, { x: x * strength, y: 0, duration: 0.4, ease: 'power3.out' });
+        var y = bothAxes ? ((e.clientY - r.top) / r.height - 0.5) * 2 : 0;
+        gsap.to(btn, { x: x * strength, y: y * strength, duration: 0.4, ease: 'power3.out' });
       });
       btn.addEventListener('mouseleave', function () {
         gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.45)' });
@@ -765,10 +699,8 @@
        and reveals as desktop. A safety net in init() force-shows anything
        that stalls. */
     mm.add('(prefers-reduced-motion: no-preference)', function () {
-      initHero();
       initParallax();
       initTicker();
-      initLineMasks();
       initScrollReveals();
       initPageHeader();
       initStatCounters();
@@ -796,30 +728,19 @@
     initPageTransitions();
     initAnimations();
 
-    /* Safety net: after 2.5 s, force-show anything a GSAP entrance tween may
-       have left at opacity 0 (hero lines, CTAs, page-header sequence).
-       Scroll reveals are NOT touched here — they are owned exclusively by
-       the IntersectionObserver in initScrollReveals; resetting them
-       mid-animation is what caused visible flicker. */
+    /* Safety net: after 2.5 s, force-show anything an entrance may have left at
+       opacity 0 (hero lines, CTAs, page-header sequence). The hero entrance is
+       CSS driven, but this still covers the rare case where its play class is
+       never added. Scroll reveals are NOT touched here, they are owned solely
+       by the IntersectionObserver in initScrollReveals; resetting them mid
+       animation is what caused visible flicker. */
     setTimeout(function () {
-      var selectors = '.hero-eyebrow, .hero-rule, .hero-word, .hero-actions .btn, .hero-scroll, ' +
+      var selectors = '.hero-eyebrow, .hero-word, .hero-actions .btn, ' +
         '.stat-number, .page-header-numeral, ' +
         '.page-header-text .eyebrow, .page-header-text h1, .page-header-text p';
       document.querySelectorAll(selectors).forEach(function (el) {
         if (parseFloat(getComputedStyle(el).opacity) < 0.5) {
           el.style.opacity = '1';
-          el.style.transform = 'none';
-        }
-      });
-      /* The .lm-inner masked lines hide via translateY inside a clipped row
-         (opacity stays 1), so check the transform rather than opacity. */
-      document.querySelectorAll('.lm-inner').forEach(function (el) {
-        try {
-          var t = getComputedStyle(el).transform;
-          if (t && t !== 'none' && Math.abs(new DOMMatrixReadOnly(t).m42) > 2) {
-            el.style.transform = 'none';
-          }
-        } catch (e) {
           el.style.transform = 'none';
         }
       });
