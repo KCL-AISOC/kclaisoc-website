@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KCL AISOC | Cold Outreach Explained: how to reach firms that never advertise, find small firms on LinkedIn, and turn a cold email, call or coffee chat into a real opportunity.">
+  <title>Cold Outreach Explained | KCL AISOC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A1F44">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
+      window.addEventListener('load', function () {
+        playHero();
+        setTimeout(function () {
+          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
+        }, 600);
+      });
+    })();
+  </script>
+  <style>
+    .co-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    .co-section {
+      padding: 3.5rem 0;
+      border-top: 1px solid rgba(201, 169, 97, 0.18);
+    }
+
+    .co-section-head {
+      margin-bottom: 2rem;
+    }
+
+    .co-section-index {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 5vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1;
+      color: rgba(201, 169, 97, 0.35);
+      margin-bottom: 0.45rem;
+    }
+
+    .co-section-head .eyebrow {
+      margin-bottom: 0.5rem;
+    }
+
+    .co-rule {
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.65rem 0 0.85rem;
+    }
+
+    .co-section-lead {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(7, 22, 48, 0.65);
+      max-width: 64ch;
+      margin-top: 0.6rem;
+    }
+
+    .co-callout {
+      background: var(--navy);
+      color: #fff;
+      border-left: 3px solid var(--gold);
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .co-callout h2 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .co-callout ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .co-callout li {
+      position: relative;
+      padding-left: 1.35rem;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .co-callout li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .co-accordion {
+      margin-top: 1.6rem;
+    }
+
+    .co-step {
+      background: #fff;
+      border: 1px solid rgba(7, 22, 48, 0.1);
+      margin-bottom: 0.6rem;
+    }
+
+    .co-step-head {
+      margin: 0;
+    }
+
+    .co-step-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .co-step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--gold-faint);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .co-step-title {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.02rem;
+      color: var(--navy);
+      flex: 1;
+    }
+
+    .co-step-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      position: relative;
+    }
+
+    .co-step-icon::before {
+      content: '+';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      transition: transform 0.2s ease;
+    }
+
+    .co-step-btn[aria-expanded="true"] .co-step-icon::before {
+      transform: rotate(45deg);
+    }
+
+    .co-step-btn:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: -2px;
+    }
+
+    .co-step-body {
+      padding: 0 1.1rem 1.1rem 3.1rem;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(7, 22, 48, 0.72);
+    }
+
+    .co-accordion.is-init .co-step-body {
+      display: none;
+    }
+
+    .co-accordion.is-init .co-step-body.is-open {
+      display: block;
+    }
+
+    .co-channel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .co-channel-card {
+      background: #fff;
+      border: 1px solid rgba(7, 22, 48, 0.1);
+      border-top: 3px solid var(--gold);
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .co-channel-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 6px 28px rgba(7, 22, 48, 0.07);
+    }
+
+    .co-channel-letter {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .co-channel-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin: 0;
+    }
+
+    .co-channel-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: rgba(7, 22, 48, 0.68);
+      flex: 1;
+    }
+
+    .co-channel-note {
+      margin-top: 0.35rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(7, 22, 48, 0.07);
+      font-family: var(--font-sans);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(7, 22, 48, 0.38);
+    }
+
+    .co-sample {
+      background: var(--cream);
+      border: 1px solid rgba(201, 169, 97, 0.35);
+      border-left: 3px solid var(--gold);
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      margin-top: 1.5rem;
+      max-width: 68ch;
+    }
+
+    .co-sample-label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.9rem;
+    }
+
+    .co-sample p {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: rgba(7, 22, 48, 0.78);
+      margin: 0 0 0.65rem;
+    }
+
+    .co-sample p:last-child {
+      margin-bottom: 0;
+    }
+
+    .co-ph {
+      color: #8a6d1a;
+      font-style: italic;
+    }
+
+    .co-dnd-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .co-dnd-col h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 0.9rem;
+    }
+
+    .co-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .co-list li {
+      position: relative;
+      padding-left: 1.35rem;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: rgba(7, 22, 48, 0.7);
+    }
+
+    .co-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.58em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .co-dont-col .co-list li::before {
+      background: rgba(7, 22, 48, 0.22);
+    }
+
+    .co-closing {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: rgba(7, 22, 48, 0.72);
+      max-width: 64ch;
+      margin-top: 0.6rem;
+    }
+
+    .co-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .co-back {
+      margin-top: 1.75rem;
+    }
+
+    @media (max-width: 640px) {
+      .co-dnd-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .co-step-icon::before {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html" class="active">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Opportunities</span>
+          <h1>Cold Outreach, Explained</h1>
+          <p>How to reach firms that never advertise, and turn a message into a meeting. In plain English.</p>
+        </div>
+        <span class="page-header-numeral" aria-hidden="true">04</span>
+      </div>
+    </header>
+
+    <section class="co-body">
+      <div class="container">
+
+        <div class="co-callout reveal">
+          <h2>The 30 second version</h2>
+          <ul>
+            <li>Big firms hire through schemes, so cold outreach works best on small firms, boutiques and search funds.</li>
+            <li>Find them on LinkedIn by filtering for location, industry and a small company size, then research one at a time.</li>
+            <li>Reach out by email, by phone, or through a warm LinkedIn connection, and always make it personal and short.</li>
+          </ul>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">01</span>
+            <span class="eyebrow">Section 1</span>
+            <h2>Why cold outreach works</h2>
+            <div class="co-rule"></div>
+            <p class="co-section-lead">Large firms recruit through structured programmes, so a cold email to a big bank usually goes nowhere. Smaller firms are different. Many boutiques, search funds and alternative investment shops have no formal scheme at all. They hire when they meet someone good. That is exactly where a sharp, personal message can create an opportunity that was never posted on any job board. So the whole game is to target small.</p>
+          </div>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">02</span>
+            <span class="eyebrow">Section 2</span>
+            <h2>Find the firms</h2>
+            <div class="co-rule"></div>
+            <p class="co-section-lead">Use LinkedIn to build a list of small firms in the area you care about. Work through it one firm at a time.</p>
+          </div>
+
+          <div class="co-accordion reveal">
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s2-1">
+                  <span class="co-step-num" aria-hidden="true">1</span>
+                  <span class="co-step-title">Go to LinkedIn and switch results to Companies</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s2-1">
+                <p>Go to LinkedIn, search a term, then switch the results filter to Companies.</p>
+              </div>
+            </div>
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s2-2">
+                  <span class="co-step-num" aria-hidden="true">2</span>
+                  <span class="co-step-title">Filter Location to United Kingdom, then London</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s2-2">
+                <p>Filter Location to United Kingdom, then narrow to London.</p>
+              </div>
+            </div>
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s2-3">
+                  <span class="co-step-num" aria-hidden="true">3</span>
+                  <span class="co-step-title">Filter Industry to the area you want</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s2-3">
+                <p>Filter Industry to the area you want, for example investment banking, private equity or asset management.</p>
+              </div>
+            </div>
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s2-4">
+                  <span class="co-step-num" aria-hidden="true">4</span>
+                  <span class="co-step-title">Filter Company size to small</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s2-4">
+                <p>Filter Company size to small, choosing 1 to 10 employees and 11 to 50 employees. Small firms are where cold outreach actually lands.</p>
+              </div>
+            </div>
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s2-5">
+                  <span class="co-step-num" aria-hidden="true">5</span>
+                  <span class="co-step-title">Work through the list one firm at a time</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s2-5">
+                <p>Work through the list one firm at a time, rather than blasting everyone at once.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">03</span>
+            <span class="eyebrow">Section 3</span>
+            <h2>Vet the firm first</h2>
+            <div class="co-rule"></div>
+            <p class="co-section-lead">Before you reach out, open the firm's About section on LinkedIn and read it properly. Ask yourself one question: does what they do match what I am interested in? If yes, go to their website to confirm and to find a way in. If no, move on. A few well researched messages beat fifty generic ones.</p>
+          </div>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">04</span>
+            <span class="eyebrow">Section 4</span>
+            <h2>Three ways in</h2>
+            <div class="co-rule"></div>
+            <p class="co-section-lead">There are three channels. Pick the strongest one available for each firm.</p>
+          </div>
+
+          <div class="co-channel-grid">
+
+            <div class="co-channel-card reveal">
+              <span class="co-channel-letter">Option A</span>
+              <h3>The general email</h3>
+              <p class="co-channel-desc">Find the contact address on the website, often an info or careers inbox. Send a short, personal, well aimed email. This is the easiest to do but has the lowest reply rate.</p>
+              <p class="co-channel-note">Easiest to find. Lowest reply rate.</p>
+            </div>
+
+            <div class="co-channel-card reveal">
+              <span class="co-channel-letter">Option B</span>
+              <h3>The direct approach</h3>
+              <p class="co-channel-desc">Find a specific senior person, ideally a partner, on the website or LinkedIn. If their email is listed, write to them directly. If a phone number is listed, even better. Call during business hours with a prepared 60 second pitch. Going direct to a decision maker gets the best response.</p>
+              <p class="co-channel-note">More effort. Best response rate.</p>
+            </div>
+
+            <div class="co-channel-card reveal">
+              <span class="co-channel-letter">Option C</span>
+              <h3>The warm LinkedIn route</h3>
+              <p class="co-channel-desc">Look for people you are already connected with, or who share a connection, who work there. Connect, then ask for a short coffee chat or a quick online call. Use it to learn and build rapport, then gradually raise the idea of getting involved or working with them. This starts from a real connection, so it has the highest hit rate.</p>
+              <p class="co-channel-note">Starts from a real connection. Highest hit rate.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">05</span>
+            <span class="eyebrow">Section 5</span>
+            <h2>How to write the cold email</h2>
+            <div class="co-rule"></div>
+            <p class="co-section-lead">Keep it under 150 words and make every line earn its place. Use this structure.</p>
+          </div>
+
+          <div class="co-accordion reveal">
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s5-1">
+                  <span class="co-step-num" aria-hidden="true">1</span>
+                  <span class="co-step-title">Subject line</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s5-1">
+                <p>Short and specific, so it gets opened.</p>
+              </div>
+            </div>
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s5-2">
+                  <span class="co-step-num" aria-hidden="true">2</span>
+                  <span class="co-step-title">Who you are</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s5-2">
+                <p>One line on who you are.</p>
+              </div>
+            </div>
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s5-3">
+                  <span class="co-step-num" aria-hidden="true">3</span>
+                  <span class="co-step-title">Why them</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s5-3">
+                <p>One specific, genuine detail about the firm, which proves you did your research.</p>
+              </div>
+            </div>
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s5-4">
+                  <span class="co-step-num" aria-hidden="true">4</span>
+                  <span class="co-step-title">The ask</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s5-4">
+                <p>Make it clear and small, for example a short call or whether they ever take on students.</p>
+              </div>
+            </div>
+
+            <div class="co-step">
+              <h3 class="co-step-head">
+                <button class="co-step-btn" type="button" aria-expanded="false" aria-controls="co-s5-5">
+                  <span class="co-step-num" aria-hidden="true">5</span>
+                  <span class="co-step-title">Close</span>
+                  <span class="co-step-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="co-step-body" id="co-s5-5">
+                <p>Thank them and make it easy to say yes.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="co-sample reveal">
+            <span class="co-sample-label">Sample email</span>
+            <p><strong>Subject:</strong> KCL student interested in <span class="co-ph">[Firm name]</span></p>
+            <p>Hi <span class="co-ph">[First name]</span>,</p>
+            <p>I am <span class="co-ph">[your name]</span>, a <span class="co-ph">[year and course]</span> student at King's College London and a member of our Alternative Investment Society. I came across <span class="co-ph">[Firm name]</span> while researching London firms in <span class="co-ph">[the area, for example private credit]</span>, and I was drawn to <span class="co-ph">[one specific genuine detail about the firm]</span>.</p>
+            <p>I would love to learn how you built <span class="co-ph">[Firm name]</span>, and whether you ever take on students for short projects or work experience. Would you be open to a short call in the next couple of weeks?</p>
+            <p>Thank you for your time.</p>
+            <p>Best wishes,<br><span class="co-ph">[Your name]</span><br><span class="co-ph">[Your LinkedIn]</span></p>
+          </div>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">06</span>
+            <span class="eyebrow">Section 6</span>
+            <h2>The 60 second phone pitch</h2>
+            <div class="co-rule"></div>
+            <p class="co-section-lead">If you call, be ready before you dial. Call during business hours, be polite and brief, and keep your script in front of you. Cover who you are, why you are calling with one specific reason, what you are asking for, and a thank you.</p>
+          </div>
+
+          <div class="co-sample reveal">
+            <span class="co-sample-label">Sample script</span>
+            <p>Hi <span class="co-ph">[First name]</span>, my name is <span class="co-ph">[your name]</span>. I am a student at King's College London and I help run our Alternative Investment Society. I am calling because I have been following <span class="co-ph">[Firm name]</span>'s work in <span class="co-ph">[area]</span> and I am keen to learn from firms like yours. I am not asking for a job. I would love fifteen minutes of your time to hear how you got started, and whether there is any way a motivated student could help out. Would you have a moment this week or next?</p>
+          </div>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">07</span>
+            <span class="eyebrow">Section 7</span>
+            <h2>Follow up without being annoying</h2>
+            <div class="co-rule"></div>
+            <p class="co-section-lead">One follow up after about a week is fine. Two at most. Keep it short and friendly, and if there is still no reply, move on. No reply is rarely personal, people are simply busy. Persistence is good, pestering is not.</p>
+          </div>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">08</span>
+            <span class="eyebrow">Section 8</span>
+            <h2>Dos and don'ts</h2>
+            <div class="co-rule"></div>
+          </div>
+
+          <div class="co-dnd-grid reveal">
+            <div class="co-dnd-col co-do-col">
+              <h3>Do</h3>
+              <ul class="co-list">
+                <li>Personalise every message.</li>
+                <li>Target small firms.</li>
+                <li>Be specific about why them.</li>
+                <li>Keep it short.</li>
+                <li>Follow up once.</li>
+                <li>Be polite and grateful.</li>
+              </ul>
+            </div>
+            <div class="co-dnd-col co-dont-col">
+              <h3>Don't</h3>
+              <ul class="co-list">
+                <li>Send the same email to everyone.</li>
+                <li>Target huge firms that only hire through schemes.</li>
+                <li>Write long essays.</li>
+                <li>Attach large files no one asked for.</li>
+                <li>Sound desperate.</li>
+                <li>Give up after a single try.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="co-section">
+          <div class="co-section-head reveal">
+            <span class="co-section-index" aria-hidden="true">09</span>
+            <span class="eyebrow">Section 9</span>
+            <h2>The bottom line</h2>
+            <div class="co-rule"></div>
+          </div>
+
+          <p class="co-closing reveal">Cold outreach rewards effort and research. The students who get somewhere are the ones who target small, do their homework, and make a real human ask. Done well, it opens doors that were never officially open.</p>
+
+          <div class="co-cta-row reveal">
+            <a href="where-to-look.html" class="btn btn-outline">Where to Look</a>
+            <a href="organisations-to-join.html" class="btn btn-outline">Organisations to Join</a>
+            <a href="join.html" class="btn btn-primary">Join the Society</a>
+          </div>
+
+          <div class="co-back reveal">
+            <a href="resources.html" class="btn btn-outline">&larr; Back to Resources</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function wireAccordion(container) {
+        if (!container) return;
+        container.classList.add('is-init');
+        container.querySelectorAll('.co-step-btn').forEach(function (btn) {
+          var panel = document.getElementById(btn.getAttribute('aria-controls'));
+          btn.addEventListener('click', function () {
+            var open = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+            if (panel) panel.classList.toggle('is-open', !open);
+          });
+        });
+      }
+
+      document.querySelectorAll('.co-accordion').forEach(wireAccordion);
+    })();
+  </script>
+</body>
+</html>
