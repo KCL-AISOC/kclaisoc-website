@@ -1087,9 +1087,10 @@ footer {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* inline-block + slight right pad so the clip box keeps the italic tail */
+  /* inline-block + padding so the clip box keeps the italic tail and descenders */
   display: inline-block;
   padding-right: 0.08em;
+  padding-bottom: 0.14em;
 }
 
 /* Hero fits comfortably on small phones */
