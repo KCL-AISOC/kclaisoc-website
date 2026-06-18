@@ -85,8 +85,8 @@
 
     .ia-lead {
       font-family: var(--font-heading);
-      font-size: clamp(1rem, 1.8vw, 1.15rem);
-      line-height: 1.8;
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      line-height: 1.82;
       color: var(--text-secondary);
       margin-bottom: 2rem;
       max-width: none;
@@ -94,10 +94,10 @@
 
     .ia-prose {
       font-family: var(--font-heading);
-      font-size: 0.97rem;
-      line-height: 1.88;
+      font-size: clamp(1rem, 1.5vw, 1.0625rem);
+      line-height: 1.9;
       color: rgba(7, 22, 48, 0.7);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.35rem;
       max-width: none;
     }
 
@@ -111,7 +111,7 @@
 
     .ia-section-heading {
       font-family: var(--font-display);
-      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
       font-weight: 600;
       color: var(--deep-navy);
       margin-bottom: 1rem;
@@ -123,7 +123,7 @@
     .ia-closing {
       font-family: var(--font-display);
       font-style: italic;
-      font-size: clamp(1.05rem, 1.9vw, 1.25rem);
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
       line-height: 1.65;
       color: var(--deep-navy);
       border-left: 3px solid var(--gold);
@@ -182,12 +182,12 @@
 
     .ia-stat-label {
       font-family: var(--font-body);
-      font-size: 0.67rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.08em;
       color: rgba(248, 245, 238, 0.52);
       text-transform: uppercase;
-      line-height: 1.5;
+      line-height: 1.55;
       max-width: none;
     }
 
@@ -282,8 +282,8 @@
 
     .ia-chart-caption {
       font-family: var(--font-body);
-      font-size: 0.68rem;
-      color: rgba(248, 245, 238, 0.28);
+      font-size: 0.75rem;
+      color: rgba(248, 245, 238, 0.32);
       font-style: italic;
       margin-top: 1.5rem;
       max-width: none;
@@ -324,9 +324,9 @@
 
     .ia-why-text {
       font-family: var(--font-body);
-      font-size: 0.82rem;
-      line-height: 1.72;
-      color: rgba(248, 245, 238, 0.58);
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: rgba(248, 245, 238, 0.62);
       max-width: none;
     }
 
@@ -356,10 +356,10 @@
 
     .ia-ref-list li {
       font-family: var(--font-body);
-      font-size: 0.73rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 0.55rem;
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
       padding-left: 0;
       max-width: none;
     }
@@ -375,11 +375,15 @@
       color: var(--gold);
     }
 
-    /* Responsive */
+    /* Tablet and mobile */
     @media (max-width: 768px) {
+      .ia-body {
+        padding: 2.5rem 0 3.5rem;
+      }
+
       .ia-stat-block {
         grid-template-columns: 1fr;
-        padding: 2rem 1.75rem;
+        padding: 2rem 1.5rem;
       }
 
       .ia-stat {
@@ -396,14 +400,76 @@
 
       .ia-why-grid {
         grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .ia-why-card {
+        padding: 1.5rem 1.25rem;
       }
 
       .ia-chart-bars {
-        height: 140px;
+        height: 130px;
+        gap: 0.6rem;
       }
 
       .ia-chart-wrap {
-        padding: 1.75rem 1.5rem 1.75rem;
+        padding: 1.5rem 1.25rem 1.5rem;
+      }
+
+      .ia-closing {
+        padding-left: 1.1rem;
+        margin: 2rem 0;
+      }
+
+      .ia-article-meta {
+        gap: 0.75rem;
+      }
+
+      .ia-meta-sep {
+        display: none;
+      }
+
+      .ia-article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      .ia-lead {
+        font-size: 1.05rem;
+      }
+
+      .ia-prose {
+        font-size: 1rem;
+        line-height: 1.85;
+      }
+
+      .ia-section-heading {
+        font-size: 1.2rem;
+      }
+
+      .ia-stat-number {
+        font-size: 2.25rem;
+      }
+
+      .ia-why-text {
+        font-size: 0.9rem;
+      }
+
+      .ia-chart-bars {
+        height: 110px;
+        gap: 0.4rem;
+      }
+
+      .ia-bar-val {
+        font-size: 0.52rem;
+      }
+
+      .ia-bar-year {
+        font-size: 0.58rem;
       }
     }
   </style>
