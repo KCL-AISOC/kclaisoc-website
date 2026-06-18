@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why Infrastructure Is the Fastest-Growing Alternative Asset Class: KCL AISOC analysis of private infrastructure AUM, the AI data centre boom, the energy transition and the global funding gap.">
+  <title>Why Infrastructure Is the Fastest-Growing Alternative Asset Class | KCL AISOC Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Canonical favicon block. Every page including future ones must copy these five lines unchanged so the tab icon is consistent across the site. -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A1F44">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
+      window.addEventListener('load', function () {
+        playHero();
+        setTimeout(function () {
+          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
+        }, 600);
+      });
+    })();
+  </script>
+  <style>
+    .ia-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    .ia-article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+    }
+
+    .ia-meta-category {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-left: 2px solid var(--gold);
+      padding-left: 0.6rem;
+    }
+
+    .ia-meta-sep {
+      width: 1px;
+      height: 0.85rem;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .ia-meta-date,
+    .ia-meta-author {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      max-width: none;
+    }
+
+    .ia-lead {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: none;
+    }
+
+    .ia-prose {
+      font-family: var(--font-heading);
+      font-size: 0.97rem;
+      line-height: 1.88;
+      color: rgba(7, 22, 48, 0.7);
+      margin-bottom: 1.25rem;
+      max-width: none;
+    }
+
+    .ia-prose:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .ia-section {
+      margin-bottom: 3rem;
+    }
+
+    .ia-section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(201, 169, 97, 0.22);
+      max-width: none;
+    }
+
+    .ia-closing {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.05rem, 1.9vw, 1.25rem);
+      line-height: 1.65;
+      color: var(--deep-navy);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 3rem 0;
+      max-width: none;
+    }
+
+    .ia-divider {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 3rem 0;
+    }
+
+    /* Stat callout block */
+    .ia-stat-block {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 3rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ia-stat-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 90% at 50% 50%, rgba(201, 169, 97, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .ia-stat {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .ia-stat + .ia-stat {
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .ia-stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+      max-width: none;
+    }
+
+    .ia-stat-label {
+      font-family: var(--font-body);
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      color: rgba(248, 245, 238, 0.52);
+      text-transform: uppercase;
+      line-height: 1.5;
+      max-width: none;
+    }
+
+    /* Bar chart */
+    .ia-chart-wrap {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 2.5rem 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+
+    .ia-chart-label {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(248, 245, 238, 0.35);
+      margin-bottom: 2.25rem;
+      max-width: none;
+    }
+
+    .ia-chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      height: 180px;
+    }
+
+    .ia-bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .ia-bar-wrap {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .ia-bar {
+      width: 100%;
+      background: var(--gold);
+      height: 0;
+      border-radius: 1px 1px 0 0;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+
+    .ia-bar:hover {
+      box-shadow: 0 0 18px rgba(201, 169, 97, 0.35);
+    }
+
+    .ia-bar-val {
+      position: absolute;
+      top: -1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.8s;
+      max-width: none;
+    }
+
+    .ia-bar-val.ia-val-visible {
+      opacity: 1;
+    }
+
+    .ia-bar-year {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      color: rgba(248, 245, 238, 0.38);
+      letter-spacing: 0.05em;
+      margin-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      text-align: center;
+      padding-top: 0.5rem;
+      max-width: none;
+    }
+
+    .ia-chart-caption {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      color: rgba(248, 245, 238, 0.28);
+      font-style: italic;
+      margin-top: 1.5rem;
+      max-width: none;
+    }
+
+    /* Why Now cards */
+    .ia-why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin: 2.75rem 0;
+      background: rgba(201, 169, 97, 0.12);
+    }
+
+    .ia-why-card {
+      background: var(--navy);
+      padding: 2rem 1.75rem 2.25rem;
+    }
+
+    .ia-why-icon {
+      display: block;
+      width: 32px;
+      height: 32px;
+      color: var(--gold);
+      margin-bottom: 1.1rem;
+    }
+
+    .ia-why-title {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      max-width: none;
+    }
+
+    .ia-why-text {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      line-height: 1.72;
+      color: rgba(248, 245, 238, 0.58);
+      max-width: none;
+    }
+
+    /* References */
+    .ia-references {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .ia-references-heading {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      max-width: none;
+    }
+
+    .ia-ref-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ia-ref-list li {
+      font-family: var(--font-body);
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 0.55rem;
+      padding-left: 0;
+      max-width: none;
+    }
+
+    .ia-ref-list a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .ia-ref-list a:hover {
+      color: var(--gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .ia-stat-block {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.75rem;
+      }
+
+      .ia-stat {
+        padding: 0;
+        text-align: left;
+      }
+
+      .ia-stat + .ia-stat {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .ia-why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ia-chart-bars {
+        height: 140px;
+      }
+
+      .ia-chart-wrap {
+        padding: 1.75rem 1.5rem 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Insights</span>
+          <h1>Why Infrastructure Is the Fastest-Growing Alternative Asset Class</h1>
+          <p>From data centres to clean energy: the forces turning infrastructure into the most sought-after allocation in private markets.</p>
+        </div>
+      </div>
+    </header>
+
+    <article class="ia-body">
+      <div class="container container--narrow">
+
+        <div class="ia-article-meta reveal">
+          <span class="ia-meta-category">Infrastructure</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-date">June 2026</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-author">KCL AISOC Research Team</span>
+        </div>
+
+        <p class="ia-lead reveal">
+          Infrastructure investing means owning the physical backbone of the economy: toll roads, airports, power grids, water utilities, pipelines, data centres and fibre broadband networks. As an alternative asset class it offers stable long term cash flows often linked directly to inflation, monopoly barriers to entry, low correlation with public equity markets, and a long duration profile that naturally matches the liabilities of pension funds and insurance companies. These qualities made it a niche allocation for decades. Now it is the fastest-growing asset class in private markets.
+        </p>
+
+        <div class="ia-section">
+          <p class="ia-prose reveal">
+            Private infrastructure assets under management reached a record $1.6 trillion in the first half of 2025, a 22 percent year on year increase that now represents 10 percent of all private market assets globally (BCG Infrastructure Strategy 2026). Goldman Sachs and Preqin put the figure higher still, at $1.7 trillion by September 2025. Closed-end fundraising hit a new record of nearly $200 billion in 2025, approximately 60 percent above 2024 levels (McKinsey Global Private Markets Report, March 2026). For the first time in the history of private capital markets, infrastructure fundraising surpassed real estate in 2024.
+          </p>
+          <p class="ia-prose reveal">
+            A survey of 300 global limited partners found that 51 percent plan to increase their infrastructure allocations over the next three years, well ahead of buyouts at 35 percent and real estate at 30 percent. Capital is moving with both conviction and urgency.
+          </p>
+        </div>
+
+        <div class="ia-stat-block reveal">
+          <div class="ia-stat">
+            <p class="ia-stat-number">$1.6T</p>
+            <p class="ia-stat-label">Global infrastructure AUM, H1 2025</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">$200BN</p>
+            <p class="ia-stat-label">Record closed-end fundraising, 2025</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">51%</p>
+            <p class="ia-stat-label">LPs planning to raise allocations over three years</p>
+          </div>
+        </div>
+
+        <div class="ia-section">
+          <p class="ia-prose reveal">
+            Three structural forces are driving this expansion: the AI and data centre build-out, the global energy transition, and a multi-trillion-dollar government funding gap that private capital is uniquely positioned to fill.
+          </p>
+        </div>
+
+        <div class="ia-why-grid">
+          <div class="ia-why-card reveal">
+            <svg class="ia-why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="6" rx="1"/>
+              <rect x="2" y="13" width="20" height="6" rx="1"/>
+              <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="18" cy="16" r="1" fill="currentColor" stroke="none"/>
+              <line x1="6" y1="6" x2="10" y2="6"/>
+              <line x1="6" y1="16" x2="10" y2="16"/>
+            </svg>
+            <p class="ia-why-title">AI and Data Centres</p>
+            <p class="ia-why-text">Global data centre electricity demand is set to more than double by 2030. Hyperscalers are signing multi-decade power agreements, making data centres the new contracted utilities.</p>
+          </div>
+          <div class="ia-why-card reveal">
+            <svg class="ia-why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="13 2 13 9 20 9 11 22 11 15 4 15 13 2"/>
+            </svg>
+            <p class="ia-why-title">Energy Transition</p>
+            <p class="ia-why-text">Clean energy investment must reach $4.5 trillion per year by the early 2030s. Renewables accounted for 69 percent of all primary infrastructure deals in 2024 by volume.</p>
+          </div>
+          <div class="ia-why-card reveal">
+            <svg class="ia-why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 21h18"/>
+              <path d="M5 21V9l7-6 7 6v12"/>
+              <rect x="9" y="13" width="6" height="8"/>
+            </svg>
+            <p class="ia-why-title">Funding Gap</p>
+            <p class="ia-why-text">The world needs $94 trillion in infrastructure investment by 2040. A $15 trillion shortfall versus government spending trends means private capital must fill the void.</p>
+          </div>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The AI and Data Centre Supercycle</h2>
+          <p class="ia-prose reveal">
+            Global data centre electricity consumption is forecast to more than double to approximately 945 TWh by 2030, up from 415 TWh in 2024, with AI-specific demand tripling in the same period (IEA, Energy and AI, April 2025). Goldman Sachs estimates the five largest technology companies will collectively spend $5.3 trillion on AI and data centre infrastructure between 2025 and 2030. Hyperscalers are signing multi-decade power purchase agreements and contracting entire campus developments years in advance, providing exactly the long term contracted revenue that infrastructure investors prize.
+          </p>
+          <p class="ia-prose reveal">
+            The speed of the build-out is without parallel in recent infrastructure history. Data centres have become the new utilities: essential, long lived and highly predictable in their demand profiles. Private capital has recognised this and moved accordingly, with data centre deals now commanding valuations and scale previously associated only with the largest regulated utility transactions.
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The Energy Transition</h2>
+          <p class="ia-prose reveal">
+            The International Energy Agency estimates clean energy investment must reach $4.5 trillion per year by the early 2030s to remain on a net zero pathway, up from $1.8 trillion in 2023. Renewables already accounted for 69 percent of primary infrastructure deals by volume in 2024 (Preqin). Solar, wind, battery storage and grid modernisation are attracting long term private capital at scale, with the contracted and regulated nature of many assets making them natural fits for the infrastructure wrapper. The combination of government mandates, falling technology costs, and reliable long term cash flows has created one of the most compelling structural demand stories in any asset class.
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The Funding Gap</h2>
+          <p class="ia-prose reveal">
+            The G20 Global Infrastructure Hub estimates the world requires $94 trillion of infrastructure investment by 2040, against a $15 trillion shortfall versus current government spending trends. The United States alone faces a gap of $3.8 trillion. As public budgets remain stretched and fiscal constraints tighten across the OECD, private capital is increasingly called upon to fill the void. Governments are actively welcoming private sector participation, creating a policy tailwind that reinforces the already compelling economic case. The result is a rare alignment of structural demand, policy support and institutional capital all pointing in the same direction.
+          </p>
+        </div>
+
+        <div class="ia-chart-wrap reveal">
+          <p class="ia-chart-label">Infrastructure closed-end fundraising (USD billions)</p>
+          <div class="ia-chart-bars" id="ia-chart-bars">
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="162" data-delay="0">
+                  <span class="ia-bar-val">$180BN</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">2022</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="81" data-delay="0.1">
+                  <span class="ia-bar-val">$90BN</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">2023</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="113" data-delay="0.2">
+                  <span class="ia-bar-val">$125BN</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">2024</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="180" data-delay="0.3">
+                  <span class="ia-bar-val">$200BN</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">2025</span>
+            </div>
+          </div>
+          <p class="ia-chart-caption">Source: McKinsey Global Private Markets Report 2026. 2024 figure estimated.</p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The Institutional Response</h2>
+          <p class="ia-prose reveal">
+            The largest asset managers have moved decisively. In January 2024, BlackRock announced the acquisition of Global Infrastructure Partners for approximately $12.5 billion, creating a combined platform of over $150 billion. On the announcement call, chief executive Larry Fink described infrastructure as "the next great investment opportunity" and sized the addressable market at $68 trillion by 2040. GIP founder Bayo Ogunlesi joined BlackRock's board. In October 2025, a BlackRock GIP-led consortium agreed to acquire Aligned Data Centers for approximately $40 billion in what would be the largest data centre transaction in history, subject to regulatory approval expected to close in 2026. In March 2026, a GIP and EQT-led consortium agreed to take US power company AES private at a $33.4 billion enterprise value, citing data centre power demand as the explicit investment thesis, pending regulatory approvals expected in late 2026 or early 2027.
+          </p>
+          <p class="ia-prose reveal">
+            The managers dominating the space are Macquarie Asset Management, ranked first globally with €355 billion in infrastructure assets under management (IPE Real Assets 2025), followed by Brookfield Asset Management at €301 billion, GIP within BlackRock at €163 billion, EQT at €78.6 billion and KKR at €76.6 billion. The top 10 managers now control more than half of all global infrastructure assets under management.
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">A Framework for Students</h2>
+          <p class="ia-prose reveal">
+            For students of alternative investments, the key analytical framework is the risk and return ladder. Core infrastructure, which includes regulated utilities and contracted toll roads, targets approximately 6 to 8 percent net returns, offering high income and low volatility. Core plus strategies target 8 to 10 percent. Value add strategies, encompassing energy transition assets and expanding data centre platforms, target 12 to 15 percent. Opportunistic and greenfield development can target above 15 percent but carries meaningful construction and policy risk.
+          </p>
+          <p class="ia-prose reveal">
+            The mix shifted materially in 2025, with capital flowing heavily into value add and core plus strategies as investors moved up the curve in search of higher returns in a moderating rate environment. Understanding where a fund sits on this ladder, and what that implies for income stability, liquidity, and exit timing, is one of the core skills required to analyse infrastructure as an asset class.
+          </p>
+        </div>
+
+        <blockquote class="ia-closing reveal">
+          Infrastructure was always a sensible allocation for long term institutional capital. The AI supercycle and the global energy transition have made it urgent.
+        </blockquote>
+
+        <hr class="ia-divider">
+
+        <section class="ia-references reveal" aria-label="References">
+          <p class="ia-references-heading">References</p>
+          <ol class="ia-ref-list">
+            <li>BCG Infrastructure Strategy 2026 &mdash; <a href="https://www.bcg.com/publications/2026/year-of-increasing-scale-and-diversification" target="_blank" rel="noopener noreferrer">bcg.com</a></li>
+            <li>McKinsey Global Private Markets Report, March 2026 &mdash; <a href="https://www.mckinsey.com/industries/private-capital/our-insights/global-private-markets-report/infrastructure" target="_blank" rel="noopener noreferrer">mckinsey.com</a></li>
+            <li>IEA, Energy and AI, April 2025 &mdash; <a href="https://www.iea.org/reports/energy-and-ai/executive-summary" target="_blank" rel="noopener noreferrer">iea.org</a></li>
+            <li>IPE Real Assets Top 100 Infrastructure Managers 2025 &mdash; <a href="https://www.macquarie.com/about/company/macquarie-asset-management/general-public/insights/macquarie-asset-management-tops-ipe-real-assets-100-infrastructure-investment-managers-2025.html" target="_blank" rel="noopener noreferrer">macquarie.com</a></li>
+            <li>Preqin Infrastructure &mdash; <a href="https://www.preqin.com/academy/lesson-4-asset-class-101s/infrastructure" target="_blank" rel="noopener noreferrer">preqin.com</a></li>
+            <li>Cambridge Associates, Infrastructure Trends and Performance &mdash; <a href="https://www.cambridgeassociates.com/insight/powering-the-future-infrastructure-trends-performance-and-portfolio-impact/" target="_blank" rel="noopener noreferrer">cambridgeassociates.com</a></li>
+            <li>G20 Global Infrastructure Hub &mdash; <a href="https://gihub.org" target="_blank" rel="noopener noreferrer">gihub.org</a></li>
+            <li>BlackRock GIP Acquisition (SEC filing) &mdash; <a href="https://www.sec.gov/Archives/edgar/data/0001364742/000095017024004107/blk-ex99_4.htm" target="_blank" rel="noopener noreferrer">sec.gov</a></li>
+          </ol>
+        </section>
+
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <a href="privacy.html" class="footer-privacy-link">Privacy Policy</a>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <script>
+    window.addEventListener('load', function () {
+      var bars = document.querySelectorAll('.ia-bar');
+      if (!bars.length) return;
+
+      var chartEl = document.getElementById('ia-chart-bars');
+      if (!chartEl) return;
+
+      var animated = false;
+
+      function runChart() {
+        if (animated) return;
+        animated = true;
+        bars.forEach(function (bar) {
+          var targetH = parseInt(bar.getAttribute('data-height'), 10);
+          var delay = parseFloat(bar.getAttribute('data-delay') || '0');
+          var valEl = bar.querySelector('.ia-bar-val');
+
+          if (typeof gsap !== 'undefined') {
+            gsap.to(bar, {
+              height: targetH,
+              duration: 1.0,
+              ease: 'power2.out',
+              delay: delay,
+              onComplete: function () {
+                if (valEl) valEl.classList.add('ia-val-visible');
+              }
+            });
+          } else {
+            bar.style.height = targetH + 'px';
+            if (valEl) valEl.classList.add('ia-val-visible');
+          }
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) {
+            io.disconnect();
+            runChart();
+          }
+        }, { threshold: 0.3 });
+        io.observe(chartEl);
+      } else {
+        runChart();
+      }
+    });
+  </script>
+
+</body>
+</html>

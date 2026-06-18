@@ -137,6 +137,8 @@
       'spring-weeks.html': 'resources.html',
       'organisations-to-join.html': 'resources.html',
       'where-to-look.html': 'resources.html',
+      'cold-outreach.html': 'resources.html',
+      'infrastructure-article.html': 'insights.html',
     };
     var target = sectionMap[page] || page;
     document.querySelectorAll('.nav-links a').forEach(function (link) {
