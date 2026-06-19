@@ -446,8 +446,21 @@
         });
       }
 
-      /* The founded year ("April 2026") is plain text revealed with its stat
-         item, so it is always visible and needs no separate animation here. */
+      /* Executive committee count */
+      var execEl = document.querySelector('[data-count="10"]');
+      if (execEl) {
+        execEl.textContent = '0';
+        var execObj = { n: 0 };
+        gsap.to(execObj, {
+          n: 10,
+          duration: 2,
+          ease: 'power2.out',
+          onUpdate: function () {
+            execEl.textContent = Math.round(execObj.n);
+          },
+          onComplete: function () { execEl.textContent = '10'; },
+        });
+      }
     }
 
     /* Wait for home.js to resolve the live count before animating, so the
