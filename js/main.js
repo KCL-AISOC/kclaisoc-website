@@ -431,18 +431,18 @@
       }
 
       /* Instagram followers */
-      var igEl = document.querySelector('[data-count="380"]');
+      var igEl = document.querySelector('[data-count="400"]');
       if (igEl) {
         igEl.textContent = '0+';
         var igObj = { n: 0 };
         gsap.to(igObj, {
-          n: 380,
+          n: 400,
           duration: 2,
           ease: 'power2.out',
           onUpdate: function () {
             igEl.textContent = Math.round(igObj.n) + '+';
           },
-          onComplete: function () { igEl.textContent = '380+'; },
+          onComplete: function () { igEl.textContent = '400+'; },
         });
       }
 

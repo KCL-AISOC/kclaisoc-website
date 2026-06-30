@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What King's College London's endowment reveals about the limits of the Yale Model — and why 2025 is complicating the story for private equity allocations at US mega-endowments.">
+  <title>The Private Equity Gap: What King's Endowment Reveals About the Limits of the Yale Model | KCL AISOC Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Canonical favicon block. Every page including future ones must copy these five lines unchanged so the tab icon is consistent across the site. -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A1F44">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
+      window.addEventListener('load', function () {
+        playHero();
+        setTimeout(function () {
+          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
+        }, 600);
+      });
+    })();
+  </script>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    .ia-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    .ia-article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+    }
+
+    .ia-meta-category {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-left: 2px solid var(--gold);
+      padding-left: 0.6rem;
+    }
+
+    .ia-meta-sep {
+      width: 1px;
+      height: 0.85rem;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .ia-meta-date,
+    .ia-meta-author {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      max-width: none;
+    }
+
+    .ia-lead {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      line-height: 1.82;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: none;
+    }
+
+    .ia-prose {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.5vw, 1.0625rem);
+      line-height: 1.9;
+      color: rgba(7, 22, 48, 0.7);
+      margin-bottom: 1.35rem;
+      max-width: none;
+    }
+
+    .ia-section {
+      margin-bottom: 3rem;
+    }
+
+    .ia-section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(201, 169, 97, 0.22);
+      max-width: none;
+    }
+
+    .ia-closing {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      line-height: 1.65;
+      color: var(--deep-navy);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 3rem 0;
+      max-width: none;
+    }
+
+    .ia-divider {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 3rem 0;
+    }
+
+    .ia-disclaimer {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 1.5rem;
+      max-width: none;
+    }
+
+    /* Stat callout block */
+    .ia-stat-block {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 3rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ia-stat-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 90% at 50% 50%, rgba(201, 169, 97, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .ia-stat {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .ia-stat + .ia-stat {
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .ia-stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+      max-width: none;
+    }
+
+    .ia-stat-label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(248, 245, 238, 0.52);
+      text-transform: uppercase;
+      line-height: 1.55;
+      max-width: none;
+    }
+
+    /* Bar chart */
+    .ia-chart-wrap {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 2.5rem 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+
+    .ia-chart-label {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(248, 245, 238, 0.35);
+      margin-bottom: 3.25rem;
+      max-width: none;
+    }
+
+    .ia-chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      height: 180px;
+    }
+
+    .ia-bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .ia-bar-wrap {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .ia-bar {
+      width: 100%;
+      background: var(--gold);
+      height: 0;
+      border-radius: 1px 1px 0 0;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+
+    .ia-bar--muted {
+      background: rgba(201, 169, 97, 0.35);
+    }
+
+    .ia-bar:hover {
+      box-shadow: 0 0 18px rgba(201, 169, 97, 0.35);
+    }
+
+    .ia-bar-val {
+      position: absolute;
+      top: -1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.8s;
+      max-width: none;
+    }
+
+    .ia-bar-val.ia-val-visible {
+      opacity: 1;
+    }
+
+    .ia-bar-year {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      color: rgba(248, 245, 238, 0.38);
+      letter-spacing: 0.05em;
+      margin-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      text-align: center;
+      padding-top: 0.5rem;
+      max-width: none;
+    }
+
+    .ia-chart-caption {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: rgba(248, 245, 238, 0.32);
+      font-style: italic;
+      margin-top: 1.5rem;
+      max-width: none;
+    }
+
+    /* References */
+    .ia-references {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .ia-references-heading {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      max-width: none;
+    }
+
+    .ia-ref-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ia-ref-list li {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+      padding-left: 0;
+      max-width: none;
+    }
+
+    .ia-ref-list a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .ia-ref-list a:hover {
+      color: var(--gold);
+    }
+
+    /* Tablet and mobile */
+    @media (max-width: 768px) {
+      .ia-body {
+        padding: 2.5rem 0 3.5rem;
+      }
+
+      .ia-stat-block {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+      }
+
+      .ia-stat {
+        padding: 0;
+        text-align: left;
+      }
+
+      .ia-stat + .ia-stat {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .ia-chart-bars {
+        height: 130px;
+        gap: 0.6rem;
+      }
+
+      .ia-chart-wrap {
+        padding: 1.5rem 1.25rem 1.5rem;
+      }
+
+      .ia-closing {
+        padding-left: 1.1rem;
+        margin: 2rem 0;
+      }
+
+      .ia-article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .ia-meta-sep {
+        display: none;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      .ia-lead {
+        font-size: 1.05rem;
+      }
+
+      .ia-prose {
+        font-size: 1rem;
+        line-height: 1.85;
+      }
+
+      .ia-section-heading {
+        font-size: 1.2rem;
+      }
+
+      .ia-stat-number {
+        font-size: 2.25rem;
+      }
+
+      .ia-chart-bars {
+        height: 110px;
+        gap: 0.4rem;
+      }
+
+      .ia-bar-val {
+        font-size: 0.52rem;
+      }
+
+      .ia-bar-year {
+        font-size: 0.58rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Insights</span>
+          <h1>The Private Equity Gap: What King's Endowment Reveals About the Limits of the Yale Model</h1>
+          <p>From Keynes at Cambridge to Yale's Project Gatsby — why the endowment model is being stress-tested at exactly the moment UK universities are being asked to catch up.</p>
+        </div>
+      </div>
+    </header>
+
+    <article class="ia-body">
+      <div class="container container--narrow">
+
+        <div class="ia-article-meta reveal">
+          <span class="ia-meta-category">Private Equity</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-date">1 July 2026</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-author">Muntasir Ali</span>
+        </div>
+
+        <p class="ia-lead reveal">
+          In 1921, John Maynard Keynes took control of an endowment that most economists at the time would have called recklessly equity-heavy. Managing King's College, Cambridge's investment fund for the next 25 years, he pushed it further into shares than almost any institution of the era, planting the seed for what the investment world now calls the endowment model (Chambers and Dimson, 2015). Decades later, an American economist named David Swensen took that idea, scaled it dramatically at Yale, and turned it into the most influential institutional investing strategy of the past forty years. The irony is that while a Cambridge college gave the model its first real test, it is American universities, not British ones, that pushed it furthest into private equity and venture capital. The gap between the two traditions has never been starker, or more consequential, than it is right now.
+        </p>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The American allocation</h2>
+          <p class="ia-prose reveal">
+            Start with the numbers. Harvard, the world's largest university endowment at $53.2 billion, holds 39% of that fund in private equity alone — its single biggest asset class — plus another 32% in hedge funds (Chief Investment Officer, 2024). Stanford targets 38% private equity (Stanford Daily, 2024). Yale, the spiritual home of the model, holds more than $20 billion in buyout and venture funds combined, roughly half its entire endowment (Yale News, 2025). Princeton's illiquid holdings — independent return strategies, private equity and real assets together — made up over three quarters of its portfolio by 2023 (Institutional Investor, 2024).
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The British reality</h2>
+          <p class="ia-prose reveal">
+            Now look at Britain. Oxford's £6 billion endowment fund sits at around a quarter in private equity (University of Oxford, 2025). Cambridge's pooled fund holds a similar proportion, working toward a 30% long-term target (University of Cambridge, 2024). King's College London, by comparison, holds just £17.8 million in named private equity funds — through managers like HarbourVest, LGT Crown and Accolade Partners — around 5.5% of its £340.8 million endowment (King's College London, 2025). Set against Harvard's $20 billion-plus private equity book, the difference in absolute scale runs into the thousands.
+          </p>
+        </div>
+
+        <!-- Bar chart: PE allocation comparison across institutions -->
+        <div class="ia-chart-wrap reveal" id="ia-pe-chart">
+          <p class="ia-chart-label">Private equity allocation by institution (approximate %)</p>
+          <div class="ia-chart-bars">
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="180" data-delay="0">
+                  <span class="ia-bar-val">~50%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">Yale</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="140" data-delay="0.1">
+                  <span class="ia-bar-val">39%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">Harvard</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="137" data-delay="0.2">
+                  <span class="ia-bar-val">38%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">Stanford</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar ia-bar--muted" data-height="90" data-delay="0.3">
+                  <span class="ia-bar-val">~25%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">Oxford</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar ia-bar--muted" data-height="90" data-delay="0.4">
+                  <span class="ia-bar-val">~25%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">Cambridge</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar ia-bar--muted" data-height="20" data-delay="0.5">
+                  <span class="ia-bar-val">5.5%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">King's</span>
+            </div>
+          </div>
+          <p class="ia-chart-caption">Gold bars: US institutions. Muted bars: UK institutions. Sources: Yale News (2025); Chief Investment Officer (2024); Stanford Daily (2024); University of Oxford (2025); University of Cambridge (2024); King's College London (2025). Yale figure represents illiquid alternatives. Bars scaled proportionally to Yale's ~50% peak.</p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">Why such a divide?</h2>
+          <p class="ia-prose reveal">
+            Part of it is sheer size. American giants can build in-house teams sophisticated enough to access the very best fund managers — something a £340 million endowment simply cannot replicate. Part of it is structural. UK charity law and accounting conventions push university funds toward income generation and lower volatility, while American tax-exempt status gives institutions far more allocation freedom (King's College London, n.d.). And part of it is cultural. Decades of Silicon Valley proximity have made Stanford a natural early backer of venture firms in a way no UK university can match.
+          </p>
+        </div>
+
+        <div class="ia-stat-block reveal">
+          <div class="ia-stat">
+            <p class="ia-stat-number">5.8%</p>
+            <p class="ia-stat-label">PE return, FY2024</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">24.6%</p>
+            <p class="ia-stat-label">S&amp;P 500 return, FY2024</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">$2.5bn</p>
+            <p class="ia-stat-label">Yale PE stakes listed for sale</p>
+          </div>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">When the model gets tested</h2>
+          <p class="ia-prose reveal">
+            But 2025 has complicated the story. After private equity returned just 5.8% and venture capital a mere 1.7% in fiscal 2024, against a 24.6% return for the S&amp;P 500 (TIFF, 2025), the largest American endowments found themselves in an unfamiliar position: selling. Yale moved to offload up to $2.5 billion of private equity stakes in a deal insiders nicknamed Project Gatsby (Institutional Investor, 2025). Harvard followed with sales of its own, part of a wider wave that pushed Ivy League schools to issue nearly $3 billion in municipal debt to meet capital calls — up 650% year on year (Sherwood News, 2025). For the first time in a generation, the architects of the endowment model are quietly admitting they may have gone too far into illiquidity.
+          </p>
+          <p class="ia-prose reveal">
+            For a university like King's, the lesson might not be to chase Harvard's allocation. It might be to watch closely what happens when the model that started here gets tested by the institutions that took it furthest.
+          </p>
+        </div>
+
+        <blockquote class="ia-closing reveal">
+          For a university like King's, the lesson might not be to chase Harvard's allocation. It might be to watch closely what happens when the model that started here gets tested by the institutions that took it furthest.
+        </blockquote>
+
+        <hr class="ia-divider">
+
+        <section class="ia-references reveal" aria-label="References">
+          <p class="ia-references-heading">References</p>
+          <ol class="ia-ref-list">
+            <li>Chambers, D. and Dimson, E. (2015) <em>The British Origins of the U.S. Endowment Model.</em> Financial Analysts Journal, 71(2).</li>
+            <li>Chief Investment Officer (2024) <em>Harvard Assets Reach $53B With 9.6% Return, Endowment Remains World's Largest.</em></li>
+            <li>Institutional Investor (2024) <em>What Drove Harvard's Returns?</em></li>
+            <li>Institutional Investor (2025) <em>Yale's Potential PE Sale Won't Solve Liquidity Challenges.</em></li>
+            <li>King's College London (2025) <em>Financial Statements for the Year to 31 July 2025.</em></li>
+            <li>King's College London (n.d.) <em>King's College London Endowment Assets Ethical Investment Policy.</em></li>
+            <li>Sherwood News (2025) <em>The Fund Managers for Ivy League Endowments Somehow Managed to Flop in This Market.</em></li>
+            <li>Stanford Daily (2024) <em>How Does Stanford's $36.5 Billion Endowment Work?</em></li>
+            <li>TIFF (2025) <em>Five FY24 Endowment Performance Trends per NACUBO-Commonfund Study of Endowments.</em></li>
+            <li>University of Cambridge (2024) <em>Reports and Financial Statements for the Year Ended 31 July 2024.</em> Cambridge University Reporter, 6773.</li>
+            <li>University of Oxford (2025) <em>Our Endowment.</em></li>
+            <li>Yale News (2025) <em>Yale Reports Investment Return for Fiscal 2025.</em></li>
+          </ol>
+        </section>
+
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <a href="privacy.html" class="footer-privacy-link">Privacy Policy</a>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <script>
+    window.addEventListener('load', function () {
+      var bars = document.querySelectorAll('#ia-pe-chart .ia-bar');
+      if (!bars.length) return;
+
+      var chartEl = document.getElementById('ia-pe-chart');
+      var animated = false;
+
+      function runChart() {
+        if (animated) return;
+        animated = true;
+        bars.forEach(function (bar) {
+          var targetH = parseInt(bar.getAttribute('data-height'), 10);
+          var delay   = parseFloat(bar.getAttribute('data-delay') || '0');
+          var valEl   = bar.querySelector('.ia-bar-val');
+
+          if (typeof gsap !== 'undefined') {
+            gsap.to(bar, {
+              height: targetH,
+              duration: 1.0,
+              ease: 'power2.out',
+              delay: delay,
+              onComplete: function () {
+                if (valEl) valEl.classList.add('ia-val-visible');
+              }
+            });
+          } else {
+            bar.style.height = targetH + 'px';
+            if (valEl) valEl.classList.add('ia-val-visible');
+          }
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) {
+            io.disconnect();
+            runChart();
+          }
+        }, { threshold: 0.3 });
+        io.observe(chartEl);
+      } else {
+        runChart();
+      }
+    });
+  </script>
+
+</body>
+</html>
