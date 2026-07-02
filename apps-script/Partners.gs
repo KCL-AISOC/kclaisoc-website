@@ -23,6 +23,13 @@ var HEADERS = [
   "Anything you'd like us to know?"
 ];
 
+// Prevent spreadsheet formula/CSV injection: prefix risky leading chars so the
+// cell is treated as literal text, not an executable formula.
+function safe(v) {
+  v = (v == null) ? '' : String(v);
+  return /^[=+\-@\t\r]/.test(v) ? "'" + v : v;
+}
+
 function doPost(e) {
   // Lock so two people submitting at the same instant don't clobber each other.
   var lock = LockService.getScriptLock();
@@ -38,24 +45,30 @@ function doPost(e) {
 
     var p = e.parameter;  // single-value fields
 
+    // Honeypot: real users leave this hidden field empty; bots often fill it.
+    if (p.company_website) {
+      return json({ result: 'success' });
+    }
+
     // Order MUST match the sheet's columns (see note at top).
     var ROW = [
-      new Date(),          // Timestamp
-      p.first_name || '',  // First name
-      p.last_name || '',   // Last name
-      p.job_title || '',   // Job title / team
-      p.company_name || '',// Company name
-      p.work_email || '',  // Work email
-      p.phone || '',       // Phone number (optional)
-      p.interest || '',    // What's your interest in KCL AISOC?
-      p.message || ''      // Anything you'd like us to know?
+      new Date(),               // Timestamp
+      safe(p.first_name),       // First name
+      safe(p.last_name),        // Last name
+      safe(p.job_title),        // Job title / team
+      safe(p.company_name),     // Company name
+      safe(p.work_email),       // Work email
+      safe(p.phone),            // Phone number (optional)
+      safe(p.interest),         // What's your interest in KCL AISOC?
+      safe(p.message)           // Anything you'd like us to know?
     ];
 
     sheet.appendRow(ROW);
 
     return json({ result: 'success' });
   } catch (err) {
-    return json({ result: 'error', error: String(err) });
+    console.error(err);
+    return json({ result: 'error' });
   } finally {
     lock.releaseLock();
   }
