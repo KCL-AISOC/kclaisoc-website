@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ken Griffin called AI 'garbage' at Davos in January 2026 and went home depressed in May after watching it work inside Citadel. How AI is rewriting the role of the quant across Man Group, Two Sigma, Bridgewater, and D.E. Shaw.">
+  <title>The Algorithm's New Author: How AI Is Rewriting the Role of the Quant | KCL AISOC Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A1F44">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
+      window.addEventListener('load', function () {
+        playHero();
+        setTimeout(function () {
+          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
+        }, 600);
+      });
+    })();
+  </script>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    .ia-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    .ia-article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+    }
+
+    .ia-meta-category {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-left: 2px solid var(--gold);
+      padding-left: 0.6rem;
+    }
+
+    .ia-meta-sep {
+      width: 1px;
+      height: 0.85rem;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .ia-meta-date,
+    .ia-meta-author {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      max-width: none;
+    }
+
+    .ia-lead {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      line-height: 1.82;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: none;
+    }
+
+    .ia-prose {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.5vw, 1.0625rem);
+      line-height: 1.9;
+      color: rgba(7, 22, 48, 0.7);
+      margin-bottom: 1.35rem;
+      max-width: none;
+    }
+
+    .ia-section {
+      margin-bottom: 3rem;
+    }
+
+    .ia-section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(201, 169, 97, 0.22);
+      max-width: none;
+    }
+
+    .ia-closing {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--deep-navy);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2.5rem 0;
+      max-width: none;
+    }
+
+    .ia-quote-attr {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      font-style: normal;
+      display: block;
+      margin-top: 0.85rem;
+    }
+
+    .ia-divider {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 3rem 0;
+    }
+
+    /* Stat callout block */
+    .ia-stat-block {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 3rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ia-stat-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 90% at 50% 50%, rgba(201, 169, 97, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .ia-stat {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .ia-stat + .ia-stat {
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .ia-stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+      max-width: none;
+    }
+
+    .ia-stat-label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(248, 245, 238, 0.52);
+      text-transform: uppercase;
+      line-height: 1.55;
+      max-width: none;
+    }
+
+    /* Bar chart */
+    .ia-chart-wrap {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 2.5rem 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+
+    .ia-chart-label {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(248, 245, 238, 0.35);
+      margin-bottom: 3.25rem;
+      max-width: none;
+    }
+
+    .ia-chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      height: 180px;
+    }
+
+    .ia-bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .ia-bar-wrap {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .ia-bar {
+      width: 100%;
+      background: var(--gold);
+      height: 0;
+      border-radius: 1px 1px 0 0;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+
+    .ia-bar--muted {
+      background: rgba(201, 169, 97, 0.35);
+    }
+
+    .ia-bar:hover {
+      box-shadow: 0 0 18px rgba(201, 169, 97, 0.35);
+    }
+
+    .ia-bar-val {
+      position: absolute;
+      top: -1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.8s;
+      max-width: none;
+    }
+
+    .ia-bar-val.ia-val-visible {
+      opacity: 1;
+    }
+
+    .ia-bar-year {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      color: rgba(248, 245, 238, 0.38);
+      letter-spacing: 0.05em;
+      margin-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      text-align: center;
+      padding-top: 0.5rem;
+      max-width: none;
+    }
+
+    .ia-chart-caption {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: rgba(248, 245, 238, 0.32);
+      font-style: italic;
+      margin-top: 1.5rem;
+      max-width: none;
+    }
+
+    /* Skill premium cards */
+    .ia-skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .ia-skill-card {
+      background: rgba(10, 31, 68, 0.04);
+      border: 1px solid rgba(201, 169, 97, 0.18);
+      border-top: 2px solid var(--gold);
+      padding: 1.5rem 1.25rem;
+    }
+
+    .ia-skill-title {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      max-width: none;
+    }
+
+    .ia-skill-desc {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      line-height: 1.72;
+      color: rgba(7, 22, 48, 0.65);
+      max-width: none;
+    }
+
+    /* References */
+    .ia-references {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .ia-references-heading {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      max-width: none;
+    }
+
+    .ia-ref-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ia-ref-list li {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+      padding-left: 0;
+      max-width: none;
+    }
+
+    .ia-ref-list a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .ia-ref-list a:hover {
+      color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      .ia-body { padding: 2.5rem 0 3.5rem; }
+
+      .ia-stat-block {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+      }
+
+      .ia-stat { padding: 0; text-align: left; }
+
+      .ia-stat + .ia-stat {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .ia-chart-bars { height: 130px; gap: 0.6rem; }
+      .ia-chart-wrap { padding: 1.5rem 1.25rem 1.5rem; }
+      .ia-closing { padding-left: 1.1rem; margin: 2rem 0; }
+
+      .ia-article-meta { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+      .ia-meta-sep { display: none; }
+
+      .ia-skill-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .ia-lead { font-size: 1.05rem; }
+      .ia-prose { font-size: 1rem; line-height: 1.85; }
+      .ia-section-heading { font-size: 1.2rem; }
+      .ia-stat-number { font-size: 2.25rem; }
+      .ia-chart-bars { height: 110px; gap: 0.4rem; }
+      .ia-bar-val { font-size: 0.52rem; }
+      .ia-bar-year { font-size: 0.58rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Insights</span>
+          <h1>The Algorithm's New Author: How AI Is Rewriting the Role of the Quant</h1>
+          <p>Ken Griffin called it garbage in January. By May he had gone home depressed after watching it work inside Citadel.</p>
+        </div>
+      </div>
+    </header>
+
+    <article class="ia-body">
+      <div class="container container--narrow">
+
+        <div class="ia-article-meta reveal">
+          <span class="ia-meta-category">Hedge Funds</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-date">2 July 2026</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-author">Purujit Aggarwal &middot; Head of Investment Research, KCL AISOC</span>
+        </div>
+
+        <p class="ia-lead reveal">
+          In January 2026, Ken Griffin called artificial intelligence "it's all garbage" at Davos. Four months later, at Stanford Business School, he sounded like a different man.
+        </p>
+
+        <blockquote class="ia-closing reveal">
+          "I've got to tell you, I went home one Friday, actually fairly depressed. You could just see how this was going to have such a dramatic impact on society. To be blunt, work that we would usually do with people with master's and PhDs in finance over the course of weeks or months is being done by AI agents over the course of hours or days."
+          <cite class="ia-quote-attr">— Ken Griffin, Founder and CEO, Citadel &middot; Stanford Leadership Forum, May 2026</cite>
+        </blockquote>
+
+        <p class="ia-prose reveal">
+          Griffin's reversal is a signal. What he witnessed inside Citadel is the visible edge of a transformation reshaping every quant trading floor in the world: artificial intelligence is no longer just running the strategies. It is increasingly writing them.
+        </p>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">How a Quant Fund Works</h2>
+          <p class="ia-prose reveal">
+            Quant funds run systematic strategies where everything is encoded into signals, position sizes, and execution logic. A team of researchers identifies a pattern in market data, translates it into code, backtests it on historical data, and if it survives scrutiny, deploys it live. This pipeline has always been human. The bottleneck was never the testing infrastructure. It was throughput: how many ideas a team could generate and validate before the market moved on.
+          </p>
+          <p class="ia-prose reveal">
+            That bottleneck is now breaking.
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The Machines Start Writing the Code</h2>
+          <p class="ia-prose reveal">
+            In July 2025, Man Group, the world's largest listed hedge fund, disclosed that its quant equity division had deployed AlphaGPT: a system that identifies trading ideas, writes the code, and backtests them autonomously across all three steps. Several dozen AlphaGPT-generated signals have already passed Man Group's investment committee and are live in production.
+          </p>
+          <p class="ia-prose reveal">
+            Two Sigma has framed the shift in structural terms. In its 2026 outlook, the firm described AI as "the operating system for how quantitative research and investing work," with the research funnel inverting as large language models flood the pipeline with testable hypotheses, shifting the bottleneck from idea generation to idea evaluation.
+          </p>
+          <blockquote class="ia-closing reveal">
+            "The future isn't AI replacing humans; it's humans who use AI well replacing humans who don't."
+            <cite class="ia-quote-attr">— Matt Greenwood, Chief AI Innovation Officer, Two Sigma &middot; January 2026</cite>
+          </blockquote>
+          <p class="ia-prose reveal">
+            D.E. Shaw has taken a federated approach: a modular internal toolkit called Assistants, LLM Gateway, and DocLab that lets each research desk spin up custom AI tools independently, while a central governance team enforces logging and audit policy across the firm.
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">When AI Becomes the Decision-Maker</h2>
+          <p class="ia-prose reveal">
+            The most radical experiment in the industry is at Bridgewater. In July 2024, it launched the AIA Macro Fund, a $2 billion vehicle where AI is the primary investment decision-maker, not a research aide. By 2025, assets had grown beyond $5 billion and the fund had returned 11.9%. CEO Nir Bar Dea described the result at Bloomberg Invest:
+          </p>
+          <blockquote class="ia-closing reveal">
+            "Unique alpha that is uncorrelated to what our humans do."
+            <cite class="ia-quote-attr">— Nir Bar Dea, CEO, Bridgewater Associates &middot; Bloomberg Invest, March 2025</cite>
+          </blockquote>
+          <p class="ia-prose reveal">
+            Uncorrelated alpha is the holy grail of portfolio construction. Bar Dea is claiming Bridgewater's AI fund is finding edges its human portfolio managers are not. Co-CIO Greg Jensen frames it as compounding fifty years of accumulated macro research with machine learning — something no individual analyst could replicate. Human oversight remains embedded: AI agents generate hypotheses, human analysts validate, and risk management signs off on execution.
+          </p>
+        </div>
+
+        <!-- Stat block: Bridgewater AIA Macro Fund -->
+        <div class="ia-stat-block reveal">
+          <div class="ia-stat">
+            <p class="ia-stat-number">$5bn+</p>
+            <p class="ia-stat-label">AIA Macro Fund AUM, 2025</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">11.9%</p>
+            <p class="ia-stat-label">Fund return, 2025</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">$2bn</p>
+            <p class="ia-stat-label">Launch size, July 2024</p>
+          </div>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">Why the Human Veto Is Non-Negotiable</h2>
+          <p class="ia-prose reveal">
+            Across every firm in this space, humans retain veto authority over execution. Man Group's Alpha Assistant can draft signals but cannot execute trades. Bridgewater's AIA system generates and validates, but risk management remains human. This is not caution for its own sake. It reflects three hard constraints.
+          </p>
+          <p class="ia-prose reveal">
+            The hallucination problem is real. A spurious signal that looks statistically valid can generate losses at scale before anyone catches the error. Regulatory pressure is intensifying too: the SEC has pursued enforcement against AI washing, and the Bank of England confirmed in April 2026 that it is conducting scenario analysis and simulations of how AI trading agents behave under stress conditions. Funds that cannot document the rationale behind an investment decision face genuine compliance exposure, and black-box AI does not satisfy that requirement. Organisationally, Citadel's own aborted Seattle AI lab — a nine-figure investment dissolved in 2020 — failed not because the models were weak but because ML talent was isolated from the portfolio managers who owned P&amp;L. When those two groups do not communicate, the model never gets trusted.
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">What This Means If You Are Starting Your Career Now</h2>
+          <blockquote class="ia-closing reveal">
+            "These are not mid-tier white-collar jobs. These are extraordinarily high-skilled jobs being automated by agentic AI."
+            <cite class="ia-quote-attr">— Ken Griffin, Stanford Leadership Forum, May 2026</cite>
+          </blockquote>
+          <p class="ia-prose reveal">
+            The instinctive response is anxiety. But the firms doing this most seriously are not shrinking their research headcount. They are changing what they recruit for. Man Group's Tim Mace noted that around half of the firm's 600 active coders now use GenAI, with the goal of making them more effective, not replacing them. The skill premium is shifting in three directions:
+          </p>
+
+          <div class="ia-skill-grid reveal">
+            <div class="ia-skill-card">
+              <p class="ia-skill-title">Signal Evaluation</p>
+              <p class="ia-skill-desc">Knowing whether a backtested strategy is genuinely predictive or fitting noise requires statistical intuition AI cannot self-apply.</p>
+            </div>
+            <div class="ia-skill-card">
+              <p class="ia-skill-title">Domain Knowledge</p>
+              <p class="ia-skill-desc">AI finds patterns that have existed before. It cannot distinguish a real structural relationship from a historical coincidence that will not persist. A researcher who understands why a signal should work can make that judgment. A model cannot.</p>
+            </div>
+            <div class="ia-skill-card">
+              <p class="ia-skill-title">Explainability</p>
+              <p class="ia-skill-desc">AI outputs nobody can explain do not get trusted, do not get deployed, and do not generate alpha. The ability to interrogate a model and communicate its logic clearly enough that a portfolio manager will stake capital on it is now a core competency.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The Systemic Risk Nobody Is Discussing</h2>
+          <p class="ia-prose reveal">
+            If dozens of quant funds train AI models on similar datasets — the same satellite imagery, credit card flows, and earnings call transcripts the alternative data industry sells to everyone — those models will find similar patterns and generate correlated signals. Funds that believe they are running independent strategies may be far more exposed to each other than they realise.
+          </p>
+          <p class="ia-prose reveal">
+            This risk is not theoretical. On 5 August 2024, the Nikkei fell 12.4% in a single session, its largest one-day drop since 1987, as reported by Reuters. The primary trigger was the rapid unwinding of yen carry trades following a surprise Bank of Japan rate rise, but the sell-off was amplified by leveraged and algorithmic positions unwinding in concert across global markets. The BIS noted in its subsequent bulletin that "financial market volatility was amplified as the unwinding of leveraged trades in equity and currency markets amplified the initial reaction." As AI proliferates across quant strategies trained on common data, the potential for similar correlated drawdowns grows. The Bank of England is now conducting scenario analysis of AI trading agent behaviour under stress conditions precisely because this risk is taken seriously at the regulatory level.
+          </p>
+        </div>
+
+        <!-- Bar chart: Historic Nikkei 225 single-day declines -->
+        <div class="ia-chart-wrap reveal" id="ia-nikkei-chart">
+          <p class="ia-chart-label">Historic Nikkei 225 largest single-day declines — magnitude (%)</p>
+          <div class="ia-chart-bars">
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar ia-bar--muted" data-height="180" data-delay="0">
+                  <span class="ia-bar-val">&minus;14.9%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">1987</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="150" data-delay="0.12">
+                  <span class="ia-bar-val">&minus;12.4%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">Aug 2024</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar ia-bar--muted" data-height="114" data-delay="0.24">
+                  <span class="ia-bar-val">&minus;9.4%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">Oct 2008</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar ia-bar--muted" data-height="74" data-delay="0.36">
+                  <span class="ia-bar-val">&minus;6.1%</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">Mar 2020</span>
+            </div>
+          </div>
+          <p class="ia-chart-caption">Gold bar: 5 August 2024 — the largest Nikkei single-day decline since Black Monday 1987, amplified by algorithmic carry-trade unwinds. Muted bars: historical comparators (20 Oct 1987; 16 Oct 2008; 13 Mar 2020). Sources: Reuters (6 Aug 2024); BIS Bulletin No. 90. Bars scaled proportionally to the 1987 figure.</p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">Conclusion</h2>
+          <p class="ia-prose reveal">
+            Man Group's AlphaGPT writes and backtests signals autonomously. Two Sigma treats AI as the operating system of its research process. Bridgewater's AIA fund is live and generating uncorrelated alpha. Ken Griffin called it all garbage in January and went home depressed in May after watching it work inside his own firm.
+          </p>
+          <p class="ia-prose reveal">
+            The algorithm has a new author. The most important role on the floor is still the editor: the researcher who reads what the machine produced, understands why it worked, stress-tests whether it will keep working, and explains it clearly enough that a portfolio manager will stake capital on it.
+          </p>
+        </div>
+
+        <blockquote class="ia-closing reveal">
+          That job has not been automated. It has become the job.
+        </blockquote>
+
+        <hr class="ia-divider">
+
+        <section class="ia-references reveal" aria-label="References">
+          <p class="ia-references-heading">References</p>
+          <ol class="ia-ref-list">
+            <li>Ken Griffin, Stanford Leadership Forum, 5 May 2026 — singjupost.com/stanford-leadership-forum-2026-conversation-with-ken-griffin-transcript/</li>
+            <li>Ken Griffin at Davos, 22 January 2026, and Stanford reversal — <em>Fortune</em>, 18 May 2026 — fortune.com/2026/05/18/billionaire-ken-griffin-ai-garbage-depressed-dramatic-impact-society/</li>
+            <li>Man Group AlphaGPT — <em>Bloomberg</em>, 10 July 2025 — bloomberg.com/news/articles/2025-07-10/man-group-says-agentic-ai-is-now-devising-quant-trading-signals</li>
+            <li>Two Sigma, <em>AI in Investment Management: 2026 Outlook (Part I)</em>, 12 January 2026 — twosigma.com/articles/ai-in-investment-management-2026-outlook-part-i/</li>
+            <li>Nir Bar Dea, Bloomberg Invest, March 2025 — bloomberg.com/news/articles/2025-03-04/bridgewater-ceo-says-firm-s-ai-fund-comparable-to-human-ones</li>
+            <li>Bridgewater AIA Macro Fund — longtermwiki.com/wiki/E516</li>
+            <li>D.E. Shaw AI deployment — Resonanz Capital, November 2025 — resonanzcapital.com/insights/ai-use-by-hedge-funds-made-tangible-from-lego-bots-to-alpha-assistants</li>
+            <li>Man Group, Tim Mace — <em>eFinancialCareers</em>, October 2024 — efinancialcareers.com/news/ai-replacing-software-developers-gaslighting</li>
+            <li>Bank of England AI scenario analysis, April 2026 — convergences.substack.com/p/citadel-the-most-profitable-hedge</li>
+            <li>Nikkei 12.4% decline, 5 August 2024 — Reuters, 6 August 2024; BIS Bulletin No. 90, bis.org/publ/bisbull90.pdf</li>
+          </ol>
+        </section>
+
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <a href="privacy.html" class="footer-privacy-link">Privacy Policy</a>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <script>
+    window.addEventListener('load', function () {
+      var bars = document.querySelectorAll('#ia-nikkei-chart .ia-bar');
+      if (!bars.length) return;
+
+      var chartEl = document.getElementById('ia-nikkei-chart');
+      var animated = false;
+
+      function runChart() {
+        if (animated) return;
+        animated = true;
+        bars.forEach(function (bar) {
+          var targetH = parseInt(bar.getAttribute('data-height'), 10);
+          var delay   = parseFloat(bar.getAttribute('data-delay') || '0');
+          var valEl   = bar.querySelector('.ia-bar-val');
+
+          if (typeof gsap !== 'undefined') {
+            gsap.to(bar, {
+              height: targetH,
+              duration: 1.0,
+              ease: 'power2.out',
+              delay: delay,
+              onComplete: function () {
+                if (valEl) valEl.classList.add('ia-val-visible');
+              }
+            });
+          } else {
+            bar.style.height = targetH + 'px';
+            if (valEl) valEl.classList.add('ia-val-visible');
+          }
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) {
+            io.disconnect();
+            runChart();
+          }
+        }, { threshold: 0.3 });
+        io.observe(chartEl);
+      } else {
+        runChart();
+      }
+    });
+  </script>
+
+</body>
+</html>
