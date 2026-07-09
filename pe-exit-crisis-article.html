@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Private equity is sitting on a record backlog of 33,000 unsold companies worth $3.8 trillion. Average holding periods have hit seven years, distributions are at crisis-era lows, and the workarounds — continuation vehicles, NAV loans — are papering over the problem rather than solving it.">
+  <title>The $3.8 Trillion Traffic Jam: Why Private Equity Cannot Sell | KCL AISOC Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A1F44">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
+      window.addEventListener('load', function () {
+        playHero();
+        setTimeout(function () {
+          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
+        }, 600);
+      });
+    })();
+  </script>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    .ia-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    .ia-article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+    }
+
+    .ia-meta-category {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-left: 2px solid var(--gold);
+      padding-left: 0.6rem;
+    }
+
+    .ia-meta-sep {
+      width: 1px;
+      height: 0.85rem;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .ia-meta-date,
+    .ia-meta-author {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      max-width: none;
+    }
+
+    .ia-lead {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      line-height: 1.82;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: none;
+    }
+
+    .ia-prose {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.5vw, 1.0625rem);
+      line-height: 1.9;
+      color: rgba(7, 22, 48, 0.7);
+      margin-bottom: 1.35rem;
+      max-width: none;
+    }
+
+    .ia-section {
+      margin-bottom: 3rem;
+    }
+
+    .ia-section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(201, 169, 97, 0.22);
+      max-width: none;
+    }
+
+    .ia-closing {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--deep-navy);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2.5rem 0;
+      max-width: none;
+    }
+
+    .ia-quote-attr {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      font-style: normal;
+      display: block;
+      margin-top: 0.85rem;
+    }
+
+    .ia-divider {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 3rem 0;
+    }
+
+    /* Stat callout block */
+    .ia-stat-block {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 3rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ia-stat-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 90% at 50% 50%, rgba(201, 169, 97, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .ia-stat {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .ia-stat + .ia-stat {
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .ia-stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+      max-width: none;
+    }
+
+    .ia-stat-label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(248, 245, 238, 0.52);
+      text-transform: uppercase;
+      line-height: 1.55;
+      max-width: none;
+    }
+
+    /* Bar chart */
+    .ia-chart-wrap {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 2.5rem 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+
+    .ia-chart-label {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(248, 245, 238, 0.35);
+      margin-bottom: 3.25rem;
+      max-width: none;
+    }
+
+    .ia-chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      height: 180px;
+    }
+
+    .ia-bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .ia-bar-wrap {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .ia-bar {
+      width: 100%;
+      background: var(--gold);
+      height: 0;
+      border-radius: 1px 1px 0 0;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+
+    .ia-bar--muted {
+      background: rgba(201, 169, 97, 0.35);
+    }
+
+    .ia-bar:hover {
+      box-shadow: 0 0 18px rgba(201, 169, 97, 0.35);
+    }
+
+    .ia-bar-val {
+      position: absolute;
+      top: -1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.8s;
+      max-width: none;
+    }
+
+    .ia-bar-val.ia-val-visible {
+      opacity: 1;
+    }
+
+    .ia-bar-year {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      color: rgba(248, 245, 238, 0.38);
+      letter-spacing: 0.05em;
+      margin-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      text-align: center;
+      padding-top: 0.5rem;
+      max-width: none;
+    }
+
+    .ia-chart-caption {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: rgba(248, 245, 238, 0.32);
+      font-style: italic;
+      margin-top: 1.5rem;
+      max-width: none;
+    }
+
+    /* References */
+    .ia-references {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .ia-references-heading {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      max-width: none;
+    }
+
+    .ia-ref-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ia-ref-list li {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+      padding-left: 0;
+      max-width: none;
+    }
+
+    .ia-ref-list a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .ia-ref-list a:hover {
+      color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      .ia-body { padding: 2.5rem 0 3.5rem; }
+
+      .ia-stat-block {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+      }
+
+      .ia-stat { padding: 0; text-align: left; }
+
+      .ia-stat + .ia-stat {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .ia-chart-bars { height: 130px; gap: 0.6rem; }
+      .ia-chart-wrap { padding: 1.5rem 1.25rem 1.5rem; }
+      .ia-closing { padding-left: 1.1rem; margin: 2rem 0; }
+
+      .ia-article-meta { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+      .ia-meta-sep { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .ia-lead { font-size: 1.05rem; }
+      .ia-prose { font-size: 1rem; line-height: 1.85; }
+      .ia-section-heading { font-size: 1.2rem; }
+      .ia-stat-number { font-size: 2.25rem; }
+      .ia-chart-bars { height: 110px; gap: 0.4rem; }
+      .ia-bar-val { font-size: 0.52rem; }
+      .ia-bar-year { font-size: 0.58rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Insights</span>
+          <h1>The $3.8 Trillion Traffic Jam: Why Private Equity Cannot Sell</h1>
+          <p>33,000 unsold companies. Seven-year holding periods. Distributions at crisis-era lows. The exit machine is broken.</p>
+        </div>
+      </div>
+    </header>
+
+    <article class="ia-body">
+      <div class="container container--narrow">
+
+        <div class="ia-article-meta reveal">
+          <span class="ia-meta-category">Private Equity</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-date">9 July 2026</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-author">Muntasir Ali</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-author">Founder and President</span>
+        </div>
+
+        <p class="ia-lead reveal">
+          Private equity has a simple promise at its core: buy a company, improve it, sell it within five years, return the cash. Right now, that final step is broken. The industry is sitting on a record backlog of roughly <strong>33,000 unsold portfolio companies worth around $3.8 trillion</strong>, and the queue is growing faster than it clears (Bain &amp; Company, 2026).
+        </p>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The Numbers Behind the Logjam</h2>
+          <p class="ia-prose reveal">
+            The scale is difficult to absorb. Average holding periods have stretched to around <strong>seven years</strong>, well beyond the traditional three to five (Bain &amp; Company, 2026). McKinsey (2026) finds that <strong>over 16,000 companies, 52 percent of all buyout-backed businesses, have now been held for more than four years</strong>, the highest share on record. Most painfully for investors, distributions have run <strong>below 15 percent of net asset value for four consecutive years</strong>, a level of drought not seen since the financial crisis (Bain &amp; Company, 2026). Pension funds and endowments that expected cash back are still waiting.
+          </p>
+        </div>
+
+        <!-- Stat block: the scale of the logjam -->
+        <div class="ia-stat-block reveal">
+          <div class="ia-stat">
+            <p class="ia-stat-number">$3.8tn</p>
+            <p class="ia-stat-label">Record backlog of unsold assets</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">33,000</p>
+            <p class="ia-stat-label">Portfolio companies awaiting exit</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">&lt;15%</p>
+            <p class="ia-stat-label">Distributions as % NAV, four years running</p>
+          </div>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">Why Can Nobody Sell?</h2>
+          <p class="ia-prose reveal">
+            Three forces collided. Firms that bought companies at peak 2021 valuations refused to mark them down, creating a stubborn gap between what sellers want and what buyers will pay. Interest rates then made the debt that finances buyouts far more expensive, shrinking the pool of viable acquirers. And the IPO window, the traditional escape hatch for the largest assets, effectively closed in 2022 and has only partially reopened.
+          </p>
+          <blockquote class="ia-closing reveal">
+            "The 2021 assets are probably the hardest ones to exit right now because of where the valuations were and are."
+            <cite class="ia-quote-attr">— Raymond James adviser, Wall Street Journal, 2026</cite>
+          </blockquote>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">A Bifurcated Crisis</h2>
+          <p class="ia-prose reveal">
+            The pain is not evenly distributed. This is a <strong>bifurcated crisis</strong>, concentrated in the largest, most leveraged, most IPO-dependent deals. Thoma Bravo's <strong>$6.4 billion</strong> take-private of Medallia is heading toward a restructuring implying an equity loss of around <strong>$5.1 billion</strong>, with founder Orlando Bravo admitting "we made a mistake, and that caused us to pay too much" (CNBC, 2026). Roark Capital, which took Dunkin' private in 2020, only filed for an Inspire Brands IPO in May 2026, seeking a <strong>$20 billion</strong> valuation largely to repay debt (Bloomberg, 2026).
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">Where the Market Still Works</h2>
+          <p class="ia-prose reveal">
+            Contrast that with the UK lower mid-market, where quality businesses kept finding buyers throughout 2026. LDC sold PAM Healthcare for around <strong>£100 million</strong>, roughly <strong>12x EBITDA</strong> (Insider Media, 2026). Graphite Capital exited Beacon at a reported <strong>4x cash return</strong> (Graphite Capital, 2026). August Equity sold Hallmarq Veterinary Imaging to NORD Holding after doubling its revenue (Travers Smith, 2026). Smaller companies carry less debt, rarely depend on IPOs, and face a far deeper pool of trade buyers and other funds, so their exits never seized up in the same way.
+          </p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">The Workarounds</h2>
+          <p class="ia-prose reveal">
+            Where genuine sales are impossible, the industry has built workarounds. <strong>Continuation vehicles</strong>, where a firm sells a company from one of its funds to a new fund it also controls, hit roughly <strong>$115 billion in 2025</strong>, up from <strong>$15 billion in 2021</strong>, and now account for about a fifth of exits (Evercore, 2026). <strong>NAV loans</strong>, borrowing against entire portfolios to pay investors, have grown into a <strong>$100 billion market</strong> (17Capital, 2026). Critics note the obvious tension: this is financial plumbing that returns cash without proving what assets are actually worth.
+          </p>
+        </div>
+
+        <!-- Bar chart: continuation vehicle market growth -->
+        <div class="ia-chart-wrap reveal" id="ia-cv-chart">
+          <p class="ia-chart-label">Continuation vehicle market size ($bn) — 2021 vs 2025</p>
+          <div class="ia-chart-bars">
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar ia-bar--muted" data-height="24" data-delay="0">
+                  <span class="ia-bar-val">$15bn</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">2021</span>
+            </div>
+            <div class="ia-bar-col">
+              <div class="ia-bar-wrap">
+                <div class="ia-bar" data-height="180" data-delay="0.15">
+                  <span class="ia-bar-val">$115bn</span>
+                </div>
+              </div>
+              <span class="ia-bar-year">2025</span>
+            </div>
+          </div>
+          <p class="ia-chart-caption">Continuation vehicles — where a GP sells an asset from an existing fund into a new fund it also controls — have grown 7.7&times; in four years, now accounting for roughly a fifth of all PE exits. Source: Evercore, Secondary Market Review 2025.</p>
+        </div>
+
+        <div class="ia-section">
+          <h2 class="ia-section-heading reveal">Will It Clear?</h2>
+          <p class="ia-prose reveal">
+            Even at 2025's recovered exit pace of <strong>$717 billion</strong>, working through $3.8 trillion implies more than five years of selling, and Bain compares the situation to the aftermath of 2008 (Bain &amp; Company, 2026). PitchBook (2026) expects 2026 exits to "broaden rather than surge."
+          </p>
+          <p class="ia-prose reveal">
+            For students eyeing careers in the industry, the lesson is clear: the era of buying, leveraging, and flipping is over. The firms that thrive from here will be the ones that can genuinely operate and grow businesses, because the exit door no longer opens on its own.
+          </p>
+        </div>
+
+        <blockquote class="ia-closing reveal">
+          The era of buying, leveraging, and flipping is over. The firms that thrive from here will be the ones that can genuinely operate and grow businesses, because the exit door no longer opens on its own.
+        </blockquote>
+
+        <hr class="ia-divider">
+
+        <section class="ia-references reveal" aria-label="References">
+          <p class="ia-references-heading">References</p>
+          <ol class="ia-ref-list">
+            <li>Bain &amp; Company (2026) <em>Global Private Equity Report 2026.</em> Boston: Bain &amp; Company.</li>
+            <li>Bain &amp; Company (2026) <em>Private Equity Midyear Report 2026.</em> Boston: Bain &amp; Company.</li>
+            <li>Bloomberg (2026) 'Dunkin' parent Inspire Brands prepares for $2 billion US listing', 17 April.</li>
+            <li>CNBC (2026) 'Orlando Bravo says some software names hit by AI deserve a valuation cut', 17 March.</li>
+            <li>Evercore (2026) <em>Secondary Market Review 2025.</em> New York: Evercore.</li>
+            <li>Graphite Capital (2026) 'Graphite announces successful sale of Beacon to Corten Capital', 21 May.</li>
+            <li>Insider Media (2026) 'Preventative healthcare specialist to be acquired in £100m deal', February.</li>
+            <li>McKinsey &amp; Company (2026) <em>Global Private Markets Report 2026.</em> New York: McKinsey &amp; Company.</li>
+            <li>PitchBook (2026) <em>Q2 2026 US PE Breakdown.</em> Seattle: PitchBook.</li>
+            <li>17Capital (2026) <em>NAV Finance Market Review.</em> London: 17Capital.</li>
+            <li>Travers Smith (2026) 'Travers Smith advises August Equity on the sale of Hallmarq Veterinary Imaging', 12 February.</li>
+            <li>Wall Street Journal (2026) 'Private equity's nine-year backlog', 7 July.</li>
+          </ol>
+        </section>
+
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <a href="privacy.html" class="footer-privacy-link">Privacy Policy</a>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <script>
+    window.addEventListener('load', function () {
+      var bars = document.querySelectorAll('#ia-cv-chart .ia-bar');
+      if (!bars.length) return;
+
+      var chartEl = document.getElementById('ia-cv-chart');
+      var animated = false;
+
+      function runChart() {
+        if (animated) return;
+        animated = true;
+        bars.forEach(function (bar) {
+          var targetH = parseInt(bar.getAttribute('data-height'), 10);
+          var delay   = parseFloat(bar.getAttribute('data-delay') || '0');
+          var valEl   = bar.querySelector('.ia-bar-val');
+
+          if (typeof gsap !== 'undefined') {
+            gsap.to(bar, {
+              height: targetH,
+              duration: 1.0,
+              ease: 'power2.out',
+              delay: delay,
+              onComplete: function () {
+                if (valEl) valEl.classList.add('ia-val-visible');
+              }
+            });
+          } else {
+            bar.style.height = targetH + 'px';
+            if (valEl) valEl.classList.add('ia-val-visible');
+          }
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) {
+            io.disconnect();
+            runChart();
+          }
+        }, { threshold: 0.3 });
+        io.observe(chartEl);
+      } else {
+        runChart();
+      }
+    });
+  </script>
+
+</body>
+</html>
