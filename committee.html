@@ -56,6 +56,7 @@
 
   <!-- Scroll progress bar -->
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
@@ -100,135 +101,16 @@
     </header>
 
     <!-- ============================================================
-         COMMITTEE INTRO + GRID
+         COMMITTEE GRID — populated by the inline script below
          ============================================================ -->
     <section aria-labelledby="committee-heading">
       <div class="container">
 
-        <div class="section-intro" style="text-align: center; max-width: 600px; margin: 0 auto 4rem;">
-          <p class="reveal" style="color: var(--text-secondary); font-size: 1.025rem; line-height: 1.75;">
-            Full committee profiles and photographs will be published
-            following our official launch in October 2026.
-          </p>
-        </div>
-
-        <h2 id="committee-heading" class="reveal" style="margin-bottom: 2.5rem; text-align: center; font-size: clamp(1.25rem, 2vw, 1.75rem); color: var(--text-muted); font-family: var(--font-sans); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem;">
+        <h2 id="committee-heading" class="reveal" style="margin-bottom: 2.5rem; text-align: center; font-family: var(--font-sans); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem; color: var(--text-muted);">
           Founding Committee
         </h2>
 
-        <div class="committee-grid">
-
-          <!--
-            COMMITTEE CARD, PRESIDENT
-            TO UPDATE:
-            1. Replace "Name TBC" with the member's full name.
-            2. Replace the .committee-photo div contents with:
-               <img src="photos/name-surname.jpg" alt="[Full Name], President" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-               Recommended photo: 300×300px, square crop, professional headshot.
-            3. Remove the aria-label on .committee-photo once a real img is added.
-          -->
-          <div class="committee-card reveal">
-            <div class="committee-photo" aria-label="Photo placeholder">
-              <div class="committee-photo-icon">
-                <span class="icon-head"></span>
-                <span class="icon-body"></span>
-              </div>
-            </div>
-            <p class="committee-name">Name TBC</p>
-            <p class="committee-role">President</p>
-          </div>
-
-          <!--
-            COMMITTEE CARD, VICE PRESIDENT
-            TO UPDATE: Same steps as President card above.
-          -->
-          <div class="committee-card reveal reveal-delay-1">
-            <div class="committee-photo" aria-label="Photo placeholder">
-              <div class="committee-photo-icon">
-                <span class="icon-head"></span>
-                <span class="icon-body"></span>
-              </div>
-            </div>
-            <p class="committee-name">Name TBC</p>
-            <p class="committee-role">Vice President</p>
-          </div>
-
-          <!--
-            COMMITTEE CARD, CO-HEAD OF INVESTMENT RESEARCH (1 of 2)
-            TO UPDATE: Same steps as President card above.
-          -->
-          <div class="committee-card reveal reveal-delay-2">
-            <div class="committee-photo" aria-label="Photo placeholder">
-              <div class="committee-photo-icon">
-                <span class="icon-head"></span>
-                <span class="icon-body"></span>
-              </div>
-            </div>
-            <p class="committee-name">Name TBC</p>
-            <p class="committee-role">Co-Head of Investment Research</p>
-          </div>
-
-          <!--
-            COMMITTEE CARD, CO-HEAD OF INVESTMENT RESEARCH (2 of 2)
-            TO UPDATE: Same steps as President card above.
-          -->
-          <div class="committee-card reveal reveal-delay-3">
-            <div class="committee-photo" aria-label="Photo placeholder">
-              <div class="committee-photo-icon">
-                <span class="icon-head"></span>
-                <span class="icon-body"></span>
-              </div>
-            </div>
-            <p class="committee-name">Name TBC</p>
-            <p class="committee-role">Co-Head of Investment Research</p>
-          </div>
-
-          <!--
-            COMMITTEE CARD, VP OPERATIONS
-            TO UPDATE: Same steps as President card above.
-          -->
-          <div class="committee-card reveal reveal-delay-1">
-            <div class="committee-photo" aria-label="Photo placeholder">
-              <div class="committee-photo-icon">
-                <span class="icon-head"></span>
-                <span class="icon-body"></span>
-              </div>
-            </div>
-            <p class="committee-name">Name TBC</p>
-            <p class="committee-role">VP Operations</p>
-          </div>
-
-          <!--
-            COMMITTEE CARD, HEAD OF SOCIAL MEDIA AND MARKETING
-            TO UPDATE: Same steps as President card above.
-          -->
-          <div class="committee-card reveal reveal-delay-2">
-            <div class="committee-photo" aria-label="Photo placeholder">
-              <div class="committee-photo-icon">
-                <span class="icon-head"></span>
-                <span class="icon-body"></span>
-              </div>
-            </div>
-            <p class="committee-name">Name TBC</p>
-            <p class="committee-role">Head of Social Media &amp; Marketing</p>
-          </div>
-
-          <!--
-            COMMITTEE CARD, HEAD OF LEGAL AND COMPLIANCE
-            TO UPDATE: Same steps as President card above.
-          -->
-          <div class="committee-card reveal reveal-delay-3">
-            <div class="committee-photo" aria-label="Photo placeholder">
-              <div class="committee-photo-icon">
-                <span class="icon-head"></span>
-                <span class="icon-body"></span>
-              </div>
-            </div>
-            <p class="committee-name">Name TBC</p>
-            <p class="committee-role">Head of Legal &amp; Compliance</p>
-          </div>
-
-        </div>
+        <div id="committee-grid" class="committee-grid" role="list"></div>
 
         <!-- CTA below grid -->
         <div class="reveal" style="text-align: center; margin-top: 4rem; padding: 3rem; border: 1px solid var(--border-light); background: var(--white);">
@@ -246,6 +128,28 @@
     </section>
 
   </main>
+
+  <!-- ============================================================
+       COMMITTEE MEMBER MODAL
+       ============================================================ -->
+  <div id="committee-modal" class="committee-modal" role="dialog" aria-modal="true" aria-labelledby="modal-member-name">
+    <div class="committee-modal-overlay" id="modal-overlay"></div>
+    <div class="committee-modal-inner">
+      <button class="committee-modal-close" id="modal-close" aria-label="Close profile">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <line x1="1" y1="1" x2="17" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="17" y1="1" x2="1" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div id="modal-photo-wrap" class="committee-modal-photo-wrap"></div>
+      <div class="committee-modal-body">
+        <p id="modal-member-name" class="committee-name committee-modal-name"></p>
+        <p id="modal-member-role" class="committee-role"></p>
+        <p id="modal-member-bio" class="committee-modal-bio"></p>
+        <a id="modal-linkedin-btn" class="btn btn-primary committee-modal-linkedin" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </div>
 
   <!-- ============================================================
        FOOTER
@@ -322,5 +226,262 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
+
+  <!-- ============================================================
+       Committee data + grid rendering + modal
+       Runs synchronously before deferred GSAP/main.js so cards are
+       in the DOM when initScrollReveals and initCommitteeCardHovers run.
+       ============================================================ -->
+  <script>
+  (function () {
+    'use strict';
+
+    // ------------------------------------------------------------------
+    // Committee data — update this array when bios, photos, or links change
+    // ------------------------------------------------------------------
+    var COMMITTEE = [
+      {
+        name:     'Muntasir Ali',
+        role:     'Founder & President',
+        photo:    'photos/muntasir.jpg',
+        linkedin: 'https://www.linkedin.com/in/muntasir-aa-ali/',
+        bio:      'I\'m Muntasir Ali, a BSc Political Economy student at King\'s and Founder and President of KCL AISOC. I started the society to give students a real route into understanding private markets, from private equity to hedge funds. My own experience spans Permira\'s Private Equity Insight Week and an internship at Shore Capital, and I\'m focused on a long term career in alternative asset management.'
+      },
+      {
+        name:     'Chloe Palmer',
+        role:     'Vice President of Internal Affairs',
+        photo:    'photos/chloe.jpg',
+        linkedin: 'https://www.linkedin.com/in/chloe-palmer-b5a26821b',
+        bio:      'I\'m Chloe Palmer, a third year LLB Law student and VP of Internal Affairs. My interest in alternative investments began at an insight day with Ropes & Gray, where I saw how private markets shape businesses and the wider economy. It deepened during my placement at Blackstone Chambers, where I worked on an FCA regulatory case involving a hedge fund and its manager, giving me first hand insight into how regulation in the sector affects markets and ordinary investors.'
+      },
+      {
+        name:     'Daria (Dasha)',
+        role:     'Vice President of External Affairs',
+        photo:    'photos/dasha.jpg',
+        linkedin: '',
+        bio:      ''
+      },
+      {
+        name:     'Asaad Al Araimi',
+        role:     'Treasurer & Head of Finance',
+        photo:    'photos/asaad.jpg',
+        linkedin: 'https://www.linkedin.com/in/asaad-aamed-al-araimi-985b20284/',
+        bio:      'I\'m Asaad Al Araimi from the Sultanate of Oman, studying Political Economy and serving as KCL AISOC\'s Treasurer and Head of Finance. Outside of academics, I enjoy horseback riding and am always up for a game of padel.'
+      },
+      {
+        name:     'Boontarnkiat (Q) Thaweesantikul',
+        role:     'Head of Events & Speaker Series',
+        photo:    'photos/q.jpg',
+        linkedin: 'https://www.linkedin.com/in/q-btk',
+        bio:      'I\'m Q, entering my second year in BSc (Hons) Economics and Management. As Head of Events and Speaker Series, I\'m building the society\'s flagship sessions, and my own interests sit in the private equity and commodities side of alternative investments.'
+      },
+      {
+        name:     'Darina Langroudi',
+        role:     'Head of Marketing & Social Media',
+        photo:    'photos/darina.jpg',
+        linkedin: 'https://www.linkedin.com/in/darinalangroudi',
+        bio:      'I\'m Darina Langroudi, a second year Social Sciences student and Head of Marketing and Social Media. My focus is making alternative investments digestible and engaging for those who are still learning about the space.'
+      },
+      {
+        name:     'Talin Senthilkumar',
+        role:     'Head of Legal & Compliance',
+        photo:    'photos/talin.jpg',
+        linkedin: 'https://www.linkedin.com/in/talin-ram-928626286',
+        bio:      'I\'m Talin Senthilkumar, a second year Law LLB student with a strong interest in financial markets, private equity, and their intersections with the law. As Head of Legal and Compliance, I use my legal experience and knowledge of corporate compliance to keep the society running smoothly as it grows.'
+      },
+      {
+        name:     'Purujit (Puru) Aggarwal',
+        role:     'Head of Investment Research',
+        photo:    'photos/puru.jpg',
+        linkedin: 'https://www.linkedin.com/in/purujit-aggarwal-93252123a',
+        bio:      'I\'m Puru Aggarwal, a second year BSc (Hons) Computer Science student and Head of Investment Research. My focus is on hedge funds and quantitative investing, bringing a technical lens to the society\'s research output.'
+      },
+      {
+        name:     'Aashna Agarwal',
+        role:     'Senior Investment Researcher',
+        photo:    'photos/aashna.jpg',
+        linkedin: 'https://www.linkedin.com/in/aashna-agarwal-656947276',
+        bio:      'I\'m Aashna Agarwal, a second year BSc Economics student. I\'m currently interning at PGIM in mutual funds and asset management, with prior experience at Artane Partners, a Gulf focused capital advisory boutique, where I worked on live deal execution including IM drafting and valuation analysis.'
+      },
+      {
+        name:     'Umar Hassan',
+        role:     'Senior Legal Advisor',
+        photo:    'photos/umar.jpg',
+        linkedin: '',
+        bio:      ''
+      },
+      {
+        name:     'Soraya',
+        role:     'Head of Outreach',
+        photo:    'photos/soraya.jpg',
+        linkedin: '',
+        bio:      ''
+      }
+    ];
+
+    // ------------------------------------------------------------------
+    // Helpers
+    // ------------------------------------------------------------------
+    var failedPhotos = {};
+
+    function buildInitials(name) {
+      var el = document.createElement('span');
+      el.className = 'committee-initials';
+      var parts = name.trim().split(/\s+/);
+      var init = parts[0].charAt(0);
+      if (parts.length > 1) init += parts[parts.length - 1].charAt(0);
+      el.textContent = init.toUpperCase();
+      return el;
+    }
+
+    function buildPhoto(member, extraClass) {
+      var wrap = document.createElement('div');
+      wrap.className = 'committee-photo' + (extraClass ? ' ' + extraClass : '');
+      if (member.photo && !failedPhotos[member.photo]) {
+        var img = document.createElement('img');
+        img.alt = member.name + ', ' + member.role;
+        img.src = member.photo;
+        /* Capture photo path in closure so the error handler stays correct
+           even if member references change. */
+        (function (src) {
+          img.addEventListener('error', function () {
+            failedPhotos[src] = true;
+            if (img.parentNode === wrap) wrap.removeChild(img);
+            wrap.appendChild(buildInitials(member.name));
+          }, { once: true });
+        }(member.photo));
+        wrap.appendChild(img);
+      } else {
+        wrap.appendChild(buildInitials(member.name));
+      }
+      return wrap;
+    }
+
+    // ------------------------------------------------------------------
+    // Render grid
+    // ------------------------------------------------------------------
+    var grid = document.getElementById('committee-grid');
+    if (!grid) return;
+
+    COMMITTEE.forEach(function (member) {
+      var card = document.createElement('div');
+      card.className = 'committee-card reveal';
+      card.setAttribute('role', 'listitem');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', member.name + ', ' + member.role + '. Press Enter to view profile.');
+
+      card.appendChild(buildPhoto(member));
+
+      var nameEl = document.createElement('p');
+      nameEl.className = 'committee-name';
+      nameEl.textContent = member.name;
+      card.appendChild(nameEl);
+
+      var roleEl = document.createElement('p');
+      roleEl.className = 'committee-role';
+      roleEl.textContent = member.role;
+      card.appendChild(roleEl);
+
+      card.addEventListener('click', function () { openModal(member, card); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(member, card); }
+      });
+
+      grid.appendChild(card);
+    });
+
+    // ------------------------------------------------------------------
+    // Modal
+    // ------------------------------------------------------------------
+    var modal       = document.getElementById('committee-modal');
+    var modalOvr    = document.getElementById('modal-overlay');
+    var closeBtn    = document.getElementById('modal-close');
+    var photoWrap   = document.getElementById('modal-photo-wrap');
+    var nameOut     = document.getElementById('modal-member-name');
+    var roleOut     = document.getElementById('modal-member-role');
+    var bioOut      = document.getElementById('modal-member-bio');
+    var linkedinBtn = document.getElementById('modal-linkedin-btn');
+
+    if (!modal) return;
+
+    var isOpen    = false;
+    var lastFocus = null;
+
+    function openModal(member, trigger) {
+      if (isOpen) return;
+      isOpen    = true;
+      lastFocus = trigger || null;
+
+      /* Photo */
+      photoWrap.innerHTML = '';
+      photoWrap.appendChild(buildPhoto(member, 'committee-modal-photo'));
+
+      /* Text */
+      nameOut.textContent = member.name;
+      roleOut.textContent = member.role;
+
+      /* Bio */
+      bioOut.classList.remove('committee-modal-bio--placeholder');
+      if (member.bio) {
+        bioOut.textContent = member.bio;
+      } else {
+        bioOut.textContent = 'Bio coming soon.';
+        bioOut.classList.add('committee-modal-bio--placeholder');
+      }
+
+      /* LinkedIn */
+      if (member.linkedin) {
+        linkedinBtn.href   = member.linkedin;
+        linkedinBtn.hidden = false;
+      } else {
+        linkedinBtn.hidden = true;
+      }
+
+      /* Show */
+      modal.classList.add('modal-visible', 'modal-entering');
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleKey);
+      requestAnimationFrame(function () { closeBtn.focus(); });
+    }
+
+    function closeModal() {
+      if (!isOpen) return;
+      isOpen = false;
+      modal.classList.remove('modal-entering');
+      modal.classList.add('modal-leaving');
+      document.removeEventListener('keydown', handleKey);
+      setTimeout(function () {
+        modal.classList.remove('modal-visible', 'modal-leaving');
+        document.body.style.overflow = '';
+        if (lastFocus) { lastFocus.focus(); lastFocus = null; }
+      }, 240);
+    }
+
+    function handleKey(e) {
+      if (e.key === 'Escape') { closeModal(); return; }
+      if (e.key !== 'Tab') return;
+
+      /* Focus trap: cycle between focusable elements inside the modal */
+      var focusable = Array.prototype.slice.call(
+        modal.querySelectorAll('button:not([disabled]), [href]:not([hidden]), [tabindex]:not([tabindex="-1"])')
+      ).filter(function (el) { return !el.hidden && el.offsetParent !== null; });
+
+      if (focusable.length < 2) return;
+      var first = focusable[0];
+      var last  = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        last.focus(); e.preventDefault();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        first.focus(); e.preventDefault();
+      }
+    }
+
+    modalOvr.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click',  closeModal);
+
+  }());
+  </script>
+
 </body>
 </html>
