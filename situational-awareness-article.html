@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Leopold Aschenbrenner was right about AI. He was also erased in a month. What Situational Awareness LP's collapse teaches about leverage, thesis risk, and the distance between being early and being solvent.">
+  <title>The Fund That Couldn't See Itself | KCL AISOC Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A1F44">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
+      window.addEventListener('load', function () {
+        playHero();
+        setTimeout(function () {
+          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
+        }, 600);
+      });
+    })();
+  </script>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    .ia-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    .ia-article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+    }
+
+    .ia-meta-category {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-left: 2px solid var(--gold);
+      padding-left: 0.6rem;
+    }
+
+    .ia-meta-sep {
+      width: 1px;
+      height: 0.85rem;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .ia-meta-date,
+    .ia-meta-author {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      max-width: none;
+    }
+
+    .ia-lead {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      line-height: 1.82;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: none;
+    }
+
+    .ia-prose {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.5vw, 1.0625rem);
+      line-height: 1.9;
+      color: rgba(7, 22, 48, 0.7);
+      margin-bottom: 1.35rem;
+      max-width: none;
+    }
+
+    .ia-section {
+      margin-bottom: 3rem;
+    }
+
+    .ia-section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(201, 169, 97, 0.22);
+      max-width: none;
+    }
+
+    .ia-closing {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--deep-navy);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2.5rem 0;
+      max-width: none;
+    }
+
+    .ia-divider {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 3rem 0;
+    }
+
+    /* Inline article images */
+    .ia-figure {
+      margin: 2.5rem 0;
+    }
+
+    .ia-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    .ia-figure figcaption {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      line-height: 1.6;
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* Stat callout block */
+    .ia-stat-block {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 3rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ia-stat-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 90% at 50% 50%, rgba(201, 169, 97, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .ia-stat {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .ia-stat + .ia-stat {
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .ia-stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+      max-width: none;
+    }
+
+    .ia-stat-label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(248, 245, 238, 0.52);
+      text-transform: uppercase;
+      line-height: 1.55;
+      max-width: none;
+    }
+
+    /* References */
+    .ia-references {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .ia-references-heading {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      max-width: none;
+    }
+
+    .ia-ref-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ia-ref-list li {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+      padding-left: 0;
+      max-width: none;
+    }
+
+    .ia-ref-list a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .ia-ref-list a:hover {
+      color: var(--gold);
+    }
+
+    .ia-author-line {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      letter-spacing: 0.04em;
+      margin-top: 2.5rem;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .ia-body { padding: 2.5rem 0 3.5rem; }
+
+      .ia-stat-block {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+      }
+
+      .ia-stat { padding: 0; text-align: left; }
+
+      .ia-stat + .ia-stat {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .ia-closing { padding-left: 1.1rem; margin: 2rem 0; }
+      .ia-article-meta { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+      .ia-meta-sep { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .ia-lead { font-size: 1.05rem; }
+      .ia-prose { font-size: 1rem; line-height: 1.85; }
+      .ia-section-heading { font-size: 1.2rem; }
+      .ia-stat-number { font-size: 2.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Insights</span>
+          <h1>The Fund That Couldn't See Itself</h1>
+          <p>Leopold Aschenbrenner was right about AI. He was also erased in a month.</p>
+        </div>
+      </div>
+    </header>
+
+    <article class="ia-body">
+      <div class="container container--narrow">
+
+        <div class="ia-article-meta reveal">
+          <span class="ia-meta-category">Hedge Funds</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-date">1 August 2026</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-author">Muntasir Ali</span>
+          <span class="ia-meta-sep" aria-hidden="true"></span>
+          <span class="ia-meta-author">President</span>
+        </div>
+
+        <p class="ia-lead reveal">
+          In June 2024, a 22-year-old published a 165-page essay called <em>Situational Awareness</em> and became, more or less overnight, the most quoted man in Silicon Valley. Leopold Aschenbrenner's argument was that artificial general intelligence was arriving faster than anyone was prepared for, and that the compute buildout required to get there would be the defining investment opportunity of the decade.
+        </p>
+
+        <p class="ia-prose reveal">
+          He was right. That is the part worth sitting with, because everything that follows makes more sense once you accept that his call was correct.
+        </p>
+
+        <figure class="ia-figure reveal">
+          <img src="assets/articles/aschenbrenner.jpg"
+               alt="Leopold Aschenbrenner"
+               loading="lazy">
+          <figcaption>Leopold Aschenbrenner — Columbia at 15, valedictorian at 19, then OpenAI's Superalignment team.</figcaption>
+        </figure>
+
+        <p class="ia-prose reveal">
+          He had form. Columbia at 15, valedictorian at 19, then OpenAI's Superalignment team until he was fired in April 2024 over a disputed leak. He also spent a brief spell at Sam Bankman-Fried's FTX Future Fund, which in hindsight reads like foreshadowing that nobody bothered to underline at the time. Then he turned the essay into a hedge fund and named it after itself, which is either supreme confidence or a marketing decision that aged like milk. Possibly both.
+        </p>
+
+        <p class="ia-prose reveal">
+          Situational Awareness LP launched in late 2024 with roughly $225 million from Stripe's Collison brothers, Nat Friedman and Daniel Gross. The strategy was clean: go long the physical bottlenecks of AI — the memory and the power and the data centres — and short the software incumbents the market had already priced for an AI windfall. SK Hynix, SanDisk, Nebius, CoreWeave, Bloom Energy on one side. Adobe and friends on the other. All of it financed at roughly four times leverage.
+        </p>
+
+        <p class="ia-prose reveal">
+          For eighteen months it worked spectacularly. The fund returned 47% after fees in the first half of 2025, then 439% net in the first half of 2026, and grew to as much as $45 billion at its peak. Worth being precise here, because the numbers get garbled in the retelling: that $45bn was not $225m compounding. It was returns, plus a torrent of new capital from investors who wanted in, plus a great deal of borrowed money.
+        </p>
+
+        <!-- Key numbers callout -->
+        <div class="ia-stat-block reveal">
+          <div class="ia-stat">
+            <p class="ia-stat-number">439%</p>
+            <p class="ia-stat-label">Net return, H1 2026</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">$45bn</p>
+            <p class="ia-stat-label">Peak AUM</p>
+          </div>
+          <div class="ia-stat">
+            <p class="ia-stat-number">&minus;67%</p>
+            <p class="ia-stat-label">Lost in July 2026</p>
+          </div>
+        </div>
+
+        <p class="ia-prose reveal">
+          Then came July 2026. The Philadelphia Semiconductor Index fell 28.6% from its June peak. SK Hynix's US shares dropped nearly half. And the software shorts — the leg that was supposed to cushion all this — rallied instead. Adobe rose about 27%. Both sides of the book lost money at the same time, which is the specific nightmare that hedging is meant to prevent.
+        </p>
+
+        <p class="ia-prose reveal">
+          Here is where leverage stops being an abstraction. Borrow four dollars for every one you own and a 25% fall in the portfolio doesn't dent you, it erases you. Margin calls arrived from Goldman Sachs, JPMorgan and Bank of America. The fund lost around 67% in a single month.
+        </p>
+
+        <p class="ia-prose reveal">
+          What happened next took less than a day. Roughly $16 billion of public equity went to Ken Griffin's Citadel at a discount reported at more than 10%. Millennium and Jane Street looked at the book and passed, which tells you something about how the room read it. Then, on the very next trading day, with the forced seller finally out of the way, SanDisk rose 23.9% and Bloom Energy rose 26.4%.
+        </p>
+
+        <p class="ia-prose reveal">
+          You are allowed to find that funny. Aschenbrenner probably does not.
+        </p>
+
+        <figure class="ia-figure reveal">
+          <img src="assets/articles/ken-griffin.jpg"
+               alt="Ken Griffin, founder and CEO of Citadel"
+               loading="lazy">
+          <figcaption>Ken Griffin, founder and CEO of Citadel — the buyer of last resort for roughly $16 billion of Situational Awareness LP's public equity book.</figcaption>
+        </figure>
+
+        <p class="ia-prose reveal">
+          Anyone who has studied markets for more than a term will recognise the shape of this. Archegos, 2021. Bill Hwang, roughly five times leverage through total return swaps, concentrated positions, a forced unwind that took days and cost the banks around $10 billion, with Credit Suisse alone eating about $5.5 billion. Same disease, different patient.
+        </p>
+
+        <p class="ia-prose reveal">
+          The instructive difference is who paid. In 2021 the prime brokers were the ones left holding it. By 2026 they had learned that lesson thoroughly, which meant the margin calls came early and the losses landed on the fund's own investors instead. The banks got their situational awareness. It just wasn't the fund that supplied it.
+        </p>
+
+        <figure class="ia-figure reveal">
+          <img src="assets/articles/bill-hwang.jpg"
+               alt="Bill Hwang, founder of Archegos Capital Management"
+               loading="lazy">
+          <figcaption>Bill Hwang of Archegos Capital Management — the 2021 precedent. Five times leverage, concentrated positions, a forced unwind that cost the banks $10 billion.</figcaption>
+        </figure>
+
+        <p class="ia-prose reveal">
+          Situational Awareness LP is not dead. It continues as a private vehicle built around a stake in Anthropic worth roughly $5 billion, and Aschenbrenner is reportedly raising again. His thesis about AI infrastructure may well be vindicated in full over the next five years.
+        </p>
+
+        <p class="ia-prose reveal">
+          That is precisely the lesson. Being right about where the world is going is a genuinely rare skill, and he has it. But a thesis is not a trade, and a trade is not a position you can survive holding. Leverage doesn't care that you were early. It only cares whether you are still solvent on the morning your broker calls.
+        </p>
+
+        <p class="ia-author-line reveal">Muntasir Ali</p>
+
+        <hr class="ia-divider">
+
+        <section class="ia-references reveal" aria-label="References">
+          <p class="ia-references-heading">References</p>
+          <ol class="ia-ref-list">
+            <li>CNBC (2026) Leopold Aschenbrenner forced to unwind all public stock positions after steep losses. Available at: cnbc.com</li>
+            <li>Financial Times (2026) Situational Awareness investor letter, 24 July 2026.</li>
+            <li>Securities and Exchange Commission (2021) SEC charges Archegos and its principals with massive market manipulation scheme. Available at: sec.gov</li>
+            <li>SpotGamma (2026) Anatomy of a margin call: how Situational Awareness LP unwound a $20 billion AI book in one trade.</li>
+            <li>Wall Street Journal (2026) Situational Awareness sells entire book of public investments.</li>
+          </ol>
+        </section>
+
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="KCL AISOC on LinkedIn (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <a href="privacy.html" class="footer-privacy-link">Privacy Policy</a>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
+  <script src="js/main.js" defer></script>
+
+</body>
+</html>
