@@ -3188,6 +3188,7 @@ textarea {
 .cv-structure-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
   gap: 1px;
   background: var(--border-light);
   border: 1px solid var(--border-light);
@@ -3228,6 +3229,22 @@ textarea {
   line-height: 1.65;
   max-width: none;
   margin: 0;
+}
+
+.cv-structure-item ul {
+  margin: 0;
+  padding: 0;
+}
+
+.cv-structure-item li {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: 0.5rem;
+}
+
+.cv-structure-item li:first-child {
+  margin-top: 0;
 }
 
 /* CV Preview section */
