@@ -195,6 +195,36 @@
           </ul>
         </div>
 
+        <!-- Bullet-tightening prompt: copied to the clipboard, never shown on the page -->
+        <p class="reveal">
+          Struggling to get a bullet down to one line? Copy our prompt, paste it into Claude with your draft, and it will apply every rule on this page.
+          <button type="button" id="cv-prompt-copy" class="btn btn-outline" data-label="Copy the prompt">Copy the prompt</button>
+        </p>
+        <script type="text/plain" id="cv-prompt-text">Rewrite my CV bullet points using these rules.
+
+One line per bullet, under 100 characters. If it wraps onto a second
+line, cut words until it fits.
+Start every bullet with a past tense action verb, including for roles I
+currently hold.
+Never reuse an action verb across bullets.
+Every bullet needs a number: a size, percentage, count, rank, valuation
+or timeframe.
+Structure is: verb, what I did, the number it produced. Not a narration
+of the process.
+No adjectives describing me and no soft skill claims. The number is the
+claim.
+Banned openings: Responsible for, Helped with, Gained exposure to,
+Worked closely with, Participated in.
+Selection ratios go in the role header, not in a bullet.
+
+Never invent a figure. If I have not given you one, tell me the bullet
+is weak and what I should measure instead.
+
+Ask me for the role and what I actually did, then return only the
+bullets with no preamble, labels or explanation.
+
+Start by asking me for the role.</script>
+
         <!-- ── Structure Guide ─────────────────────────────────── -->
         <div class="cv-structure-section reveal">
           <h3 class="cv-structure-heading">How to Structure Your CV</h3>
@@ -629,6 +659,53 @@
       sync();
       if (mq.addEventListener) mq.addEventListener('change', sync);
       else window.addEventListener('resize', sync);
+    })();
+  </script>
+
+  <!-- Copy the bullet-tightening prompt to the clipboard. The prompt lives
+       in a non-rendering <script type="text/plain"> block, so it is only
+       ever copied, never displayed. Falls back to execCommand where
+       navigator.clipboard is unavailable. -->
+  <script>
+    (function () {
+      var btn = document.getElementById('cv-prompt-copy');
+      var src = document.getElementById('cv-prompt-text');
+      if (!btn || !src) return;
+
+      var promptText = src.textContent.trim();
+      var idleLabel = btn.getAttribute('data-label') || btn.textContent;
+      var timer;
+
+      function flash(label) {
+        btn.textContent = label;
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () { btn.textContent = idleLabel; }, 2000);
+      }
+
+      function legacyCopy() {
+        var ta = document.createElement('textarea');
+        ta.value = promptText;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        return ok;
+      }
+
+      btn.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(promptText).then(
+            function () { flash('Copied'); },
+            function () { flash(legacyCopy() ? 'Copied' : 'Press Ctrl+C to copy'); }
+          );
+        } else {
+          flash(legacyCopy() ? 'Copied' : 'Press Ctrl+C to copy');
+        }
+      });
     })();
   </script>
 </body>
