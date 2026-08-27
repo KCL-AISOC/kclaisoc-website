@@ -3174,15 +3174,19 @@ textarea {
   border: 1.5px solid rgba(201, 169, 97, 0.5);
 }
 
+.cv-prompt-help {
+  margin-bottom: 4rem;
+}
+
+.cv-prompt-help p {
+  margin-bottom: 1.5rem;
+}
+
 /* CV structure grid */
 .cv-structure-section { }
 
 .cv-structure-heading {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin-bottom: 2rem;
-  color: var(--text-primary);
+  margin-bottom: 2.5rem;
 }
 
 .cv-structure-grid {
