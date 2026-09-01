@@ -431,18 +431,19 @@
       }
 
       /* Instagram followers */
-      var igEl = document.querySelector('[data-count="430"]');
+      var igEl = document.getElementById('ig-count');
       if (igEl) {
+        var igTarget = parseInt(igEl.getAttribute('data-count')) || 500;
         igEl.textContent = '0+';
         var igObj = { n: 0 };
         gsap.to(igObj, {
-          n: 430,
+          n: igTarget,
           duration: 2,
           ease: 'power2.out',
           onUpdate: function () {
             igEl.textContent = Math.round(igObj.n) + '+';
           },
-          onComplete: function () { igEl.textContent = '430+'; },
+          onComplete: function () { igEl.textContent = igTarget + '+'; },
         });
       }
 
