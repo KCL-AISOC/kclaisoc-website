@@ -7,7 +7,7 @@
   <title>Spring Weeks Explained | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -91,7 +60,7 @@
     }
 
     .sw-section-lead {
-      font-size: 0.95rem;
+      font-size: var(--fs-body);
       line-height: 1.75;
       color: rgba(7, 22, 48, 0.65);
       max-width: 64ch;
@@ -719,13 +688,11 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <!-- Navigation -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -741,7 +708,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html" class="active">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -752,11 +719,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Opportunities</span>
           <h1>Spring Weeks, Explained</h1>
           <p>What they are, why they matter, and how to actually get one. In plain English.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">02</span>
       </div>
     </header>
 
@@ -764,7 +729,7 @@
       <div class="container">
 
         <!-- The 30 second version callout -->
-        <div class="sw-callout reveal">
+        <div class="sw-callout">
           <h2>The 30 second version</h2>
           <ul>
             <li>A spring week is a few days inside a firm during your Easter break, usually in first or second year.</li>
@@ -775,15 +740,12 @@
 
         <!-- Section 1: What is a spring week? -->
         <div class="sw-section">
-          <div class="sw-section-head reveal">
-            <span class="sw-section-index" aria-hidden="true">01</span>
-            <span class="eyebrow">Section 1</span>
+          <div class="sw-section-head">
             <h2>What is a spring week?</h2>
-            <div class="sw-rule"></div>
             <p class="sw-section-lead">A spring week is a short programme, usually three to five days, that a firm runs over the spring break. You spend the time inside the company. They show you what the work is really like through talks, workshops and shadowing, and you meet the people who work there. Think of it as a try before you buy, for both sides. You see if the job suits you, and the firm sees if you could fit there.</p>
           </div>
 
-          <div class="sw-tabs reveal">
+          <div class="sw-tabs">
             <div class="sw-tab-list" role="tablist" aria-label="What is a spring week">
               <button class="sw-tab" id="sw-t1-tab" role="tab" aria-selected="true" aria-controls="sw-t1-panel" type="button">What it is</button>
               <button class="sw-tab" id="sw-t2-tab" role="tab" aria-selected="false" aria-controls="sw-t2-panel" type="button">What you do</button>
@@ -803,15 +765,12 @@
 
         <!-- Section 2: Why they actually matter -->
         <div class="sw-section">
-          <div class="sw-section-head reveal">
-            <span class="sw-section-index" aria-hidden="true">02</span>
-            <span class="eyebrow">Section 2</span>
+          <div class="sw-section-head">
             <h2>Why they actually matter</h2>
-            <div class="sw-rule"></div>
             <p class="sw-section-lead">This is the part most people miss. A spring week is not the end goal. It is the first step on a path. Do well on a spring week and many firms fast track you, which means you skip straight to later interview stages for their summer internship. The summer internship is then the main way people get a graduate job offer. So a good spring week in first or second year can set up the next three years.</p>
           </div>
 
-          <div class="sw-pipeline reveal" aria-label="The path from spring week to full time">
+          <div class="sw-pipeline" aria-label="The path from spring week to full time">
             <div class="sw-pipe-track" aria-hidden="true"><span class="sw-pipe-fill"></span></div>
             <ol class="sw-pipe-nodes">
               <li class="sw-node">
@@ -848,15 +807,12 @@
 
         <!-- Section 3: Who can apply? -->
         <div class="sw-section">
-          <div class="sw-section-head reveal">
-            <span class="sw-section-index" aria-hidden="true">03</span>
-            <span class="eyebrow">Section 3</span>
+          <div class="sw-section-head">
             <h2>Who can apply?</h2>
-            <div class="sw-rule"></div>
             <p class="sw-section-lead">Spring weeks are made for early years. You can usually apply if you are in the first year of a three year course, or the second year of a four year course. You do not need to study finance. You do not need any work experience. Curiosity and effort matter more than your subject.</p>
           </div>
 
-          <div class="sw-elig reveal">
+          <div class="sw-elig">
             <div class="sw-elig-q">
               <span class="sw-elig-label">What year are you in?</span>
               <div class="sw-elig-opts" role="group" aria-label="What year are you in">
@@ -878,15 +834,12 @@
 
         <!-- Section 4: When to apply -->
         <div class="sw-section">
-          <div class="sw-section-head reveal">
-            <span class="sw-section-index" aria-hidden="true">04</span>
-            <span class="eyebrow">Section 4</span>
+          <div class="sw-section-head">
             <h2>When to apply</h2>
-            <div class="sw-rule"></div>
             <p class="sw-section-lead">Timing is the thing people get wrong. Most spring weeks open for applications between late August and November, and the programmes themselves run in March, April and May. The catch is that many firms review applications as they arrive and close early once they are full. So the real deadline is often much sooner than the official one. Apply as early as you can.</p>
           </div>
 
-          <div class="sw-timeline-scroll reveal">
+          <div class="sw-timeline-scroll">
             <div class="sw-timeline">
 
               <div class="sw-tl-header">
@@ -914,7 +867,7 @@
                 </div>
                 <div class="sw-tl-bars">
                   <div class="sw-bar sw-bar--apply" style="grid-column: 1 / 4">Apply</div>
-                  <div class="sw-bar sw-bar--prog"  style="grid-column: 7 / 10">Programme</div>
+                  <div class="sw-bar sw-bar--prog" style="grid-column: 7 / 10">Programme</div>
                 </div>
               </div>
 
@@ -937,15 +890,12 @@
 
         <!-- Section 5: How to actually get one -->
         <div class="sw-section">
-          <div class="sw-section-head reveal">
-            <span class="sw-section-index" aria-hidden="true">05</span>
-            <span class="eyebrow">Section 5</span>
+          <div class="sw-section-head">
             <h2>How to actually get one</h2>
-            <div class="sw-rule"></div>
             <p class="sw-section-lead">Here is the order to work in.</p>
           </div>
 
-          <div class="sw-accordion reveal">
+          <div class="sw-accordion">
 
             <div class="sw-step">
               <h3 class="sw-step-head">
@@ -1017,17 +967,14 @@
 
         <!-- Section 6: Spring weeks for alternatives -->
         <div class="sw-section">
-          <div class="sw-section-head reveal">
-            <span class="sw-section-index" aria-hidden="true">06</span>
-            <span class="eyebrow">Section 6</span>
+          <div class="sw-section-head">
             <h2>Spring weeks for alternatives</h2>
-            <div class="sw-rule"></div>
             <p class="sw-section-lead">First, the honest truth. Spring weeks are mostly run by investment banks and large markets firms. Most pure private equity and hedge funds do not run spring weeks for first years. That does not mean alternatives are closed to you. A handful of the biggest names do run early programmes, and a strong spring week at a bank is often how people move into alternatives later. Here are the early programmes most worth knowing if alternatives are your goal.</p>
           </div>
 
           <div class="sw-firm-grid">
 
-            <div class="sw-firm-card reveal">
+            <div class="sw-firm-card">
               <h3>Blackstone</h3>
               <p class="sw-firm-prog">EMEA Spring Insight Program</p>
               <p class="sw-card-meta"><span class="sw-card-label">Length</span>Four days, London.</p>
@@ -1037,7 +984,7 @@
               <a class="sw-learn" href="https://www.blackstone.com/careers/students/" target="_blank" rel="noopener noreferrer">Learn more</a>
             </div>
 
-            <div class="sw-firm-card reveal">
+            <div class="sw-firm-card">
               <h3>Macquarie</h3>
               <p class="sw-firm-prog">Spring Insight Programme</p>
               <p class="sw-card-meta"><span class="sw-card-label">Length</span>One week in April, London.</p>
@@ -1047,7 +994,7 @@
               <a class="sw-learn" href="https://www.macquarie.com/careers" target="_blank" rel="noopener noreferrer">Learn more</a>
             </div>
 
-            <div class="sw-firm-card reveal">
+            <div class="sw-firm-card">
               <h3>BlackRock</h3>
               <p class="sw-firm-prog">Spring Insight Event</p>
               <p class="sw-card-meta"><span class="sw-card-label">Length</span>One week in April, London and Edinburgh.</p>
@@ -1057,7 +1004,7 @@
               <a class="sw-learn" href="https://careers.blackrock.com" target="_blank" rel="noopener noreferrer">Learn more</a>
             </div>
 
-            <div class="sw-firm-card reveal">
+            <div class="sw-firm-card">
               <h3>Point72</h3>
               <p class="sw-firm-prog">Academy UK Spring Insight Week</p>
               <p class="sw-card-meta"><span class="sw-card-label">Length</span>One week in April, London.</p>
@@ -1067,7 +1014,7 @@
               <a class="sw-learn" href="https://careers.point72.com" target="_blank" rel="noopener noreferrer">Learn more</a>
             </div>
 
-            <div class="sw-firm-card reveal">
+            <div class="sw-firm-card">
               <h3>Citadel and Citadel Securities</h3>
               <p class="sw-firm-prog">Discover Citadel</p>
               <p class="sw-card-meta"><span class="sw-card-label">Length</span>Two days, invite only, London.</p>
@@ -1077,7 +1024,7 @@
               <a class="sw-learn" href="https://www.citadel.com/careers/" target="_blank" rel="noopener noreferrer">Learn more</a>
             </div>
 
-            <div class="sw-firm-card reveal">
+            <div class="sw-firm-card">
               <h3>Fidelity International</h3>
               <p class="sw-firm-prog">Spring Insight Programme</p>
               <p class="sw-card-meta"><span class="sw-card-label">Length</span>One week, London.</p>
@@ -1089,23 +1036,20 @@
 
           </div>
 
-          <div class="sw-honest-note reveal">
+          <div class="sw-honest-note">
             For pure private equity such as KKR, Apollo, Carlyle, Ares, EQT and Brookfield, there usually is no first year spring week. Their main early door is the summer internship in your penultimate year, plus diversity insight events in the autumn. Build your skills and network now, and target those later.
           </div>
         </div>
 
         <!-- Section 7: The bottom line -->
         <div class="sw-section">
-          <div class="sw-section-head reveal">
-            <span class="sw-section-index" aria-hidden="true">07</span>
-            <span class="eyebrow">Section 7</span>
+          <div class="sw-section-head">
             <h2>The bottom line</h2>
-            <div class="sw-rule"></div>
           </div>
 
-          <p class="sw-closing reveal">Spring weeks are the earliest real foot in the door, and the effort pays off for years. If alternatives are where you want to end up, get into a strong spring week wherever you can, learn everything, build your network, and use it as a springboard. That is how most people get there.</p>
+          <p class="sw-closing">Spring weeks are the earliest real foot in the door, and the effort pays off for years. If alternatives are where you want to end up, get into a strong spring week wherever you can, learn everything, build your network, and use it as a springboard. That is how most people get there.</p>
 
-          <div class="sw-cta-row reveal">
+          <div class="sw-cta-row">
             <a href="join.html" class="btn btn-primary">Join the Society</a>
             <a href="where-to-look.html" class="btn btn-outline">Where to Look</a>
             <a href="organisations-to-join.html" class="btn btn-outline">Organisations to Join</a>
@@ -1123,14 +1067,11 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -1191,8 +1132,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <!-- Spring Weeks page interactions. Vanilla and self contained, with no

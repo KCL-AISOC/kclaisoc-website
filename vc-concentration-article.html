@@ -7,7 +7,7 @@
   <title>The Great Concentration | KCL AISOC Insights</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,31 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -107,18 +82,18 @@
     }
 
     .ia-lead {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      line-height: 1.82;
+      font-family: var(--font-body);
+      font-size: var(--fs-lead);
+      line-height: 1.6;
       color: var(--text-secondary);
       margin-bottom: 2rem;
       max-width: none;
     }
 
     .ia-prose {
-      font-family: var(--font-heading);
-      font-size: clamp(1rem, 1.5vw, 1.0625rem);
-      line-height: 1.9;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       color: rgba(7, 22, 48, 0.7);
       margin-bottom: 1.35rem;
       max-width: none;
@@ -297,12 +272,10 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -318,7 +291,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -328,7 +301,6 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Insights</span>
           <h1>The Great Concentration: Why Record Venture Funding Is Not the Boom It Looks Like</h1>
           <p>$300 billion raised globally in a single quarter. Four companies took nearly two-thirds of it. This is what a record actually looks like underneath.</p>
         </div>
@@ -338,7 +310,7 @@
     <article class="ia-body">
       <div class="container container--narrow">
 
-        <div class="ia-article-meta reveal">
+        <div class="ia-article-meta">
           <span class="ia-meta-category">Venture Capital</span>
           <span class="ia-meta-sep" aria-hidden="true"></span>
           <span class="ia-meta-date">6 August 2026</span>
@@ -348,28 +320,28 @@
           <span class="ia-meta-author">Senior Investment Researcher</span>
         </div>
 
-        <p class="ia-lead reveal">
+        <p class="ia-lead">
           The headline writes itself. In the first quarter of 2026, global venture capital investment reached roughly <strong>$300 billion</strong>, the largest quarterly figure ever recorded and more than 150 percent above the previous quarter (Crunchbase, 2026b). For an industry that spent the better part of three years in a funding winter, the number reads like a thaw. Capital is flowing again, founders are raising, and the venture machine is back to full power.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           That reading is wrong, or at least dangerously incomplete. Look underneath the record and a different picture appears: not a broad recovery, but the most concentrated deployment of capital in the history of the asset class. Q1 2026 was not the moment venture capital opened up. It was the moment it narrowed to a point.
         </p>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Number Behind the Number</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Number Behind the Number</h2>
+          <p class="ia-prose">
             Start with where the money actually went. Of the roughly $300 billion raised globally, the United States absorbed around <strong>$250 billion, or about 83 percent</strong> of the global total, up sharply from a year earlier (Crunchbase, 2026b). Within that, the concentration tightens further. Four of the five largest venture rounds ever recorded closed in this single quarter: OpenAI ($122 billion), Anthropic ($30 billion), xAI ($20 billion) and the self-driving company Waymo ($16 billion). Those four rounds alone accounted for $188 billion, or nearly 65 percent of all global venture investment in the quarter (Crunchbase, 2026b).
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             Zoom out to the sector level and the story is the same. AI companies took roughly $242 billion in Q1, about 80 percent of all global venture funding, up from a prior peak of 55 percent just a year earlier (Crunchbase, 2026b). In capital-weighted terms, AI did not merely lead the venture market. It became the venture market, with everything else competing for the remaining fifth.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             This is the part the headline omits. The record was not built on thousands of companies raising more. It was built on a handful of companies raising amounts that have no precedent in private markets. A single OpenAI financing was larger than the entire previous quarterly record for all startup funding combined (Crunchbase, 2026a). The capital chasing these firms has started to behave less like venture investment and more like infrastructure financing for assets investors believe will define the next decade.
           </p>
         </div>
 
-        <div class="ia-stat-block reveal">
+        <div class="ia-stat-block">
           <div class="ia-stat">
             <p class="ia-stat-number">83%</p>
             <p class="ia-stat-label">Of global VC funding absorbed by the US</p>
@@ -385,51 +357,51 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Squeeze Below the Megarounds</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Squeeze Below the Megarounds</h2>
+          <p class="ia-prose">
             If the top of the market is overflowing, the layers beneath it are being reshaped in ways that matter far more to the typical startup, and to the typical fund.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             By stage, the quarter skewed heavily to the top. Late-stage funding reached about $246.6 billion, up 205 percent year over year, of which $235 billion went to just <strong>158 companies</strong> raising rounds of $100 million or more (Crunchbase, 2026b). Put differently, fewer than 3 percent of all venture deals absorbed close to 80 percent of the capital. Seed funding, meanwhile, presents a paradox that is easy to miss. Total seed dollars actually rose, up 31 percent year over year to around $12 billion. But the number of seed deals fell 30 percent, to roughly 3,800 (Crunchbase, 2026b). More money, fewer companies. The average seed cheque is getting bigger while the door is opening for fewer founders.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The valuation data confirms the bifurcation. The median seed pre-money valuation has climbed to $18.4 million, more than double its 2021 level, and half of all early-stage deals now exceed $10 million, the highest share of large early rounds in a decade (PitchBook and NVCA, 2026). Look at the gap between median and average deal sizes and the split becomes stark: at Series A, the median round in Q1 2026 was $19.6 million against an average of $39.6 million; at Series C, a $75 million median sat well below a $124.6 million average (PitchBook and NVCA, 2026). A wide median-to-average spread is the statistical signature of a market splitting in two, where a small number of very large rounds pull the average away from the experience of the typical company.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             There is a mechanism driving this, and it is worth understanding because it explains who wins and who is quietly squeezed out. As the largest AI rounds become harder to access and valuations climb, the mega-funds are pushing their AI bets into earlier and earlier stages. Multistage giants with effectively unlimited follow-on capital are now writing seed cheques, deploying capital at a scale the stage was never designed for. The result is that smaller, newer managers are being crowded out of AI deals, even at seed (PitchBook, 2025). The same dynamic appears in fundraising itself: of the $47.8 billion raised by venture funds in the quarter, a single $9 billion growth fund accounted for nearly a fifth of all commitments (PitchBook and NVCA, 2026). Capital is concentrating not only in the startups, but in the funds that back them.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">Is This Still Venture Capital?</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">Is This Still Venture Capital?</h2>
+          <p class="ia-prose">
             The concentration raises a question that the people running these numbers have begun to ask openly. Is what happened in Q1 2026 still venture capital in any meaningful sense?
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             Venture capital, as a discipline, rests on a particular bargain: investors accept a high probability of failure across a portfolio in exchange for the outsized return of the few that succeed. Power-law returns, broad bets, asymmetric upside. That model assumes you are funding many shots on goal at valuations where a single breakout can return the whole fund.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             A $122 billion private round does not fit that model. At that scale, the buyers are not classic venture funds taking portfolio risk; they are sovereign wealth funds, corporate balance sheets and crossover investors seeking pre-IPO equity in what they regard as foundational assets. The exit maths is unforgiving precisely because the entry valuations are so high. For venture returns to work at these levels, exits will need to be enormous, on the scale of multi-billion-dollar public listings, simply to clear a profit (PitchBook, 2025). When the entry price is high enough, the asymmetry that justifies venture risk-taking begins to disappear.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             So the record-breaking quarter contains a quiet redefinition. At the top, "venture capital" increasingly describes something closer to strategic infrastructure investment, underwritten by balance sheets that do not need it to behave like venture at all. At the bottom, genuine early-stage venture still exists, but it is being colonised by the same large funds. The whole structure now rests on a single unproven assumption: that these valuations can eventually be realised. And that assumption cannot be tested in the private market. It can only be settled at the exit, which is where the real test of Q1 2026 begins.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Liquidity Question</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Liquidity Question</h2>
+          <p class="ia-prose">
             None of this resolves unless the money can eventually come out, and in June the first and largest verdict arrived. On 12 June 2026, SpaceX, which had absorbed xAI earlier in the year, went public on the Nasdaq and raised $75 billion in the largest IPO in history, more than twice the previous record. Shares priced at $135, opened at a premium, and closed the first day up 19 percent, valuing the company above $2 trillion (NPR, 2026). It was an unambiguous success, and at its very apex the exit window that the whole edifice depends on had swung open.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             But read the SpaceX listing through the same lens as the funding data and it tells the same story. One colossal outcome at the very top says almost nothing about the roughly 6,000 other companies funded in Q1, or the thousands still waiting for a route out. The broader exit market stayed thin. Only 21 venture-backed companies exited above $1 billion globally in the first quarter, 13 of them in China (Crunchbase, 2026b), and US venture-backed IPOs numbered just 15 (PitchBook and NVCA, 2026). SpaceX did not reopen the market for everyone. It confirmed that the same concentration defining where capital goes now defines where liquidity comes from: enormous at the apex, narrow beneath it.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The listings still queued behind it sharpen the point. SpaceX was billed as the first of a trio of AI mega-IPOs expected in 2026, with OpenAI and Anthropic the presumed next in line (NPR, 2026). If they land as well as SpaceX did, they will validate years of private mark-ups for a tiny number of firms. What they will not do is clear the backlog of ordinary venture-backed companies, for whom the exit maths, like the funding maths, is a game played on a different field.
           </p>
         </div>
 
-        <div class="ia-stat-block reveal">
+        <div class="ia-stat-block">
           <div class="ia-stat">
             <p class="ia-stat-number">$75bn</p>
             <p class="ia-stat-label">Raised in SpaceX's June IPO, the largest ever</p>
@@ -445,27 +417,27 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">What It Means</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">What It Means</h2>
+          <p class="ia-prose">
             The lesson here is not that AI is overhyped or that the boom is fake. The capital is real, the companies are real, and some of them may well prove foundational. The lesson is narrower and more useful: a single aggregate number can conceal the structure of a market entirely.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             "Record venture funding" in Q1 2026 did not mean a healthier, broader ecosystem. It meant close to the opposite. It meant a market where four names took nearly two-thirds of the capital, where the median founder faced a higher bar than ever to raise, where emerging fund managers were squeezed by giants, and where the traditional logic of venture returns came under genuine strain. And when the exit market finally delivered its first great outcome, that too arrived at the very top, in a single record-breaking listing that left the position of everyone below it unchanged.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The most important question for the rest of 2026 is whether that concentration is a temporary feature of one extraordinary technology cycle, or a permanent change in what venture capital is. The honest answer is that nobody knows yet, including the people writing the largest cheques. But anyone who reads only the headline number will be the last to find out.
           </p>
         </div>
 
-        <blockquote class="ia-closing reveal">
+        <blockquote class="ia-closing">
           Concentration, not abundance, was the defining feature of the most expensive quarter in venture history.
         </blockquote>
 
-        <a class="ia-author-line reveal" href="https://www.linkedin.com/in/aashna-agarwal-656947276" target="_blank" rel="noopener noreferrer">Aashna Agarwal</a>
+        <a class="ia-author-line" href="https://www.linkedin.com/in/aashna-agarwal-656947276" target="_blank" rel="noopener noreferrer">Aashna Agarwal</a>
 
         <hr class="ia-divider">
 
-        <section class="ia-references reveal" aria-label="References">
+        <section class="ia-references" aria-label="References">
           <p class="ia-references-heading">References</p>
           <ol class="ia-ref-list">
             <li>Crunchbase (2026a) <em>North America Q1 funding surges across stages to record level.</em> Crunchbase News, 6 April. Available at: <a href="https://news.crunchbase.com/venture/funding-surges-all-stages-ai-north-america-q1-2026/" target="_blank" rel="noopener noreferrer">news.crunchbase.com</a>.</li>
@@ -482,14 +454,11 @@
   </main>
 
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -550,8 +519,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
 </body>

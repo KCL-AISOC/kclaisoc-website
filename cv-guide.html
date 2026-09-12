@@ -7,7 +7,7 @@
   <title>CV Guide | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -54,16 +23,13 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -79,7 +45,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html" class="active">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -92,12 +58,10 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Career Resources</span>
           <h1>CV Guide</h1>
           <p>How to structure your CV for alternative investment and finance roles.</p>
-          <p style="font-size:0.875rem;color:rgba(255,255,255,0.55);margin-top:0.75rem;max-width:55ch;">This guide covers bullet-writing technique, how to order each section, formatting rules, and a full example CV you can use as a reference alongside the checklist.</p>
+          <p>This guide covers bullet-writing technique, how to order each section, formatting rules, and a full example CV you can use as a reference alongside the checklist.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">CV</span>
       </div>
     </header>
 
@@ -109,19 +73,17 @@
 
         <!-- ── The Golden Rule ─────────────────────────────────── -->
         <div class="cv-guide-intro">
-          <span class="eyebrow reveal">The Foundation</span>
-          <h2 class="reveal">The Golden Rule</h2>
-          <div class="gold-rule reveal reveal-delay-1"></div>
-          <p class="cv-guide-lead reveal reveal-delay-2">Recruiters spend seconds on each CV, so every bullet has to land on a single line. That limit does more work than any other rule here: it forces out the filler and leaves only the result. Inside that line, use the formula made famous by Google. State what you achieved, prove it with a number, explain how you did it.</p>
+          <h2>The Golden Rule</h2>
+          <p class="cv-guide-lead">Recruiters spend seconds on each CV, so every bullet has to land on a single line. That limit does more work than any other rule here: it forces out the filler and leaves only the result. Inside that line, use the formula made famous by Google. State what you achieved, prove it with a number, explain how you did it.</p>
         </div>
 
-        <div class="cv-formula-box reveal">
+        <div class="cv-formula-box">
           <p class="cv-formula-text">
             Accomplished <span class="cv-xyz cv-x">[X]</span> as measured by <span class="cv-xyz cv-y">[Y]</span>, by doing <span class="cv-xyz cv-z">[Z]</span>.
           </p>
         </div>
 
-        <div class="cv-xyz-grid reveal reveal-delay-1">
+        <div class="cv-xyz-grid">
           <div class="cv-xyz-item">
             <span class="cv-xyz-marker cv-x">X</span>
             <div>
@@ -152,7 +114,7 @@
         </div>
 
         <!-- ── Before / After Examples ─────────────────────────── -->
-        <div class="cv-examples reveal">
+        <div class="cv-examples">
           <h3 class="cv-examples-title">Examples</h3>
 
           <div class="cv-example-pair">
@@ -181,7 +143,7 @@
         </div>
 
         <!-- ── Quick Checklist ─────────────────────────────────── -->
-        <div class="cv-checklist-wrap reveal">
+        <div class="cv-checklist-wrap">
           <h3 class="cv-checklist-title">Quick checklist for every bullet</h3>
           <ul class="cv-checklist">
             <li>Does it open with a strong action verb (Led, Built, Generated, Designed)?</li>
@@ -195,7 +157,7 @@
         </div>
 
         <!-- Bullet-tightening prompt: copied to the clipboard, never shown on the page -->
-        <div class="cv-prompt-help reveal">
+        <div class="cv-prompt-help">
           <p>Struggling to get a bullet down to one line? Copy our prompt, paste it into Claude with your draft, and it will apply every rule on this page.</p>
           <button type="button" id="cv-prompt-copy" class="btn btn-outline" data-label="Copy the prompt">Copy the prompt</button>
         </div>
@@ -225,11 +187,10 @@ bullets with no preamble, labels or explanation.
 Start by asking me for the role.</script>
 
         <!-- ── Structure Guide ─────────────────────────────────── -->
-        <div class="cv-structure-section reveal">
+        <div class="cv-structure-section">
           <h2 class="cv-structure-heading">How to Structure Your CV</h2>
           <div class="cv-structure-grid">
             <div class="cv-structure-item">
-              <span class="cv-structure-number" aria-hidden="true">01</span>
               <h4>Header</h4>
               <ul>
                 <li>Name, city, phone, email and LinkedIn on one line</li>
@@ -239,7 +200,6 @@ Start by asking me for the role.</script>
               </ul>
             </div>
             <div class="cv-structure-item">
-              <span class="cv-structure-number" aria-hidden="true">02</span>
               <h4>Education</h4>
               <ul>
                 <li>University first, with the degree and grade on the same line</li>
@@ -249,7 +209,6 @@ Start by asking me for the role.</script>
               </ul>
             </div>
             <div class="cv-structure-item">
-              <span class="cv-structure-number" aria-hidden="true">03</span>
               <h4>Work Experience</h4>
               <ul>
                 <li>Most recent first, full bullets for your strongest three or four roles</li>
@@ -259,7 +218,6 @@ Start by asking me for the role.</script>
               </ul>
             </div>
             <div class="cv-structure-item">
-              <span class="cv-structure-number" aria-hidden="true">04</span>
               <h4>Extracurriculars</h4>
               <ul>
                 <li>Societies, competitions and personal projects, same bullet rules</li>
@@ -269,7 +227,6 @@ Start by asking me for the role.</script>
               </ul>
             </div>
             <div class="cv-structure-item">
-              <span class="cv-structure-number" aria-hidden="true">05</span>
               <h4>Skills &amp; Interests</h4>
               <ul>
                 <li>Technical skills with honest levels</li>
@@ -279,7 +236,6 @@ Start by asking me for the role.</script>
               </ul>
             </div>
             <div class="cv-structure-item">
-              <span class="cv-structure-number" aria-hidden="true">06</span>
               <h4>Format</h4>
               <ul>
                 <li>One page, one font, past tense throughout</li>
@@ -300,16 +256,14 @@ Start by asking me for the role.</script>
     <section class="cv-preview-section">
       <div class="container">
 
-        <div class="cv-preview-header reveal">
-          <span class="eyebrow">Example CV</span>
+        <div class="cv-preview-header">
           <h2>The CV, Annotated</h2>
-          <div class="gold-rule gold-rule--center"></div>
           <p>A fictional worked example. Founder and President, University Investment Society. BSc Economics, University of London.</p>
         </div>
 
-        <p class="reveal" style="font-size:0.875rem;color:var(--text-secondary);text-align:center;margin-bottom:2rem;max-width:58ch;margin-inline:auto;">The CV below puts every rule from this guide into practice. The numbered notes call out what matters most. Read them alongside the checklist above.</p>
+        <p class="cv-preview-note">The CV below puts every rule from this guide into practice. The numbered notes call out what matters most. Read them alongside the checklist above.</p>
 
-        <div class="cl-annotated reveal" id="cl-annotated">
+        <div class="cl-annotated" id="cl-annotated">
 
           <!-- Header (no note — covered by structure step 01 above) -->
           <div class="cl-anno-seg">
@@ -559,10 +513,9 @@ Start by asking me for the role.</script>
          ============================================================ -->
     <section class="cv-download-section">
       <div class="container container--narrow">
-        <span class="eyebrow">Template</span>
-        <h2 class="reveal">Download the Word Template</h2>
-        <p class="reveal reveal-delay-1">Two downloads. The example CV is a fictional profile, written to demonstrate every rule set out on this page. Read it to see the guidance applied end to end. The Word template mirrors that example, pre-filled with bracketed placeholder text and grey guidance notes throughout every section. Use the template as your starting point, replace the placeholders with your own experience, then delete the grey notes.</p>
-        <div class="cv-download-actions reveal reveal-delay-2">
+        <h2>Download the Word Template</h2>
+        <p>Two downloads. The example CV is a fictional profile, written to demonstrate every rule set out on this page. Read it to see the guidance applied end to end. The Word template mirrors that example, pre-filled with bracketed placeholder text and grey guidance notes throughout every section. Use the template as your starting point, replace the placeholders with your own experience, then delete the grey notes.</p>
+        <div class="cv-download-actions">
           <a href="assets/cv/CV_Example_Guide.pdf"
              download="KCL-AISOC-CV-Example.pdf"
              class="btn btn-primary">
@@ -584,14 +537,11 @@ Start by asking me for the role.</script>
        FOOTER
        ============================================================ -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -652,8 +602,6 @@ Start by asking me for the role.</script>
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <!-- Margin notes are aligned to their segments purely in CSS (shared

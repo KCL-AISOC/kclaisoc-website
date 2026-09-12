@@ -7,7 +7,7 @@
   <title>Where to Look | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -65,8 +34,10 @@
       text-align: center;
     }
 
+    .wtl-back { padding: 2rem 0; text-align: center; }
+
     .wtl-intro p {
-      font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+      font-size: var(--fs-lead);
       line-height: 1.75;
       color: rgba(7, 22, 48, 0.65);
     }
@@ -86,7 +57,7 @@
     }
 
     .wtl-section-lead {
-      font-size: 0.92rem;
+      font-size: var(--fs-body);
       line-height: 1.7;
       color: rgba(7, 22, 48, 0.6);
       max-width: 60ch;
@@ -532,13 +503,11 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <!-- Navigation -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -554,7 +523,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html" class="active">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -565,11 +534,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Opportunities</span>
           <h1>Where to Look</h1>
           <p>Application trackers, social media accounts, and university portals. All in one place.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">01</span>
       </div>
     </header>
 
@@ -577,23 +544,21 @@
       <div class="container">
 
         <!-- Intro -->
-        <div class="wtl-intro reveal">
+        <div class="wtl-intro">
           <p>Finding opportunities in UK finance is mostly a sourcing problem. The roles exist, firms recruit early, and the windows are predictable. But you have to be in the right places to see them. This page pulls together the trackers that list what is open, the accounts that surface new listings in your regular feed, and the university portals you already have access to. Start here.</p>
         </div>
 
         <!-- ── Section 1: Application Trackers ──────────────────── -->
         <div class="wtl-section">
-          <div class="wtl-section-head reveal">
-            <span class="eyebrow">Section 1</span>
+          <div class="wtl-section-head">
             <h2>Application Trackers</h2>
-            <div class="wtl-rule"></div>
             <p class="wtl-section-lead">These two trackers update regularly with live openings. Check them at the start of each term and whenever you have five minutes. Deadlines move fast in UK finance.</p>
           </div>
 
           <div class="wtl-tracker-grid">
 
             <a href="https://app.the-trackr.com/uk-finance/summer-internships"
-               class="wtl-tracker-card reveal"
+               class="wtl-tracker-card"
                target="_blank" rel="noopener noreferrer">
               <span class="wtl-tracker-badge">Community Tracker</span>
               <h3>The Bristol Tracker</h3>
@@ -602,7 +567,7 @@
             </a>
 
             <a href="https://career26.com/jobs"
-               class="wtl-tracker-card reveal reveal-delay-1"
+               class="wtl-tracker-card"
                target="_blank" rel="noopener noreferrer">
               <span class="wtl-tracker-badge">Aggregator</span>
               <h3>Career26 Jobs</h3>
@@ -615,14 +580,12 @@
 
         <!-- ── Section 2: Accounts to Follow ────────────────────── -->
         <div class="wtl-section">
-          <div class="wtl-section-head reveal">
-            <span class="eyebrow">Section 2</span>
+          <div class="wtl-section-head">
             <h2>Accounts to Follow</h2>
-            <div class="wtl-rule"></div>
             <p class="wtl-section-lead">You are already spending hours on TikTok, Instagram, and LinkedIn every day. If you follow the right accounts, opportunities show up in your regular scroll without you having to go looking for them. Turn on post notifications for the accounts below and you will catch new listings the moment they go up.</p>
           </div>
 
-          <div class="wtl-accounts-list reveal reveal-delay-1">
+          <div class="wtl-accounts-list">
 
             <div class="wtl-account">
               <span class="wtl-platform wtl-platform--tiktok">TikTok</span>
@@ -648,21 +611,19 @@
             </div>
 
           </div>
-          <p class="wtl-more-note reveal reveal-delay-2">More accounts coming soon.</p>
+          <p class="wtl-more-note">More accounts coming soon.</p>
         </div>
 
         <!-- ── Section 3: University Careers Portals ─────────────── -->
         <div class="wtl-section">
-          <div class="wtl-section-head reveal">
-            <span class="eyebrow">Section 3</span>
+          <div class="wtl-section-head">
             <h2>University Careers Portals</h2>
-            <div class="wtl-rule"></div>
             <p class="wtl-section-lead">Before you go anywhere else, set up your profile on the platforms KCL already pays for. Both have exclusive listings that never hit the public trackers, and a lot of first years simply don't know they exist.</p>
           </div>
 
           <div class="wtl-portal-grid">
 
-            <div class="wtl-portal reveal">
+            <div class="wtl-portal">
               <h3>King's CareerConnect</h3>
               <p>KCL's own jobs and placements portal. Employers post listings here that are exclusive to KCL students, and some early access schemes never get advertised publicly. Set up your profile in the first few weeks of first year.</p>
               <a href="https://www.kcl.ac.uk/careerconnect"
@@ -670,7 +631,7 @@
                  target="_blank" rel="noopener noreferrer">Open Portal</a>
             </div>
 
-            <div class="wtl-portal reveal reveal-delay-1">
+            <div class="wtl-portal">
               <h3>Handshake</h3>
               <p>A graduate jobs platform used by hundreds of UK universities, including KCL. Employers post roles here, often before they go anywhere else. Activate your account with your KCL email address.</p>
               <a href="https://joinhandshake.co.uk"
@@ -683,14 +644,12 @@
 
         <!-- ── Section 4: Set Up Your Alerts ─────────────────────── -->
         <div class="wtl-section">
-          <div class="wtl-section-head reveal">
-            <span class="eyebrow">Section 4</span>
+          <div class="wtl-section-head">
             <h2>Set Up Your Alerts</h2>
-            <div class="wtl-rule"></div>
             <p class="wtl-section-lead">This takes about ten minutes and makes discovery automatic. Once it's done, deadlines come to you. You don't have to remember to check anything.</p>
           </div>
 
-          <ul class="wtl-checklist reveal reveal-delay-1">
+          <ul class="wtl-checklist">
             <li>
               <span class="wtl-check-dot" aria-hidden="true"></span>
               <span>Follow the graduate recruitment pages of firms you're interested in on LinkedIn, and turn on post notifications. You'll see new openings in your feed the moment they go live.</span>
@@ -712,14 +671,12 @@
 
         <!-- ── Section 5: Seasonal Timeline ──────────────────────── -->
         <div class="wtl-section">
-          <div class="wtl-section-head reveal">
-            <span class="eyebrow">Section 5</span>
+          <div class="wtl-section-head">
             <h2>When to Apply: Seasonal Timeline</h2>
-            <div class="wtl-rule"></div>
             <p class="wtl-section-lead">Most opportunities follow predictable windows across the academic year. Here is roughly when each one opens, so you know what is coming and can start preparing rather than reacting.</p>
           </div>
 
-          <div class="wtl-timeline-scroll reveal reveal-delay-1">
+          <div class="wtl-timeline-scroll">
             <div class="wtl-timeline">
 
               <!-- Month labels -->
@@ -748,8 +705,8 @@
                   <span class="wtl-tl-sub">Apply Sep to Nov. Programmes run Mar to May.</span>
                 </div>
                 <div class="wtl-tl-bars">
-                  <div class="wtl-bar wtl-bar--apply"  style="grid-column: 1 / 4">Apply</div>
-                  <div class="wtl-bar wtl-bar--runs"   style="grid-column: 7 / 10">Runs</div>
+                  <div class="wtl-bar wtl-bar--apply" style="grid-column: 1 / 4">Apply</div>
+                  <div class="wtl-bar wtl-bar--runs" style="grid-column: 7 / 10">Runs</div>
                 </div>
               </div>
 
@@ -760,7 +717,7 @@
                   <span class="wtl-tl-sub">Peak Sep to Jan but available year-round.</span>
                 </div>
                 <div class="wtl-tl-bars">
-                  <div class="wtl-bar wtl-bar--peak"    style="grid-column: 1 / 6">Peak</div>
+                  <div class="wtl-bar wtl-bar--peak" style="grid-column: 1 / 6">Peak</div>
                   <div class="wtl-bar wtl-bar--rolling" style="grid-column: 6 / 13">Rolling</div>
                 </div>
               </div>
@@ -773,7 +730,7 @@
                 </div>
                 <div class="wtl-tl-bars">
                   <div class="wtl-bar wtl-bar--apply" style="grid-column: 1 / 5">Apply</div>
-                  <div class="wtl-bar wtl-bar--runs"  style="grid-column: 10 / 13">Runs</div>
+                  <div class="wtl-bar wtl-bar--runs" style="grid-column: 10 / 13">Runs</div>
                 </div>
               </div>
 
@@ -784,7 +741,7 @@
                   <span class="wtl-tl-sub">Peak Sep to Nov. Many firms recruit rolling.</span>
                 </div>
                 <div class="wtl-tl-bars">
-                  <div class="wtl-bar wtl-bar--peak"   style="grid-column: 1 / 4">Peak</div>
+                  <div class="wtl-bar wtl-bar--peak" style="grid-column: 1 / 4">Peak</div>
                   <div class="wtl-bar wtl-bar--yearnd" style="grid-column: 4 / 13">Year-round</div>
                 </div>
               </div>
@@ -828,21 +785,19 @@
 
         <!-- ── Section 6: Application Tracker ───────────────────── -->
         <div class="wtl-section">
-          <div class="wtl-section-head reveal">
-            <span class="eyebrow">Section 6</span>
+          <div class="wtl-section-head">
             <h2>Application Tracker</h2>
-            <div class="wtl-rule"></div>
             <p class="wtl-embed-sub">A live view of current opportunities. Make your own copy to track applications privately.</p>
           </div>
 
-          <div class="wtl-embed-wrap reveal reveal-delay-1">
+          <div class="wtl-embed-wrap">
             <iframe
               src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9tcVDUsTwl352vlNQ03cqE0aDcmG-yNaFJgtoogry1iW_2cMC-EXrKbyNP_pdUGGUC4s3OXxAfPlX/pubhtml?widget=true&amp;headers=false"
               loading="lazy"
               title="KCL AISOC application tracker"></iframe>
           </div>
 
-          <div class="wtl-embed-footer reveal reveal-delay-2">
+          <div class="wtl-embed-footer">
             <p class="wtl-embed-helper">Want your own copy? Make a duplicate you can edit and track your applications privately. This creates your own private copy, separate from everyone else's.</p>
             <a href="https://docs.google.com/spreadsheets/d/1LSnz6HfaMdII4XbDxQyvRxTTAx1lbSor5lzFSWBNIqI/copy"
                class="btn btn-primary"
@@ -852,7 +807,7 @@
         </div>
 
         <!-- Back link -->
-        <div style="padding: 2rem 0; text-align: center;">
+        <div class="wtl-back">
           <a href="resources.html" class="btn btn-outline">← Back to Resources</a>
         </div>
 
@@ -863,14 +818,11 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -931,8 +883,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

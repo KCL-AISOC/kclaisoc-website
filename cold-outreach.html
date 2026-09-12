@@ -7,7 +7,7 @@
   <title>Cold Outreach Explained | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,31 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -81,7 +56,7 @@
     }
 
     .co-section-lead {
-      font-size: 0.95rem;
+      font-size: var(--fs-body);
       line-height: 1.75;
       color: rgba(7, 22, 48, 0.65);
       max-width: 64ch;
@@ -116,7 +91,7 @@
     .co-callout li {
       position: relative;
       padding-left: 1.35rem;
-      font-size: 0.92rem;
+      font-size: var(--fs-body);
       line-height: 1.65;
       color: rgba(255, 255, 255, 0.82);
     }
@@ -214,7 +189,7 @@
 
     .co-step-body {
       padding: 0 1.1rem 1.1rem 3.1rem;
-      font-size: 0.9rem;
+      font-size: var(--fs-body);
       line-height: 1.75;
       color: rgba(7, 22, 48, 0.72);
     }
@@ -454,12 +429,10 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -475,7 +448,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html" class="active">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -485,18 +458,16 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Opportunities</span>
           <h1>Cold Outreach, Explained</h1>
           <p>How to reach firms that never advertise, and turn a message into a meeting. In plain English.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">04</span>
       </div>
     </header>
 
     <section class="co-body">
       <div class="container">
 
-        <div class="co-callout reveal">
+        <div class="co-callout">
           <h2>The 30 second version</h2>
           <ul>
             <li>Big firms hire through schemes, so cold outreach works best on small firms, boutiques and search funds.</li>
@@ -506,25 +477,19 @@
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">01</span>
-            <span class="eyebrow">Section 1</span>
+          <div class="co-section-head">
             <h2>Why cold outreach works</h2>
-            <div class="co-rule"></div>
             <p class="co-section-lead">Large firms recruit through structured programmes, so a cold email to a big bank usually goes nowhere. Smaller firms are different. Many boutiques, search funds and alternative investment shops have no formal scheme at all. They hire when they meet someone good. That is exactly where a sharp, personal message can create an opportunity that was never posted on any job board. So the whole game is to target small.</p>
           </div>
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">02</span>
-            <span class="eyebrow">Section 2</span>
+          <div class="co-section-head">
             <h2>Find the firms</h2>
-            <div class="co-rule"></div>
             <p class="co-section-lead">Use LinkedIn to build a list of small firms in the area you care about. Work through it one firm at a time.</p>
           </div>
 
-          <div class="co-accordion reveal">
+          <div class="co-accordion">
 
             <div class="co-step">
               <h3 class="co-step-head">
@@ -595,41 +560,35 @@
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">03</span>
-            <span class="eyebrow">Section 3</span>
+          <div class="co-section-head">
             <h2>Vet the firm first</h2>
-            <div class="co-rule"></div>
             <p class="co-section-lead">Before you reach out, open the firm's About section on LinkedIn and read it properly. Ask yourself one question: does what they do match what I am interested in? If yes, go to their website to confirm and to find a way in. If no, move on. A few well researched messages beat fifty generic ones.</p>
           </div>
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">04</span>
-            <span class="eyebrow">Section 4</span>
+          <div class="co-section-head">
             <h2>Three ways in</h2>
-            <div class="co-rule"></div>
             <p class="co-section-lead">There are three channels. Pick the strongest one available for each firm.</p>
           </div>
 
           <div class="co-channel-grid">
 
-            <div class="co-channel-card reveal">
+            <div class="co-channel-card">
               <span class="co-channel-letter">Option A</span>
               <h3>The general email</h3>
               <p class="co-channel-desc">Find the contact address on the website, often an info or careers inbox. Send a short, personal, well aimed email. This is the easiest to do but has the lowest reply rate.</p>
               <p class="co-channel-note">Easiest to find. Lowest reply rate.</p>
             </div>
 
-            <div class="co-channel-card reveal">
+            <div class="co-channel-card">
               <span class="co-channel-letter">Option B</span>
               <h3>The direct approach</h3>
               <p class="co-channel-desc">Find a specific senior person, ideally a partner, on the website or LinkedIn. If their email is listed, write to them directly. If a phone number is listed, even better. Call during business hours with a prepared 60 second pitch. Going direct to a decision maker gets the best response.</p>
               <p class="co-channel-note">More effort. Best response rate.</p>
             </div>
 
-            <div class="co-channel-card reveal">
+            <div class="co-channel-card">
               <span class="co-channel-letter">Option C</span>
               <h3>The warm LinkedIn route</h3>
               <p class="co-channel-desc">Look for people you are already connected with, or who share a connection, who work there. Connect, then ask for a short coffee chat or a quick online call. Use it to learn and build rapport, then gradually raise the idea of getting involved or working with them. This starts from a real connection, so it has the highest hit rate.</p>
@@ -640,15 +599,12 @@
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">05</span>
-            <span class="eyebrow">Section 5</span>
+          <div class="co-section-head">
             <h2>How to write the cold email</h2>
-            <div class="co-rule"></div>
             <p class="co-section-lead">Keep it under 150 words and make every line earn its place. Use this structure.</p>
           </div>
 
-          <div class="co-accordion reveal">
+          <div class="co-accordion">
 
             <div class="co-step">
               <h3 class="co-step-head">
@@ -717,7 +673,7 @@
 
           </div>
 
-          <div class="co-sample reveal">
+          <div class="co-sample">
             <span class="co-sample-label">Sample email</span>
             <p><strong>Subject:</strong> KCL student interested in <span class="co-ph">[Firm name]</span></p>
             <p>Hi <span class="co-ph">[First name]</span>,</p>
@@ -729,39 +685,30 @@
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">06</span>
-            <span class="eyebrow">Section 6</span>
+          <div class="co-section-head">
             <h2>The 60 second phone pitch</h2>
-            <div class="co-rule"></div>
             <p class="co-section-lead">If you call, be ready before you dial. Call during business hours, be polite and brief, and keep your script in front of you. Cover who you are, why you are calling with one specific reason, what you are asking for, and a thank you.</p>
           </div>
 
-          <div class="co-sample reveal">
+          <div class="co-sample">
             <span class="co-sample-label">Sample script</span>
             <p>Hi <span class="co-ph">[First name]</span>, my name is <span class="co-ph">[your name]</span>. I am a student at King's College London and I help run our Alternative Investment Society. I am calling because I have been following <span class="co-ph">[Firm name]</span>'s work in <span class="co-ph">[area]</span> and I am keen to learn from firms like yours. I am not asking for a job. I would love fifteen minutes of your time to hear how you got started, and whether there is any way a motivated student could help out. Would you have a moment this week or next?</p>
           </div>
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">07</span>
-            <span class="eyebrow">Section 7</span>
+          <div class="co-section-head">
             <h2>Follow up without being annoying</h2>
-            <div class="co-rule"></div>
             <p class="co-section-lead">One follow up after about a week is fine. Two at most. Keep it short and friendly, and if there is still no reply, move on. No reply is rarely personal, people are simply busy. Persistence is good, pestering is not.</p>
           </div>
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">08</span>
-            <span class="eyebrow">Section 8</span>
+          <div class="co-section-head">
             <h2>Dos and don'ts</h2>
-            <div class="co-rule"></div>
           </div>
 
-          <div class="co-dnd-grid reveal">
+          <div class="co-dnd-grid">
             <div class="co-dnd-col co-do-col">
               <h3>Do</h3>
               <ul class="co-list">
@@ -788,15 +735,12 @@
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">09</span>
-            <span class="eyebrow">Go Deeper</span>
+          <div class="co-section-head">
             <h2>Want a video walkthrough?</h2>
-            <div class="co-rule"></div>
             <p class="co-section-lead">Reading is a start, but seeing it done helps it click. For step by step video tutorials on cold outreach, this creator is worth following.</p>
           </div>
 
-          <div class="co-creator-card reveal">
+          <div class="co-creator-card">
             <div>
               <h3>Luke Stone</h3>
               <p class="co-creator-desc">Cold outreach tips and walkthroughs</p>
@@ -821,22 +765,19 @@
         </div>
 
         <div class="co-section">
-          <div class="co-section-head reveal">
-            <span class="co-section-index" aria-hidden="true">10</span>
-            <span class="eyebrow">Section 10</span>
+          <div class="co-section-head">
             <h2>The bottom line</h2>
-            <div class="co-rule"></div>
           </div>
 
-          <p class="co-closing reveal">Cold outreach rewards effort and research. The students who get somewhere are the ones who target small, do their homework, and make a real human ask. Done well, it opens doors that were never officially open.</p>
+          <p class="co-closing">Cold outreach rewards effort and research. The students who get somewhere are the ones who target small, do their homework, and make a real human ask. Done well, it opens doors that were never officially open.</p>
 
-          <div class="co-cta-row reveal">
+          <div class="co-cta-row">
             <a href="where-to-look.html" class="btn btn-outline">Where to Look</a>
             <a href="organisations-to-join.html" class="btn btn-outline">Organisations to Join</a>
             <a href="join.html" class="btn btn-primary">Join the Society</a>
           </div>
 
-          <div class="co-back reveal">
+          <div class="co-back">
             <a href="resources.html" class="btn btn-outline">&larr; Back to Resources</a>
           </div>
         </div>
@@ -847,14 +788,11 @@
   </main>
 
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -915,8 +853,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <script>

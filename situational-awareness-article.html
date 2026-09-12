@@ -7,7 +7,7 @@
   <title>The Fund That Couldn't See Itself | KCL AISOC Insights</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,31 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -107,18 +82,18 @@
     }
 
     .ia-lead {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      line-height: 1.82;
+      font-family: var(--font-body);
+      font-size: var(--fs-lead);
+      line-height: 1.6;
       color: var(--text-secondary);
       margin-bottom: 2rem;
       max-width: none;
     }
 
     .ia-prose {
-      font-family: var(--font-heading);
-      font-size: clamp(1rem, 1.5vw, 1.0625rem);
-      line-height: 1.9;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       color: rgba(7, 22, 48, 0.7);
       margin-bottom: 1.35rem;
       max-width: none;
@@ -321,12 +296,10 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -342,7 +315,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -352,7 +325,6 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Insights</span>
           <h1>The Fund That Couldn't See Itself</h1>
           <p>Leopold Aschenbrenner was right about AI. He was also erased in a month.</p>
         </div>
@@ -362,7 +334,7 @@
     <article class="ia-body">
       <div class="container container--narrow">
 
-        <div class="ia-article-meta reveal">
+        <div class="ia-article-meta">
           <span class="ia-meta-category">Hedge Funds</span>
           <span class="ia-meta-sep" aria-hidden="true"></span>
           <span class="ia-meta-date">1 August 2026</span>
@@ -372,35 +344,36 @@
           <span class="ia-meta-author">President</span>
         </div>
 
-        <p class="ia-lead reveal">
+        <p class="ia-lead">
           In June 2024, a 22-year-old published a 165-page essay called <em>Situational Awareness</em> and became, more or less overnight, the most quoted man in Silicon Valley. Leopold Aschenbrenner's argument was that artificial general intelligence was arriving faster than anyone was prepared for, and that the compute buildout required to get there would be the defining investment opportunity of the decade.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           He was right. That is the part worth sitting with, because everything that follows makes more sense once you accept that his call was correct.
         </p>
 
-        <figure class="ia-figure reveal">
-          <img src="assets/articles/aschenbrenner.png"
+        <figure class="ia-figure">
+          <img src="assets/articles/aschenbrenner-web.jpg"
                alt="Leopold Aschenbrenner"
+               width="1600" height="1091"
                loading="lazy">
           <figcaption>Leopold Aschenbrenner — Columbia at 15, valedictorian at 19, then OpenAI's Superalignment team.</figcaption>
         </figure>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           He had form. Columbia at 15, valedictorian at 19, then OpenAI's Superalignment team until he was fired in April 2024 over a disputed leak. He also spent a brief spell at Sam Bankman-Fried's FTX Future Fund, which in hindsight reads like foreshadowing that nobody bothered to underline at the time. Then he turned the essay into a hedge fund and named it after itself, which is either supreme confidence or a marketing decision that aged like milk. Possibly both.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           Situational Awareness LP launched in late 2024 with roughly $225 million from Stripe's Collison brothers, Nat Friedman and Daniel Gross. The strategy was clean: go long the physical bottlenecks of AI — the memory and the power and the data centres — and short the software incumbents the market had already priced for an AI windfall. SK Hynix, SanDisk, Nebius, CoreWeave, Bloom Energy on one side. Adobe and friends on the other. All of it financed at roughly four times leverage.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           For eighteen months it worked spectacularly. The fund returned 47% after fees in the first half of 2025, then 439% net in the first half of 2026, and grew to as much as $45 billion at its peak. Worth being precise here, because the numbers get garbled in the retelling: that $45bn was not $225m compounding. It was returns, plus a torrent of new capital from investors who wanted in, plus a great deal of borrowed money.
         </p>
 
         <!-- Key numbers callout -->
-        <div class="ia-stat-block reveal">
+        <div class="ia-stat-block">
           <div class="ia-stat">
             <p class="ia-stat-number">439%</p>
             <p class="ia-stat-label">Net return, H1 2026</p>
@@ -415,57 +388,59 @@
           </div>
         </div>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           Then came July 2026. The Philadelphia Semiconductor Index fell 28.6% from its June peak. SK Hynix's US shares dropped nearly half. And the software shorts — the leg that was supposed to cushion all this — rallied instead. Adobe rose about 27%. Both sides of the book lost money at the same time, which is the specific nightmare that hedging is meant to prevent.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           Here is where leverage stops being an abstraction. Borrow four dollars for every one you own and a 25% fall in the portfolio doesn't dent you, it erases you. Margin calls arrived from Goldman Sachs, JPMorgan and Bank of America. The fund lost around 67% in a single month.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           What happened next took less than a day. Roughly $16 billion of public equity went to Ken Griffin's Citadel at a discount reported at more than 10%. Millennium and Jane Street looked at the book and passed, which tells you something about how the room read it. Then, on the very next trading day, with the forced seller finally out of the way, SanDisk rose 23.9% and Bloom Energy rose 26.4%.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           You are allowed to find that funny. Aschenbrenner probably does not.
         </p>
 
-        <figure class="ia-figure reveal">
-          <img src="assets/articles/ken-griffin.jpg"
+        <figure class="ia-figure">
+          <img src="assets/articles/ken-griffin-web.jpg"
                alt="Ken Griffin, founder and CEO of Citadel"
+               width="1600" height="1067"
                loading="lazy">
           <figcaption>Ken Griffin, founder and CEO of Citadel — the buyer of last resort for roughly $16 billion of Situational Awareness LP's public equity book.</figcaption>
         </figure>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           Anyone who has studied markets for more than a term will recognise the shape of this. Archegos, 2021. Bill Hwang, roughly five times leverage through total return swaps, concentrated positions, a forced unwind that took days and cost the banks around $10 billion, with Credit Suisse alone eating about $5.5 billion. Same disease, different patient.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           The instructive difference is who paid. In 2021 the prime brokers were the ones left holding it. By 2026 they had learned that lesson thoroughly, which meant the margin calls came early and the losses landed on the fund's own investors instead. The banks got their situational awareness. It just wasn't the fund that supplied it.
         </p>
 
-        <figure class="ia-figure reveal">
-          <img src="assets/articles/bill-hwang.png"
+        <figure class="ia-figure">
+          <img src="assets/articles/bill-hwang-web.jpg"
                alt="Bill Hwang, founder of Archegos Capital Management"
+               width="1400" height="1400"
                loading="lazy">
           <figcaption>Bill Hwang of Archegos Capital Management — the 2021 precedent. Five times leverage, concentrated positions, a forced unwind that cost the banks $10 billion.</figcaption>
         </figure>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           Situational Awareness LP is not dead. It continues as a private vehicle built around a stake in Anthropic worth roughly $5 billion, and Aschenbrenner is reportedly raising again. His thesis about AI infrastructure may well be vindicated in full over the next five years.
         </p>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           That is precisely the lesson. Being right about where the world is going is a genuinely rare skill, and he has it. But a thesis is not a trade, and a trade is not a position you can survive holding. Leverage doesn't care that you were early. It only cares whether you are still solvent on the morning your broker calls.
         </p>
 
-        <a class="ia-author-line reveal" href="https://www.linkedin.com/in/muntasir-aa-ali/" target="_blank" rel="noopener noreferrer">Muntasir Ali</a>
+        <a class="ia-author-line" href="https://www.linkedin.com/in/muntasir-aa-ali/" target="_blank" rel="noopener noreferrer">Muntasir Ali</a>
 
         <hr class="ia-divider">
 
-        <section class="ia-references reveal" aria-label="References">
+        <section class="ia-references" aria-label="References">
           <p class="ia-references-heading">References</p>
           <ol class="ia-ref-list">
             <li>CNBC (2026) Leopold Aschenbrenner forced to unwind all public stock positions after steep losses. Available at: cnbc.com</li>
@@ -482,14 +457,11 @@
   </main>
 
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -550,8 +522,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
 </body>

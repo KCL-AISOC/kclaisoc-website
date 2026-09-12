@@ -7,7 +7,7 @@
   <title>The Algorithm's New Author: How AI Is Rewriting the Role of the Quant | KCL AISOC Insights</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,31 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -97,18 +72,18 @@
     }
 
     .ia-lead {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      line-height: 1.82;
+      font-family: var(--font-body);
+      font-size: var(--fs-lead);
+      line-height: 1.6;
       color: var(--text-secondary);
       margin-bottom: 2rem;
       max-width: none;
     }
 
     .ia-prose {
-      font-family: var(--font-heading);
-      font-size: clamp(1rem, 1.5vw, 1.0625rem);
-      line-height: 1.9;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       color: rgba(7, 22, 48, 0.7);
       margin-bottom: 1.35rem;
       max-width: none;
@@ -431,12 +406,10 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -452,7 +425,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -462,7 +435,6 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Insights</span>
           <h1>The Algorithm's New Author: How AI Is Rewriting the Role of the Quant</h1>
           <p>Ken Griffin called it garbage in January. By May he had gone home depressed after watching it work inside Citadel.</p>
         </div>
@@ -472,7 +444,7 @@
     <article class="ia-body">
       <div class="container container--narrow">
 
-        <div class="ia-article-meta reveal">
+        <div class="ia-article-meta">
           <span class="ia-meta-category">Hedge Funds</span>
           <span class="ia-meta-sep" aria-hidden="true"></span>
           <span class="ia-meta-date">5 July 2026</span>
@@ -482,62 +454,62 @@
           <span class="ia-meta-author">Head of Investment Research</span>
         </div>
 
-        <p class="ia-lead reveal">
+        <p class="ia-lead">
           In January 2026, Ken Griffin called artificial intelligence "it's all garbage" at Davos. Four months later, at Stanford Business School, he sounded like a different man.
         </p>
 
-        <blockquote class="ia-closing reveal">
+        <blockquote class="ia-closing">
           "I've got to tell you, I went home one Friday, actually fairly depressed. You could just see how this was going to have such a dramatic impact on society. To be blunt, work that we would usually do with people with master's and PhDs in finance over the course of weeks or months is being done by AI agents over the course of hours or days."
           <cite class="ia-quote-attr">— Ken Griffin, Founder and CEO, Citadel &middot; Stanford Leadership Forum, May 2026</cite>
         </blockquote>
 
-        <p class="ia-prose reveal">
+        <p class="ia-prose">
           Griffin's reversal is a signal. What he witnessed inside Citadel is the visible edge of a transformation reshaping every quant trading floor in the world: artificial intelligence is no longer just running the strategies. It is increasingly writing them.
         </p>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">How a Quant Fund Works</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">How a Quant Fund Works</h2>
+          <p class="ia-prose">
             Quant funds run systematic strategies where everything is encoded into signals, position sizes, and execution logic. A team of researchers identifies a pattern in market data, translates it into code, backtests it on historical data, and if it survives scrutiny, deploys it live. This pipeline has always been human. The bottleneck was never the testing infrastructure. It was throughput: how many ideas a team could generate and validate before the market moved on.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             That bottleneck is now breaking.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Machines Start Writing the Code</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Machines Start Writing the Code</h2>
+          <p class="ia-prose">
             In July 2025, Man Group, the world's largest listed hedge fund, disclosed that its quant equity division had deployed AlphaGPT: a system that identifies trading ideas, writes the code, and backtests them autonomously across all three steps. Several dozen AlphaGPT-generated signals have already passed Man Group's investment committee and are live in production.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             Two Sigma has framed the shift in structural terms. In its 2026 outlook, the firm described AI as "the operating system for how quantitative research and investing work," with the research funnel inverting as large language models flood the pipeline with testable hypotheses, shifting the bottleneck from idea generation to idea evaluation.
           </p>
-          <blockquote class="ia-closing reveal">
+          <blockquote class="ia-closing">
             "The future isn't AI replacing humans; it's humans who use AI well replacing humans who don't."
             <cite class="ia-quote-attr">— Matt Greenwood, Chief AI Innovation Officer, Two Sigma &middot; January 2026</cite>
           </blockquote>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             D.E. Shaw has taken a federated approach: a modular internal toolkit called Assistants, LLM Gateway, and DocLab that lets each research desk spin up custom AI tools independently, while a central governance team enforces logging and audit policy across the firm.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">When AI Becomes the Decision-Maker</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">When AI Becomes the Decision-Maker</h2>
+          <p class="ia-prose">
             The most radical experiment in the industry is at Bridgewater. In July 2024, it launched the AIA Macro Fund, a $2 billion vehicle where AI is the primary investment decision-maker, not a research aide. By 2025, assets had grown beyond $5 billion and the fund had returned 11.9%. CEO Nir Bar Dea described the result at Bloomberg Invest:
           </p>
-          <blockquote class="ia-closing reveal">
+          <blockquote class="ia-closing">
             "Unique alpha that is uncorrelated to what our humans do."
             <cite class="ia-quote-attr">— Nir Bar Dea, CEO, Bridgewater Associates &middot; Bloomberg Invest, March 2025</cite>
           </blockquote>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             Uncorrelated alpha is the holy grail of portfolio construction. Bar Dea is claiming Bridgewater's AI fund is finding edges its human portfolio managers are not. Co-CIO Greg Jensen frames it as compounding fifty years of accumulated macro research with machine learning — something no individual analyst could replicate. Human oversight remains embedded: AI agents generate hypotheses, human analysts validate, and risk management signs off on execution.
           </p>
         </div>
 
         <!-- Stat block: Bridgewater AIA Macro Fund -->
-        <div class="ia-stat-block reveal">
+        <div class="ia-stat-block">
           <div class="ia-stat">
             <p class="ia-stat-number">$5bn+</p>
             <p class="ia-stat-label">AIA Macro Fund AUM, 2025</p>
@@ -553,26 +525,26 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">Why the Human Veto Is Non-Negotiable</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">Why the Human Veto Is Non-Negotiable</h2>
+          <p class="ia-prose">
             Across every firm in this space, humans retain veto authority over execution. Man Group's Alpha Assistant can draft signals but cannot execute trades. Bridgewater's AIA system generates and validates, but risk management remains human. This is not caution for its own sake. It reflects three hard constraints.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The hallucination problem is real. A spurious signal that looks statistically valid can generate losses at scale before anyone catches the error. Regulatory pressure is intensifying too: the SEC has pursued enforcement against AI washing, and the Bank of England confirmed in April 2026 that it is conducting scenario analysis and simulations of how AI trading agents behave under stress conditions. Funds that cannot document the rationale behind an investment decision face genuine compliance exposure, and black-box AI does not satisfy that requirement. Organisationally, Citadel's own aborted Seattle AI lab — a nine-figure investment dissolved in 2020 — failed not because the models were weak but because ML talent was isolated from the portfolio managers who owned P&amp;L. When those two groups do not communicate, the model never gets trusted.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">What This Means If You Are Starting Your Career Now</h2>
-          <blockquote class="ia-closing reveal">
+          <h2 class="ia-section-heading">What This Means If You Are Starting Your Career Now</h2>
+          <blockquote class="ia-closing">
             "These are not mid-tier white-collar jobs. These are extraordinarily high-skilled jobs being automated by agentic AI."
             <cite class="ia-quote-attr">— Ken Griffin, Stanford Leadership Forum, May 2026</cite>
           </blockquote>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The instinctive response is anxiety. But the firms doing this most seriously are not shrinking their research headcount. They are changing what they recruit for. Man Group's Tim Mace noted that around half of the firm's 600 active coders now use GenAI, with the goal of making them more effective, not replacing them. The skill premium is shifting in three directions:
           </p>
 
-          <div class="ia-skill-grid reveal">
+          <div class="ia-skill-grid">
             <div class="ia-skill-card">
               <p class="ia-skill-title">Signal Evaluation</p>
               <p class="ia-skill-desc">Knowing whether a backtested strategy is genuinely predictive or fitting noise requires statistical intuition AI cannot self-apply.</p>
@@ -589,17 +561,17 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Systemic Risk Nobody Is Discussing</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Systemic Risk Nobody Is Discussing</h2>
+          <p class="ia-prose">
             If dozens of quant funds train AI models on similar datasets — the same satellite imagery, credit card flows, and earnings call transcripts the alternative data industry sells to everyone — those models will find similar patterns and generate correlated signals. Funds that believe they are running independent strategies may be far more exposed to each other than they realise.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             This risk is not theoretical. On 5 August 2024, the Nikkei fell 12.4% in a single session, its largest one-day drop since 1987, as reported by Reuters. The primary trigger was the rapid unwinding of yen carry trades following a surprise Bank of Japan rate rise, but the sell-off was amplified by leveraged and algorithmic positions unwinding in concert across global markets. The BIS noted in its subsequent bulletin that "financial market volatility was amplified as the unwinding of leveraged trades in equity and currency markets amplified the initial reaction." As AI proliferates across quant strategies trained on common data, the potential for similar correlated drawdowns grows. The Bank of England is now conducting scenario analysis of AI trading agent behaviour under stress conditions precisely because this risk is taken seriously at the regulatory level.
           </p>
         </div>
 
         <!-- Bar chart: Historic Nikkei 225 single-day declines -->
-        <div class="ia-chart-wrap reveal" id="ia-nikkei-chart">
+        <div class="ia-chart-wrap" id="ia-nikkei-chart">
           <p class="ia-chart-label">Historic Nikkei 225 largest single-day declines — magnitude (%)</p>
           <div class="ia-chart-bars">
             <div class="ia-bar-col">
@@ -639,22 +611,22 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">Conclusion</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">Conclusion</h2>
+          <p class="ia-prose">
             Man Group's AlphaGPT writes and backtests signals autonomously. Two Sigma treats AI as the operating system of its research process. Bridgewater's AIA fund is live and generating uncorrelated alpha. Ken Griffin called it all garbage in January and went home depressed in May after watching it work inside his own firm.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The algorithm has a new author. The most important role on the floor is still the editor: the researcher who reads what the machine produced, understands why it worked, stress-tests whether it will keep working, and explains it clearly enough that a portfolio manager will stake capital on it.
           </p>
         </div>
 
-        <blockquote class="ia-closing reveal">
+        <blockquote class="ia-closing">
           That job has not been automated. It has become the job.
         </blockquote>
 
         <hr class="ia-divider">
 
-        <section class="ia-references reveal" aria-label="References">
+        <section class="ia-references" aria-label="References">
           <p class="ia-references-heading">References</p>
           <ol class="ia-ref-list">
             <li>Ken Griffin, Stanford Leadership Forum, 5 May 2026 — singjupost.com/stanford-leadership-forum-2026-conversation-with-ken-griffin-transcript/</li>
@@ -676,14 +648,11 @@
   </main>
 
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -744,8 +713,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <script>

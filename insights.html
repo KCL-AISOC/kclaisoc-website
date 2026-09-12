@@ -7,7 +7,7 @@
   <title>Insights | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -54,15 +23,13 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -78,7 +45,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -91,11 +58,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Analysis &amp; Commentary</span>
           <h1>Insights</h1>
           <p>Market commentary and investment analysis from the KCL AISOC committee.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">05</span>
       </div>
     </header>
 
@@ -105,7 +70,9 @@
     <section aria-labelledby="insights-heading">
       <div class="container">
 
-        <h2 id="insights-heading" class="reveal" style="margin-bottom: 2.5rem;">Latest Pieces</h2>
+        <div class="section-head">
+          <h2 id="insights-heading">Latest Pieces</h2>
+        </div>
 
         <!--
           HOW TO ADD A REAL INSIGHT ARTICLE
@@ -126,139 +93,116 @@
         <div class="insights-grid">
 
           <!-- VC concentration article -->
-          <article class="insight-card reveal">
+          <article class="insight-card">
             <div class="insight-card-body">
               <p class="insight-category">Venture Capital</p>
               <p class="insight-date">6 August 2026</p>
-              <h3 style="font-family: var(--font-display);">The Great Concentration: Why Record Venture Funding Is Not the Boom It Looks Like</h3>
+              <h3>The Great Concentration: Why Record Venture Funding Is Not the Boom It Looks Like</h3>
               <p class="insight-excerpt">
                 Global VC hit a record $300 billion in Q1 2026. Four companies took nearly two-thirds of it. What the concentration behind the headline number means for founders, funds, and the logic of venture returns.
               </p>
             </div>
             <div class="insight-card-footer">
-              <a href="vc-concentration-article.html"
-                 style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 0.35em; transition: opacity 0.2s;"
-                 onmouseover="this.style.opacity='0.7'"
-                 onmouseout="this.style.opacity='1'">READ MORE &#8594;</a>
+              <a href="vc-concentration-article.html" class="card-link">Read more</a>
             </div>
           </article>
 
           <!-- Situational Awareness article -->
-          <article class="insight-card reveal">
+          <article class="insight-card">
             <div class="insight-card-body">
               <p class="insight-category">Hedge Funds</p>
               <p class="insight-date">1 August 2026</p>
-              <h3 style="font-family: var(--font-display);">The Fund That Couldn't See Itself</h3>
+              <h3>The Fund That Couldn't See Itself</h3>
               <p class="insight-excerpt">
                 Leopold Aschenbrenner was right about AI. His fund still lost 67% in a month. What Situational Awareness LP's collapse teaches about leverage, thesis risk, and the distance between being early and being solvent.
               </p>
             </div>
             <div class="insight-card-footer">
-              <a href="situational-awareness-article.html"
-                 style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 0.35em; transition: opacity 0.2s;"
-                 onmouseover="this.style.opacity='0.7'"
-                 onmouseout="this.style.opacity='1'">READ MORE &#8594;</a>
+              <a href="situational-awareness-article.html" class="card-link">Read more</a>
             </div>
           </article>
 
           <!-- PE exit crisis article -->
-          <article class="insight-card reveal">
+          <article class="insight-card">
             <div class="insight-card-body">
               <p class="insight-category">Private Equity</p>
               <p class="insight-date">9 July 2026</p>
-              <h3 style="font-family: var(--font-display);">The $3.8 Trillion Traffic Jam: Why Private Equity Cannot Sell</h3>
+              <h3>The $3.8 Trillion Traffic Jam: Why Private Equity Cannot Sell</h3>
               <p class="insight-excerpt">
                 33,000 unsold companies, seven-year holding periods, and distributions at crisis-era lows. Why the PE exit machine is broken — and what continuation vehicles and NAV loans reveal about how the industry is coping.
               </p>
             </div>
             <div class="insight-card-footer">
-              <a href="pe-exit-crisis-article.html"
-                 style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 0.35em; transition: opacity 0.2s;"
-                 onmouseover="this.style.opacity='0.7'"
-                 onmouseout="this.style.opacity='1'">READ MORE &#8594;</a>
+              <a href="pe-exit-crisis-article.html" class="card-link">Read more</a>
             </div>
           </article>
 
           <!-- Hedge fund AI article -->
-          <article class="insight-card reveal">
+          <article class="insight-card">
             <div class="insight-card-body">
               <p class="insight-category">Hedge Funds</p>
               <p class="insight-date">5 July 2026</p>
-              <h3 style="font-family: var(--font-display);">The Algorithm's New Author: How AI Is Rewriting the Role of the Quant</h3>
+              <h3>The Algorithm's New Author: How AI Is Rewriting the Role of the Quant</h3>
               <p class="insight-excerpt">
                 Ken Griffin called it garbage in January and went home depressed in May. How Man Group, Two Sigma, Bridgewater, and D.E. Shaw are deploying AI to write, backtest, and execute trading strategies.
               </p>
             </div>
             <div class="insight-card-footer">
-              <a href="hedge-fund-ai-article.html"
-                 style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 0.35em; transition: opacity 0.2s;"
-                 onmouseover="this.style.opacity='0.7'"
-                 onmouseout="this.style.opacity='1'">READ MORE &#8594;</a>
+              <a href="hedge-fund-ai-article.html" class="card-link">Read more</a>
             </div>
           </article>
 
           <!-- Private equity article -->
-          <article class="insight-card reveal">
+          <article class="insight-card">
             <div class="insight-card-body">
               <p class="insight-category">Private Equity</p>
               <p class="insight-date">1 July 2026</p>
-              <h3 style="font-family: var(--font-display);">The Private Equity Gap: What King's Endowment Reveals About the Limits of the Yale Model</h3>
+              <h3>The Private Equity Gap: What King's Endowment Reveals About the Limits of the Yale Model</h3>
               <p class="insight-excerpt">
                 From Keynes at Cambridge to Yale's Project Gatsby — why the endowment model is being stress-tested at exactly the moment UK universities are being asked to catch up.
               </p>
             </div>
             <div class="insight-card-footer">
-              <a href="private-equity-article.html"
-                 style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 0.35em; transition: opacity 0.2s;"
-                 onmouseover="this.style.opacity='0.7'"
-                 onmouseout="this.style.opacity='1'">READ MORE &#8594;</a>
+              <a href="private-equity-article.html" class="card-link">Read more</a>
             </div>
           </article>
 
           <!-- Endowment article -->
-          <article class="insight-card reveal">
+          <article class="insight-card">
             <div class="insight-card-body">
               <p class="insight-category">Endowments</p>
               <p class="insight-date">28 June 2026</p>
-              <h3 style="font-family: var(--font-display);">The Anti-Yale-Model Endowment: Inside King's £341m Fund</h3>
+              <h3>The Anti-Yale-Model Endowment: Inside King's £341m Fund</h3>
               <p class="insight-excerpt">
                 Why KCL's endowment looks nothing like Harvard's, and what that tells us about institutional investing in the UK.
               </p>
             </div>
             <div class="insight-card-footer">
-              <a href="endowment-article.html"
-                 style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 0.35em; transition: opacity 0.2s;"
-                 onmouseover="this.style.opacity='0.7'"
-                 onmouseout="this.style.opacity='1'">READ MORE &#8594;</a>
+              <a href="endowment-article.html" class="card-link">Read more</a>
             </div>
           </article>
 
           <!-- Infrastructure article -->
-          <article class="insight-card reveal">
+          <article class="insight-card">
             <div class="insight-card-body">
               <p class="insight-category">Infrastructure</p>
               <p class="insight-date">June 2026</p>
-              <h3 style="font-family: var(--font-display);">Why Infrastructure Is the Fastest-Growing Alternative Asset Class</h3>
+              <h3>Why Infrastructure Is the Fastest-Growing Alternative Asset Class</h3>
               <p class="insight-excerpt">
                 From data centres to clean energy: the forces turning infrastructure into the most sought-after allocation in private markets.
               </p>
             </div>
             <div class="insight-card-footer">
-              <a href="infrastructure-article.html"
-                 style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 0.35em; transition: opacity 0.2s;"
-                 onmouseover="this.style.opacity='0.7'"
-                 onmouseout="this.style.opacity='1'">READ MORE &#8594;</a>
+              <a href="infrastructure-article.html" class="card-link">Read more</a>
             </div>
           </article>
-
 
         </div>
 
         <!-- Instagram contextual prompt - editorial, not an afterthought -->
-        <div class="insights-cta-block reveal">
+        <div class="insights-cta-block">
           <div>
-            <p class="eyebrow" style="color: var(--gold); margin-bottom: 0.75rem;">Between publications</p>
-            <p style="max-width: 52ch;">
+            <p>
               Follow us on Instagram <strong>@kclaisoc</strong> for regular
               market commentary, investment breakdowns, and industry news
               between long-form publications.
@@ -267,8 +211,7 @@
           <a href="https://www.instagram.com/kclaisoc"
              target="_blank"
              rel="noopener noreferrer"
-             class="btn btn-primary"
-             style="white-space: nowrap; flex-shrink: 0;">
+             class="btn btn-primary">
             Follow @kclaisoc
           </a>
         </div>
@@ -282,14 +225,11 @@
        FOOTER
        ============================================================ -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -350,8 +290,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

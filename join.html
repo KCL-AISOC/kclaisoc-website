@@ -7,7 +7,7 @@
   <title>Join | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -54,15 +23,13 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -78,7 +45,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -91,52 +58,46 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Membership</span>
           <h1>Join KCL AISOC</h1>
           <p>Become part of King's College London's alternative investment community.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">08</span>
       </div>
     </header>
 
     <!-- ============================================================
          JOIN LAYOUT: BENEFITS + FORM
          ============================================================ -->
-    <section class="form-section--light" style="padding-block: var(--section-gap);" aria-labelledby="join-heading">
+    <section class="form-section--light" aria-labelledby="join-heading">
       <div class="container">
         <div class="join-layout">
 
           <!-- Left: benefits -->
           <div>
-            <span class="eyebrow">What You Get</span>
-            <h2 id="join-heading" class="reveal" style="margin-bottom: 2rem;">
-              Membership<br>Benefits
-            </h2>
-            <div class="gold-rule reveal reveal-delay-1" aria-hidden="true"></div>
+            <h2 id="join-heading">Membership<br>Benefits</h2>
 
-            <ul class="join-benefits-list" style="margin-top: 2rem;">
+            <ul class="join-benefits-list">
 
-              <li class="join-benefit reveal reveal-delay-1">
+              <li class="join-benefit">
                 <span class="join-benefit-marker" aria-hidden="true"></span>
                 <p>Access to all KCL AISOC events: speaker evenings, workshops, case competitions, and networking.</p>
               </li>
 
-              <li class="join-benefit reveal reveal-delay-2">
+              <li class="join-benefit">
                 <span class="join-benefit-marker" aria-hidden="true"></span>
                 <p>Career resources and guides: CV templates, interview prep materials, and industry reading.</p>
               </li>
 
-              <li class="join-benefit reveal reveal-delay-3">
+              <li class="join-benefit">
                 <span class="join-benefit-marker" aria-hidden="true"></span>
                 <p>The KCL AISOC newsletter: market commentary, event previews, and society updates.</p>
               </li>
 
-              <li class="join-benefit reveal reveal-delay-4">
+              <li class="join-benefit">
                 <span class="join-benefit-marker" aria-hidden="true"></span>
                 <p>Networking with industry professionals from private equity, hedge funds, infrastructure, and beyond.</p>
               </li>
 
-              <li class="join-benefit reveal reveal-delay-5">
+              <li class="join-benefit">
                 <span class="join-benefit-marker" aria-hidden="true"></span>
                 <p>Committee application opportunity in October 2026. Shape the society from within.</p>
               </li>
@@ -147,13 +108,13 @@
           <!-- Right: sign-up form -->
           <div>
             <!-- Success message - shown after submission -->
-            <div class="form-success" id="join-form-success" role="alert" aria-live="polite" style="background: var(--white); border: 1px solid var(--border-light); padding: 3rem;">
-              <div class="form-success-icon" style="border-color: var(--navy);" aria-hidden="true">
+            <div class="form-success" id="join-form-success" role="alert" aria-live="polite">
+              <div class="form-success-icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A1F44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
-              <p style="color: var(--text-primary);">
+              <p>
                 You are officially a member of KCL Alternative Investment Society.
                 Welcome. We will be in touch soon.
               </p>
@@ -170,51 +131,43 @@
               id="join-form"
               method="POST"
               novalidate
-              class="reveal"
-              style="background: var(--white); border: 1px solid var(--border-light); padding: 2.5rem;"
+              class="form-card"
             >
-              <div class="form-grid" style="--form-label-color: var(--text-secondary);">
+              <div class="form-grid">
 
                 <div class="form-group form-group--full">
-                  <label for="join-first-name" style="color: var(--text-secondary);">First Name <span aria-hidden="true">*</span></label>
-                  <input type="text" id="join-first-name" name="first_name" autocomplete="given-name" required placeholder="Your first name"
-                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-first-name">First Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-first-name" name="first_name" autocomplete="given-name" required placeholder="Your first name">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-last-name" style="color: var(--text-secondary);">Last Name <span aria-hidden="true">*</span></label>
-                  <input type="text" id="join-last-name" name="last_name" autocomplete="family-name" required placeholder="Your last name"
-                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-last-name">Last Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-last-name" name="last_name" autocomplete="family-name" required placeholder="Your last name">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-email" style="color: var(--text-secondary);">Email Address <span aria-hidden="true">*</span></label>
-                  <input type="email" id="join-email" name="email_address" autocomplete="email" required placeholder="Preferred contact email"
-                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-email">Email Address <span aria-hidden="true">*</span></label>
+                  <input type="email" id="join-email" name="email_address" autocomplete="email" required placeholder="Preferred contact email">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-kcl-email" style="color: var(--text-secondary);">KCL Email Address <span aria-hidden="true">*</span></label>
-                  <input type="email" id="join-kcl-email" name="kcl_email" required placeholder="k-number@kcl.ac.uk"
-                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-kcl-email">KCL Email Address <span aria-hidden="true">*</span></label>
+                  <input type="email" id="join-kcl-email" name="kcl_email" required placeholder="k-number@kcl.ac.uk">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-student-id" style="color: var(--text-secondary);">Student ID <span aria-hidden="true">*</span></label>
-                  <input type="text" id="join-student-id" name="student_id" required inputmode="numeric" placeholder="e.g. 23012345"
-                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-student-id">Student ID <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-student-id" name="student_id" required inputmode="numeric" placeholder="e.g. 23012345">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-university" style="color: var(--text-secondary);">University <span aria-hidden="true">*</span></label>
-                  <input type="text" id="join-university" name="university" required value="King's College London" placeholder="Your university"
-                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-university">University <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-university" name="university" required value="King's College London" placeholder="Your university">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-level" style="color: var(--text-secondary);">Level of Study <span aria-hidden="true">*</span></label>
-                  <select id="join-level" name="level_of_study" required
-                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-level">Level of Study <span aria-hidden="true">*</span></label>
+                  <select id="join-level" name="level_of_study" required>
                     <option value="" disabled selected>Select&hellip;</option>
                     <option value="Undergraduate">Undergraduate</option>
                     <option value="Postgraduate (Taught)">Postgraduate (Taught)</option>
@@ -225,15 +178,13 @@
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-degree" style="color: var(--text-secondary);">Degree Name <span aria-hidden="true">*</span></label>
-                  <input type="text" id="join-degree" name="degree_name" required placeholder="e.g. BSc Economics"
-                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-degree">Degree Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="join-degree" name="degree_name" required placeholder="e.g. BSc Economics">
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-grad-year" style="color: var(--text-secondary);">Year of Graduation <span aria-hidden="true">*</span></label>
-                  <select id="join-grad-year" name="year_of_graduation" required
-                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-grad-year">Year of Graduation <span aria-hidden="true">*</span></label>
+                  <select id="join-grad-year" name="year_of_graduation" required>
                     <option value="" disabled selected>Select&hellip;</option>
                     <option value="2026">2026</option>
                     <option value="2027">2027</option>
@@ -245,9 +196,8 @@
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-international" style="color: var(--text-secondary);">Are you an International Student? <span aria-hidden="true">*</span></label>
-                  <select id="join-international" name="international_student" required
-                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-international">Are you an International Student? <span aria-hidden="true">*</span></label>
+                  <select id="join-international" name="international_student" required>
                     <option value="" disabled selected>Select&hellip;</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -255,9 +205,8 @@
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-gender" style="color: var(--text-secondary);">Gender <span aria-hidden="true">*</span></label>
-                  <select id="join-gender" name="gender" required
-                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-gender">Gender <span aria-hidden="true">*</span></label>
+                  <select id="join-gender" name="gender" required>
                     <option value="" disabled selected>Select&hellip;</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -268,9 +217,8 @@
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-ethnicity" style="color: var(--text-secondary);">How do you identify your ethnicity? <span aria-hidden="true">*</span></label>
-                  <select id="join-ethnicity" name="ethnicity" required
-                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-ethnicity">How do you identify your ethnicity? <span aria-hidden="true">*</span></label>
+                  <select id="join-ethnicity" name="ethnicity" required>
                     <option value="" disabled selected>Select&hellip;</option>
                     <option value="Asian or Asian British">Asian or Asian British</option>
                     <option value="Black, Black British, Caribbean or African">Black, Black British, Caribbean or African</option>
@@ -279,16 +227,15 @@
                     <option value="Other ethnic group">Other ethnic group</option>
                     <option value="Prefer not to say">Prefer not to say</option>
                   </select>
-                  <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.4rem;">
+                  <p class="form-note">
                     For details, see the
-                    <a href="https://www.ethnicity-facts-figures.service.gov.uk/style-guide/ethnic-groups/" target="_blank" rel="noopener noreferrer" style="color: var(--navy); text-decoration: underline;">gov.uk ethnic groups guide</a>.
+                    <a href="https://www.ethnicity-facts-figures.service.gov.uk/style-guide/ethnic-groups/" target="_blank" rel="noopener noreferrer">gov.uk ethnic groups guide</a>.
                   </p>
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-committee" style="color: var(--text-secondary);">Are you interested in joining the committee? <span aria-hidden="true">*</span></label>
-                  <select id="join-committee" name="join_committee" required
-                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-committee">Are you interested in joining the committee? <span aria-hidden="true">*</span></label>
+                  <select id="join-committee" name="join_committee" required>
                     <option value="" disabled selected>Select&hellip;</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -297,42 +244,40 @@
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label style="color: var(--text-secondary);">Area of interest within alternatives <span>(select all that apply)</span></label>
+                  <label>Area of interest within alternatives <span>(select all that apply)</span></label>
                   <div class="multi-select-grid"
-                       style="background: var(--cream); border-color: var(--border-light);"
                        role="group"
                        aria-label="Areas of interest">
                     <div class="multi-select-item">
                       <input type="checkbox" id="interest-pe" name="interest[]" value="Private Equity">
-                      <label for="interest-pe" style="color: var(--text-secondary);">Private Equity</label>
+                      <label for="interest-pe">Private Equity</label>
                     </div>
                     <div class="multi-select-item">
                       <input type="checkbox" id="interest-infra" name="interest[]" value="Infrastructure">
-                      <label for="interest-infra" style="color: var(--text-secondary);">Infrastructure</label>
+                      <label for="interest-infra">Infrastructure</label>
                     </div>
                     <div class="multi-select-item">
                       <input type="checkbox" id="interest-hf" name="interest[]" value="Hedge Funds">
-                      <label for="interest-hf" style="color: var(--text-secondary);">Hedge Funds</label>
+                      <label for="interest-hf">Hedge Funds</label>
                     </div>
                     <div class="multi-select-item">
                       <input type="checkbox" id="interest-ra" name="interest[]" value="Real Assets">
-                      <label for="interest-ra" style="color: var(--text-secondary);">Real Assets</label>
+                      <label for="interest-ra">Real Assets</label>
                     </div>
                     <div class="multi-select-item">
                       <input type="checkbox" id="interest-pc" name="interest[]" value="Private Credit">
-                      <label for="interest-pc" style="color: var(--text-secondary);">Private Credit</label>
+                      <label for="interest-pc">Private Credit</label>
                     </div>
                     <div class="multi-select-item">
                       <input type="checkbox" id="interest-vc" name="interest[]" value="Venture Capital">
-                      <label for="interest-vc" style="color: var(--text-secondary);">Venture Capital</label>
+                      <label for="interest-vc">Venture Capital</label>
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-heard" style="color: var(--text-secondary);">How did you hear about us? <span aria-hidden="true">*</span></label>
-                  <select id="join-heard" name="heard_via" required
-                          style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-heard">How did you hear about us? <span aria-hidden="true">*</span></label>
+                  <select id="join-heard" name="heard_via" required>
                     <option value="" disabled selected>Select&hellip;</option>
                     <option value="Instagram">Instagram</option>
                     <option value="Friend or classmate">Friend or classmate</option>
@@ -344,23 +289,22 @@
                 </div>
 
                 <div class="form-group form-group--full">
-                  <label for="join-linkedin" style="color: var(--text-secondary);">LinkedIn Profile URL <span>(optional)</span></label>
-                  <input type="url" id="join-linkedin" name="linkedin_url" placeholder="https://www.linkedin.com/in/your-profile"
-                         style="background: var(--cream); border-color: var(--border-light); color: var(--text-primary);">
+                  <label for="join-linkedin">LinkedIn Profile URL <span>(optional)</span></label>
+                  <input type="url" id="join-linkedin" name="linkedin_url" placeholder="https://www.linkedin.com/in/your-profile">
                 </div>
 
               </div>
 
               <input type="text" name="company_website" tabindex="-1" autocomplete="off"
                      aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
-              <div style="margin-top: 2rem;">
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding-block: 1rem;">
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn--block">
                   Join KCL AISOC
                 </button>
               </div>
 
-              <p style="margin-top: 1rem; font-size: 0.78rem; color: rgba(7,22,48,0.5); text-align: center;">
-                By submitting this form you agree to our <a href="privacy.html" style="color: var(--navy); text-decoration: underline;">Privacy Policy</a>.
+              <p class="form-note text-center">
+                By submitting this form you agree to our <a href="privacy.html">Privacy Policy</a>.
               </p>
 
             </form>
@@ -373,20 +317,19 @@
     <!-- ============================================================
          ALREADY A MEMBER, INSTAGRAM PROMPT
          ============================================================ -->
-    <section style="background: var(--navy); padding-block: 3rem; border-top: 1px solid rgba(201, 169, 97, 0.1);" aria-label="Follow on Instagram">
-      <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+    <section class="strip" aria-label="Follow on Instagram">
+      <div class="container strip-inner">
         <div>
-          <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.5rem;">Already a member?</p>
-          <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; max-width: 52ch;">
-            Follow <strong style="color: var(--gold);">@kclaisoc</strong> on Instagram for the latest
+          <p class="strip-label">Already a member?</p>
+          <p>
+            Follow <strong>@kclaisoc</strong> on Instagram for the latest
             event announcements, market commentary, and society updates.
           </p>
         </div>
         <a href="https://www.instagram.com/kclaisoc"
            target="_blank"
            rel="noopener noreferrer"
-           class="btn btn-secondary"
-           style="white-space: nowrap; flex-shrink: 0;">
+           class="btn btn-secondary">
           Follow @kclaisoc
         </a>
       </div>
@@ -398,14 +341,11 @@
        FOOTER
        ============================================================ -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -466,8 +406,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
   <script>
     // Google Apps Script web app URL. See apps-script/SETUP.md.

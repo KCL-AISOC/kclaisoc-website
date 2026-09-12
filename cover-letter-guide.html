@@ -7,7 +7,7 @@
   <title>Cover Letter Guide | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -54,16 +23,13 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -79,7 +45,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html" class="active">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -92,11 +58,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Career Resources</span>
           <h1>Cover Letter Guide</h1>
           <p>One strong letter, annotated line by line.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">CL</span>
       </div>
     </header>
 
@@ -105,7 +69,7 @@
          ============================================================ -->
     <section class="cv-guide-section">
       <div class="container">
-        <div class="cl-principle reveal">
+        <div class="cl-principle">
           <strong>The principle:</strong> a cover letter is not a summary of your CV. It answers two questions, <em>why this firm</em> and <em>why you</em>, using specific evidence rather than adjectives. Keep it to one page and three short moves: a sharp opening, proof of how you work, and a researched reason for choosing them.
         </div>
       </div>
@@ -117,14 +81,12 @@
     <section class="cv-preview-section">
       <div class="container">
 
-        <div class="cv-preview-header reveal">
-          <span class="eyebrow">Worked Example</span>
+        <div class="cv-preview-header">
           <h2>The Letter, Annotated</h2>
-          <div class="gold-rule gold-rule--center"></div>
           <p>Sensitive details have been redacted. All quantified results are real and consistent with the accompanying CV. The numbered notes explain why each part of the letter works.</p>
         </div>
 
-        <div class="cl-annotated reveal" id="cl-annotated">
+        <div class="cl-annotated" id="cl-annotated">
 
           <!-- 1 · Header and firm address -->
           <div class="cl-anno-seg">
@@ -267,12 +229,10 @@
       <div class="container">
 
         <div class="cl-details-header">
-          <span class="eyebrow reveal">Before You Send</span>
-          <h2 class="reveal">The Details That Get Checked</h2>
-          <div class="gold-rule gold-rule--center reveal reveal-delay-1"></div>
+          <h2>The Details That Get Checked</h2>
         </div>
 
-        <div class="cl-details-grid reveal">
+        <div class="cl-details-grid">
           <div class="cl-detail">
             <h3>Sincerely or Faithfully</h3>
             <p>A named recipient takes <em>"Yours sincerely,"</em>. <em>"Dear Hiring Team"</em> or <em>"Dear Sir or Madam"</em> strictly takes <em>"Yours faithfully,"</em>.</p>
@@ -307,10 +267,9 @@
          ============================================================ -->
     <section class="cv-download-section">
       <div class="container container--narrow">
-        <span class="eyebrow">Template</span>
-        <h2 class="reveal">Download the Cover Letter Template</h2>
-        <p class="reveal reveal-delay-1">Download the worked example as a PDF and use it as your starting point. Adapt the structure, replace the content with your own experience.</p>
-        <div class="cv-download-actions reveal reveal-delay-2">
+        <h2>Download the Cover Letter Template</h2>
+        <p>Download the worked example as a PDF and use it as your starting point. Adapt the structure, replace the content with your own experience.</p>
+        <div class="cv-download-actions">
           <a href="assets/CL_Template_Guide.docx"
              download="KCL-AISOC-Cover-Letter-Template.docx"
              class="btn btn-primary">
@@ -327,14 +286,11 @@
        FOOTER
        ============================================================ -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -395,8 +351,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <!-- Margin notes are aligned to their segments purely in CSS (shared

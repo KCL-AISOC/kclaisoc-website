@@ -7,7 +7,7 @@
   <title>The Private Equity Gap: What King's Endowment Reveals About the Limits of the Yale Model | KCL AISOC Insights</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <!-- Canonical favicon block. Every page including future ones must copy these five lines unchanged so the tab icon is consistent across the site. -->
   <link rel="icon" href="favicon.ico" sizes="48x48">
@@ -16,31 +16,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -98,18 +73,18 @@
     }
 
     .ia-lead {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      line-height: 1.82;
+      font-family: var(--font-body);
+      font-size: var(--fs-lead);
+      line-height: 1.6;
       color: var(--text-secondary);
       margin-bottom: 2rem;
       max-width: none;
     }
 
     .ia-prose {
-      font-family: var(--font-heading);
-      font-size: clamp(1rem, 1.5vw, 1.0625rem);
-      line-height: 1.9;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       color: rgba(7, 22, 48, 0.7);
       margin-bottom: 1.35rem;
       max-width: none;
@@ -441,12 +416,10 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -462,7 +435,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -472,7 +445,6 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Insights</span>
           <h1>The Private Equity Gap: What King's Endowment Reveals About the Limits of the Yale Model</h1>
           <p>From Keynes at Cambridge to Yale's Project Gatsby — why the endowment model is being stress-tested at exactly the moment UK universities are being asked to catch up.</p>
         </div>
@@ -482,7 +454,7 @@
     <article class="ia-body">
       <div class="container container--narrow">
 
-        <div class="ia-article-meta reveal">
+        <div class="ia-article-meta">
           <span class="ia-meta-category">Private Equity</span>
           <span class="ia-meta-sep" aria-hidden="true"></span>
           <span class="ia-meta-date">1 July 2026</span>
@@ -492,26 +464,26 @@
           <span class="ia-meta-author">Founder and President</span>
         </div>
 
-        <p class="ia-lead reveal">
+        <p class="ia-lead">
           In 1921, John Maynard Keynes took control of an endowment that most economists at the time would have called recklessly equity heavy. Managing King's College, Cambridge's investment fund for the next 25 years, he pushed it further into shares than almost any institution of the era, planting the seed for what the investment world now calls the endowment model (Chambers and Dimson, 2015). Decades later, an American economist named David Swensen took that idea, scaled it dramatically at Yale, and turned it into the most influential institutional investing strategy of the past forty years. The irony is that while a Cambridge college gave the model its first real test, it is American universities, not British ones, that pushed it furthest into private equity and venture capital. The gap between the two traditions has never been starker, or more consequential, than it is right now.
         </p>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The American allocation</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The American allocation</h2>
+          <p class="ia-prose">
             Start with the numbers. Harvard, the world's largest university endowment at $53.2 billion, holds 39% of that fund in private equity alone, its single biggest asset class, plus another 32% in hedge funds (Chief Investment Officer, 2024). Stanford targets 38% private equity (Stanford Daily, 2024). Yale, the spiritual home of the model, holds more than $20 billion in buyout and venture funds combined, roughly half its entire endowment (Yale News, 2025). Princeton's illiquid holdings, independent return strategies, private equity and real assets together, made up over three quarters of its portfolio by 2023 (Institutional Investor, 2024).
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The British reality</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The British reality</h2>
+          <p class="ia-prose">
             Now look at Britain. Oxford's £6 billion endowment fund sits at around a quarter in private equity (University of Oxford, 2025). Cambridge's pooled fund holds a similar proportion, and is working toward a 30% target over time (University of Cambridge, 2024). King's College London, by comparison, holds just £17.8 million in named private equity funds, through managers like HarbourVest, LGT Crown and Accolade Partners, around 5.5% of its £340.8 million endowment (King's College London, 2025). Set against Harvard's private equity book of more than $20 billion, the difference in absolute scale runs into the thousands.
           </p>
         </div>
 
         <!-- Bar chart: PE allocation comparison across institutions -->
-        <div class="ia-chart-wrap reveal" id="ia-pe-chart">
+        <div class="ia-chart-wrap" id="ia-pe-chart">
           <p class="ia-chart-label">Private equity allocation by institution (approximate %)</p>
           <div class="ia-chart-bars">
             <div class="ia-bar-col">
@@ -567,13 +539,13 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">Why such a divide?</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">Why such a divide?</h2>
+          <p class="ia-prose">
             Part of it is sheer size. American giants can build internal teams sophisticated enough to access the very best fund managers, something a £340 million endowment simply cannot replicate. Part of it is structural. UK charity law and accounting conventions push university funds toward income generation and lower volatility, while American institutions' exemption from tax gives them far more allocation freedom (King's College London, n.d.). And part of it is cultural. Decades of Silicon Valley proximity have made Stanford a natural early backer of venture firms in a way no UK university can match.
           </p>
         </div>
 
-        <div class="ia-stat-block reveal">
+        <div class="ia-stat-block">
           <div class="ia-stat">
             <p class="ia-stat-number">5.8%</p>
             <p class="ia-stat-label">PE return, FY2024</p>
@@ -589,22 +561,22 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">When the model gets tested</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">When the model gets tested</h2>
+          <p class="ia-prose">
             But 2025 has complicated the story. After private equity returned just 5.8% and venture capital a mere 1.7% in fiscal 2024, against a 24.6% return for the S&amp;P 500 (TIFF, 2025), the largest American endowments found themselves in an unfamiliar position: selling. Yale moved to offload up to $2.5 billion of private equity stakes in a deal insiders nicknamed Project Gatsby (Institutional Investor, 2025). Harvard followed with sales of its own, part of a wider wave that pushed Ivy League schools to issue nearly $3 billion in municipal debt to meet capital calls, up 650% year on year (Sherwood News, 2025). For the first time in a generation, the architects of the endowment model are quietly admitting they may have gone too far into illiquidity.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             For a university like King's, the lesson might not be to chase Harvard's allocation. It might be to watch closely what happens when the model that started here gets tested by the institutions that took it furthest.
           </p>
         </div>
 
-        <blockquote class="ia-closing reveal">
+        <blockquote class="ia-closing">
           For a university like King's, the lesson might not be to chase Harvard's allocation. It might be to watch closely what happens when the model that started here gets tested by the institutions that took it furthest.
         </blockquote>
 
         <hr class="ia-divider">
 
-        <section class="ia-references reveal" aria-label="References">
+        <section class="ia-references" aria-label="References">
           <p class="ia-references-heading">References</p>
           <ol class="ia-ref-list">
             <li>Chambers, D. and Dimson, E. (2015) <em>The British Origins of the U.S. Endowment Model.</em> Financial Analysts Journal, 71(2).</li>
@@ -628,14 +600,11 @@
   </main>
 
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -696,8 +665,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <script>

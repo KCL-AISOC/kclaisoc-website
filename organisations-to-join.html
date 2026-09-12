@@ -7,7 +7,7 @@
   <title>Organisations to Join | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -72,7 +41,7 @@
 
     .otj-intro-text {
       font-family: var(--font-sans);
-      font-size: 0.92rem;
+      font-size: var(--fs-body);
       line-height: 1.7;
       color: rgba(7, 22, 48, 0.6);
       max-width: 62ch;
@@ -415,13 +384,11 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <!-- Navigation -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -437,7 +404,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html" class="active">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -448,11 +415,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Opportunities</span>
           <h1>Organisations to Join</h1>
           <p>Networks, charities and programmes that open doors into finance and the professions.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">02</span>
       </div>
     </header>
 
@@ -460,14 +425,12 @@
       <div class="container">
 
         <!-- Section intro -->
-        <div class="otj-intro-block reveal">
-          <span class="eyebrow">The Index</span>
-          <div class="otj-rule"></div>
+        <div class="otj-intro-block">
           <p class="otj-intro-text">Thirteen networks, charities and programmes that open doors into finance and the professions. Most are free, and several are built specifically for students from underrepresented backgrounds. Filter by cost and eligibility, then open a card for the detail.</p>
         </div>
 
         <!-- Filter bar -->
-        <div class="otj-filterbar reveal" aria-label="Filter organisations">
+        <div class="otj-filterbar" aria-label="Filter organisations">
           <div class="otj-filter-groups">
             <div class="otj-filter-group" role="group" aria-label="Filter by cost">
               <span class="otj-filter-label">Cost</span>
@@ -496,9 +459,8 @@
         <div class="otj-grid" id="otj-grid">
 
           <!-- 01 · Bright Network -->
-          <div class="otj-card reveal" data-cost="free" data-tags="all">
+          <div class="otj-card" data-cost="free" data-tags="all">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b1">
-              <span class="otj-index-num" aria-hidden="true">01</span>
               <h2 class="otj-card-name">Bright Network</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -534,9 +496,8 @@
           </div>
 
           <!-- 02 · SEO London -->
-          <div class="otj-card reveal reveal-delay-1" data-cost="free" data-tags="lse finance">
+          <div class="otj-card" data-cost="free" data-tags="lse finance">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b2">
-              <span class="otj-index-num" aria-hidden="true">02</span>
               <h2 class="otj-card-name">SEO London</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -573,9 +534,8 @@
           </div>
 
           <!-- 03 · upReach -->
-          <div class="otj-card reveal reveal-delay-2" data-cost="free" data-tags="lse">
+          <div class="otj-card" data-cost="free" data-tags="lse">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b3">
-              <span class="otj-index-num" aria-hidden="true">03</span>
               <h2 class="otj-card-name">upReach</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -611,9 +571,8 @@
           </div>
 
           <!-- 04 · Investment20/20 -->
-          <div class="otj-card reveal" data-cost="paid" data-tags="all finance">
+          <div class="otj-card" data-cost="paid" data-tags="all finance">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b4">
-              <span class="otj-index-num" aria-hidden="true">04</span>
               <h2 class="otj-card-name">Investment20/20</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Paid</span>
@@ -650,9 +609,8 @@
           </div>
 
           <!-- 05 · 10,000 Black Interns -->
-          <div class="otj-card reveal reveal-delay-1" data-cost="paid" data-tags="black">
+          <div class="otj-card" data-cost="paid" data-tags="black">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b5">
-              <span class="otj-index-num" aria-hidden="true">05</span>
               <h2 class="otj-card-name">10,000 Black Interns</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Paid</span>
@@ -689,9 +647,8 @@
           </div>
 
           <!-- 06 · The Brokerage -->
-          <div class="otj-card reveal reveal-delay-2" data-cost="free" data-tags="lse london finance">
+          <div class="otj-card" data-cost="free" data-tags="lse london finance">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b6">
-              <span class="otj-index-num" aria-hidden="true">06</span>
               <h2 class="otj-card-name">The Brokerage</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -728,9 +685,8 @@
           </div>
 
           <!-- 07 · Zero Gravity -->
-          <div class="otj-card reveal" data-cost="free" data-tags="lse state">
+          <div class="otj-card" data-cost="free" data-tags="lse state">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b7">
-              <span class="otj-index-num" aria-hidden="true">07</span>
               <h2 class="otj-card-name">Zero Gravity</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -767,9 +723,8 @@
           </div>
 
           <!-- 08 · The 93% Club -->
-          <div class="otj-card reveal reveal-delay-1" data-cost="free" data-tags="state">
+          <div class="otj-card" data-cost="free" data-tags="state">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b8">
-              <span class="otj-index-num" aria-hidden="true">08</span>
               <h2 class="otj-card-name">The 93% Club</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -805,9 +760,8 @@
           </div>
 
           <!-- 09 · Social Mobility Foundation -->
-          <div class="otj-card reveal reveal-delay-2" data-cost="free" data-tags="lse state">
+          <div class="otj-card" data-cost="free" data-tags="lse state">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b9">
-              <span class="otj-index-num" aria-hidden="true">09</span>
               <h2 class="otj-card-name">Social Mobility Foundation</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -843,9 +797,8 @@
           </div>
 
           <!-- 10 · GAIN -->
-          <div class="otj-card reveal" data-cost="free" data-tags="women finance">
+          <div class="otj-card" data-cost="free" data-tags="women finance">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b10">
-              <span class="otj-index-num" aria-hidden="true">10</span>
               <h2 class="otj-card-name">GAIN (Girls Are INvestors)</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -882,9 +835,8 @@
           </div>
 
           <!-- 11 · Generation Success -->
-          <div class="otj-card reveal reveal-delay-1" data-cost="free" data-tags="lse">
+          <div class="otj-card" data-cost="free" data-tags="lse">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b11">
-              <span class="otj-index-num" aria-hidden="true">11</span>
               <h2 class="otj-card-name">Generation Success</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -920,9 +872,8 @@
           </div>
 
           <!-- 12 · Amos Bursary -->
-          <div class="otj-card reveal reveal-delay-2" data-cost="free" data-tags="black">
+          <div class="otj-card" data-cost="free" data-tags="black">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b12">
-              <span class="otj-index-num" aria-hidden="true">12</span>
               <h2 class="otj-card-name">Amos Bursary</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -958,9 +909,8 @@
           </div>
 
           <!-- 13 · Migrant Leaders -->
-          <div class="otj-card reveal" data-cost="free" data-tags="migrant lse">
+          <div class="otj-card" data-cost="free" data-tags="migrant lse">
             <button class="otj-card-head" aria-expanded="false" aria-controls="otj-b13">
-              <span class="otj-index-num" aria-hidden="true">13</span>
               <h2 class="otj-card-name">Migrant Leaders</h2>
               <span class="otj-tags">
                 <span class="otj-tag">Free</span>
@@ -1010,14 +960,11 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -1078,8 +1025,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <!-- Filtering and accordion for The Index. Cost filters OR together,

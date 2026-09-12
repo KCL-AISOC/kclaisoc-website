@@ -7,7 +7,7 @@
   <title>Resources | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -54,15 +23,13 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -78,7 +45,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -91,11 +58,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Open Access</span>
           <h1>Resources</h1>
           <p>Open access career and investment resources for KCL students. No login required.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">06</span>
       </div>
     </header>
 
@@ -105,7 +70,9 @@
     <section aria-labelledby="resources-heading">
       <div class="container">
 
-        <h2 id="resources-heading" class="reveal" style="margin-bottom: 3rem;">Career &amp; Investment Library</h2>
+        <div class="section-head">
+          <h2 id="resources-heading">Career &amp; Investment Library</h2>
+        </div>
 
         <!--
           ============================================================
@@ -147,10 +114,10 @@
 
           <!-- ── Category 1: Application Craft ──────────────────── -->
           <div>
-            <h3 class="resource-section-title reveal">Application Craft</h3>
+            <h3 class="resource-section-title">Application Craft</h3>
             <div class="resource-grid">
 
-              <div class="resource-card reveal">
+              <div class="resource-card">
                 <span class="resource-type resource-type--pdf">Guide</span>
                 <div class="resource-content">
                   <h4>CV Guide</h4>
@@ -159,7 +126,7 @@
                 </div>
               </div>
 
-              <div class="resource-card reveal reveal-delay-1">
+              <div class="resource-card">
                 <span class="resource-type resource-type--pdf">Guide</span>
                 <div class="resource-content">
                   <h4>Cover Letter Guide</h4>
@@ -168,7 +135,7 @@
                 </div>
               </div>
 
-              <div class="resource-card reveal reveal-delay-2">
+              <div class="resource-card">
                 <span class="resource-type resource-type--pdf">Guide</span>
                 <div class="resource-content">
                   <h4>Answering Application Questions</h4>
@@ -182,10 +149,10 @@
 
           <!-- ── Category 2: Opportunities ────────────────────── -->
           <div>
-            <h3 class="resource-section-title reveal">Opportunities</h3>
+            <h3 class="resource-section-title">Opportunities</h3>
             <div class="resource-grid">
 
-              <div class="resource-card reveal">
+              <div class="resource-card">
                 <span class="resource-type resource-type--link">Guide</span>
                 <div class="resource-content">
                   <h4>Where to Look</h4>
@@ -194,7 +161,7 @@
                 </div>
               </div>
 
-              <div class="resource-card reveal reveal-delay-1">
+              <div class="resource-card">
                 <span class="resource-type resource-type--link">Guide</span>
                 <div class="resource-content">
                   <h4>Organisations to Join</h4>
@@ -203,7 +170,7 @@
                 </div>
               </div>
 
-              <div class="resource-card reveal reveal-delay-2">
+              <div class="resource-card">
                 <span class="resource-type resource-type--link">Guide</span>
                 <div class="resource-content">
                   <h4>Cold Outreach Explained</h4>
@@ -212,7 +179,7 @@
                 </div>
               </div>
 
-              <div class="resource-card reveal reveal-delay-2">
+              <div class="resource-card">
                 <span class="resource-type resource-type--link">Guide</span>
                 <div class="resource-content">
                   <h4>Spring Weeks Explained</h4>
@@ -226,10 +193,10 @@
 
           <!-- ── Category 3: Interview Preparation ──────────────── -->
           <div>
-            <h3 class="resource-section-title reveal">Interview Preparation</h3>
+            <h3 class="resource-section-title">Interview Preparation</h3>
             <div class="resource-grid">
 
-              <div class="resource-card reveal">
+              <div class="resource-card">
                 <span class="resource-type resource-type--pdf">PDF Guide</span>
                 <div class="resource-content">
                   <h4>LBO Modelling Primer</h4>
@@ -238,7 +205,7 @@
                 </div>
               </div>
 
-              <div class="resource-card reveal reveal-delay-1">
+              <div class="resource-card">
                 <span class="resource-type resource-type--pdf">PDF Guide</span>
                 <div class="resource-content">
                   <h4>100 Alternative Investment Interview Questions</h4>
@@ -252,10 +219,10 @@
 
           <!-- ── Category 3: Industry Reading & Research ─────────── -->
           <div>
-            <h3 class="resource-section-title reveal">Industry Reading &amp; Research</h3>
+            <h3 class="resource-section-title">Industry Reading &amp; Research</h3>
             <div class="resource-grid">
 
-              <div class="resource-card reveal">
+              <div class="resource-card">
                 <span class="resource-type resource-type--link">External Link</span>
                 <div class="resource-content">
                   <h4>Preqin: Private Markets Data</h4>
@@ -264,7 +231,7 @@
                 </div>
               </div>
 
-              <div class="resource-card reveal reveal-delay-1">
+              <div class="resource-card">
                 <span class="resource-type resource-type--link">External Link</span>
                 <div class="resource-content">
                   <h4>Pitchbook: Deals &amp; Fund Intelligence</h4>
@@ -278,10 +245,10 @@
 
           <!-- ── Category 4: Investment Fundamentals ────────────── -->
           <div>
-            <h3 class="resource-section-title reveal">Investment Fundamentals</h3>
+            <h3 class="resource-section-title">Investment Fundamentals</h3>
             <div class="resource-grid">
 
-              <div class="resource-card reveal">
+              <div class="resource-card">
                 <span class="resource-type resource-type--pdf">PDF Guide</span>
                 <div class="resource-content">
                   <h4>Introduction to Private Markets</h4>
@@ -290,7 +257,7 @@
                 </div>
               </div>
 
-              <div class="resource-card reveal reveal-delay-1">
+              <div class="resource-card">
                 <span class="resource-type resource-type--pdf">PDF Guide</span>
                 <div class="resource-content">
                   <h4>Glossary of Alternative Investment Terms</h4>
@@ -311,14 +278,13 @@
          ============================================================ -->
     <section class="page-cta" aria-labelledby="resources-cta-heading">
       <div class="container container--narrow">
-        <span class="eyebrow">Members</span>
-        <h2 id="resources-cta-heading" class="reveal">Members get early access to new resources.</h2>
-        <p class="reveal reveal-delay-1">
+        <h2 id="resources-cta-heading">Members get early access to new resources.</h2>
+        <p>
           Join KCL AISOC to receive new guides, templates, and industry
           reports directly to your inbox.
         </p>
-        <div class="reveal reveal-delay-2">
-          <a href="join.html" class="btn btn-primary btn-magnetic">Join the Society</a>
+        <div>
+          <a href="join.html" class="btn btn-primary">Join the Society</a>
         </div>
       </div>
     </section>
@@ -329,14 +295,11 @@
        FOOTER
        ============================================================ -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -397,8 +360,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

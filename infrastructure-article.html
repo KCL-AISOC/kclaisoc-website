@@ -7,7 +7,7 @@
   <title>Why Infrastructure Is the Fastest-Growing Alternative Asset Class | KCL AISOC Insights</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <!-- Canonical favicon block. Every page including future ones must copy these five lines unchanged so the tab icon is consistent across the site. -->
   <link rel="icon" href="favicon.ico" sizes="48x48">
@@ -16,31 +16,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -98,18 +73,18 @@
     }
 
     .ia-lead {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      line-height: 1.82;
+      font-family: var(--font-body);
+      font-size: var(--fs-lead);
+      line-height: 1.6;
       color: var(--text-secondary);
       margin-bottom: 2rem;
       max-width: none;
     }
 
     .ia-prose {
-      font-family: var(--font-heading);
-      font-size: clamp(1rem, 1.5vw, 1.0625rem);
-      line-height: 1.9;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       color: rgba(7, 22, 48, 0.7);
       margin-bottom: 1.35rem;
       max-width: none;
@@ -490,12 +465,10 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -511,7 +484,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -521,7 +494,6 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Insights</span>
           <h1>Why Infrastructure Is the Fastest-Growing Alternative Asset Class</h1>
           <p>From data centres to clean energy: the forces turning infrastructure into the most sought-after allocation in private markets.</p>
         </div>
@@ -531,7 +503,7 @@
     <article class="ia-body">
       <div class="container container--narrow">
 
-        <div class="ia-article-meta reveal">
+        <div class="ia-article-meta">
           <span class="ia-meta-category">Infrastructure</span>
           <span class="ia-meta-sep" aria-hidden="true"></span>
           <span class="ia-meta-date">June 2026</span>
@@ -541,20 +513,20 @@
           <span class="ia-meta-author">Founder and President</span>
         </div>
 
-        <p class="ia-lead reveal">
+        <p class="ia-lead">
           Infrastructure investing means owning the physical backbone of the economy: toll roads, airports, power grids, water utilities, pipelines, data centres and fibre broadband networks. As an alternative asset class it offers stable long term cash flows often linked directly to inflation, monopoly barriers to entry, low correlation with public equity markets, and a long duration profile that naturally matches the liabilities of pension funds and insurance companies. These qualities made it a niche allocation for decades. Now it is the fastest-growing asset class in private markets.
         </p>
 
         <div class="ia-section">
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             Private infrastructure assets under management reached a record $1.6 trillion in the first half of 2025, a 22 percent year on year increase that now represents 10 percent of all private market assets globally (BCG Infrastructure Strategy 2026). Goldman Sachs and Preqin put the figure higher still, at $1.7 trillion by September 2025. Closed-end fundraising hit a new record of nearly $200 billion in 2025, approximately 60 percent above 2024 levels (McKinsey Global Private Markets Report, March 2026). For the first time in the history of private capital markets, infrastructure fundraising surpassed real estate in 2024.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             A survey of 300 global limited partners found that 51 percent plan to increase their infrastructure allocations over the next three years, well ahead of buyouts at 35 percent and real estate at 30 percent. Capital is moving with both conviction and urgency.
           </p>
         </div>
 
-        <div class="ia-stat-block reveal">
+        <div class="ia-stat-block">
           <div class="ia-stat">
             <p class="ia-stat-number">$1.6T</p>
             <p class="ia-stat-label">Global infrastructure AUM, H1 2025</p>
@@ -570,13 +542,13 @@
         </div>
 
         <div class="ia-section">
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             Three structural forces are driving this expansion: the AI and data centre build-out, the global energy transition, and a multi-trillion-dollar government funding gap that private capital is uniquely positioned to fill.
           </p>
         </div>
 
         <div class="ia-why-grid">
-          <div class="ia-why-card reveal">
+          <div class="ia-why-card">
             <svg class="ia-why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="3" width="20" height="6" rx="1"/>
               <rect x="2" y="13" width="20" height="6" rx="1"/>
@@ -588,14 +560,14 @@
             <p class="ia-why-title">AI and Data Centres</p>
             <p class="ia-why-text">Global data centre electricity demand is set to more than double by 2030. Hyperscalers are signing multi-decade power agreements, making data centres the new contracted utilities.</p>
           </div>
-          <div class="ia-why-card reveal">
+          <div class="ia-why-card">
             <svg class="ia-why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="13 2 13 9 20 9 11 22 11 15 4 15 13 2"/>
             </svg>
             <p class="ia-why-title">Energy Transition</p>
             <p class="ia-why-text">Clean energy investment must reach $4.5 trillion per year by the early 2030s. Renewables accounted for 69 percent of all primary infrastructure deals in 2024 by volume.</p>
           </div>
-          <div class="ia-why-card reveal">
+          <div class="ia-why-card">
             <svg class="ia-why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M3 21h18"/>
               <path d="M5 21V9l7-6 7 6v12"/>
@@ -607,30 +579,30 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The AI and Data Centre Supercycle</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The AI and Data Centre Supercycle</h2>
+          <p class="ia-prose">
             Global data centre electricity consumption is forecast to more than double to approximately 945 TWh by 2030, up from 415 TWh in 2024, with AI-specific demand tripling in the same period (IEA, Energy and AI, April 2025). Goldman Sachs estimates the five largest technology companies will collectively spend $5.3 trillion on AI and data centre infrastructure between 2025 and 2030. Hyperscalers are signing multi-decade power purchase agreements and contracting entire campus developments years in advance, providing exactly the long term contracted revenue that infrastructure investors prize.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The speed of the build-out is without parallel in recent infrastructure history. Data centres have become the new utilities: essential, long lived and highly predictable in their demand profiles. Private capital has recognised this and moved accordingly, with data centre deals now commanding valuations and scale previously associated only with the largest regulated utility transactions.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Energy Transition</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Energy Transition</h2>
+          <p class="ia-prose">
             The International Energy Agency estimates clean energy investment must reach $4.5 trillion per year by the early 2030s to remain on a net zero pathway, up from $1.8 trillion in 2023. Renewables already accounted for 69 percent of primary infrastructure deals by volume in 2024 (Preqin). Solar, wind, battery storage and grid modernisation are attracting long term private capital at scale, with the contracted and regulated nature of many assets making them natural fits for the infrastructure wrapper. The combination of government mandates, falling technology costs, and reliable long term cash flows has created one of the most compelling structural demand stories in any asset class.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Funding Gap</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Funding Gap</h2>
+          <p class="ia-prose">
             The G20 Global Infrastructure Hub estimates the world requires $94 trillion of infrastructure investment by 2040, against a $15 trillion shortfall versus current government spending trends. The United States alone faces a gap of $3.8 trillion. As public budgets remain stretched and fiscal constraints tighten across the OECD, private capital is increasingly called upon to fill the void. Governments are actively welcoming private sector participation, creating a policy tailwind that reinforces the already compelling economic case. The result is a rare alignment of structural demand, policy support and institutional capital all pointing in the same direction.
           </p>
         </div>
 
-        <div class="ia-chart-wrap reveal">
+        <div class="ia-chart-wrap">
           <p class="ia-chart-label">Infrastructure closed-end fundraising (USD billions)</p>
           <div class="ia-chart-bars" id="ia-chart-bars">
             <div class="ia-bar-col">
@@ -670,32 +642,32 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Institutional Response</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Institutional Response</h2>
+          <p class="ia-prose">
             The largest asset managers have moved decisively. In January 2024, BlackRock announced the acquisition of Global Infrastructure Partners for approximately $12.5 billion, creating a combined platform of over $150 billion. On the announcement call, chief executive Larry Fink described infrastructure as "the next great investment opportunity" and sized the addressable market at $68 trillion by 2040. GIP founder Bayo Ogunlesi joined BlackRock's board. In October 2025, a BlackRock GIP-led consortium agreed to acquire Aligned Data Centers for approximately $40 billion in what would be the largest data centre transaction in history, subject to regulatory approval expected to close in 2026. In March 2026, a GIP and EQT-led consortium agreed to take US power company AES private at a $33.4 billion enterprise value, citing data centre power demand as the explicit investment thesis, pending regulatory approvals expected in late 2026 or early 2027.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The managers dominating the space are Macquarie Asset Management, ranked first globally with €355 billion in infrastructure assets under management (IPE Real Assets 2025), followed by Brookfield Asset Management at €301 billion, GIP within BlackRock at €163 billion, EQT at €78.6 billion and KKR at €76.6 billion. The top 10 managers now control more than half of all global infrastructure assets under management.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">A Framework for Students</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">A Framework for Students</h2>
+          <p class="ia-prose">
             For students of alternative investments, the key analytical framework is the risk and return ladder. Core infrastructure, which includes regulated utilities and contracted toll roads, targets approximately 6 to 8 percent net returns, offering high income and low volatility. Core plus strategies target 8 to 10 percent. Value add strategies, encompassing energy transition assets and expanding data centre platforms, target 12 to 15 percent. Opportunistic and greenfield development can target above 15 percent but carries meaningful construction and policy risk.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             The mix shifted materially in 2025, with capital flowing heavily into value add and core plus strategies as investors moved up the curve in search of higher returns in a moderating rate environment. Understanding where a fund sits on this ladder, and what that implies for income stability, liquidity, and exit timing, is one of the core skills required to analyse infrastructure as an asset class.
           </p>
         </div>
 
-        <blockquote class="ia-closing reveal">
+        <blockquote class="ia-closing">
           Infrastructure was always a sensible allocation for long term institutional capital. The AI supercycle and the global energy transition have made it urgent.
         </blockquote>
 
         <hr class="ia-divider">
 
-        <section class="ia-references reveal" aria-label="References">
+        <section class="ia-references" aria-label="References">
           <p class="ia-references-heading">References</p>
           <ol class="ia-ref-list">
             <li>BCG Infrastructure Strategy 2026 &mdash; <a href="https://www.bcg.com/publications/2026/year-of-increasing-scale-and-diversification" target="_blank" rel="noopener noreferrer">bcg.com</a></li>
@@ -715,14 +687,11 @@
   </main>
 
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -783,8 +752,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <script>

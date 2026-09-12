@@ -7,7 +7,7 @@
   <title>Committee | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -54,16 +23,13 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -79,7 +45,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -92,11 +58,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">The Team</span>
           <h1>Committee</h1>
           <p>Meet the team building KCL AISOC from the ground up.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">03</span>
       </div>
     </header>
 
@@ -106,19 +70,14 @@
     <section aria-labelledby="committee-heading">
       <div class="container">
 
-        <h2 id="committee-heading" class="reveal" style="margin-bottom: 2.5rem; text-align: center; font-family: var(--font-sans); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem; color: var(--text-muted);">
-          Founding Committee
-        </h2>
+        <h2 id="committee-heading" class="section-label">Founding Committee</h2>
 
         <div id="committee-grid" class="committee-grid" role="list"></div>
 
         <!-- CTA below grid -->
-        <div class="reveal" style="text-align: center; margin-top: 4rem; padding: 3rem; border: 1px solid var(--border-light); background: var(--white);">
-          <span class="eyebrow">Get Involved</span>
-          <h2 style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); margin-bottom: 0.875rem;">
-            Interested in joining the committee?
-          </h2>
-          <p style="color: var(--text-secondary); margin: 0 auto 2rem; max-width: 45ch;">
+        <div class="panel text-center">
+          <h2>Interested in joining the committee?</h2>
+          <p>
             Applications open October 2026 following our official launch.
           </p>
           <a href="join.html" class="btn btn-primary">Express Interest</a>
@@ -155,14 +114,11 @@
        FOOTER
        ============================================================ -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -223,8 +179,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <!-- ============================================================
@@ -243,84 +197,84 @@
       {
         name:     'Muntasir Ali',
         role:     'Founder & President',
-        photo:    'assets/committee/muntasir.jpg',
+        photo:    'assets/committee/web/muntasir.jpg',
         linkedin: 'https://www.linkedin.com/in/muntasir-aa-ali/',
         bio:      'I\'m Muntasir Ali, a BSc Political Economy student at King\'s and Founder and President of KCL AISOC. I started the society to give students a real route into understanding private markets, from private equity to hedge funds. My own experience spans Permira\'s Private Equity Insight Week and an internship at Shore Capital, and I\'m focused on a long term career in alternative asset management.'
       },
       {
         name:     'Chloe Palmer',
         role:     'Vice President of Internal Affairs',
-        photo:    'assets/committee/chloe.jpg',
+        photo:    'assets/committee/web/chloe.jpg',
         linkedin: 'https://www.linkedin.com/in/chloe-palmer-b5a26821b',
         bio:      'I\'m Chloe Palmer, a third year LLB Law student and VP of Internal Affairs. My interest in alternative investments began at an insight day with Ropes & Gray, where I saw how private markets shape businesses and the wider economy. It deepened during my placement at Blackstone Chambers, where I worked on an FCA regulatory case involving a hedge fund and its manager, giving me first hand insight into how regulation in the sector affects markets and ordinary investors.'
       },
       {
         name:     'Daria (Dasha)',
         role:     'Vice President of External Affairs',
-        photo:    'assets/committee/dasha.jpg',
+        photo:    'assets/committee/web/dasha.jpg',
         linkedin: '',
         bio:      ''
       },
       {
         name:     'Asaad Al Araimi',
         role:     'Treasurer & Head of Finance',
-        photo:    'assets/committee/asaad.jpg',
+        photo:    'assets/committee/web/asaad.jpg',
         linkedin: 'https://www.linkedin.com/in/asaad-aamed-al-araimi-985b20284/',
         bio:      'I\'m Asaad Al Araimi from the Sultanate of Oman, studying Political Economy and serving as KCL AISOC\'s Treasurer and Head of Finance. Outside of academics, I enjoy horseback riding and am always up for a game of padel.'
       },
       {
         name:     'Boontarnkiat (Q) Thaweesantikul',
         role:     'Head of Events & Speaker Series',
-        photo:    'assets/committee/q.jpg',
+        photo:    'assets/committee/web/q.jpg',
         linkedin: 'https://www.linkedin.com/in/q-btk',
         bio:      'I\'m Q, entering my second year in BSc (Hons) Economics and Management. As Head of Events and Speaker Series, I\'m building the society\'s flagship sessions, and my own interests sit in the private equity and commodities side of alternative investments.'
       },
       {
         name:     'Darina Langroudi',
         role:     'Head of Marketing & Social Media',
-        photo:    'assets/committee/darina.jpg',
+        photo:    'assets/committee/web/darina.jpg',
         linkedin: 'https://www.linkedin.com/in/darinalangroudi',
         bio:      'I\'m Darina Langroudi, a second year Social Sciences student and Head of Marketing and Social Media. My focus is making alternative investments digestible and engaging for those who are still learning about the space.'
       },
       {
         name:     'Mohamed Elfaki',
         role:     'Head of Tech',
-        photo:    'assets/committee/mohamed.jpg',
+        photo:    'assets/committee/web/mohamed.jpg',
         linkedin: 'https://www.linkedin.com/in/mohamed-elfaki-1-/',
         bio:      'I\'m Mohamed Elfaki, a first class BSc Software Engineering graduate and KCL AISOC\'s Head of Tech. My interest in software and AI took real shape during an internship at Cloud Solutions in Saudi Arabia, where I built an AI driven system to help insurers assess medical procedures, and it deepened while leading the AI pipeline on my final year project, an AI powered interior redesign app. For the society, I built the scripting behind our website that connects form submissions straight to Google Sheets.'
       },
       {
         name:     'Talin Senthilkumar',
         role:     'Head of Legal & Compliance',
-        photo:    'assets/committee/talin.jpg',
+        photo:    'assets/committee/web/talin.jpg',
         linkedin: 'https://www.linkedin.com/in/talin-ram-928626286',
         bio:      'I\'m Talin Senthilkumar, a second year Law LLB student with a strong interest in financial markets, private equity, and their intersections with the law. As Head of Legal and Compliance, I use my legal experience and knowledge of corporate compliance to keep the society running smoothly as it grows.'
       },
       {
         name:     'Purujit (Puru) Aggarwal',
         role:     'Head of Investment Research',
-        photo:    'assets/committee/puru.jpg',
+        photo:    'assets/committee/web/puru.jpg',
         linkedin: 'https://www.linkedin.com/in/purujit-aggarwal-93252123a',
         bio:      'I\'m Puru Aggarwal, a second year BSc (Hons) Computer Science student and Head of Investment Research. My focus is on hedge funds and quantitative investing, bringing a technical lens to the society\'s research output.'
       },
       {
         name:     'Aashna Agarwal',
         role:     'Senior Investment Researcher',
-        photo:    'assets/committee/aashna.jpg',
+        photo:    'assets/committee/web/aashna.jpg',
         linkedin: 'https://www.linkedin.com/in/aashna-agarwal-656947276',
         bio:      'I\'m Aashna Agarwal, a second year BSc Economics student. I\'m currently interning at PGIM in mutual funds and asset management, with prior experience at Artane Partners, a Gulf focused capital advisory boutique, where I worked on live deal execution including IM drafting and valuation analysis.'
       },
       {
         name:     'Umar Hassan',
         role:     'Trustee Adviser',
-        photo:    'assets/committee/umar.jpg',
+        photo:    'assets/committee/web/umar.jpg',
         linkedin: 'https://www.linkedin.com/in/omar-hassan2006/',
         bio:      'I\'m Omar Hassan, a first year Law LLB student and the Trustee Adviser at AISOC. I\'ve been trading derivatives for a little under 2 years now and I\'m interested in private equity law.'
       },
       {
         name:     'Soraya',
         role:     'Head of Outreach',
-        photo:    'assets/committee/soraya.jpg',
+        photo:    'assets/committee/web/soraya.jpg',
         linkedin: '',
         bio:      ''
       }
@@ -348,6 +302,10 @@
         var img = document.createElement('img');
         img.alt = member.name + ', ' + member.role;
         img.src = member.photo;
+        img.width = 112;
+        img.height = 112;
+        img.loading = 'lazy';
+        img.decoding = 'async';
         /* Capture photo path in closure so the error handler stays correct
            even if member references change. */
         (function (src) {
@@ -372,7 +330,7 @@
 
     COMMITTEE.forEach(function (member) {
       var card = document.createElement('div');
-      card.className = 'committee-card reveal';
+      card.className = 'committee-card';
       card.setAttribute('role', 'listitem');
       card.setAttribute('tabindex', '0');
       card.setAttribute('aria-label', member.name + ', ' + member.role + '. Press Enter to view profile.');

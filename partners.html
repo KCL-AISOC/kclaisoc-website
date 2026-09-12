@@ -7,7 +7,7 @@
   <title>Partners | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,37 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
-       so content is hidden only while JavaScript is present to bring it back.
-       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
-       soon as the Fraunces display font is ready (so the large headline never
-       reflows when the font swaps in), capped so it never waits, and a load
-       failsafe guarantees nothing can stay hidden if scripts fail. -->
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -54,15 +23,13 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -78,7 +45,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -91,11 +58,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Corporate Partnerships</span>
           <h1>Partner With KCL AISOC</h1>
           <p>Connect your organisation with King's College London's most finance-focused alternative investment talent.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">07</span>
       </div>
     </header>
 
@@ -106,26 +71,24 @@
       <div class="container">
         <div class="two-col two-col--wide">
 
-          <div>
-            <span class="eyebrow">Why KCL AISOC</span>
-            <h2 id="why-partner-heading" class="reveal">
+          <div class="prose">
+            <h2 id="why-partner-heading" class="section-head">
               Reach the Students Who Choose Alternative Assets
             </h2>
-            <div class="gold-rule reveal reveal-delay-1" aria-hidden="true"></div>
-            <p class="reveal reveal-delay-2" style="color: var(--text-secondary); font-size: 1.025rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            <p>
               KCL AISOC exists at the intersection of academic rigour and
               industry ambition. Our members are not passively studying finance.
               They are actively seeking careers in private equity, hedge funds,
               infrastructure, real assets, private credit, and venture capital.
             </p>
-            <p class="reveal reveal-delay-3" style="color: var(--text-secondary); font-size: 1.025rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            <p>
               King's College London ranks among the UK's top universities for
               graduate employability, with 42,000 students across six faculties.
               Our members are drawn from finance, economics, mathematics,
               computer science, and law, the academic backgrounds that feed
               directly into alternative investment careers.
             </p>
-            <p class="reveal reveal-delay-3" style="color: var(--text-secondary); font-size: 1.025rem; line-height: 1.8;">
+            <p>
               A corporate partnership with KCL AISOC gives your organisation
               direct, high-signal access to this audience through events,
               content, and branded engagement channels that cut through the
@@ -133,30 +96,30 @@
             </p>
           </div>
 
-          <div class="partner-kpi-col reveal reveal-delay-2">
+          <div class="partner-kpi-col">
             <div class="partner-kpi-box">
-              <p style="font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(201,169,97,0.7); margin-bottom: 1.5rem;">King's College London</p>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem;">
+              <p class="label">King's College London</p>
+              <div class="kpi-grid">
                 <div>
-                  <p style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--gold); font-weight: 700; line-height: 1;">#5</p>
-                  <p style="font-size: 0.72rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; margin-top: 0.3rem;">UK University Ranking</p>
+                  <p class="kpi-num">#5</p>
+                  <p class="kpi-label">UK University Ranking</p>
                 </div>
                 <div>
-                  <p style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--gold); font-weight: 700; line-height: 1;">#31</p>
-                  <p style="font-size: 0.72rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; margin-top: 0.3rem;">Global University Ranking</p>
+                  <p class="kpi-num">#31</p>
+                  <p class="kpi-label">Global University Ranking</p>
                 </div>
                 <div>
-                  <p style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--gold); font-weight: 700; line-height: 1;">42,000</p>
-                  <p style="font-size: 0.72rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; margin-top: 0.3rem;">Students</p>
+                  <p class="kpi-num">42,000</p>
+                  <p class="kpi-label">Students</p>
                 </div>
                 <div>
-                  <p style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--gold); font-weight: 700; line-height: 1;">#6</p>
-                  <p style="font-size: 0.72rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; margin-top: 0.3rem;">UK Graduate Employability</p>
+                  <p class="kpi-num">#6</p>
+                  <p class="kpi-label">UK Graduate Employability</p>
                 </div>
               </div>
             </div>
             <div class="partner-kpi-source">
-              <p style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--deep-navy);">
+              <p>
                 Source: QS World University Rankings 2024
               </p>
             </div>
@@ -169,13 +132,11 @@
     <!-- ============================================================
          CONTENT REACH
          ============================================================ -->
-    <section style="background: var(--white); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);" aria-labelledby="content-heading">
+    <section class="section--white" aria-labelledby="content-heading">
       <div class="container">
-        <div style="text-align: center; max-width: 680px; margin: 0 auto 3.5rem;">
-          <span class="eyebrow">Content &amp; Social Reach</span>
-          <h2 id="content-heading" class="reveal">Built for Industry Professionals</h2>
-          <div class="gold-rule gold-rule--center reveal reveal-delay-1" aria-hidden="true"></div>
-          <p class="reveal reveal-delay-2" style="color: var(--text-secondary); line-height: 1.8;">
+        <div class="section-head section-head--center">
+          <h2 id="content-heading">Built for Industry Professionals</h2>
+          <p class="lead">
             We produce consistent, high-quality content across multiple channels.
             Our audience engages with substantive investment analysis, not generic
             student society posts.
@@ -184,7 +145,7 @@
 
         <div class="benefits-grid">
 
-          <div class="benefit-pillar reveal">
+          <div class="benefit-pillar">
             <div class="benefit-pillar-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -197,7 +158,7 @@
             <p>Weekly long-form posts covering investment themes, sector analysis, and deal commentary. Reached by professionals and prospective employers.</p>
           </div>
 
-          <div class="benefit-pillar reveal reveal-delay-1">
+          <div class="benefit-pillar">
             <div class="benefit-pillar-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -209,7 +170,7 @@
             <p>Twice-weekly posts: event coverage, society updates, and educational investment content. 370+ engaged followers and growing.</p>
           </div>
 
-          <div class="benefit-pillar reveal reveal-delay-2">
+          <div class="benefit-pillar">
             <div class="benefit-pillar-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -220,7 +181,7 @@
             <p>Bi-weekly email newsletter delivering event previews, market commentary, and curated reading to every KCL AISOC member.</p>
           </div>
 
-          <div class="benefit-pillar reveal reveal-delay-1">
+          <div class="benefit-pillar">
             <div class="benefit-pillar-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
@@ -240,10 +201,9 @@
          ============================================================ -->
     <section class="pricing-section" aria-labelledby="tiers-heading">
       <div class="container">
-        <div style="text-align: center; max-width: 640px; margin: 0 auto 3.5rem;">
-          <span class="eyebrow" style="color: rgba(201,169,97,0.7);">Partnership Tiers</span>
-          <h2 id="tiers-heading" class="reveal section-title">Choose Your Level<br>of Engagement</h2>
-          <p class="reveal reveal-delay-1 section-lead" style="margin: 0 auto;">
+        <div class="section-head section-head--center">
+          <h2 id="tiers-heading">Choose Your Level<br>of Engagement</h2>
+          <p class="lead">
             Three tiers of corporate partnership, each designed to offer
             meaningful and measurable engagement with KCL AISOC members.
           </p>
@@ -252,7 +212,7 @@
         <div class="pricing-grid">
 
           <!-- Programme Partner -->
-          <div class="pricing-card reveal">
+          <div class="pricing-card">
             <div class="pricing-tier">Programme Partner</div>
             <div class="pricing-price">
               £500
@@ -281,11 +241,11 @@
                 Permission to share opportunities with members in line with KCLSU guidance
               </li>
             </ul>
-            <a href="#partner-contact" class="btn btn-outline" style="margin-top: auto;">Enquire</a>
+            <a href="#partner-contact" class="btn btn-outline">Enquire</a>
           </div>
 
           <!-- Strategic Partner -->
-          <div class="pricing-card pricing-card--premium pricing-card--mid reveal reveal-delay-1">
+          <div class="pricing-card pricing-card--premium pricing-card--mid">
             <div class="pricing-tier">Strategic Partner</div>
             <div class="pricing-price">
               £1,500
@@ -318,11 +278,11 @@
                 Interactive stall presence at AISOC fairs
               </li>
             </ul>
-            <a href="#partner-contact" class="btn btn-primary" style="margin-top: auto;">Enquire</a>
+            <a href="#partner-contact" class="btn btn-primary">Enquire</a>
           </div>
 
           <!-- Founding Partner -->
-          <div class="pricing-card pricing-card--premium pricing-card--founding reveal reveal-delay-2">
+          <div class="pricing-card pricing-card--premium pricing-card--founding">
             <div class="pricing-tier">Founding Partner</div>
             <div class="pricing-price">
               £2,500
@@ -363,12 +323,12 @@
                 Founding Partner branding across all AISOC communications
               </li>
             </ul>
-            <a href="#partner-contact" class="btn btn-outline" style="margin-top: auto;">Enquire</a>
+            <a href="#partner-contact" class="btn btn-outline">Enquire</a>
           </div>
 
         </div>
 
-        <p class="pricing-note reveal">
+        <p class="pricing-note">
           All partnerships are tailored. If you have a specific engagement in mind that falls outside these tiers,
           we welcome a direct conversation. Get in touch below.
         </p>
@@ -378,13 +338,11 @@
     <!-- ============================================================
          ANNUAL CALENDAR
          ============================================================ -->
-    <section style="background: var(--white); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);" aria-labelledby="calendar-heading">
+    <section class="section--white" aria-labelledby="calendar-heading">
       <div class="container">
-        <div style="text-align: center; max-width: 640px; margin: 0 auto 3.5rem;">
-          <span class="eyebrow">Academic Year Calendar</span>
-          <h2 id="calendar-heading" class="reveal">Three Terms.<br>Year-Round Presence.</h2>
-          <div class="gold-rule gold-rule--center reveal reveal-delay-1" aria-hidden="true"></div>
-          <p class="reveal reveal-delay-2" style="color: var(--text-secondary); line-height: 1.8;">
+        <div class="section-head section-head--center">
+          <h2 id="calendar-heading">Three Terms.<br>Year-Round Presence.</h2>
+          <p class="lead">
             The KCL AISOC programme runs across all three terms, giving
             corporate partners consistent, scheduled touchpoints with members
             throughout the academic year.
@@ -393,7 +351,7 @@
 
         <div class="calendar-grid">
 
-          <div class="calendar-term reveal">
+          <div class="calendar-term">
             <div class="calendar-term-header">
               <span class="calendar-term-period">Autumn Term</span>
               <span class="calendar-term-dates">October to December</span>
@@ -408,7 +366,7 @@
             </ul>
           </div>
 
-          <div class="calendar-term reveal reveal-delay-1">
+          <div class="calendar-term">
             <div class="calendar-term-header">
               <span class="calendar-term-period">Spring Term</span>
               <span class="calendar-term-dates">January to March</span>
@@ -423,7 +381,7 @@
             </ul>
           </div>
 
-          <div class="calendar-term reveal reveal-delay-2">
+          <div class="calendar-term">
             <div class="calendar-term-header">
               <span class="calendar-term-period">Summer Term</span>
               <span class="calendar-term-dates">April to June</span>
@@ -448,11 +406,9 @@
     <section id="partner-contact" class="form-section" aria-labelledby="contact-heading">
       <div class="container container--narrow">
 
-        <div style="text-align: center; margin-bottom: 3rem;">
-          <span class="eyebrow">Get In Touch</span>
-          <h2 id="contact-heading" class="reveal">Start the Conversation</h2>
-          <div class="gold-rule gold-rule--center reveal reveal-delay-1" aria-hidden="true"></div>
-          <p class="reveal reveal-delay-2" style="color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 55ch; margin: 0 auto;">
+        <div class="section-head section-head--center">
+          <h2 id="contact-heading">Start the Conversation</h2>
+          <p>
             Tell us about your organisation and the type of engagement you have
             in mind. We'll respond within three working days.
           </p>
@@ -478,7 +434,6 @@
           id="partner-form"
           method="POST"
           novalidate
-          class="reveal"
         >
 
           <div class="form-grid">
@@ -528,21 +483,21 @@
 
           <input type="text" name="company_website" tabindex="-1" autocomplete="off"
                  aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
-          <div style="margin-top: 2rem; text-align: center;">
-            <button type="submit" class="btn btn-primary" style="min-width: 220px; justify-content: center; padding-block: 1rem;">
+          <div class="form-actions text-center">
+            <button type="submit" class="btn btn-primary">
               Send Enquiry
             </button>
           </div>
 
-          <p style="margin-top: 1rem; font-size: 0.78rem; color: rgba(255,255,255,0.4); text-align: center;">
-            By submitting this form you agree to our <a href="privacy.html" style="color: var(--gold); text-decoration: underline;">Privacy Policy</a>.
+          <p class="form-note">
+            By submitting this form you agree to our <a href="privacy.html">Privacy Policy</a>.
           </p>
 
         </form>
 
-        <p class="reveal" style="text-align: center; margin-top: 2rem; color: rgba(255,255,255,0.4); font-size: 0.8rem;">
+        <p class="form-note">
           You can also reach us directly at
-          <a href="mailto:kclaisoc@gmail.com" style="color: var(--gold); text-decoration: none;">kclaisoc@gmail.com</a>
+          <a href="mailto:kclaisoc@gmail.com">kclaisoc@gmail.com</a>
         </p>
 
       </div>
@@ -554,14 +509,11 @@
        FOOTER
        ============================================================ -->
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -622,8 +574,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
   <script>
     // Google Apps Script web app URL for the PARTNERSHIPS sheet.

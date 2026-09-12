@@ -7,7 +7,7 @@
   <title>The Anti-Yale-Model Endowment: Inside King's £341m Fund | KCL AISOC Insights</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <!-- Canonical favicon block. Every page including future ones must copy these five lines unchanged so the tab icon is consistent across the site. -->
   <link rel="icon" href="favicon.ico" sizes="48x48">
@@ -16,31 +16,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -98,18 +73,18 @@
     }
 
     .ia-lead {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      line-height: 1.82;
+      font-family: var(--font-body);
+      font-size: var(--fs-lead);
+      line-height: 1.6;
       color: var(--text-secondary);
       margin-bottom: 2rem;
       max-width: none;
     }
 
     .ia-prose {
-      font-family: var(--font-heading);
-      font-size: clamp(1rem, 1.5vw, 1.0625rem);
-      line-height: 1.9;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       color: rgba(7, 22, 48, 0.7);
       margin-bottom: 1.35rem;
       max-width: none;
@@ -460,12 +435,10 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -481,7 +454,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -491,7 +464,6 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Insights</span>
           <h1>The Anti-Yale-Model Endowment: Inside King's £341m Fund</h1>
           <p>Why KCL's endowment looks nothing like Harvard's, and what that tells us about institutional investing in the UK.</p>
         </div>
@@ -501,7 +473,7 @@
     <article class="ia-body">
       <div class="container container--narrow">
 
-        <div class="ia-article-meta reveal">
+        <div class="ia-article-meta">
           <span class="ia-meta-category">Endowments</span>
           <span class="ia-meta-sep" aria-hidden="true"></span>
           <span class="ia-meta-date">28 June 2026</span>
@@ -511,15 +483,15 @@
           <span class="ia-meta-author">Founder and President</span>
         </div>
 
-        <p class="ia-lead reveal">
+        <p class="ia-lead">
           At 31 July 2025, King's College London's Endowment Fund was worth £340.8m, up around £16m on the year before. That makes it the fourth-largest university endowment in the UK and the largest of any London institution. It is also, by global standards, tiny. Harvard's endowment closed its 2024 financial year at $53.2bn. Put differently, Harvard's fund is roughly 120 times the size of King's. The gap is even starker per head: King's holds about £8,000 of endowment per student, against more than $2m per student at Harvard and Yale.
         </p>
 
-        <p class="ia-lead reveal" style="margin-top: -0.5rem;">
+        <p class="ia-lead" style="margin-top: -0.5rem;">
           That gulf is not a story about King's underperforming. It is a story about two completely different models of how a university is funded, and it is where the fund gets genuinely interesting for anyone studying institutional asset management.
         </p>
 
-        <div class="ia-stat-block reveal">
+        <div class="ia-stat-block">
           <div class="ia-stat">
             <p class="ia-stat-number">£341m</p>
             <p class="ia-stat-label">King's endowment, July 2025</p>
@@ -535,20 +507,20 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Yale Model, and why King's rejected it</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Yale Model, and why King's rejected it</h2>
+          <p class="ia-prose">
             US endowments are built on the "Yale Model" pioneered by David Swensen: accept illiquidity, and load up on private markets to harvest the illiquidity premium. The largest American funds now hold 50 to 75 per cent of assets in alternatives. Harvard runs roughly 39 per cent private equity and 32 per cent hedge funds, with just 14 per cent in public equities. Across the whole US endowment universe, private equity is the single biggest allocation.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             King's does almost the opposite. Unusually for a UK institution, it publishes its full fund-by-fund holdings as an appendix to its Ethical Investment Policy, so we can see exactly what it owns. At 31 July 2025, the portfolio of roughly £322m was around 65 per cent global listed equities and 9.5 per cent emerging-market equities. Private equity was only about 5.5 per cent, property around 4 per cent, with the rest in credit, inflation-linked bonds, gilts and cash. There are no hedge funds and no infrastructure at all.
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             This is a deliberate choice, and a reasonable one. Below roughly £500m, the fee drag, liquidity demands and operational burden of a deep alternatives book are hard to justify. King's runs its money through a committee-plus-consultant structure advised by Cambridge Associates, rather than an in-house investment office like Harvard Management Company or Oxford's OUem.
           </p>
         </div>
 
         <!-- Grouped bar chart: asset allocation comparison King's vs Harvard -->
-        <div class="ia-compare-chart reveal" id="ia-compare-chart">
+        <div class="ia-compare-chart" id="ia-compare-chart">
           <p class="ia-compare-chart-title">Portfolio allocation: King's vs Harvard (approximate %)</p>
           <div class="ia-compare-legend">
             <span class="ia-legend-item"><span class="ia-legend-dot ia-legend-dot--kings"></span>King's</span>
@@ -558,40 +530,40 @@
             <!-- Listed equities: King's ~75%, Harvard ~14% → scale to 180px max -->
             <div class="ia-compare-group">
               <div class="ia-compare-group-bars">
-                <div class="ia-compare-bar ia-compare-bar--kings"   data-height="180" data-delay="0"></div>
-                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="34"  data-delay="0.05"></div>
+                <div class="ia-compare-bar ia-compare-bar--kings" data-height="180" data-delay="0"></div>
+                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="34" data-delay="0.05"></div>
               </div>
               <span class="ia-compare-group-label">Listed Equities</span>
             </div>
             <!-- Private equity: King's ~5.5%, Harvard ~39% -->
             <div class="ia-compare-group">
               <div class="ia-compare-group-bars">
-                <div class="ia-compare-bar ia-compare-bar--kings"   data-height="13"  data-delay="0.1"></div>
-                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="94"  data-delay="0.15"></div>
+                <div class="ia-compare-bar ia-compare-bar--kings" data-height="13"  data-delay="0.1"></div>
+                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="94" data-delay="0.15"></div>
               </div>
               <span class="ia-compare-group-label">Private Equity</span>
             </div>
             <!-- Hedge funds: King's 0%, Harvard ~32% -->
             <div class="ia-compare-group">
               <div class="ia-compare-group-bars">
-                <div class="ia-compare-bar ia-compare-bar--kings"   data-height="2"   data-delay="0.2"></div>
-                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="77"  data-delay="0.25"></div>
+                <div class="ia-compare-bar ia-compare-bar--kings" data-height="2"   data-delay="0.2"></div>
+                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="77" data-delay="0.25"></div>
               </div>
               <span class="ia-compare-group-label">Hedge Funds</span>
             </div>
             <!-- Real assets/property: King's ~4%, Harvard ~5% -->
             <div class="ia-compare-group">
               <div class="ia-compare-group-bars">
-                <div class="ia-compare-bar ia-compare-bar--kings"   data-height="10"  data-delay="0.3"></div>
-                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="12"  data-delay="0.35"></div>
+                <div class="ia-compare-bar ia-compare-bar--kings" data-height="10"  data-delay="0.3"></div>
+                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="12" data-delay="0.35"></div>
               </div>
               <span class="ia-compare-group-label">Real Assets</span>
             </div>
             <!-- Fixed income + cash: King's ~15%, Harvard ~7% -->
             <div class="ia-compare-group">
               <div class="ia-compare-group-bars">
-                <div class="ia-compare-bar ia-compare-bar--kings"   data-height="36"  data-delay="0.4"></div>
-                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="17"  data-delay="0.45"></div>
+                <div class="ia-compare-bar ia-compare-bar--kings" data-height="36"  data-delay="0.4"></div>
+                <div class="ia-compare-bar ia-compare-bar--harvard" data-height="17" data-delay="0.45"></div>
               </div>
               <span class="ia-compare-group-label">Fixed Income + Cash</span>
             </div>
@@ -600,42 +572,42 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The alternatives that do exist</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The alternatives that do exist</h2>
+          <p class="ia-prose">
             The private-equity sleeve is small but genuinely institutional, and worth knowing by name. King's accesses it entirely through funds-of-funds and secondaries vehicles: Accolade Partners on the growth side, HarbourVest's Dover Street secondaries funds, and LGT Crown's Global Secondaries series. The only real-asset exposure is a single holding in the Savills Charities Property Fund. For a society focused on alternatives, this is a clean case study in how a smaller institution gets diversified private-markets exposure without building a direct programme.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The cost of diversification</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The cost of diversification</h2>
+          <p class="ia-prose">
             Here is the line that should interest every finance student. In its 2024 financial year, the endowment returned 9.4 per cent, a perfectly respectable number that nonetheless trailed its own benchmark of 14.5 per cent. King's explained why in its accounts: the fund "has not mirrored the market concentration of funds in US mega-capitalised stocks." A diversified, value-tilted, ESG-screened portfolio simply could not keep pace with a benchmark carried by the Magnificent Seven. It is a textbook illustration of the trade-off between diversification and momentum, playing out on the university's own balance sheet.
           </p>
         </div>
 
-        <blockquote class="ia-closing reveal">
+        <blockquote class="ia-closing">
           A diversified, value-tilted, ESG-screened portfolio simply could not keep pace with a benchmark carried by the Magnificent Seven — a textbook trade-off between diversification and momentum, playing out on a university balance sheet.
         </blockquote>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">Ethics, activism and the live tension</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">Ethics, activism and the live tension</h2>
+          <p class="ia-prose">
             King's reached full fossil-fuel divestment in early 2021, nearly two years ahead of its own target, after the student-led Fossil Free KCL campaign. It hit a separate goal of putting 40 per cent of the endowment into socially responsible investments in 2023, also two years early. In 2024, following Gaza solidarity encampments, it added a controversial-weapons exclusion, though it declined to divest from conventional arms or from pooled funds. That ongoing tension — between ethical screening and the fiduciary duty to maximise risk-adjusted returns — is the defining governance question for any modern endowment.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">What it means</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">What it means</h2>
+          <p class="ia-prose">
             King's endowment covers only about a quarter of one year's £1.4bn income. Like almost every UK university, it leans on tuition fees and government grants, not investment income, in a way no major US institution does. The endowment is a useful supplement that funds scholarships, endowed chairs and research through a roughly 4 per cent annual drawdown — not a financial engine. Understanding why is half the lesson in how British higher education is actually paid for.
           </p>
         </div>
 
-        <p class="ia-disclaimer reveal">This content is for educational purposes only and does not constitute financial advice.</p>
+        <p class="ia-disclaimer">This content is for educational purposes only and does not constitute financial advice.</p>
 
         <hr class="ia-divider">
 
-        <section class="ia-references reveal" aria-label="References">
+        <section class="ia-references" aria-label="References">
           <p class="ia-references-heading">References</p>
           <ol class="ia-ref-list">
             <li>House of Commons Library (2025) <em>Higher education finances and funding in England.</em> &mdash; <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10037/" target="_blank" rel="noopener noreferrer">commonslibrary.parliament.uk</a> (Accessed: 28 June 2026).</li>
@@ -657,14 +629,11 @@
   </main>
 
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -725,8 +694,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <script>

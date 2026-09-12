@@ -7,7 +7,7 @@
   <title>The $3.8 Trillion Traffic Jam: Why Private Equity Cannot Sell | KCL AISOC Insights</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -15,31 +15,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0A1F44">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('reveals-on');
-      d.classList.add('hero-armed');
-
-      var played = false;
-      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
-
-      if (document.fonts && document.fonts.ready) {
-        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
-        document.fonts.ready.then(playHero);
-        setTimeout(playHero, 700);
-      } else {
-        setTimeout(playHero, 60);
-      }
-
-      window.addEventListener('load', function () {
-        playHero();
-        setTimeout(function () {
-          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
-        }, 600);
-      });
-    })();
-  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -97,18 +72,18 @@
     }
 
     .ia-lead {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      line-height: 1.82;
+      font-family: var(--font-body);
+      font-size: var(--fs-lead);
+      line-height: 1.6;
       color: var(--text-secondary);
       margin-bottom: 2rem;
       max-width: none;
     }
 
     .ia-prose {
-      font-family: var(--font-heading);
-      font-size: clamp(1rem, 1.5vw, 1.0625rem);
-      line-height: 1.9;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       color: rgba(7, 22, 48, 0.7);
       margin-bottom: 1.35rem;
       max-width: none;
@@ -395,12 +370,10 @@
 </head>
 <body>
 
-  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-
   <nav id="main-nav" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
-        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <img src="assets/images/logo-mark.png" alt="" class="nav-logo-mark" width="22" height="28">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -416,7 +389,7 @@
         <li><a href="insights.html">Insights</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="partners.html">Partners</a></li>
-        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+        <li><a href="join.html" class="nav-cta">Join</a></li>
       </ul>
     </div>
   </nav>
@@ -426,7 +399,6 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Insights</span>
           <h1>The $3.8 Trillion Traffic Jam: Why Private Equity Cannot Sell</h1>
           <p>33,000 unsold companies. Seven-year holding periods. Distributions at crisis-era lows. The exit machine is broken.</p>
         </div>
@@ -436,7 +408,7 @@
     <article class="ia-body">
       <div class="container container--narrow">
 
-        <div class="ia-article-meta reveal">
+        <div class="ia-article-meta">
           <span class="ia-meta-category">Private Equity</span>
           <span class="ia-meta-sep" aria-hidden="true"></span>
           <span class="ia-meta-date">9 July 2026</span>
@@ -446,19 +418,19 @@
           <span class="ia-meta-author">Founder and President</span>
         </div>
 
-        <p class="ia-lead reveal">
+        <p class="ia-lead">
           Private equity has a simple promise at its core: buy a company, improve it, sell it within five years, return the cash. Right now, that final step is broken. The industry is sitting on a record backlog of roughly <strong>33,000 unsold portfolio companies worth around $3.8 trillion</strong>, and the queue is growing faster than it clears (Bain &amp; Company, 2026).
         </p>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Numbers Behind the Logjam</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Numbers Behind the Logjam</h2>
+          <p class="ia-prose">
             The scale is difficult to absorb. Average holding periods have stretched to around <strong>seven years</strong>, well beyond the traditional three to five (Bain &amp; Company, 2026). McKinsey (2026) finds that <strong>over 16,000 companies, 52 percent of all buyout-backed businesses, have now been held for more than four years</strong>, the highest share on record. Most painfully for investors, distributions have run <strong>below 15 percent of net asset value for four consecutive years</strong>, a level of drought not seen since the financial crisis (Bain &amp; Company, 2026). Pension funds and endowments that expected cash back are still waiting.
           </p>
         </div>
 
         <!-- Stat block: the scale of the logjam -->
-        <div class="ia-stat-block reveal">
+        <div class="ia-stat-block">
           <div class="ia-stat">
             <p class="ia-stat-number">$3.8tn</p>
             <p class="ia-stat-label">Record backlog of unsold assets</p>
@@ -474,39 +446,39 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">Why Can Nobody Sell?</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">Why Can Nobody Sell?</h2>
+          <p class="ia-prose">
             Three forces collided. Firms that bought companies at peak 2021 valuations refused to mark them down, creating a stubborn gap between what sellers want and what buyers will pay. Interest rates then made the debt that finances buyouts far more expensive, shrinking the pool of viable acquirers. And the IPO window, the traditional escape hatch for the largest assets, effectively closed in 2022 and has only partially reopened.
           </p>
-          <blockquote class="ia-closing reveal">
+          <blockquote class="ia-closing">
             "The 2021 assets are probably the hardest ones to exit right now because of where the valuations were and are."
             <cite class="ia-quote-attr">— Raymond James adviser, Wall Street Journal, 2026</cite>
           </blockquote>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">A Bifurcated Crisis</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">A Bifurcated Crisis</h2>
+          <p class="ia-prose">
             The pain is not evenly distributed. This is a <strong>bifurcated crisis</strong>, concentrated in the largest, most leveraged, most IPO-dependent deals. Thoma Bravo's <strong>$6.4 billion</strong> take-private of Medallia is heading toward a restructuring implying an equity loss of around <strong>$5.1 billion</strong>, with founder Orlando Bravo admitting "we made a mistake, and that caused us to pay too much" (CNBC, 2026). Roark Capital, which took Dunkin' private in 2020, only filed for an Inspire Brands IPO in May 2026, seeking a <strong>$20 billion</strong> valuation largely to repay debt (Bloomberg, 2026).
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">Where the Market Still Works</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">Where the Market Still Works</h2>
+          <p class="ia-prose">
             Contrast that with the UK lower mid-market, where quality businesses kept finding buyers throughout 2026. LDC sold PAM Healthcare for around <strong>£100 million</strong>, roughly <strong>12x EBITDA</strong> (Insider Media, 2026). Graphite Capital exited Beacon at a reported <strong>4x cash return</strong> (Graphite Capital, 2026). August Equity sold Hallmarq Veterinary Imaging to NORD Holding after doubling its revenue (Travers Smith, 2026). Smaller companies carry less debt, rarely depend on IPOs, and face a far deeper pool of trade buyers and other funds, so their exits never seized up in the same way.
           </p>
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">The Workarounds</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">The Workarounds</h2>
+          <p class="ia-prose">
             Where genuine sales are impossible, the industry has built workarounds. <strong>Continuation vehicles</strong>, where a firm sells a company from one of its funds to a new fund it also controls, hit roughly <strong>$115 billion in 2025</strong>, up from <strong>$15 billion in 2021</strong>, and now account for about a fifth of exits (Evercore, 2026). <strong>NAV loans</strong>, borrowing against entire portfolios to pay investors, have grown into a <strong>$100 billion market</strong> (17Capital, 2026). Critics note the obvious tension: this is financial plumbing that returns cash without proving what assets are actually worth.
           </p>
         </div>
 
         <!-- Bar chart: continuation vehicle market growth -->
-        <div class="ia-chart-wrap reveal" id="ia-cv-chart">
+        <div class="ia-chart-wrap" id="ia-cv-chart">
           <p class="ia-chart-label">Continuation vehicle market size ($bn) — 2021 vs 2025</p>
           <div class="ia-chart-bars">
             <div class="ia-bar-col">
@@ -530,22 +502,22 @@
         </div>
 
         <div class="ia-section">
-          <h2 class="ia-section-heading reveal">Will It Clear?</h2>
-          <p class="ia-prose reveal">
+          <h2 class="ia-section-heading">Will It Clear?</h2>
+          <p class="ia-prose">
             Even at 2025's recovered exit pace of <strong>$717 billion</strong>, working through $3.8 trillion implies more than five years of selling, and Bain compares the situation to the aftermath of 2008 (Bain &amp; Company, 2026). PitchBook (2026) expects 2026 exits to "broaden rather than surge."
           </p>
-          <p class="ia-prose reveal">
+          <p class="ia-prose">
             For students eyeing careers in the industry, the lesson is clear: the era of buying, leveraging, and flipping is over. The firms that thrive from here will be the ones that can genuinely operate and grow businesses, because the exit door no longer opens on its own.
           </p>
         </div>
 
-        <blockquote class="ia-closing reveal">
+        <blockquote class="ia-closing">
           The era of buying, leveraging, and flipping is over. The firms that thrive from here will be the ones that can genuinely operate and grow businesses, because the exit door no longer opens on its own.
         </blockquote>
 
         <hr class="ia-divider">
 
-        <section class="ia-references reveal" aria-label="References">
+        <section class="ia-references" aria-label="References">
           <p class="ia-references-heading">References</p>
           <ol class="ia-ref-list">
             <li>Bain &amp; Company (2026) <em>Global Private Equity Report 2026.</em> Boston: Bain &amp; Company.</li>
@@ -569,14 +541,11 @@
   </main>
 
   <footer>
-    <div class="footer-watermark" aria-hidden="true">AISOC</div>
-
     <div class="footer-main">
 
       <div class="footer-brand">
         <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
-          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
-               onerror="this.style.display='none'">
+          <img src="assets/images/logo-mark.png" alt="" class="footer-logo-mark" width="26" height="32" loading="lazy">
           <span class="footer-logo">KCL AISOC</span>
         </a>
         <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
@@ -637,8 +606,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
   <script>
