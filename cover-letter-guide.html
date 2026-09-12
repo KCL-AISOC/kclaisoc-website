@@ -51,8 +51,10 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="css/editorial.css">
 </head>
-<body>
+<body class="page-cover-letter-guide">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- Scroll progress bar -->
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
@@ -66,7 +68,7 @@
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -84,7 +86,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
     <!-- ============================================================
          PAGE HEADER
@@ -96,7 +98,6 @@
           <h1>Cover Letter Guide</h1>
           <p>One strong letter, annotated line by line.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">CL</span>
       </div>
     </header>
 
@@ -433,5 +434,6 @@
       else window.addEventListener('resize', sync);
     })();
   </script>
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>

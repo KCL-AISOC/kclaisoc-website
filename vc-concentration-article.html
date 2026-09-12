@@ -294,8 +294,10 @@
       .ia-stat-number { font-size: 2.25rem; }
     }
   </style>
+  <link rel="stylesheet" href="css/editorial.css">
 </head>
-<body>
+<body class="page-vc-concentration-article">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
@@ -305,7 +307,7 @@
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -323,7 +325,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
@@ -554,5 +556,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
 
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>

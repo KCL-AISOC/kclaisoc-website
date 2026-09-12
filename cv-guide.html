@@ -51,8 +51,10 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="css/editorial.css">
 </head>
-<body>
+<body class="page-cv-guide">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- Scroll progress bar -->
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
@@ -66,7 +68,7 @@
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -84,7 +86,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
     <!-- ============================================================
          PAGE HEADER
@@ -97,7 +99,6 @@
           <p>How to structure your CV for alternative investment and finance roles.</p>
           <p style="font-size:0.875rem;color:rgba(255,255,255,0.55);margin-top:0.75rem;max-width:55ch;">This guide covers bullet-writing technique, how to order each section, formatting rules, and a full example CV you can use as a reference alongside the checklist.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">CV</span>
       </div>
     </header>
 
@@ -737,5 +738,6 @@ Start by asking me for the role.</script>
       });
     })();
   </script>
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>

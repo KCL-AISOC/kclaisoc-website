@@ -428,8 +428,10 @@
       .ia-bar-year { font-size: 0.58rem; }
     }
   </style>
+  <link rel="stylesheet" href="css/editorial.css">
 </head>
-<body>
+<body class="page-hedge-fund-ai-article">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
@@ -439,7 +441,7 @@
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -457,7 +459,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
@@ -795,5 +797,6 @@
     });
   </script>
 
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>

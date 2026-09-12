@@ -412,8 +412,10 @@
       text-align: center;
     }
   </style>
+  <link rel="stylesheet" href="css/editorial.css">
 </head>
-<body>
+<body class="page-organisations-to-join">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
@@ -424,7 +426,7 @@
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -442,7 +444,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
     <!-- Page header -->
     <header class="page-header" aria-label="Page header">
@@ -452,7 +454,6 @@
           <h1>Organisations to Join</h1>
           <p>Networks, charities and programmes that open doors into finance and the professions.</p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">02</span>
       </div>
     </header>
 
@@ -1148,5 +1149,6 @@
       });
     })();
   </script>
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>

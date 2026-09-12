@@ -51,8 +51,10 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="css/editorial.css">
 </head>
-<body>
+<body class="page-about">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- Scroll progress bar -->
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
@@ -65,7 +67,7 @@
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -83,7 +85,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
     <!-- ============================================================
          PAGE HEADER
@@ -98,7 +100,6 @@
             to the alternative investment industry.
           </p>
         </div>
-        <span class="page-header-numeral" aria-hidden="true">02</span>
       </div>
     </header>
 
@@ -110,7 +111,7 @@
         <div class="two-col two-col--wide">
 
           <div>
-            <span class="section-number">01</span>
+            
             <h2 id="what-we-do-heading" class="reveal">What We Do</h2>
             <div class="gold-rule reveal reveal-delay-1" aria-hidden="true"></div>
             <p class="reveal reveal-delay-2" style="color: var(--text-secondary); font-size: 1.025rem; line-height: 1.8; margin-bottom: 1.5rem;">
@@ -376,5 +377,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>

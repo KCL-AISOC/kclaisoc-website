@@ -55,8 +55,10 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="css/editorial.css">
 </head>
-<body>
+<body class="page-home">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- Scroll progress bar -->
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
@@ -69,7 +71,7 @@
         <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
         <span class="nav-logo-text">KCL AISOC</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -87,208 +89,44 @@
     </div>
   </nav>
 
-  <main>
-
-    <!-- ============================================================
-         HERO
-         ============================================================ -->
-    <section class="hero" aria-label="Introduction">
-      <!-- Parallax background layer -->
-      <div class="hero-bg" aria-hidden="true"></div>
-
-      <!-- Ambient gold aurora — slow breathing glow behind the lion -->
-      <div class="hero-glow" aria-hidden="true"></div>
-
-      <!-- Lion watermark - centred, zooms gently on scroll -->
-      <div class="hero-lion" aria-hidden="true">
-        <img src="assets/images/logo10.png" alt="">
-      </div>
-
-      <div class="hero-inner container">
-        <span class="hero-eyebrow">KCL &middot; Alternative Investments</span>
-        <h1 class="hero-headline">
-          <span class="hero-word">Investing</span> <span class="hero-word">Beyond</span><br>
-          <span class="hero-word">the</span> <span class="hero-word hero-accent">Ordinary</span>
-        </h1>
-
-        <div class="hero-actions">
-          <a href="join.html" class="btn btn-primary">Join the Society</a>
-          <a href="about.html" class="btn btn-secondary">Our Story</a>
-        </div>
-      </div>
-
-      <!-- Marquee ticker -->
-      <div class="hero-ticker" aria-hidden="true">
-        <div class="hero-ticker-track">
-          <span class="hero-ticker-item">Private Equity</span>
-          <span class="hero-ticker-item">Hedge Funds</span>
-          <span class="hero-ticker-item">Infrastructure</span>
-          <span class="hero-ticker-item">Real Assets</span>
-          <span class="hero-ticker-item">Private Credit</span>
-          <span class="hero-ticker-item">Venture Capital</span>
-          <span class="hero-ticker-item">King's College London</span>
-          <span class="hero-ticker-item">Founded 2026</span>
-          <!-- duplicate for seamless loop -->
-          <span class="hero-ticker-item">Private Equity</span>
-          <span class="hero-ticker-item">Hedge Funds</span>
-          <span class="hero-ticker-item">Infrastructure</span>
-          <span class="hero-ticker-item">Real Assets</span>
-          <span class="hero-ticker-item">Private Credit</span>
-          <span class="hero-ticker-item">Venture Capital</span>
-          <span class="hero-ticker-item">King's College London</span>
-          <span class="hero-ticker-item">Founded 2026</span>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ============================================================
-         STATS BAR
-         ============================================================ -->
-    <section class="stats-bar" aria-label="Society statistics">
-      <div class="stats-rule" aria-hidden="true"></div>
-      <div class="stats-grid">
-        <div class="stat-item reveal">
-          <span class="stat-index" aria-hidden="true">01</span>
-          <!-- Member count is populated by js/home.js from Google Sheets; data-count used by GSAP counter -->
-          <span class="stat-number" id="member-count" data-count="60">60+</span>
-          <span class="stat-label">Members</span>
-        </div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat-item reveal reveal-delay-2">
-          <span class="stat-index" aria-hidden="true">02</span>
-          <span class="stat-number" data-count="430">430+</span>
-          <span class="stat-label">Instagram Followers</span>
-        </div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat-item reveal reveal-delay-4">
-          <span class="stat-index" aria-hidden="true">03</span>
-          <span class="stat-number" data-count="10">10</span>
-          <span class="stat-label">Executive Committee</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         ABOUT PREVIEW
-         ============================================================ -->
-    <section class="about-preview" aria-labelledby="about-preview-heading">
-      <div class="about-preview-video" aria-hidden="true">
-        <video muted playsinline preload="auto">
-          <source src="assets/images/vid1-scrub.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="container">
-        <div class="about-preview-inner">
-
-          <div class="about-preview-text">
-            <span class="eyebrow">Who We Are</span>
-            <h2 id="about-preview-heading" class="reveal">
-              Beyond Stocks<br>and Bonds
-            </h2>
-            <div class="gold-rule reveal reveal-delay-1" aria-hidden="true"></div>
-            <p class="reveal reveal-delay-2">
-              KCL AISOC is King's College London's only society dedicated
-              exclusively to alternative asset management. We cover the private
-              markets that move the world: private equity, infrastructure, hedge
-              funds, real assets, private credit, and venture capital. Founded in
-              April 2026, we exist to bridge the gap between academic study and
-              the alternative investment industry.
-            </p>
-            <a href="about.html" class="btn btn-ghost reveal reveal-delay-3">Our Story</a>
+  <main id="main-content">
+    <section class="opening" aria-labelledby="opening-title">
+      <div class="container opening-meta"><span>King’s College London · Alternative Investment Society</span></div>
+      <div class="container opening-grid">
+        <div class="opening-copy">
+          <h1 id="opening-title"><span>Investing</span><span>Beyond</span><span class="opening-serif">the Ordinary.</span></h1>
+          <div class="opening-bottom">
+            <p>Join King’s alternative investment community.<br>Open to all students. No finance experience needed.</p>
+            <a href="join.html" class="editorial-button">Join the Society <span aria-hidden="true">↗</span></a>
           </div>
-
         </div>
+        <figure class="opening-film">
+          <div class="film-window"><video id="capital-film" muted playsinline preload="none" poster="assets/images/capital-poster.jpg" aria-hidden="true"><source src="assets/images/vid1-scrub.mp4" type="video/mp4"></video><img class="film-mark" src="assets/images/logo10.png" alt="" aria-hidden="true"></div>
+          <figcaption><button type="button" class="film-toggle" aria-controls="capital-film" hidden>Play film <span aria-hidden="true">▷</span></button></figcaption>
+        </figure>
       </div>
     </section>
-
-    <!-- ============================================================
-         THE VAULT — asset class index
-         ============================================================ -->
-    <section class="vault" aria-labelledby="vault-heading">
-      <div class="container vault-head">
-        <span class="eyebrow">What We Cover</span>
-        <h2 id="vault-heading" class="visually-hidden">The asset classes we cover</h2>
-      </div>
-      <ul class="vault-list" id="vault-list" role="list">
-        <li class="vault-line reveal"><span class="vault-num" aria-hidden="true">01</span><span class="vault-name">Private Equity</span></li>
-        <li class="vault-line reveal"><span class="vault-num" aria-hidden="true">02</span><span class="vault-name">Hedge Funds</span></li>
-        <li class="vault-line reveal"><span class="vault-num" aria-hidden="true">03</span><span class="vault-name">Infrastructure</span></li>
-        <li class="vault-line reveal"><span class="vault-num" aria-hidden="true">04</span><span class="vault-name">Real Assets</span></li>
-        <li class="vault-line reveal"><span class="vault-num" aria-hidden="true">05</span><span class="vault-name">Private Credit</span></li>
-        <li class="vault-line reveal"><span class="vault-num" aria-hidden="true">06</span><span class="vault-name">Venture Capital</span></li>
-      </ul>
-      <div class="container vault-foot">
-        <a href="about.html" class="btn btn-ghost">Explore the asset classes</a>
+    <section class="society-intro" id="society" aria-labelledby="society-heading">
+      <div class="container"><div class="section-kicker"><span>The society</span></div>
+        <div class="society-grid"><h2 id="society-heading" class="reveal">Beyond stocks<br><em>and bonds.</em></h2><div class="society-description reveal"><p>KCL AISOC is King’s College London’s only society dedicated exclusively to alternative asset management.</p><p>We cover the private markets that move the world: private equity, infrastructure, hedge funds, real assets, private credit, and venture capital. Founded in April 2026, we exist to bridge the gap between academic study and the alternative investment industry.</p><a href="about.html" class="text-action">Our story <span aria-hidden="true">↗</span></a></div></div>
+        <div class="stats-bar society-stats" aria-label="Society statistics"><div class="stats-grid"><div class="stat-item"><span class="stat-number" id="member-count" data-count="60">60+</span><span class="stat-label">Members</span></div><div class="stat-item"><span class="stat-number" data-count="430">430+</span><span class="stat-label">Instagram followers</span></div><div class="stat-item"><span class="stat-number" data-count="10">10</span><span class="stat-label">Executive committee</span></div></div></div>
       </div>
     </section>
-
-    <!-- ============================================================
-         EVENTS PREVIEW
-         ============================================================ -->
-    <section class="events-preview" aria-labelledby="events-preview-heading">
-      <div class="container">
-        <div class="events-preview-header">
-          <div>
-            <span class="eyebrow">What's On</span>
-            <h2 id="events-preview-heading" class="reveal">Upcoming Events</h2>
-          </div>
-          <a href="events.html" class="btn btn-ghost reveal">View All Events</a>
-        </div>
-
-        <div class="events-preview-grid">
-
-          <!-- Placeholder event 1 -->
-          <article class="event-card reveal">
-            <span class="event-num" aria-hidden="true">01</span>
-            <span class="event-card-badge">Coming Soon</span>
-            <h3>Speaker Event: Industry Professional TBC</h3>
-            <p class="event-card-date">Date TBC &middot; Location TBC</p>
-            <p>An evening with an industry professional from the alternative investment space. Details to be announced.</p>
-            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
-          </article>
-
-          <!-- Placeholder event 2 -->
-          <article class="event-card reveal reveal-delay-2">
-            <span class="event-num" aria-hidden="true">02</span>
-            <span class="event-card-badge">Coming Soon</span>
-            <h3>Investment Case Competition: Autumn 2026</h3>
-            <p class="event-card-date">Date TBC &middot; King's College London</p>
-            <p>A hands-on case study challenge covering private equity and credit. Form a team and pitch your investment thesis.</p>
-            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
-          </article>
-
-          <!-- Placeholder event 3 -->
-          <article class="event-card reveal reveal-delay-4">
-            <span class="event-num" aria-hidden="true">03</span>
-            <span class="event-card-badge">Coming Soon</span>
-            <h3>Networking Evening: Launch Term</h3>
-            <p class="event-card-date">Date TBC &middot; Central London</p>
-            <p>Meet fellow members, the KCL AISOC committee, and professionals from the alternative investment industry.</p>
-            <button class="btn btn-outline" disabled aria-disabled="true">Sign Up</button>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         JOIN CTA STRIP
-         ============================================================ -->
-    <section class="page-cta" aria-labelledby="home-cta-heading">
-      <div class="container container--narrow">
-        <span class="eyebrow">Get Involved</span>
-        <h2 id="home-cta-heading" class="reveal">Ready to go beyond the ordinary?</h2>
-        <p class="reveal reveal-delay-1">
-          Join KCL's only society dedicated to alternative investments.
-          No prior finance experience required.
-        </p>
-        <div class="reveal reveal-delay-2">
-          <a href="join.html" class="btn btn-primary btn-magnetic btn-magnetic-xy">Join the Society</a>
-        </div>
-      </div>
-    </section>
-
+    <section class="market-index" aria-labelledby="market-heading"><div class="container"><div class="section-kicker"><span>Our focus</span></div><div class="market-grid"><div class="market-heading"><h2 id="market-heading">Explore alternative<br><em>investments.</em></h2><a href="about.html#asset-classes-heading" class="text-action">Explore all six <span aria-hidden="true">↗</span></a></div><div class="market-rows"><details class="market-row"><summary><h3>Private Equity</h3><span class="market-plus" aria-hidden="true">+</span></summary><div class="market-detail"><p>Investing in private companies. Building value through ownership.</p></div></details><details class="market-row" ><summary><h3>Hedge Funds</h3><span class="market-plus" aria-hidden="true">+</span></summary><div class="market-detail"><p>Active strategies. Different ways to find an edge.</p></div></details><details class="market-row" ><summary><h3>Infrastructure</h3><span class="market-plus" aria-hidden="true">+</span></summary><div class="market-detail"><p>The essential systems that keep economies moving.</p></div></details><details class="market-row" ><summary><h3>Real Assets</h3><span class="market-plus" aria-hidden="true">+</span></summary><div class="market-detail"><p>Tangible investments in property, commodities, and beyond.</p></div></details><details class="market-row" ><summary><h3>Private Credit</h3><span class="market-plus" aria-hidden="true">+</span></summary><div class="market-detail"><p>Financing businesses beyond traditional bank lending.</p></div></details><details class="market-row" ><summary><h3>Venture Capital</h3><span class="market-plus" aria-hidden="true">+</span></summary><div class="market-detail"><p>Backing ambitious founders and the next generation of businesses.</p></div></details></div></div></div></section>
+    <section class="programme" aria-labelledby="programme-heading"><div class="container"><div class="section-kicker"><span>In good company</span></div><div class="programme-heading"><h2 id="programme-heading" class="reveal">Upcoming events</h2><div><a href="events.html" class="text-action">View the programme <span aria-hidden="true">↗</span></a></div></div><div class="programme-list"><details class="programme-row">
+            <summary><h3>Speaker Event: Industry Professional TBC</h3><span class="event-status">Coming soon</span><span class="programme-plus" aria-hidden="true">+</span></summary>
+            <div class="programme-detail"><p class="event-card-date">Date TBC &middot; Location TBC</p>
+<p>An evening with an industry professional from the alternative investment space. Details to be announced.</p></div>
+          </details><details class="programme-row">
+            <summary><h3>Investment Case Competition: Autumn 2026</h3><span class="event-status">Coming soon</span><span class="programme-plus" aria-hidden="true">+</span></summary>
+            <div class="programme-detail"><p class="event-card-date">Date TBC &middot; King's College London</p>
+<p>A hands-on case study challenge covering private equity and credit. Form a team and pitch your investment thesis.</p></div>
+          </details><details class="programme-row">
+            <summary><h3>Networking Evening: Launch Term</h3><span class="event-status">Coming soon</span><span class="programme-plus" aria-hidden="true">+</span></summary>
+            <div class="programme-detail"><p class="event-card-date">Date TBC &middot; Central London</p>
+<p>Meet fellow members, the KCL AISOC committee, and professionals from the alternative investment industry.</p></div>
+          </details></div></div></section>
+    <section class="invitation" aria-labelledby="home-cta-heading"><div class="container"><div class="invitation-grid"><h2 id="home-cta-heading" class="reveal">Your next step starts here.</h2><div><p>Meet the people and ideas behind private markets.</p><a href="join.html" class="invitation-link">Join the Society <span aria-hidden="true">↗</span></a></div></div></div></section>
   </main>
 
   <!-- ============================================================
@@ -367,5 +205,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/home.js" defer></script>
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>

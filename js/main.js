@@ -39,7 +39,7 @@
      Guard: if GSAP hasn't loaded, the shared reveal observer still runs
      (it has no GSAP dependency); everything else degrades to static.
      ------------------------------------------------------------------ */
-  if (typeof gsap === 'undefined') {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     initNav();
     initScrollReveals();
     /* No GSAP to run the hero entrance, so reveal the armed headline lines. */
@@ -140,7 +140,7 @@
       'cold-outreach.html': 'resources.html',
       'infrastructure-article.html': 'insights.html',
     };
-    var target = sectionMap[page] || page;
+    var target = sectionMap[page] || (page.endsWith('-article.html') ? 'insights.html' : page);
     document.querySelectorAll('.nav-links a').forEach(function (link) {
       var href   = (link.getAttribute('href') || '').toLowerCase();
       var isHome = target === 'index.html' && (href === 'index.html' || href === './');
@@ -176,7 +176,12 @@
       toggle.classList.add('active');
       menu.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
-      if (typeof gsap !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+      document.querySelector('main').inert = true;
+      document.querySelector('footer').inert = true;
+      var firstLink = menu.querySelector('a');
+      if (firstLink) firstLink.focus();
+      if (typeof gsap !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         gsap.fromTo(menu.querySelectorAll('li'),
           { opacity: 0, y: 18 },
           { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out', stagger: 0.05, delay: 0.1 });
@@ -187,6 +192,10 @@
       toggle.classList.remove('active');
       menu.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      document.querySelector('main').inert = false;
+      document.querySelector('footer').inert = false;
+      if (menu.contains(document.activeElement)) toggle.focus();
     }
 
     toggle.addEventListener('click', function () {
@@ -211,7 +220,17 @@
       }
     });
 
+    var desktopMenu = window.matchMedia('(min-width: 961px)');
+    function resetMenu(e) { if (e.matches) closeMenu(); }
+    if (desktopMenu.addEventListener) desktopMenu.addEventListener('change', resetMenu);
+    else desktopMenu.addListener(resetMenu);
     document.addEventListener('keydown', function (e) {
+      if (e.key === 'Tab' && menu.classList.contains('open')) {
+        var focusable = Array.from(menu.querySelectorAll('a, button'));
+        var first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
       if (e.key === 'Escape' && menu.classList.contains('open')) {
         closeMenu();
         toggle.focus();
@@ -230,6 +249,7 @@
 
     /* Fade out on internal link click */
     document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       var link = e.target.closest('a[href]');
       if (!link) return;
 
@@ -522,13 +542,13 @@
       card.addEventListener('mouseenter', function () {
         gsap.to(card,  { y: -4, duration: 0.25, ease: 'power2.out' });
         if (photo) gsap.to(photo, { scale: 1.05, duration: 0.25, ease: 'power2.out' });
-        if (role)  gsap.to(role,  { color: '#C9A961', duration: 0.2 });
+        if (role)  gsap.to(role,  { color: '#77612d', duration: 0.2 });
       });
 
       card.addEventListener('mouseleave', function () {
         gsap.to(card,  { y: 0, duration: 0.25, ease: 'power2.inOut' });
         if (photo) gsap.to(photo, { scale: 1, duration: 0.25, ease: 'power2.inOut' });
-        if (role)  gsap.to(role,  { color: '#C9A961', duration: 0.2 }); /* stays gold by design */
+        if (role)  gsap.to(role,  { color: '#77612d', duration: 0.2 });
       });
     });
   }
