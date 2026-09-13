@@ -393,7 +393,7 @@
     if (ticker) {
       gsap.to(ticker, {
         opacity: 0, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'center top', end: 'bottom top', scrub: 0.5 },
+        scrollTrigger: { trigger: '.opening', start: 'center top', end: 'bottom top', scrub: 0.5 },
       });
     }
 

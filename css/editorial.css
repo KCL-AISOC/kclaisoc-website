@@ -29,7 +29,7 @@ h1,h2,h3 { letter-spacing:-.045em; }
 .text-action span, .editorial-button span, .invitation-link span { display:inline-block; transition:transform .3s; }
 .text-action:hover span, .editorial-button:hover span, .invitation-link:hover span { transform:translate(4px,-4px); }
 /* Opening: a large left-hand masthead and a separate portrait film. */
-.opening { background:var(--deep-navy); color:var(--cream); padding:calc(var(--nav-height) + 28px) 0 0; overflow:hidden; }
+.opening { position:relative; background:var(--deep-navy); color:var(--cream); padding:calc(var(--nav-height) + 28px) 0 36px; overflow:hidden; }
 .opening-meta { display:flex; justify-content:space-between; gap:16px; font-size:11px; letter-spacing:.11em; text-transform:uppercase; color:#a9b4c6; }
 .opening-grid { display:grid; grid-template-columns:1.5fr 1fr; gap:4%; padding-top:62px; padding-bottom:42px; align-items:center; }
 .opening-copy { position:relative; z-index:2; }
@@ -39,7 +39,7 @@ h1,h2,h3 { letter-spacing:-.045em; }
 .opening h1 > span { display:block; animation:opening-in .9s both; }
 .opening h1 > span:nth-child(2) { animation-delay:.12s; }
 .opening h1 > span.opening-serif { font-family:var(--font-display); font-style:italic; font-weight:400; font-size:.86em; color:var(--gold); letter-spacing:-.035em; margin-top:8px; white-space:nowrap; animation-delay:.24s; }
-@keyframes opening-in { from { opacity:0; transform:translateY(32px); clip-path:inset(0 0 100% 0); } to { opacity:1; transform:none; clip-path:inset(0); } }
+@keyframes opening-in { from { opacity:0; transform:translateY(32px); clip-path:inset(-.3em -.15em 100% -.15em); } to { opacity:1; transform:none; clip-path:inset(-.3em -.15em -.3em -.15em); } }
 .opening-bottom { display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:end; margin-top:42px; }
 .opening-bottom p { font-size:14px; line-height:1.65; color:#b7c1cf; }
 .editorial-button { display:inline-flex; align-items:center; justify-content:space-between; gap:30px; padding:17px 22px; background:var(--gold); color:var(--deep-navy); font-size:14px; font-weight:600; transition:background .3s; }
