@@ -180,7 +180,10 @@
       document.querySelector('main').inert = true;
       document.querySelector('footer').inert = true;
       var firstLink = menu.querySelector('a');
-      if (firstLink) firstLink.focus();
+      // Focus after the overlay's visibility transition has completed.
+      setTimeout(function () {
+        if (firstLink && menu.classList.contains('open')) firstLink.focus();
+      }, 260);
       if (typeof gsap !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         gsap.fromTo(menu.querySelectorAll('li'),
           { opacity: 0, y: 18 },
@@ -228,7 +231,8 @@
       if (e.key === 'Tab' && menu.classList.contains('open')) {
         var focusable = Array.from(menu.querySelectorAll('a, button'));
         var first = focusable[0], last = focusable[focusable.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        if (!menu.contains(document.activeElement)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+        else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
       if (e.key === 'Escape' && menu.classList.contains('open')) {

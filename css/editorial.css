@@ -445,3 +445,29 @@ body[class$="-article"] .page-header h1 { font-size:clamp(35px,4.7vw,64px); max-
  .event-status { grid-column:1; }
  .programme-plus { grid-column:2; }
 }
+/* A consistent, quiet motion rhythm: fast feedback, softly settling entrances. */
+:root { --ease-settle:cubic-bezier(.22,1,.36,1); }
+.opening h1 > span { animation-timing-function:var(--ease-settle); animation-duration:.85s; }
+.opening h1 > span:nth-child(2) { animation-delay:.08s; }
+.opening h1 > span.opening-serif { animation-delay:.16s; }
+@media (prefers-reduced-motion:no-preference) {
+ .opening-film { animation:film-arrive 1.1s var(--ease-settle) both; }
+ .opening-bottom { animation:action-arrive .8s var(--ease-settle) both; }
+ .film-window video { transition:opacity .6s ease; }
+}
+@keyframes film-arrive { from { opacity:.35; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes action-arrive { from { opacity:.75; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+.editorial-button { transition:background-color .25s ease, transform .4s var(--ease-settle), box-shadow .4s var(--ease-settle); }
+.editorial-button:hover, .editorial-button:focus-visible { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.14); }
+.editorial-button:active { transform:translateY(0); box-shadow:none; }
+.text-action span, .editorial-button span, .invitation-link span, .card-link::after { transition:transform .4s var(--ease-settle); }
+.market-row h3, .market-plus, .programme-plus { transition:color .25s ease, transform .4s var(--ease-settle); }
+.programme-row summary h3 { transition:color .25s ease; }
+.programme-row summary:hover h3 { color:#796332; }
+.market-row[open] .market-detail, .programme-row[open] .programme-detail { animation:none; }
+.nav-links a:not(.nav-cta)::after { content:''; position:absolute; left:0; right:0; bottom:5px; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease-settle); }
+.nav-links a.active:not(.nav-cta)::after, .nav-links a:not(.nav-cta):hover::after, .nav-links a:not(.nav-cta):focus-visible::after { transform:scaleX(1); }
+@media (prefers-reduced-motion:reduce) {
+ .opening-film, .opening-bottom { animation:none; }
+ .editorial-button:hover, .editorial-button:focus-visible { transform:none; }
+}
