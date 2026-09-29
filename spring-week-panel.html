@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KCL AISOC | Spring Week Panel: seven KCL students share what a spring week is really like, on Wednesday 7 October 2026 at Bush House, Strand Campus.">
+  <title>Spring Week Panel | KCL AISOC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Spectral:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A1F44">
+  <!-- Arm the scroll reveal and hero entrance start states the instant JS runs,
+       so content is hidden only while JavaScript is present to bring it back.
+       The hero entrance is decoupled from the deferred GSAP bundle: it plays as
+       soon as the Fraunces display font is ready (so the large headline never
+       reflows when the font swaps in), capped so it never waits, and a load
+       failsafe guarantees nothing can stay hidden if scripts fail. -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('reveals-on');
+      d.classList.add('hero-armed');
+
+      var played = false;
+      function playHero() { if (!played) { played = true; d.classList.add('hero-in'); } }
+
+      if (document.fonts && document.fonts.ready) {
+        try { document.fonts.load('600 1em "Fraunces"'); } catch (e) {}
+        document.fonts.ready.then(playHero);
+        setTimeout(playHero, 700);
+      } else {
+        setTimeout(playHero, 60);
+      }
+
+      window.addEventListener('load', function () {
+        playHero();
+        setTimeout(function () {
+          if (!d.classList.contains('reveals-done')) d.classList.remove('reveals-on');
+        }, 600);
+      });
+    })();
+  </script>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Spring Week Panel, page styles. Palette and fonts reuse the site
+       custom properties in css/styles.css. */
+
+    .swp-body {
+      padding: clamp(3rem, 8vw, 5rem) 0 5rem;
+    }
+
+    .swp-section {
+      padding: 3rem 0;
+      border-top: 1px solid rgba(201, 169, 97, 0.18);
+    }
+
+    .swp-section:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .swp-section-head {
+      margin-bottom: 1.75rem;
+    }
+
+    .swp-lead {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(7, 22, 48, 0.72);
+      max-width: 68ch;
+      margin-top: 0.75rem;
+    }
+
+    /* Event details block */
+    .swp-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+      background: #fff;
+      border: 1px solid rgba(7, 22, 48, 0.1);
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+    }
+
+    .swp-detail-label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .swp-detail-value {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--navy);
+      margin: 0;
+    }
+
+    /* Partners row, text only */
+    .swp-partners-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .swp-partner-name {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* Closing */
+    .swp-closing {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: rgba(7, 22, 48, 0.72);
+      max-width: 64ch;
+    }
+
+    .swp-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    @media (max-width: 960px) {
+      .swp-detail-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .swp-detail-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="css/editorial.css">
+</head>
+<body class="page-spring-week-panel">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       TOP NAVIGATION
+       ============================================================ -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="KCL AISOC, Home">
+        <img src="assets/images/logo10.png" alt="" class="nav-logo-mark" onerror="this.style.display='none'">
+        <span class="nav-logo-text">KCL AISOC</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="join.html" class="nav-cta btn-magnetic">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         PAGE HEADER
+         ============================================================ -->
+    <header class="page-header" aria-label="Page header">
+      <div class="page-header-inner">
+        <div class="page-header-text">
+          <span class="eyebrow">Upcoming Event</span>
+          <h1>Spring Week Panel</h1>
+          <p>Wednesday 7 October 2026, 6.30pm to 8pm. Room NE 1.03, Bush House, Strand Campus, King's College London.</p>
+          <div class="reveal" style="margin-top: 1.75rem;">
+            <a href="https://forms.gle/qQHoRtk6SXhtvFoa8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="swp-body">
+      <div class="container">
+
+        <!-- ── About the panel ─────────────────────────────────── -->
+        <div class="swp-section">
+          <div class="swp-section-head reveal">
+            <span class="eyebrow">About the Panel</span>
+            <h2>What to expect</h2>
+            <div class="gold-rule"></div>
+            <p class="swp-lead">Seven KCL students who have completed spring weeks talk through what the week actually looks like day to day, what doing well involves, and how they approached networking. The panel is aimed at students who are thinking about applying for a spring week. There will be time to chat with the speakers afterwards.</p>
+          </div>
+        </div>
+
+        <!-- ── Event details ─────────────────────────────────── -->
+        <div class="swp-section">
+          <div class="swp-section-head reveal">
+            <span class="eyebrow">Details</span>
+            <h2>Event details</h2>
+            <div class="gold-rule"></div>
+          </div>
+          <div class="swp-detail-grid reveal">
+            <div class="swp-detail-item">
+              <span class="swp-detail-label">Date</span>
+              <p class="swp-detail-value">Wednesday 7 October 2026</p>
+            </div>
+            <div class="swp-detail-item">
+              <span class="swp-detail-label">Time</span>
+              <p class="swp-detail-value">6.30pm to 8pm</p>
+            </div>
+            <div class="swp-detail-item">
+              <span class="swp-detail-label">Location</span>
+              <p class="swp-detail-value">Room NE 1.03, Bush House, Strand Campus, King's College London</p>
+            </div>
+            <div class="swp-detail-item">
+              <span class="swp-detail-label">Open to</span>
+              <p class="swp-detail-value">KCL students</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Speakers ─────────────────────────────────── -->
+        <div class="swp-section">
+          <div class="swp-section-head reveal">
+            <span class="eyebrow">Speakers</span>
+            <h2>Hear from seven KCL students</h2>
+            <div class="gold-rule"></div>
+          </div>
+
+          <div class="committee-grid" role="list">
+
+            <div class="committee-card reveal" role="listitem" style="cursor: default;">
+              <div class="committee-photo"><span class="committee-initials">KM</span></div>
+              <p class="committee-name">Kelsey Martini</p>
+              <p class="committee-role">Ares, J.P. Morgan, Macquarie, RBC, EY</p>
+            </div>
+
+            <div class="committee-card reveal" role="listitem" style="cursor: default;">
+              <div class="committee-photo"><span class="committee-initials">FA</span></div>
+              <p class="committee-name">Fatima Al-Shebib</p>
+              <p class="committee-role">PJT, RBC</p>
+            </div>
+
+            <div class="committee-card reveal" role="listitem" style="cursor: default;">
+              <div class="committee-photo"><span class="committee-initials">DS</span></div>
+              <p class="committee-name">Daria Sidorova</p>
+              <p class="committee-role">Citi, Goldman Sachs</p>
+            </div>
+
+            <div class="committee-card reveal" role="listitem" style="cursor: default;">
+              <div class="committee-photo"><span class="committee-initials">IM</span></div>
+              <p class="committee-name">Illia Mitiushnikov</p>
+              <p class="committee-role">Citi, Permira, Moody's</p>
+            </div>
+
+            <div class="committee-card reveal" role="listitem" style="cursor: default;">
+              <div class="committee-photo"><span class="committee-initials">FP</span></div>
+              <p class="committee-name">Faryal Potrik</p>
+              <p class="committee-role">HSBC, Morgan Stanley</p>
+            </div>
+
+            <div class="committee-card reveal" role="listitem" style="cursor: default;">
+              <div class="committee-photo"><span class="committee-initials">DT</span></div>
+              <p class="committee-name">Dhyan Tailor</p>
+              <p class="committee-role">Citadel, Flow Traders, Visa, Susquehanna, Optiver</p>
+            </div>
+
+            <div class="committee-card reveal" role="listitem" style="cursor: default;">
+              <div class="committee-photo"><span class="committee-initials">R</span></div>
+              <p class="committee-name">Rohan</p>
+              <p class="committee-role">Piper Sandler, Rede Partners</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Partners ─────────────────────────────────── -->
+        <div class="swp-section">
+          <div class="swp-section-head reveal">
+            <span class="eyebrow">Partners</span>
+            <h2>Run in partnership with</h2>
+            <div class="gold-rule"></div>
+          </div>
+          <div class="swp-partners-row reveal">
+            <span class="swp-partner-name">KCL Capital Markets Society</span>
+            <span class="swp-partner-name">KREPS</span>
+            <span class="swp-partner-name">KCL Green Finance Society</span>
+          </div>
+        </div>
+
+        <!-- ── Closing sign up ─────────────────────────────────── -->
+        <div class="swp-section">
+          <div class="swp-section-head reveal">
+            <span class="eyebrow">Sign Up</span>
+            <h2>Join us on 7 October</h2>
+            <div class="gold-rule"></div>
+          </div>
+
+          <p class="swp-closing reveal">Open to KCL students. Sign up below to secure your place.</p>
+
+          <div class="swp-cta-row reveal">
+            <a href="https://forms.gle/qQHoRtk6SXhtvFoa8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Sign up</a>
+            <a href="events.html" class="btn btn-outline">&larr; Back to Events</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-watermark" aria-hidden="true">AISOC</div>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link" aria-label="KCL AISOC, Home">
+          <img src="assets/images/logo10.png" alt="" class="footer-logo-mark"
+               onerror="this.style.display='none'">
+          <span class="footer-logo">KCL AISOC</span>
+        </a>
+        <p>King's College London's only society dedicated exclusively to alternative asset management. Private equity, hedge funds, infrastructure, real assets, private credit, and venture capital.</p>
+        <div class="footer-founded">
+          <span class="footer-founded-dot" aria-hidden="true"></span>
+          Founded April 2026 &middot; London
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/kclaisoc"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/kclaisoc/"
+             class="social-icon"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="KCL AISOC on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-address">
+          <p>King's College London<br>Strand, London WC2R 2LS</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>&copy; 2026 KCL Alternative Investment Society. King's College London.</span>
+      <a href="privacy.html" class="footer-privacy-link">Privacy Policy</a>
+      <span class="footer-strip-right">Private Equity &middot; Hedge Funds &middot; Real Assets &middot; Venture Capital</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/editorial.js" defer></script>
+</body>
+</html>
