@@ -2131,7 +2131,8 @@ footer {
   margin-top: 0.1rem;
 }
 
-.resource-type--pdf     { background: rgba(201, 169, 97, 0.1);  color: #9A7A30; border: 1px solid rgba(201, 169, 97, 0.3); }
+.resource-type--pdf,
+.resource-type--guide   { background: rgba(201, 169, 97, 0.1);  color: #9A7A30; border: 1px solid rgba(201, 169, 97, 0.3); }
 .resource-type--link    { background: rgba(10, 31, 68, 0.06);   color: var(--navy); border: 1px solid rgba(10, 31, 68, 0.15); }
 .resource-type--template { background: rgba(90, 107, 125, 0.08); color: var(--text-secondary); border: 1px solid rgba(90, 107, 125, 0.2); }
 
@@ -2165,7 +2166,7 @@ footer {
 
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
   border: 1px solid var(--border-light);
 }
@@ -2178,6 +2179,14 @@ footer {
 }
 
 .benefit-pillar:last-child { border-right: none; }
+
+/* Four channels sit 2 x 2 on mid-width screens rather than leaving one
+   card alone on a second row. */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .benefit-pillar:nth-child(2n) { border-right: none; }
+  .benefit-pillar:nth-child(-n + 2) { border-bottom: 1px solid var(--border-light); }
+}
 
 .benefit-pillar:hover { background: var(--white); }
 
@@ -2413,6 +2422,13 @@ footer {
    21. Forms
    -------------------------------------------------------------------------- */
 .form-section { background: var(--navy); }
+.form-section h2 { color: var(--white); }
+
+/* Small print under a form, centred under the submit button. */
+.form-note {
+  margin-inline: auto;
+  text-align: center;
+}
 
 .form-grid {
   display: grid;
@@ -2439,6 +2455,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="tel"],
+input[type="url"],
 select,
 textarea {
   background: rgba(255, 255, 255, 0.05);
@@ -2544,6 +2561,7 @@ textarea {
 
 .form-section--light input[type="text"],
 .form-section--light input[type="email"],
+.form-section--light input[type="url"],
 .form-section--light select,
 .form-section--light textarea {
   background: var(--white);

@@ -130,7 +130,10 @@
     /* Active page link. Guide sub-pages highlight Resources, their parent
        section; aria-current keeps the state accessible to screen readers. */
     var page = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    /* Hosts that serve clean URLs (/about rather than /about.html). */
+    if (page.indexOf('.') === -1) page += '.html';
     var sectionMap = {
+      'spring-week-panel.html': 'events.html',
       'cv-guide.html': 'resources.html',
       'cover-letter-guide.html': 'resources.html',
       'application-questions.html': 'resources.html',
@@ -141,10 +144,16 @@
       'infrastructure-article.html': 'insights.html',
     };
     var target = sectionMap[page] || (page.endsWith('-article.html') ? 'insights.html' : page);
-    document.querySelectorAll('.nav-links a').forEach(function (link) {
-      var href   = (link.getAttribute('href') || '').toLowerCase();
-      var isHome = target === 'index.html' && (href === 'index.html' || href === './');
-      if (isHome || href === target) {
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+    function matchesTarget(link) {
+      var href = (link.getAttribute('href') || '').toLowerCase();
+      return href === target || (target === 'index.html' && href === './');
+    }
+    /* A page not covered above (e.g. a new event page) keeps whatever
+       active link its HTML already marks, instead of losing it. */
+    if (!navLinks.some(matchesTarget)) navLinks = [];
+    navLinks.forEach(function (link) {
+      if (matchesTarget(link)) {
         link.classList.add('active');
         link.setAttribute('aria-current', 'page');
       } else {

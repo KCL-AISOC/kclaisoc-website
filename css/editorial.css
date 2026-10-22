@@ -73,7 +73,7 @@ h1,h2,h3 { letter-spacing:-.045em; }
 .society-description p:first-child { font-size:21px; line-height:1.5; margin-bottom:22px; color:var(--navy); }
 .society-description p { font-size:15px; color:var(--ink-muted); margin-bottom:24px; }
 .society-stats.stats-bar { padding:0; margin-top:64px; border:0; background:transparent; }
-.society-stats .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); max-width:none; padding:0; gap:0; }
+.society-stats .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); align-items:stretch; max-width:none; padding:0; gap:0; }
 .society-stats .stat-item { display:flex; align-items:baseline; justify-content:space-between; gap:16px; text-align:left; padding:25px 24px 0 0; border-top:1px solid var(--paper-line); }
 .society-stats .stat-item + .stat-item { padding-left:24px; border-left:1px solid var(--paper-line); }
 .society-stats .stat-number { font-family:var(--font-sans); font-weight:400; font-size:clamp(38px,4vw,58px); letter-spacing:-.06em; color:var(--navy); }
@@ -172,7 +172,8 @@ h1,h2,h3 { letter-spacing:-.045em; }
 .resource-card { padding:24px 0; border:0; border-bottom:1px solid var(--paper-line); background:transparent; gap:24px; }
 .resource-card:first-child { padding-top:0; }
 .resource-card:hover { box-shadow:none; border-color:var(--navy); }
-.resource-type { font-size:10px; min-width:85px; text-align:center; }
+/* Fixed width so every title in the list starts on the same line. */
+.resource-type { font-size:10px; width:92px; text-align:center; white-space:nowrap; }
 .resource-content h4 { font-size:23px; font-weight:400; }
 .resource-content p { font-size:15px; }
 .resource-content .btn { min-height:44px; font-size:12px; }
@@ -195,7 +196,7 @@ h1,h2,h3 { letter-spacing:-.045em; }
 .pricing-card { border-top:3px solid var(--gold); box-shadow:none; }
 .form-card { border-top:3px solid var(--gold); }
 label { font-size:12px; }
-input[type="text"], input[type="email"], input[type="tel"], select, textarea { font-size:16px; min-height:48px; border-radius:0; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="url"], select, textarea { font-size:16px; min-height:48px; border-radius:0; }
 .multi-select-item { min-height:40px; }
 .multi-select-item label, .checkbox-group label { font-size:14px; }
 .page-cta { border-top:1px solid rgba(201,169,97,.35); }
@@ -324,7 +325,7 @@ footer { overflow:hidden; }
  .resources-sections > div { grid-template-columns:1fr; gap:10px; }
  .resource-section-title { position:static; margin-bottom:12px; }
  .resource-card { flex-direction:row; gap:16px; }
- .resource-type { min-width:64px; font-size:8px; }
+ .resource-type { width:78px; font-size:8px; }
  .resource-content h4 { font-size:22px; }
  .asset-grid, .events-grid { grid-template-columns:1fr; }
  .asset-tile { padding:28px; }
