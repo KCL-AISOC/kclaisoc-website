@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="KCL AISOC | Spring Week Panel: seven KCL students share what a spring week is really like, on Wednesday 7 October 2026 at Bush House, Strand Campus.">
+  <meta name="description" content="KCL AISOC | Spring Week Panel: six KCL students shared what a spring week is really like, on Wednesday 7 October 2026 at Bush House, Strand Campus.">
   <title>Spring Week Panel | KCL AISOC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,6 +125,71 @@
       color: var(--navy);
     }
 
+    /* Speakers, a typographic list. Each name links to LinkedIn. */
+    .swp-speakers {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(2rem, 6vw, 5rem);
+    }
+
+    .swp-speaker {
+      padding: 1.75rem 0 1.9rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .swp-speaker-name {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+
+    .swp-speaker-text {
+      background-image: linear-gradient(var(--gold), var(--gold));
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      background-size: 0% 1px;
+      transition: background-size 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .swp-speaker-arrow {
+      font-family: var(--font-sans);
+      font-size: 0.6em;
+      color: var(--gold);
+      opacity: 0;
+      transform: translate(-4px, 4px);
+      transition: opacity var(--t-fast), transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .swp-speaker-name:hover .swp-speaker-text,
+    .swp-speaker-name:focus-visible .swp-speaker-text {
+      background-size: 100% 1px;
+    }
+
+    .swp-speaker-name:hover .swp-speaker-arrow,
+    .swp-speaker-name:focus-visible .swp-speaker-arrow {
+      opacity: 1;
+      transform: none;
+    }
+
+    .swp-speaker-firms {
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    /* Touch screens have no hover, so keep the arrow visible as a link cue. */
+    @media (hover: none) {
+      .swp-speaker-arrow { opacity: 0.8; transform: none; }
+    }
+
     /* Closing */
     .swp-closing {
       font-size: 0.98rem;
@@ -146,6 +211,8 @@
 
     @media (max-width: 640px) {
       .swp-detail-grid { grid-template-columns: 1fr; }
+      .swp-speakers { grid-template-columns: 1fr; }
+      .swp-speaker { padding: 1.4rem 0 1.5rem; }
     }
   </style>
   <link rel="stylesheet" href="css/editorial.css">
@@ -191,12 +258,9 @@
     <header class="page-header" aria-label="Page header">
       <div class="page-header-inner">
         <div class="page-header-text">
-          <span class="eyebrow">Upcoming Event</span>
+          <span class="eyebrow">Past Event</span>
           <h1>Spring Week Panel</h1>
           <p>Wednesday 7 October 2026, 6.30pm to 8pm. Room NE 1.03, Bush House, Strand Campus, King's College London.</p>
-          <div class="reveal" style="margin-top: 1.75rem;">
-            <a href="https://forms.gle/qQHoRtk6SXhtvFoa8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Sign up</a>
-          </div>
         </div>
       </div>
     </header>
@@ -208,9 +272,9 @@
         <div class="swp-section">
           <div class="swp-section-head reveal">
             <span class="eyebrow">About the Panel</span>
-            <h2>What to expect</h2>
+            <h2>What we covered</h2>
             <div class="gold-rule"></div>
-            <p class="swp-lead">Seven KCL students who have completed spring weeks talk through what the week actually looks like day to day, what doing well involves, and how they approached networking. The panel is aimed at students who are thinking about applying for a spring week. There will be time to chat with the speakers afterwards.</p>
+            <p class="swp-lead">Six KCL students who have completed spring weeks talked through what the week actually looks like day to day, what doing well involves, and how they approached networking. The panel was aimed at students thinking about applying for a spring week, with time to chat with the speakers afterwards.</p>
           </div>
         </div>
 
@@ -245,55 +309,36 @@
         <div class="swp-section">
           <div class="swp-section-head reveal">
             <span class="eyebrow">Speakers</span>
-            <h2>Hear from seven KCL students</h2>
+            <h2>Hear from six KCL students</h2>
             <div class="gold-rule"></div>
           </div>
 
-          <div class="committee-grid" role="list">
-
-            <div class="committee-card reveal" role="listitem" style="cursor: default;">
-              <div class="committee-photo"><span class="committee-initials">KM</span></div>
-              <p class="committee-name">Kelsey Martini</p>
-              <p class="committee-role">Ares, J.P. Morgan, Macquarie, RBC, EY</p>
-            </div>
-
-            <div class="committee-card reveal" role="listitem" style="cursor: default;">
-              <div class="committee-photo"><span class="committee-initials">FA</span></div>
-              <p class="committee-name">Fatima Al-Shebib</p>
-              <p class="committee-role">PJT, RBC</p>
-            </div>
-
-            <div class="committee-card reveal" role="listitem" style="cursor: default;">
-              <div class="committee-photo"><span class="committee-initials">DS</span></div>
-              <p class="committee-name">Daria Sidorova</p>
-              <p class="committee-role">Citi, Goldman Sachs</p>
-            </div>
-
-            <div class="committee-card reveal" role="listitem" style="cursor: default;">
-              <div class="committee-photo"><span class="committee-initials">IM</span></div>
-              <p class="committee-name">Illia Mitiushnikov</p>
-              <p class="committee-role">Citi, Permira, Moody's</p>
-            </div>
-
-            <div class="committee-card reveal" role="listitem" style="cursor: default;">
-              <div class="committee-photo"><span class="committee-initials">FP</span></div>
-              <p class="committee-name">Faryal Potrik</p>
-              <p class="committee-role">HSBC, Morgan Stanley</p>
-            </div>
-
-            <div class="committee-card reveal" role="listitem" style="cursor: default;">
-              <div class="committee-photo"><span class="committee-initials">DT</span></div>
-              <p class="committee-name">Dhyan Tailor</p>
-              <p class="committee-role">Citadel, Flow Traders, Visa, Susquehanna, Optiver</p>
-            </div>
-
-            <div class="committee-card reveal" role="listitem" style="cursor: default;">
-              <div class="committee-photo"><span class="committee-initials">R</span></div>
-              <p class="committee-name">Rohan</p>
-              <p class="committee-role">Piper Sandler, Rede Partners</p>
-            </div>
-
-          </div>
+          <ul class="swp-speakers" role="list">
+            <li class="swp-speaker reveal">
+              <a class="swp-speaker-name" href="https://www.linkedin.com/in/kelsey-martini-373785381" target="_blank" rel="noopener noreferrer"><span class="swp-speaker-text">Kelsey Martini</span><span class="swp-speaker-arrow" aria-hidden="true">&nearr;</span><span class="visually-hidden"> on LinkedIn (opens in a new tab)</span></a>
+              <p class="swp-speaker-firms">Ares, J.P. Morgan, Macquarie, RBC, EY</p>
+            </li>
+            <li class="swp-speaker reveal">
+              <a class="swp-speaker-name" href="https://www.linkedin.com/in/fatima-al-shebib" target="_blank" rel="noopener noreferrer"><span class="swp-speaker-text">Fatima Al-Shebib</span><span class="swp-speaker-arrow" aria-hidden="true">&nearr;</span><span class="visually-hidden"> on LinkedIn (opens in a new tab)</span></a>
+              <p class="swp-speaker-firms">PJT, RBC</p>
+            </li>
+            <li class="swp-speaker reveal">
+              <a class="swp-speaker-name" href="https://www.linkedin.com/in/illia-mitiushnikov" target="_blank" rel="noopener noreferrer"><span class="swp-speaker-text">Illia Mitiushnikov</span><span class="swp-speaker-arrow" aria-hidden="true">&nearr;</span><span class="visually-hidden"> on LinkedIn (opens in a new tab)</span></a>
+              <p class="swp-speaker-firms">Citi, Permira, Moody's</p>
+            </li>
+            <li class="swp-speaker reveal">
+              <a class="swp-speaker-name" href="https://www.linkedin.com/in/faryal-potrik-b4231b37b" target="_blank" rel="noopener noreferrer"><span class="swp-speaker-text">Faryal Potrik</span><span class="swp-speaker-arrow" aria-hidden="true">&nearr;</span><span class="visually-hidden"> on LinkedIn (opens in a new tab)</span></a>
+              <p class="swp-speaker-firms">HSBC, Morgan Stanley</p>
+            </li>
+            <li class="swp-speaker reveal">
+              <a class="swp-speaker-name" href="https://www.linkedin.com/in/dhyantailor" target="_blank" rel="noopener noreferrer"><span class="swp-speaker-text">Dhyan Tailor</span><span class="swp-speaker-arrow" aria-hidden="true">&nearr;</span><span class="visually-hidden"> on LinkedIn (opens in a new tab)</span></a>
+              <p class="swp-speaker-firms">Citadel, Flow Traders, Visa, Susquehanna, Optiver</p>
+            </li>
+            <li class="swp-speaker reveal">
+              <a class="swp-speaker-name" href="https://www.linkedin.com/in/rohan-k-401888206" target="_blank" rel="noopener noreferrer"><span class="swp-speaker-text">Rohan</span><span class="swp-speaker-arrow" aria-hidden="true">&nearr;</span><span class="visually-hidden"> on LinkedIn (opens in a new tab)</span></a>
+              <p class="swp-speaker-firms">Piper Sandler, Rede Partners</p>
+            </li>
+          </ul>
         </div>
 
         <!-- ── Partners ─────────────────────────────────── -->
@@ -310,19 +355,19 @@
           </div>
         </div>
 
-        <!-- ── Closing sign up ─────────────────────────────────── -->
+        <!-- ── Thank you ─────────────────────────────────── -->
         <div class="swp-section">
           <div class="swp-section-head reveal">
-            <span class="eyebrow">Sign Up</span>
-            <h2>Join us on 7 October</h2>
+            <span class="eyebrow">Thank You</span>
+            <h2>Thank you for joining us</h2>
             <div class="gold-rule"></div>
           </div>
 
-          <p class="swp-closing reveal">Open to KCL students. Sign up below to secure your place.</p>
+          <p class="swp-closing reveal">Thank you to everyone who came along to Bush House on 7 October, and to our six speakers for being so open about their spring week experiences. Thanks also to KCL Capital Markets Society, KREPS and KCL Green Finance Society for running the evening with us.</p>
 
           <div class="swp-cta-row reveal">
-            <a href="https://forms.gle/qQHoRtk6SXhtvFoa8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Sign up</a>
-            <a href="events.html" class="btn btn-outline">&larr; Back to Events</a>
+            <a href="events.html" class="btn btn-primary">See upcoming events</a>
+            <a href="join.html" class="btn btn-outline">Join AISOC</a>
           </div>
         </div>
 
