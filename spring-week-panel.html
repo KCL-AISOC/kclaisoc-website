@@ -75,13 +75,16 @@
 
     .swp-section-head .gold-rule { margin-block: 1.25rem 0; }
 
-    /* About copy beside the details card */
+    /* Heading and About copy on the left, details card on the right,
+       stretched to the same height so neither side leaves a gap. */
     .swp-overview {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
       gap: clamp(1.75rem, 4vw, 3.5rem);
-      align-items: start;
+      align-items: stretch;
     }
+
+    .swp-overview .swp-detail-grid { align-content: center; }
 
     .swp-overview .swp-lead { margin-top: 0; }
 
@@ -486,13 +489,15 @@
 
         <!-- ── About and event details ─────────────────────────────────── -->
         <div class="swp-section">
-          <div class="swp-section-head reveal">
-            <span class="eyebrow">About the Panel</span>
-            <h2>Event details</h2>
-            <div class="gold-rule"></div>
-          </div>
           <div class="swp-overview">
-            <p class="swp-lead reveal">Six KCL students who have completed spring weeks talked through what the week actually looks like day to day, what doing well involves, and how they approached networking. The panel was aimed at students thinking about applying for a spring week, with time to chat with the speakers afterwards.</p>
+            <div class="swp-overview-text">
+              <div class="swp-section-head reveal">
+                <span class="eyebrow">About the Panel</span>
+                <h2>Event details</h2>
+                <div class="gold-rule"></div>
+              </div>
+              <p class="swp-lead reveal">Six KCL students who have completed spring weeks talked through what the week actually looks like day to day, what doing well involves, and how they approached networking. The panel was aimed at students thinking about applying for a spring week, with time to chat with the speakers afterwards.</p>
+            </div>
             <div class="swp-detail-grid reveal">
               <div class="swp-detail-item">
                 <span class="swp-detail-label">Date</span>
