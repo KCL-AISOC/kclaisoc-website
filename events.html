@@ -106,7 +106,7 @@
     <section aria-labelledby="events-heading">
       <div class="container">
 
-        <h2 id="events-heading" class="reveal" style="margin-bottom: 2rem;">Upcoming Events</h2>
+        <h2 id="events-heading" class="events-heading reveal">Upcoming Events</h2>
 
         <!-- Filter bar -->
         <!--
@@ -116,7 +116,7 @@
           Each event card's data-category must match one of:
             workshops | speakers | competitions | networking
         -->
-        <div class="filter-bar" role="group" aria-label="Filter events by type">
+        <div class="filter-bar" role="group" aria-label="Filter events by type" data-event-filter>
           <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
           <button class="filter-btn" data-filter="workshops" aria-pressed="false">Workshops</button>
           <button class="filter-btn" data-filter="speakers" aria-pressed="false">Speaker Events</button>
@@ -124,48 +124,24 @@
           <button class="filter-btn" data-filter="networking" aria-pressed="false">Networking</button>
         </div>
 
-        <!--
-          ============================================================
-          HOW TO ADD A REAL EVENT
-          ============================================================
-          1. Copy one of the <article> blocks below.
-          2. Set data-category to one of:
-               workshops | speakers | competitions | networking
-          3. Update:
-             - The .event-card-tag text (e.g. "Speaker Event")
-             - The <h3> title
-             - The .event-card-date (e.g. "14 November 2026 · Bush House, KCL")
-             - The <p> description
-             - The sign-up button: remove disabled and aria-disabled="true",
-               then set href on an <a> tag, or point a form action to your
-               sign-up sheet / Eventbrite / Lu.ma link.
-          4. The filter JS (js/events.js) will handle show/hide automatically.
-          ============================================================
-        -->
-
-        <div class="events-grid" id="events-grid">
-
-          <!-- Featured event: Spring Week Panel -->
-          <article class="event-card reveal" data-category="speakers" style="grid-column: 1 / -1;">
-            <span class="event-card-tag">Speaker Event</span>
-            <h3>Spring Week Panel</h3>
-            <p class="event-card-date">Wednesday 7 October 2026 &middot; 6.30pm to 8pm &middot; Bush House, Strand Campus</p>
-            <p>
-              Seven KCL students who have completed spring weeks talk through
-              what the week looks like day to day, what doing well involves,
-              and how they approached networking. Aimed at students thinking
-              about applying, with time to chat with the speakers afterwards.
-              Open to KCL students. Run with KCL Capital Markets Society,
-              KREPS and KCL Green Finance Society.
-            </p>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="https://forms.gle/qQHoRtk6SXhtvFoa8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Sign Up</a>
-              <a href="spring-week-panel.html" class="btn btn-outline">View Details</a>
-            </div>
-          </article>
-
+        <!-- Events are rendered from js/event-data.js by js/event-listings.js.
+             To add one, edit js/event-data.js only. -->
+        <div class="events-grid" id="events-grid" data-event-list="upcoming" data-event-layout="card">
+          <noscript>
+            <p class="events-empty">Follow <a href="https://www.instagram.com/kclaisoc" target="_blank" rel="noopener noreferrer">@kclaisoc</a> for upcoming events.</p>
+          </noscript>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PAST EVENTS (hidden automatically while there are none)
+         ============================================================ -->
+    <section class="events-past" aria-labelledby="past-events-heading" data-event-hide-empty>
+      <div class="container">
+        <h2 id="past-events-heading" class="events-heading reveal">Past Events</h2>
+        <div class="events-grid" data-event-list="past" data-event-layout="card"></div>
       </div>
     </section>
 
@@ -370,6 +346,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
+  <script src="js/event-data.js" defer></script>
+  <script src="js/event-listings.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/events.js" defer></script>
   <script>

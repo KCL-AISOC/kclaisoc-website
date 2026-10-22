@@ -391,6 +391,7 @@ body[class$="-article"] .page-header h1 { font-size:clamp(35px,4.7vw,64px); max-
 .programme-detail { padding:0 40px 24px 52px; max-width:750px; }
 .programme-detail p { font-size:15px; color:var(--ink-muted); }
 .programme-detail .event-card-date { font-size:12px; margin-bottom:12px; }
+.programme-actions { display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:1rem; }
 .programme-row[open] .programme-detail { animation:detail-in .3s; }
 .invitation { padding:36px 0; }
 .invitation-grid { grid-template-columns:1fr 1fr; gap:8%; align-items:center; }

@@ -350,7 +350,7 @@
           </span>
         </div>
         <div class="programme-heading">
-          <h2 id="programme-heading" class="reveal">
+          <h2 id="programme-heading" class="reveal" data-event-heading="Recent events">
             Upcoming events
           </h2>
           <div>
@@ -362,38 +362,11 @@
             </a>
           </div>
         </div>
-        <div class="programme-list">
-          <details class="programme-row">
-            <summary>
-              <h3>
-                Spring Week Panel
-              </h3>
-              <span class="event-status">
-                Sign ups open
-              </span>
-              <span class="programme-plus" aria-hidden="true">
-                +
-              </span>
-            </summary>
-            <div class="programme-detail">
-              <p class="event-card-date">
-                Wednesday 7 October 2026 &middot; 6.30pm to 8pm &middot; Bush House, Strand Campus
-              </p>
-              <p>
-                Seven KCL students who have completed spring weeks talk through what the week looks like day to day, what doing well involves, and how they approached networking. Open to KCL students, run with KCL Capital Markets Society, KREPS and KCL Green Finance Society.
-              </p>
-              <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem;">
-                <a href="https://forms.gle/qQHoRtk6SXhtvFoa8" target="_blank" rel="noopener noreferrer" class="text-action">
-                  Sign up
-                  <span aria-hidden="true">↗</span>
-                </a>
-                <a href="spring-week-panel.html" class="text-action">
-                  View event details
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-          </details>
+        <div class="programme-list" data-event-list="upcoming" data-event-layout="programme" data-event-fallback="past" data-event-limit="3">
+          <!-- Rendered from js/event-data.js by js/event-listings.js -->
+          <noscript>
+            <p class="events-empty"><a href="events.html">See all events on the Events page</a>.</p>
+          </noscript>
         </div>
       </div>
     </section>
@@ -497,6 +470,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
+  <script src="js/event-data.js" defer></script>
+  <script src="js/event-listings.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/home.js" defer></script>
   <script src="js/editorial.js" defer></script>

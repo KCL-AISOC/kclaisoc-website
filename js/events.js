@@ -3,18 +3,9 @@
    Event filtering logic (vanilla JS, no dependencies)
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   HOW TO ADD A REAL EVENT
-   --------------------------------------------------------------------------
-   1. Copy one of the .event-card divs in events.html.
-   2. Set the data-category attribute to one of:
-        workshops | speakers | competitions | networking
-      Example: <article class="event-card visible" data-category="workshops">
-   3. Fill in: event type tag, title, date, description, and re-enable the
-      sign-up button by removing the disabled attribute and updating href.
-   4. Remove the aria-disabled="true" attribute from the button.
-   5. The filter logic below will automatically handle show/hide for the new card.
-   -------------------------------------------------------------------------- */
+/* Events themselves live in js/event-data.js and are rendered by
+   js/event-listings.js, which loads before this file. Only upcoming cards
+   carry data-category, so this filter never touches past events. */
 
 (function () {
   'use strict';

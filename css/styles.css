@@ -66,6 +66,10 @@
   padding: 0;
 }
 
+/* The hidden attribute always wins, even over components that set their
+   own display (flex rows, grid buttons). */
+[hidden] { display: none !important; }
+
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
@@ -1935,6 +1939,47 @@ footer {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Events rendered from js/event-data.js (see js/event-listings.js) */
+.events-heading { margin-bottom: 2rem; }
+
+.events-past { padding-top: 0; }
+
+/* A lone event spans the full grid rather than leaving an empty column. */
+.event-card--wide { grid-column: 1 / -1; }
+
+.event-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.events-empty {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.events-empty--card {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  background: var(--white);
+  border-top: 2px solid var(--gold);
+}
+
+.events-empty-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.events-empty a {
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 3px;
 }
 
 /* --------------------------------------------------------------------------
