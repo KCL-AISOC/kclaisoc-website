@@ -60,7 +60,7 @@
     }
 
     .swp-section {
-      padding: 3rem 0;
+      padding: clamp(2.25rem, 4.5vw, 3rem) 0;
       border-top: 1px solid rgba(201, 169, 97, 0.18);
     }
 
@@ -70,8 +70,20 @@
     }
 
     .swp-section-head {
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
+
+    .swp-section-head .gold-rule { margin-block: 1.25rem 0; }
+
+    /* About copy beside the details card */
+    .swp-overview {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: clamp(1.75rem, 4vw, 3.5rem);
+      align-items: start;
+    }
+
+    .swp-overview .swp-lead { margin-top: 0; }
 
     .swp-lead {
       font-size: 0.95rem;
@@ -84,8 +96,8 @@
     /* Event details block */
     .swp-detail-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.75rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 1.75rem;
       background: #fff;
       border: 1px solid rgba(7, 22, 48, 0.1);
       padding: clamp(1.5rem, 4vw, 2.25rem);
@@ -125,10 +137,10 @@
       color: var(--navy);
     }
 
-    /* Gallery: a wide lead image, then an offset image beside a short note. */
+    /* Gallery: a wide lead image, then an offset image beside a note and stats. */
     .swp-gallery {
       display: grid;
-      gap: clamp(2.5rem, 6vw, 4.5rem);
+      gap: clamp(1.25rem, 3vw, 2rem);
     }
 
     .swp-shot { margin: 0; min-width: 0; }
@@ -167,32 +179,22 @@
 
     .swp-shot--offset img { aspect-ratio: 4 / 3; }
 
-    .swp-shot figcaption {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-top: 0.85rem;
-      font-size: 0.82rem;
-      line-height: 1.5;
-      color: var(--text-muted);
-    }
-
-    .swp-shot-index {
-      font-family: var(--font-display);
-      font-size: 0.9rem;
-      color: var(--gold);
-    }
-
     .swp-gallery-row {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
       column-gap: clamp(1.5rem, 4vw, 3rem);
-      align-items: end;
+    }
+
+    .swp-gallery-aside {
+      grid-column: 1 / span 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-block: 0.25rem;
     }
 
     .swp-gallery-note {
-      grid-column: 1 / span 4;
-      margin-bottom: 3.25rem;
       padding-top: 1.25rem;
       border-top: 1px solid var(--gold);
       font-family: var(--font-display);
@@ -205,6 +207,40 @@
     }
 
     .swp-shot--offset { grid-column: 5 / -1; }
+
+    .swp-gallery-sub {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .swp-stats { list-style: none; }
+
+    .swp-stats li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .swp-stat-num {
+      min-width: 2.2ch;
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--gold);
+    }
+
+    .swp-stat-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+    }
 
     /* Lightbox */
     .swp-lightbox {
@@ -371,19 +407,21 @@
     }
 
     @media (max-width: 960px) {
-      .swp-detail-grid { grid-template-columns: repeat(2, 1fr); }
-      .swp-gallery-note { grid-column: 1 / span 5; }
-      .swp-shot--offset { grid-column: 6 / -1; }
+      .swp-overview { grid-template-columns: 1fr; }
+      .swp-gallery-row { grid-template-columns: 1fr; row-gap: 1.5rem; }
+      .swp-shot--offset img { aspect-ratio: 16 / 9; }
+      .swp-gallery-aside,
+      .swp-shot--offset { grid-column: 1 / -1; }
+      .swp-gallery-aside { order: 2; gap: 1.5rem; padding-top: 0.5rem; }
+      .swp-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+      .swp-stats li { flex-direction: column; gap: 0.4rem; padding: 0.85rem 0 0; }
     }
 
     @media (max-width: 640px) {
       .swp-detail-grid { grid-template-columns: 1fr; }
       .swp-speakers { grid-template-columns: 1fr; }
-      .swp-shot--lead img { aspect-ratio: 4 / 3; object-position: 50% 50%; }
-      .swp-gallery-row { grid-template-columns: 1fr; row-gap: 1.5rem; }
-      .swp-gallery-note,
-      .swp-shot--offset { grid-column: 1 / -1; }
-      .swp-gallery-note { margin-bottom: 0; order: 2; }
+      .swp-shot--lead img,
+      .swp-shot--offset img { aspect-ratio: 4 / 3; object-position: 50% 50%; }
       .swp-shot-frame { padding: 4px; }
       .swp-lightbox { padding: 4.5rem 0.75rem 5.5rem; }
       .swp-lightbox-prev,
@@ -446,39 +484,32 @@
     <section class="swp-body">
       <div class="container">
 
-        <!-- ── About the panel ─────────────────────────────────── -->
+        <!-- ── About and event details ─────────────────────────────────── -->
         <div class="swp-section">
           <div class="swp-section-head reveal">
             <span class="eyebrow">About the Panel</span>
-            <h2>What we covered</h2>
-            <div class="gold-rule"></div>
-            <p class="swp-lead">Six KCL students who have completed spring weeks talked through what the week actually looks like day to day, what doing well involves, and how they approached networking. The panel was aimed at students thinking about applying for a spring week, with time to chat with the speakers afterwards.</p>
-          </div>
-        </div>
-
-        <!-- ── Event details ─────────────────────────────────── -->
-        <div class="swp-section">
-          <div class="swp-section-head reveal">
-            <span class="eyebrow">Details</span>
             <h2>Event details</h2>
             <div class="gold-rule"></div>
           </div>
-          <div class="swp-detail-grid reveal">
-            <div class="swp-detail-item">
-              <span class="swp-detail-label">Date</span>
-              <p class="swp-detail-value">Wednesday 7 October 2026</p>
-            </div>
-            <div class="swp-detail-item">
-              <span class="swp-detail-label">Time</span>
-              <p class="swp-detail-value">6.30pm to 8pm</p>
-            </div>
-            <div class="swp-detail-item">
-              <span class="swp-detail-label">Location</span>
-              <p class="swp-detail-value">Room NE 1.03, Bush House, Strand Campus, King's College London</p>
-            </div>
-            <div class="swp-detail-item">
-              <span class="swp-detail-label">Open to</span>
-              <p class="swp-detail-value">KCL students</p>
+          <div class="swp-overview">
+            <p class="swp-lead reveal">Six KCL students who have completed spring weeks talked through what the week actually looks like day to day, what doing well involves, and how they approached networking. The panel was aimed at students thinking about applying for a spring week, with time to chat with the speakers afterwards.</p>
+            <div class="swp-detail-grid reveal">
+              <div class="swp-detail-item">
+                <span class="swp-detail-label">Date</span>
+                <p class="swp-detail-value">Wednesday 7 October 2026</p>
+              </div>
+              <div class="swp-detail-item">
+                <span class="swp-detail-label">Time</span>
+                <p class="swp-detail-value">6.30pm to 8pm</p>
+              </div>
+              <div class="swp-detail-item">
+                <span class="swp-detail-label">Location</span>
+                <p class="swp-detail-value">Room NE 1.03, Bush House, Strand Campus, King's College London</p>
+              </div>
+              <div class="swp-detail-item">
+                <span class="swp-detail-label">Open to</span>
+                <p class="swp-detail-value">KCL students</p>
+              </div>
             </div>
           </div>
         </div>
@@ -486,34 +517,41 @@
         <!-- ── Gallery ─────────────────────────────────── -->
         <div class="swp-section">
           <div class="swp-section-head reveal">
-            <span class="eyebrow">Gallery</span>
             <h2>From the evening</h2>
             <div class="gold-rule"></div>
           </div>
 
           <div class="swp-gallery" id="swp-gallery">
             <figure class="swp-shot swp-shot--lead">
-              <button type="button" class="swp-shot-frame" data-index="0" aria-label="View larger: the speakers outside Bush House">
+              <button type="button" class="swp-shot-frame" aria-label="View larger: the speakers outside Bush House">
                 <img src="assets/images/spring-week/1-1600.jpg"
                      srcset="assets/images/spring-week/1-900.jpg 900w, assets/images/spring-week/1-1600.jpg 1600w"
                      sizes="(max-width: 1340px) calc(100vw - 2.5rem), 1220px"
                      width="1600" height="1200" loading="lazy" decoding="async"
                      alt="The Spring Week Panel speakers standing together in the Bush House courtyard at night after the event, with a red King's College London banner behind them.">
               </button>
-              <figcaption><span class="swp-shot-index">01</span>The speakers after the panel, Bush House courtyard</figcaption>
             </figure>
 
             <div class="swp-gallery-row">
-              <p class="swp-gallery-note">A full room in NE&nbsp;1.03 for an evening of honest conversation about spring weeks.</p>
+              <div class="swp-gallery-aside">
+                <div>
+                  <p class="swp-gallery-note">A full room in NE&nbsp;1.03 for an evening of honest conversation about spring weeks.</p>
+                  <p class="swp-gallery-sub">Spring weeks across investment banking, trading, private equity and asset management, at firms including Citadel, J.P. Morgan, Morgan Stanley and Permira.</p>
+                </div>
+                <ul class="swp-stats" role="list">
+                  <li><span class="swp-stat-num">6</span><span class="swp-stat-label">Student speakers</span></li>
+                  <li><span class="swp-stat-num">18</span><span class="swp-stat-label">Firms represented</span></li>
+                  <li><span class="swp-stat-num">3</span><span class="swp-stat-label">Partner societies</span></li>
+                </ul>
+              </div>
               <figure class="swp-shot swp-shot--offset">
-                <button type="button" class="swp-shot-frame" data-index="1" aria-label="View larger: the panel in Room NE 1.03">
+                <button type="button" class="swp-shot-frame" aria-label="View larger: the panel in Room NE 1.03">
                   <img src="assets/images/spring-week/2-1600.jpg"
                        srcset="assets/images/spring-week/2-900.jpg 900w, assets/images/spring-week/2-1600.jpg 1600w"
-                       sizes="(max-width: 640px) calc(100vw - 2.5rem), (max-width: 1340px) 64vw, 800px"
+                       sizes="(max-width: 960px) calc(100vw - 2.5rem), (max-width: 1340px) 64vw, 800px"
                        width="1600" height="1200" loading="lazy" decoding="async"
                        alt="Wide view of Room NE 1.03 during the panel: the speakers seated at a table at the front beneath a Spring Week Panel slide, facing rows of students.">
                 </button>
-                <figcaption><span class="swp-shot-index">02</span>The panel in session, Room NE 1.03</figcaption>
               </figure>
             </div>
           </div>
@@ -594,7 +632,7 @@
   <dialog class="swp-lightbox" id="swp-lightbox" aria-label="Photo viewer">
     <div class="swp-lightbox-inner">
       <img class="swp-lightbox-img" src="" alt="">
-      <p class="swp-lightbox-caption"><span class="swp-lightbox-count" aria-live="polite"></span><span class="swp-lightbox-text"></span></p>
+      <p class="swp-lightbox-caption"><span class="swp-lightbox-count" aria-live="polite"></span></p>
     </div>
     <button type="button" class="swp-lightbox-btn swp-lightbox-close" aria-label="Close">&times;</button>
     <button type="button" class="swp-lightbox-btn swp-lightbox-prev" aria-label="Previous photo">&larr;</button>
@@ -692,7 +730,7 @@
 
       if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', function () {
-          gallery.querySelectorAll('.swp-shot, .swp-gallery-note').forEach(function (el) {
+          gallery.querySelectorAll('.swp-shot, .swp-gallery-aside').forEach(function (el) {
             gsap.from(el, {
               autoAlpha: 0,
               y: 40,
@@ -707,17 +745,11 @@
       var frames = Array.prototype.slice.call(gallery.querySelectorAll('.swp-shot-frame'));
       var photos = frames.map(function (frame) {
         var img = frame.querySelector('img');
-        var caption = frame.parentNode.querySelector('figcaption');
-        return {
-          src: img.getAttribute('src'),
-          alt: img.getAttribute('alt'),
-          caption: caption ? caption.lastChild.textContent.trim() : ''
-        };
+        return { src: img.getAttribute('src'), alt: img.getAttribute('alt') };
       });
 
       var boxImg = box.querySelector('.swp-lightbox-img');
       var boxCount = box.querySelector('.swp-lightbox-count');
-      var boxText = box.querySelector('.swp-lightbox-text');
       var prev = box.querySelector('.swp-lightbox-prev');
       var next = box.querySelector('.swp-lightbox-next');
       var current = 0;
@@ -731,7 +763,6 @@
         boxImg.src = photo.src;
         boxImg.alt = photo.alt;
         boxCount.textContent = (current + 1) + ' / ' + photos.length;
-        boxText.textContent = photo.caption;
       }
 
       function open(index, trigger) {
