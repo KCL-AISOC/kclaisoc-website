@@ -125,6 +125,171 @@
       color: var(--navy);
     }
 
+    /* Gallery: a wide lead image, then an offset image beside a short note. */
+    .swp-gallery {
+      display: grid;
+      gap: clamp(2.5rem, 6vw, 4.5rem);
+    }
+
+    .swp-shot { margin: 0; min-width: 0; }
+
+    .swp-shot-frame {
+      display: block;
+      width: 100%;
+      padding: 6px;
+      background: #fff;
+      border: 1px solid rgba(201, 169, 97, 0.45);
+      border-radius: 6px;
+      cursor: zoom-in;
+      transition: border-color var(--t-med), box-shadow var(--t-med);
+    }
+
+    .swp-shot-frame:hover,
+    .swp-shot-frame:focus-visible {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-md);
+    }
+
+    .swp-shot-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 3px;
+      background: rgba(7, 22, 48, 0.06);
+    }
+
+    /* Crop the lead towards the bottom, where the group stands. */
+    .swp-shot--lead img {
+      aspect-ratio: 16 / 9;
+      object-position: 50% 82%;
+    }
+
+    .swp-shot--offset img { aspect-ratio: 4 / 3; }
+
+    .swp-shot figcaption {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-top: 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .swp-shot-index {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      color: var(--gold);
+    }
+
+    .swp-gallery-row {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: end;
+    }
+
+    .swp-gallery-note {
+      grid-column: 1 / span 4;
+      margin-bottom: 3.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--gold);
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.1vw, 1.65rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
+
+    .swp-shot--offset { grid-column: 5 / -1; }
+
+    /* Lightbox */
+    .swp-lightbox {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      margin: 0;
+      padding: clamp(3.5rem, 7vw, 5rem) clamp(1rem, 7vw, 6rem);
+      border: 0;
+      background: rgba(7, 22, 48, 0.97);
+      color: var(--cream);
+    }
+
+    .swp-lightbox[open] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: swpFade 0.25s ease-out;
+    }
+
+    .swp-lightbox::backdrop { background: transparent; }
+
+    .swp-lightbox-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .swp-lightbox-img {
+      display: block;
+      max-width: 100%;
+      max-height: calc(100vh - 11rem);
+      max-height: calc(100dvh - 11rem);
+      width: auto;
+      height: auto;
+      border: 1px solid rgba(201, 169, 97, 0.5);
+      border-radius: 4px;
+    }
+
+    .swp-lightbox-caption {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #c6cfdb;
+      text-align: center;
+    }
+
+    .swp-lightbox-count { color: var(--gold); font-variant-numeric: tabular-nums; }
+
+    .swp-lightbox-btn {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(201, 169, 97, 0.45);
+      border-radius: 50%;
+      background: rgba(7, 22, 48, 0.6);
+      color: var(--cream);
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color var(--t-fast), color var(--t-fast), transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .swp-lightbox-btn:hover,
+    .swp-lightbox-btn:focus-visible { border-color: var(--gold); color: var(--gold); }
+    .swp-lightbox-btn:active { transform: scale(0.94); }
+
+    .swp-lightbox-close { top: 1rem; right: 1rem; font-size: 1.6rem; }
+    .swp-lightbox-prev { left: 1rem; top: 50%; margin-top: -24px; }
+    .swp-lightbox-next { right: 1rem; top: 50%; margin-top: -24px; }
+
+    @keyframes swpFade { from { opacity: 0; } to { opacity: 1; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .swp-lightbox[open] { animation: none; }
+    }
+
     /* Speakers, a typographic list. Each name links to LinkedIn. */
     .swp-speakers {
       list-style: none;
@@ -207,11 +372,24 @@
 
     @media (max-width: 960px) {
       .swp-detail-grid { grid-template-columns: repeat(2, 1fr); }
+      .swp-gallery-note { grid-column: 1 / span 5; }
+      .swp-shot--offset { grid-column: 6 / -1; }
     }
 
     @media (max-width: 640px) {
       .swp-detail-grid { grid-template-columns: 1fr; }
       .swp-speakers { grid-template-columns: 1fr; }
+      .swp-shot--lead img { aspect-ratio: 4 / 3; object-position: 50% 50%; }
+      .swp-gallery-row { grid-template-columns: 1fr; row-gap: 1.5rem; }
+      .swp-gallery-note,
+      .swp-shot--offset { grid-column: 1 / -1; }
+      .swp-gallery-note { margin-bottom: 0; order: 2; }
+      .swp-shot-frame { padding: 4px; }
+      .swp-lightbox { padding: 4.5rem 0.75rem 5.5rem; }
+      .swp-lightbox-prev,
+      .swp-lightbox-next { top: auto; bottom: 1rem; margin-top: 0; }
+      .swp-lightbox-prev { left: calc(50% - 60px); }
+      .swp-lightbox-next { right: calc(50% - 60px); }
       .swp-speaker { padding: 1.4rem 0 1.5rem; }
     }
   </style>
@@ -305,6 +483,42 @@
           </div>
         </div>
 
+        <!-- ── Gallery ─────────────────────────────────── -->
+        <div class="swp-section">
+          <div class="swp-section-head reveal">
+            <span class="eyebrow">Gallery</span>
+            <h2>From the evening</h2>
+            <div class="gold-rule"></div>
+          </div>
+
+          <div class="swp-gallery" id="swp-gallery">
+            <figure class="swp-shot swp-shot--lead">
+              <button type="button" class="swp-shot-frame" data-index="0" aria-label="View larger: the speakers outside Bush House">
+                <img src="assets/images/spring-week/1-1600.jpg"
+                     srcset="assets/images/spring-week/1-900.jpg 900w, assets/images/spring-week/1-1600.jpg 1600w"
+                     sizes="(max-width: 1340px) calc(100vw - 2.5rem), 1220px"
+                     width="1600" height="1200" loading="lazy" decoding="async"
+                     alt="The Spring Week Panel speakers standing together in the Bush House courtyard at night after the event, with a red King's College London banner behind them.">
+              </button>
+              <figcaption><span class="swp-shot-index">01</span>The speakers after the panel, Bush House courtyard</figcaption>
+            </figure>
+
+            <div class="swp-gallery-row">
+              <p class="swp-gallery-note">A full room in NE&nbsp;1.03 for an evening of honest conversation about spring weeks.</p>
+              <figure class="swp-shot swp-shot--offset">
+                <button type="button" class="swp-shot-frame" data-index="1" aria-label="View larger: the panel in Room NE 1.03">
+                  <img src="assets/images/spring-week/2-1600.jpg"
+                       srcset="assets/images/spring-week/2-900.jpg 900w, assets/images/spring-week/2-1600.jpg 1600w"
+                       sizes="(max-width: 640px) calc(100vw - 2.5rem), (max-width: 1340px) 64vw, 800px"
+                       width="1600" height="1200" loading="lazy" decoding="async"
+                       alt="Wide view of Room NE 1.03 during the panel: the speakers seated at a table at the front beneath a Spring Week Panel slide, facing rows of students.">
+                </button>
+                <figcaption><span class="swp-shot-index">02</span>The panel in session, Room NE 1.03</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
         <!-- ── Speakers ─────────────────────────────────── -->
         <div class="swp-section">
           <div class="swp-section-head reveal">
@@ -375,6 +589,17 @@
     </section>
 
   </main>
+
+  <!-- Gallery lightbox -->
+  <dialog class="swp-lightbox" id="swp-lightbox" aria-label="Photo viewer">
+    <div class="swp-lightbox-inner">
+      <img class="swp-lightbox-img" src="" alt="">
+      <p class="swp-lightbox-caption"><span class="swp-lightbox-count" aria-live="polite"></span><span class="swp-lightbox-text"></span></p>
+    </div>
+    <button type="button" class="swp-lightbox-btn swp-lightbox-close" aria-label="Close">&times;</button>
+    <button type="button" class="swp-lightbox-btn swp-lightbox-prev" aria-label="Previous photo">&larr;</button>
+    <button type="button" class="swp-lightbox-btn swp-lightbox-next" aria-label="Next photo">&rarr;</button>
+  </dialog>
 
   <!-- ============================================================
        FOOTER
@@ -456,5 +681,101 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/editorial.js" defer></script>
+  <script>
+    /* Spring Week Panel gallery: a GSAP fade and rise on scroll, and a simple
+       lightbox with arrow key and Escape support. Runs after the deferred
+       GSAP bundle, and leaves every photo visible if GSAP never loads. */
+    document.addEventListener('DOMContentLoaded', function () {
+      var gallery = document.getElementById('swp-gallery');
+      var box = document.getElementById('swp-lightbox');
+      if (!gallery || !box) return;
+
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', function () {
+          gallery.querySelectorAll('.swp-shot, .swp-gallery-note').forEach(function (el) {
+            gsap.from(el, {
+              autoAlpha: 0,
+              y: 40,
+              duration: 1.1,
+              ease: 'power3.out',
+              scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+            });
+          });
+        });
+      }
+
+      var frames = Array.prototype.slice.call(gallery.querySelectorAll('.swp-shot-frame'));
+      var photos = frames.map(function (frame) {
+        var img = frame.querySelector('img');
+        var caption = frame.parentNode.querySelector('figcaption');
+        return {
+          src: img.getAttribute('src'),
+          alt: img.getAttribute('alt'),
+          caption: caption ? caption.lastChild.textContent.trim() : ''
+        };
+      });
+
+      var boxImg = box.querySelector('.swp-lightbox-img');
+      var boxCount = box.querySelector('.swp-lightbox-count');
+      var boxText = box.querySelector('.swp-lightbox-text');
+      var prev = box.querySelector('.swp-lightbox-prev');
+      var next = box.querySelector('.swp-lightbox-next');
+      var current = 0;
+      var opener = null;
+
+      if (photos.length < 2) { prev.hidden = true; next.hidden = true; }
+
+      function show(index) {
+        current = (index + photos.length) % photos.length;
+        var photo = photos[current];
+        boxImg.src = photo.src;
+        boxImg.alt = photo.alt;
+        boxCount.textContent = (current + 1) + ' / ' + photos.length;
+        boxText.textContent = photo.caption;
+      }
+
+      function open(index, trigger) {
+        opener = trigger;
+        show(index);
+        document.documentElement.style.overflow = 'hidden';
+        if (typeof box.showModal === 'function') box.showModal();
+        else box.setAttribute('open', '');
+      }
+
+      function close() {
+        if (typeof box.close === 'function') box.close();
+        else box.removeAttribute('open');
+        onClose();
+      }
+
+      /* Runs on both the buttons and the native Escape close, so it only
+         restores once. */
+      function onClose() {
+        document.documentElement.style.overflow = '';
+        if (opener) { opener.focus(); opener = null; }
+      }
+
+      frames.forEach(function (frame, i) {
+        frame.addEventListener('click', function () { open(i, frame); });
+      });
+
+      prev.addEventListener('click', function () { show(current - 1); });
+      next.addEventListener('click', function () { show(current + 1); });
+      box.querySelector('.swp-lightbox-close').addEventListener('click', close);
+      box.addEventListener('close', onClose);
+
+      /* Clicking the dark surround, rather than the photo, closes it. */
+      box.addEventListener('click', function (e) {
+        if (e.target === box || e.target.classList.contains('swp-lightbox-inner')) close();
+      });
+
+      /* Escape is handled natively by the dialog. */
+      box.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+        else if (e.key === 'Escape' && typeof box.showModal !== 'function') close();
+      });
+    });
+  </script>
 </body>
 </html>
